@@ -1,0 +1,43 @@
+Changelog
+=========
+
+1.0.0-beta
+----------
+
+- fix jquery.uploadify on MSIE with a temp workaround
+  see ticket : https://dev.plone.org/plone/ticket/10894
+  macadames - 2010/09/02
+
+- using different ids for each uploader methods launchers
+  since we could have different uploaders in a same page
+  example : an images uploader portlet, a video uploader portlet
+  macadames - 2010/09/02
+
+- remove the cookie authentication method
+  with jquery.uploadify (it's not secure to send the cookie in all requests)
+  Just keep the old PloneFlashUpload method (ticket)
+  macadames - 2010/09/02
+
+- many improvements around fileuploader.js (fork) :
+  autoUpload option added 
+  onAfterSelect option added
+  refactoristion with these new options
+  macadames - 2010/09/02
+
+- added fileuploader.js jscript launcher
+  macadames - 2010/08/25
+
+- change flashupload jscript launchers
+  to allow multiple uploaders in same page
+  macadames - 2010/08/25
+
+- Add fileuploader.js for XHR or simple hidden iframe uploader
+  macadames - 2010/08/25
+
+- Add quick upload control panel
+  macadames - 2010/08/25
+
+- Initial release :
+  extract upload code from collective.plonefinder
+  to make a separate package
+  macadames - 2010/08/25

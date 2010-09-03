@@ -1,0 +1,84 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:browser="http://namespaces.zope.org/browser"
+    xmlns:five="http://namespaces.zope.org/five"
+    i18n_domain="collective.quickupload">
+
+  <adapter factory=".uploadcapable.QuickUploadCapableFileFactory" />
+
+  <class class="Products.ATContentTypes.content.folder.ATFolder">
+    <implements interface=".interfaces.IQuickUploadCapable" />
+  </class>
+
+  <class class="Products.ATContentTypes.content.folder.ATBTreeFolder">
+    <implements interface=".interfaces.IQuickUploadCapable" />
+  </class>
+
+  <class class="Products.CMFPlone.Portal.PloneSite">
+    <implements interface=".interfaces.IQuickUploadCapable" />
+  </class>       
+        
+  <!-- resource directory for widget static files -->
+  <browser:resourceDirectory
+      name="quickupload_static"
+      directory="static"
+      />  	        
+
+  <!-- Quick Upload View -->
+       
+  <browser:page
+      for=".interfaces.IQuickUploadCapable"
+      name="quick_upload"
+      class=".quick_upload.QuickUploadView"
+      permission="cmf.AddPortalContent"/>     
+    
+  <!-- Quick Upload javascript Init -->
+  <browser:page
+      for="*"
+      name="quick_upload_init"
+      class=".quick_upload.QuickUploadInit"
+      permission="cmf.AddPortalContent"/>      
+  
+  <!-- Quick upload file View
+       we use permission zope.Public 
+       on upload_file view (called in flash)
+       for users authenticated 
+       without cookie -->   
+           
+  <browser:page
+      for="*"
+      name="quick_upload_file"
+      class=".quick_upload.QuickUploadFile"
+      permission="zope.Public"/> 
+           
+  <!-- Quick Upload check file -->
+  
+  <browser:page
+      for="*"
+      name="quick_upload_check_file"
+      class=".quick_upload.QuickUploadCheckFile"
+      permission="cmf.AddPortalContent"/> 
+
+
+  <!-- ticket view which generate a ticket for each user/folder absolute url
+       used only when no user cookie is available (not standard authentification) -->
+
+  <browser:page
+      for=".interfaces.IQuickUploadCapable"
+      name="quickupload_ticket"
+      class=".ticket.TicketView"
+      permission="cmf.AddPortalContent"
+      />
+
+  <!-- quick upload control panel adapter -->    
+  <adapter factory=".quickupload_settings.QuickUploadControlPanelAdapter" />
+  
+  <!-- quick upload control panel form view -->    
+  <browser:page
+      name="quickupload-controlpanel"
+      for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+      class=".quickupload_settings.QuickUploadControlPanel"
+      permission="cmf.ManagePortal"
+      />    
+
+</configure>

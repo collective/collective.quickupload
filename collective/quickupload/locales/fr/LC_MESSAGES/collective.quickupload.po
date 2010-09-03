@@ -1,0 +1,145 @@
+# Translation of collective.quickupload.pot to French
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.quickupload\n"
+"POT-Creation-Date: 2010-07-26 11:30+0200\n"
+"PO-Revision-Date: 2010-07-26 11:30+0200\n"
+"Last-Translator: Jean-mat Grimaldi <jeanmat.grimaldi@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language-Code: fr\n"
+"Language-Name: French\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: collective.quickupload\n"
+"X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
+
+
+#. Default: "Browse"
+msgid "Browse"
+msgstr "Parcourir"
+
+#. Default: "Choose your files : "
+msgid "label_choose_your_files"
+msgstr "Choisir les fichiers : "
+
+#. Default: "Upload Files"
+msgid "label_upload_files"
+msgstr "Envoyer fichiers"
+
+#. Default: "Clear Queue"
+msgid "label_clear_queue"
+msgstr "Annuler"
+
+#. Default: "All files uploaded with success."
+msgid "All files uploaded with success."
+msgstr "Tous les fichiers ont été envoyé avec succès."
+
+#. Default: " files uploaded with success, "
+msgid " files uploaded with success, "
+msgstr " fichiers envoyés avec succès, "
+
+#. Default: " uploads return an error."
+msgid " uploads return an error."
+msgstr " envois de fichiers retournent une erreur."
+
+#. Default: "Choose files to upload"
+msgid "Choose files to upload"
+msgstr "Choisir les fichiers à envoyer"
+
+#. Default: "Choose images to upload"
+msgid "Choose images to upload"
+msgstr "Choisir les images à envoyer"
+
+#. Default: "Choose video files to upload"
+msgid "Choose video files to upload"
+msgstr "Choisir les fichiers vidéo à envoyer"
+
+#. Default: "Choose audio files to upload"
+msgid "Choose audio files to upload"
+msgstr "Choisir les fichiers audio à envoyer"
+
+#. Default: "Choose flash files to upload"
+msgid "Choose flash files to upload"
+msgstr "Choisir les fichiers flash à envoyer"
+
+#. Default: "Files Quick Upload"
+msgid "header_file_quick_upload"
+msgstr "Envoi rapide de fichiers"
+
+#. Default: "Files quick upload"
+msgid "label_files_quick__upload"
+msgstr "Envoi rapide de fichiers"
+
+#. Default: "Default configuration (Content Type Registry)."
+msgid "label_default_portaltype_configuration"
+
+#. Default: "Quick Upload Portlet"
+msgid "Quick Upload Portlet"
+msgstr "Portlet d'envoi rapide de fichiers"
+
+#. Default: "Portlet displaying a quick and multiple upload form"
+msgid "Portlet affichant un formulaire d'envoi rapide et multiple de fichiers."
+msgstr ""
+msgstr "Configuration par défaut (Content Type Registry)"
+
+msgid "Box title"
+msgstr "Titre de la boîte"
+
+msgid "Files quick upload"
+msgstr "Envoi rapide de fichiers"
+
+msgid "Content type"
+msgstr "Type de contenu"
+
+msgid "Choose the portal type used for file upload. Let the default configuration for an automatic portal type, depending on settings defined in content_type_registry."
+msgstr "Choisir le type de contenu utilisé pour l'envoi de fichiers. Laisser la configuration par défaut pour que le type soit choisi automatiquement en fonction des paramètres définis dans content_type_registry."
+
+msgid "Media type"
+msgstr "Type de média"
+
+msgid "Choose the media type used for file upload. image, audio, video ..."
+msgstr "Choisir le type de média utilisé pour l'envoi de fichiers.  image, audio, vidéo ..."
+
+msgid "All"
+msgstr "Tous"
+
+msgid "Images"
+msgstr "Images"
+
+msgid "Video files"
+msgstr "Fichiers vidéo"
+
+msgid "Audio files"
+msgstr "Fichiers audio"
+
+msgid "Flash files"
+msgstr "Fichiers Flash"
+
+msgid "If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."
+msgstr "Si le titre est absent, le titre de la boîte sera 'Téléchargement rapide de ' + Choix du Média."
+
+#. Default: "Files Quick Upload"
+msgid "Files Quick Upload"
+msgstr "Envoi Rapide de Fichiers"
+
+#. Default: "Images Quick Upload"
+msgid "Images Quick Upload"
+msgstr "Envoi Rapide d'Images"
+
+#. Default: "Video Quick Upload"
+msgid "Video Quick Upload"
+msgstr "Envoi Rapide de Vidéo"
+
+#. Default: "Audio Quick Upload"
+msgid "Audio Quick Upload"
+msgstr "Envoi Rapide d'Audio"
+
+#. Default: "Flash Quick Upload"
+msgid "Flash Quick Upload"
+msgstr "Envoi Rapide de Flash"
+
+
+

@@ -1,0 +1,139 @@
+# Translation of collective.quickupload.pot to
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.quickupload\n"
+"POT-Creation-Date: 2010-07-26 11:30+0200\n"
+"Last-Translator: Jean-mat Grimaldi <jeanmat.grimaldi@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: collective.quickupload\n"
+
+#. Default: "Browse"
+msgid "Browse"
+msgstr ""
+
+#. Default: "Choose your files : "
+msgid "label_choose_your_files"
+msgstr ""
+
+#. Default: "Upload Files"
+msgid "label_upload_files"
+msgstr ""
+
+#. Default: "Clear Queue"
+msgid "label_clear_queue"
+msgstr ""
+
+#. Default: "All files uploaded with success."
+msgid "All files uploaded with success."
+msgstr ""
+
+#. Default: " files uploaded with success, "
+msgid " files uploaded with success, "
+msgstr ""
+
+#. Default: " uploads return an error."
+msgid " uploads return an error."
+msgstr ""
+
+#. Default: "Choose files to upload"
+msgid "Choose files to upload"
+msgstr ""
+
+#. Default: "Choose images to upload"
+msgid "Choose images to upload"
+msgstr ""
+
+#. Default: "Choose video files to upload"
+msgid "Choose video files to upload"
+msgstr ""
+
+#. Default: "Choose audio files to upload"
+msgid "Choose audio files to upload"
+msgstr ""
+
+#. Default: "Choose flash files to upload"
+msgid "Choose flash files to upload"
+msgstr ""
+
+#. Default: "Files Quick Upload"
+msgid "header_file_quick_upload"
+msgstr ""
+
+#. Default: "Files quick upload"
+msgid "label_files_quick__upload"
+msgstr ""
+
+#. Default: "Default configuration (Content Type Registry)."
+msgid "label_default_portaltype_configuration"
+msgstr ""
+
+#. Default: "Quick Upload Portlet"
+msgid "Quick Upload Portlet"
+msgstr ""
+
+#. Default: "Portlet displaying a quick and multiple upload form"
+msgid "Portlet displaying a quick and multiple upload form"
+msgstr ""
+
+msgid "Box title"
+msgstr ""
+
+msgid "Files quick upload"
+msgstr ""
+
+msgid "Content type"
+msgstr ""
+
+msgid "Choose the portal type used for file upload. Let the default configuration for an automatic portal type, depending on settings defined in content_type_registry."
+msgstr ""
+
+msgid "Media type"
+msgstr ""
+
+msgid "Choose the media type used for file upload. image, audio, video ..."
+msgstr ""
+
+msgid "All"
+msgstr ""
+
+msgid "Images"
+msgstr ""
+
+msgid "Video files"
+msgstr ""
+
+msgid "Audio files"
+msgstr ""
+
+msgid "Flash files"
+msgstr ""
+
+msgid "If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."
+msgstr ""
+
+#. Default: "Files Quick Upload"
+msgid "Files Quick Upload"
+msgstr ""
+
+#. Default: "Images Quick Upload"
+msgid "Images Quick Upload"
+msgstr ""
+
+#. Default: "Video Quick Upload"
+msgid "Video Quick Upload"
+msgstr ""
+
+#. Default: "Audio Quick Upload"
+msgid "Audio Quick Upload"
+msgstr ""
+
+#. Default: "Flash Quick Upload"
+msgid "Flash Quick Upload"
+msgstr ""

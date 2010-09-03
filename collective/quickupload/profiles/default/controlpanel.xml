@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<object name="portal_controlpanel">
+ <configlet title="Quick Upload" 
+            action_id="QuickUpload" 
+            appId="collective.quickupload"
+            category="Products"
+            condition_expr=""
+            url_expr="string:${portal_url}/@@quickupload-controlpanel"
+            icon_expr="string:${portal_url}/++resource++quickupload_static/upload.png"
+            visible="True" >
+  <permission>Manage portal</permission>
+ </configlet>
+</object>

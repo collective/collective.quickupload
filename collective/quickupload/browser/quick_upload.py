@@ -4,6 +4,7 @@
 
 import mimetypes
 import random
+import urllib
 from Acquisition import aq_inner, aq_parent
 from AccessControl import SecurityManagement
 from ZPublisher.HTTPRequest import HTTPRequest
@@ -491,7 +492,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
             file = request.BODYFILE 
             data = file.read()
             file.seek(0)
-            file_name = request.HTTP_X_FILE_NAME       
+            file_name = urllib.unquote(request.HTTP_X_FILE_NAME)       
             upload_with = "XHR"
         else :
             # using classic form post method (MSIE)

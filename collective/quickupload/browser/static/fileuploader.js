@@ -35,23 +35,21 @@ qq.FileUploader = function(o){
         autoUpload: true,
         onSubmit: function(id, fileName){},
         onComplete: function(id, fileName, responseJSON){},
-        onAllComplete: function(){},
         //
         // UI customizations
-
         template: '<div class="qq-uploader">' + 
                 '<div class="qq-upload-drop-area"><span>Drop files here to upload</span></div>' +
-                '<div class="qq-upload-button">Upload a file</div>' +
+                '<div class="qq-upload-button">Browse for a file</div>' +
                 '<ul class="qq-upload-list"></ul>' + 
              '</div>',
 
         // template for one item in file list
         fileTemplate: '<li>' +
-                '<span class="qq-upload-file"></span>' +
+                '<a class="qq-upload-cancel" href="#">&nbsp;</a>' +
+                '<div class="qq-upload-infos"><span class="qq-upload-file"></span>' +
                 '<span class="qq-upload-spinner"></span>' +
-                '<span class="qq-upload-size"></span>' +
-                '<a class="qq-upload-cancel" href="#">Cancel</a>' +
-                '<span class="qq-upload-failed-text">Failed</span>' +
+                '<span class="qq-upload-failed-text">Failed</span></div>' +
+                '<div class="qq-upload-size"></div>' +
             '</li>',
 
         classes: {
@@ -379,7 +377,7 @@ qq.FileUploader.prototype = {
 
         var fileElement = this._getElement(item, 'file');        
         qq.setText(fileElement, this._formatFileName(fileName));
-        this._getElement(item, 'size').style.display = 'none';        
+        //this._getElement(item, 'size').style.display = 'none';        
 
         this._getElement('list').appendChild(item);
 
@@ -388,16 +386,15 @@ qq.FileUploader.prototype = {
     _updateProgress: function(id, loaded, total){
         var item = this._getItemByFileId(id);
         var size = this._getElement(item, 'size');
-        size.style.display = 'inline';
-        
-        var text; 
+        var text1; 
+        var text2;
         if (loaded != total){
-            text = Math.round(loaded / total * 100) + '% from ' + this._formatSize(total);
+            text1 = Math.round(loaded / total * 100);
         } else {                                   
-            text = this._formatSize(total);
+            text1 = 100;
         }          
-        
-        qq.setText(size, text);
+        text2 = '&nbsp;' + this._formatSize(total);
+        qq.setProgressBar(size, text1, text2);
     },
     _formatSize: function(bytes){
         var i = -1;                                    
@@ -953,6 +950,19 @@ qq.removeClass = function(element, name){
 qq.setText = function(element, text){
     element.innerText = text;
     element.textContent = text;
+};
+qq.setProgressBar = function(element, text1, text2){
+    if (! element.hasChildNodes()) {
+        if (! text1 ) size='2px';
+        else size = text1+ '%';
+        var progressBar = '<div class="sizeContainer"><div class="sizeBar" style="width:' + size + '"></div></div>';
+        var total = '<div class="sizeTotal">' + text2 + '</div>';
+        element.innerHTML = total + progressBar;
+    }
+    else {
+        var sizeBar = qq.getByClass(element, "sizeBar")[0];
+        sizeBar.style.width = text1+ '%';
+    }
 };
 
 //

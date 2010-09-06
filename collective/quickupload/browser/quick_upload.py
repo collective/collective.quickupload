@@ -135,10 +135,12 @@ XHR_UPLOAD_JS = """
     var fillTitles = %(ul_fill_titles)s;
     var auto = %(ul_auto_upload)s;
     addUploadFields_%(ul_id)s = function(file, id) {
+        var uploader = xhr_%(ul_id)s;
         if (fillTitles)  {
             var labelfiletitle = jQuery('#uploadify_label_file_title').val();
-            var blocFile = jQuery('#%(ul_id)s .qq-upload-list li')[id];
-            jQuery(blocFile).append('\
+            var blocFile = uploader._getItemByFileId(id);
+            if (typeof id == 'string') id = parseInt(id.replace('qq-upload-handler-iframe',''));
+            jQuery('.qq-upload-cancel', blocFile).after('\
                       <div class="uploadField">\
                           <label>' + labelfiletitle + ' : </label> \
                           <input type="text" \
@@ -152,7 +154,8 @@ XHR_UPLOAD_JS = """
         showButtons_%(ul_id)s();
     }
     showButtons_%(ul_id)s = function() {
-        if (jQuery('#%(ul_id)s .qq-upload-list li').length) {
+        var handler = xhr_%(ul_id)s._handler;
+        if (handler._files.length) {
             jQuery('.uploadifybuttons').show();
             return 'ok';
         }
@@ -163,11 +166,16 @@ XHR_UPLOAD_JS = """
         var files = handler._files;
         for ( var id = 0; id < files.length; id++ ) {
             if (files[id]) {
-                var file_title = jQuery('#%(ul_id)s .qq-upload-list li #title_' + id).val();
+                var fileContainer = jQuery('#%(ul_id)s .qq-upload-list li')[id];
+                jQuery('.qq-upload-spinner', fileContainer).css('display', 'inline-block');
+                var file_title = jQuery('.file_title_field', fileContainer).val();
                 handler.upload(id, {'title': file_title, 'typeupload' : '%(typeupload)s'});
             }
         }
     }    
+    onAllUploadsComplete_%(ul_id)s = function(){
+        Browser.onUploadComplete();
+    }
     clearQueue_%(ul_id)s = function() {
         var handler = xhr_%(ul_id)s._handler;
         var files = handler._files;
@@ -177,14 +185,31 @@ XHR_UPLOAD_JS = """
             }
             jQuery('#%(ul_id)s .qq-upload-list li').remove();
             handler._files = [];
+            if (typeof handler._inputs != 'undefined') handler._inputs = {};
         }    
     }    
+    onUploadComplete_%(ul_id)s = function(id, fileName, responseJSON) {
+        var uploader = xhr_%(ul_id)s;
+        var uploadList = jQuery('#%(ul_id)s .qq-upload-list');
+        if (responseJSON.success) {
+            window.setTimeout( function() {
+                jQuery(uploader._getItemByFileId(id)).remove();
+                jQuery(document).ready(function(){
+                    // after the last upload, if no errors, reload the page
+                    var newlist = jQuery('li', uploadList);
+                    if (! newlist.length) window.setTimeout( function() {onAllUploadsComplete_%(ul_id)s()}, 200);
+                });        
+            }, 200);
+        }
+        
+    }
     createUploader_%(ul_id)s= function(){            
         xhr_%(ul_id)s = new qq.FileUploader({
             element: document.getElementById('%(ul_id)s'),
             action: '%(context_url)s/@@quick_upload_file',
             autoUpload: auto,
-            onAfterSelect: addUploadFields_%(ul_id)s
+            onAfterSelect: addUploadFields_%(ul_id)s,
+            onComplete: onUploadComplete_%(ul_id)s
         });           
     }
     

@@ -21,6 +21,10 @@ msgstr ""
 msgid "Browse"
 msgstr "Parcourir"
 
+#. Default: "Drag and drop files to upload"
+msgid "Drag and drop files to upload"
+msgstr "Glisser déposer les fichiers à envoyer"
+
 #. Default: "Choose your files : "
 msgid "label_choose_your_files"
 msgstr "Choisir les fichiers : "

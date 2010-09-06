@@ -2,11 +2,14 @@
 
 .qq-upload-button {
     display:block; /* or inline-block */
-    width: 105px; padding: 7px 0; text-align:center;    
+    width: 105px; padding: 7px; text-align:center;    
     background:#880000; border-bottom:1px solid #ddd;color:#fff;
     float: right;
     cursor: pointer !important;
     margin-top: 10px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+    border-radius:5px;
 }
 .qq-upload-button-hover {background:#cc0000;cursor: pointer !important;}
 .qq-upload-button-focus {outline:1px dotted black;cursor: pointer !important;}
@@ -18,7 +21,7 @@
 .qq-upload-drop-area span {
     display:block; position:absolute; top: 73%; width:100%; font-size:12px;
 }
-.qq-upload-drop-area-active {background:#FF7171;}
+.qq-upload-drop-area-active {}
 
 .qq-upload-list {display: block; margin:15px 0; padding:0; list-style:disc; clear: both; list-style: none outside none}
 

@@ -210,7 +210,12 @@ XHR_UPLOAD_JS = """
             action: '%(context_url)s/@@quick_upload_file',
             autoUpload: auto,
             onAfterSelect: addUploadFields_%(ul_id)s,
-            onComplete: onUploadComplete_%(ul_id)s
+            onComplete: onUploadComplete_%(ul_id)s,
+            template: '<div class="qq-uploader">' +
+                      '<div class="qq-upload-drop-area"><span>%(ul_draganddrop_text)s</span></div>' +
+                      '<div class="qq-upload-button">%(ul_button_text)s</div>' +
+                      '<ul class="qq-upload-list"></ul>' + 
+                      '</div>'            
         });           
     }
     
@@ -364,6 +369,7 @@ class QuickUploadInit(BrowserView):
             ul_auto_upload      = self.qup_prefs.auto_upload and 'true' or 'false',
             ul_size_limit       = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit) or '',
             ul_button_text      = self._utranslate(u'Browse'),
+            ul_draganddrop_text = self._utranslate(u'Drag and drop files to upload'),
             ul_msg_all_sucess   = self._utranslate( u'All files uploaded with success.'),
             ul_msg_some_sucess   = self._utranslate( u' files uploaded with success, '),
             ul_msg_some_errors   = self._utranslate( u" uploads return an error."),

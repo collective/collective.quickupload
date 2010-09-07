@@ -211,11 +211,21 @@ XHR_UPLOAD_JS = """
             autoUpload: auto,
             onAfterSelect: addUploadFields_%(ul_id)s,
             onComplete: onUploadComplete_%(ul_id)s,
+            allowedExtensions: %(ul_file_extensions_list)s,
+            sizeLimit: %(ul_xhr_size_limit)s,
             template: '<div class="qq-uploader">' +
                       '<div class="qq-upload-drop-area"><span>%(ul_draganddrop_text)s</span></div>' +
                       '<div class="qq-upload-button">%(ul_button_text)s</div>' +
                       '<ul class="qq-upload-list"></ul>' + 
-                      '</div>'            
+                      '</div>',
+            messages: {
+                serverError: "%(ul_error_server)s",
+                serverErrorAlwaysExist: "%(ul_error_always_exists)s {file}",
+                serverErrorNoPermission: "%(ul_error_no_permission)s",
+                typeError: "%(ul_error_bad_ext)s {file}. %(ul_error_onlyallowed)s {extensions}.",
+                sizeError: "%(ul_error_file_large)s {file}, %(ul_error_maxsize_is)s {sizeLimit}.",
+                emptyError: "%(ul_error_empty_file)s {file}, %(ul_error_try_again)s"            
+            }            
         });           
     }
     
@@ -326,6 +336,7 @@ class QuickUploadInit(BrowserView):
         """
         context = aq_inner(self.context)
         ext = '*.*;'
+        extlist = []
         msg = u'Choose files to upload'
         if mediaupload == 'image' :
             ext = '*.jpg;*.jpeg;*.gif;*.png;'
@@ -339,11 +350,20 @@ class QuickUploadInit(BrowserView):
         elif mediaupload == 'flash' :
             ext = '*.swf;'
             msg = u'Choose flash files to upload'
-        else :
+        elif mediaupload :
+            # you can also pass a list of extensions in mediaupload request var
+            # with this syntax '*.aaa;*.bbb;'
             ext = mediaupload 
             msg = u'Choose file for upload : ' + ext 
         
-        return ( ext, self._utranslate(msg))
+        try :
+            extlist = [f.split('.')[1].strip() for f in ext.split(';') if f.strip()]
+        except :
+            extlist = []
+        if extlist==['*'] :
+            extlist = []
+        
+        return ( ext, extlist, self._utranslate(msg))
     
     def _utranslate(self, msg):
         # XXX fixme : the _ (SiteMessageFactory) doesn't work
@@ -359,20 +379,30 @@ class QuickUploadInit(BrowserView):
         ticket = context.restrictedTraverse('@@quickupload_ticket')()
         
         settings = dict(
-            ticket              = ticket,
-            portal_url          = portal_url,
-            typeupload          = '',
-            context_url         = context.absolute_url(),
-            physical_path       = "/".join(context.getPhysicalPath()),
-            ul_id               = self.uploader_id,
-            ul_fill_titles      = self.qup_prefs.fill_titles and 'true' or 'false',
-            ul_auto_upload      = self.qup_prefs.auto_upload and 'true' or 'false',
-            ul_size_limit       = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit) or '',
-            ul_button_text      = self._utranslate(u'Browse'),
-            ul_draganddrop_text = self._utranslate(u'Drag and drop files to upload'),
-            ul_msg_all_sucess   = self._utranslate( u'All files uploaded with success.'),
-            ul_msg_some_sucess   = self._utranslate( u' files uploaded with success, '),
-            ul_msg_some_errors   = self._utranslate( u" uploads return an error."),
+            ticket                 = ticket,
+            portal_url             = portal_url,
+            typeupload             = '',
+            context_url            = context.absolute_url(),
+            physical_path          = "/".join(context.getPhysicalPath()),
+            ul_id                  = self.uploader_id,
+            ul_fill_titles         = self.qup_prefs.fill_titles and 'true' or 'false',
+            ul_auto_upload         = self.qup_prefs.auto_upload and 'true' or 'false',
+            ul_size_limit          = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit) or '',
+            ul_xhr_size_limit      = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '0',
+            ul_button_text         = self._utranslate(u'Browse'),
+            ul_draganddrop_text    = self._utranslate(u'Drag and drop files to upload'),
+            ul_msg_all_sucess      = self._utranslate( u'All files uploaded with success.'),
+            ul_msg_some_sucess     = self._utranslate( u' files uploaded with success, '),
+            ul_msg_some_errors     = self._utranslate( u" uploads return an error."),
+            ul_error_try_again     = self._utranslate( u"please select files again without it."),
+            ul_error_empty_file    = self._utranslate( u"This file is empty :"),
+            ul_error_file_large    = self._utranslate( u"This file is too large :"),
+            ul_error_maxsize_is    = self._utranslate( u"maximum file size is :"),
+            ul_error_bad_ext       = self._utranslate( u"This file has invalid extension :"),
+            ul_error_onlyallowed   = self._utranslate( u"Only allowed :"),
+            ul_error_no_permission = self._utranslate( u"You don't have permission to add this content in this place."),
+            ul_error_always_exists = self._utranslate( u"This file always exists with the same id on server :"),
+            ul_error_server        = self._utranslate( u"Some files were not uploaded, please contact support and/or try again."),
         )        
         
         mediaupload = session.get('mediaupload', request.get('mediaupload', ''))  
@@ -385,10 +415,11 @@ class QuickUploadInit(BrowserView):
             if typeupload in imageTypes :
                 ul_content_types_infos = self.ul_content_types_infos('image')
         else :
-            ul_content_types_infos = ('*.*;', '')
+            ul_content_types_infos = ('*.*;', [], '')
         
         settings['ul_file_extensions'] = ul_content_types_infos[0]
-        settings['ul_file_description'] = ul_content_types_infos[1]
+        settings['ul_file_extensions_list'] = str(ul_content_types_infos[1])
+        settings['ul_file_description'] = ul_content_types_infos[2]
             
         return settings
 
@@ -495,19 +526,22 @@ class QuickUploadFile(QuickUploadAuthenticate):
         
         if request.HTTP_X_REQUESTED_WITH :
             # using ajax upload
-            file = request.BODYFILE 
-            data = file.read()
-            file.seek(0)
+            data = request.BODY
             file_name = urllib.unquote(request.HTTP_X_FILE_NAME)       
             upload_with = "XHR"
         else :
             # using classic form post method (MSIE)
             data = request.get('qqfile')
+            # with this method we must test the file size
+            if not self._check_file_size(data) :
+                return json.dumps({u'error': u'sizeError'})
             filename = getattr(data,'filename', '')
             file_name = filename.split("\\")[-1]  
             upload_with = "CLASSIC FORM POST"
         
 
+        if not self._check_file_id(file_name) :
+            return json.dumps({u'error': u'serverErrorAlwaysExist'})
         file_data = data
         content_type = mimetypes.guess_type(file_name)[0]
         portal_type = getDataFromAllRequests(request, 'typeupload') or ''

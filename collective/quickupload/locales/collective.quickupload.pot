@@ -141,3 +141,51 @@ msgstr ""
 #. Default: "Flash Quick Upload"
 msgid "Flash Quick Upload"
 msgstr ""
+
+#. Default: "Server error, please contact support and/or try again."
+msgid "Server error, please contact support and/or try again."
+msgstr ""
+
+#. Default: "A data base conflict error happened when uploading this file :"
+msgid "A data base conflict error happened when uploading this file :"
+msgstr ""
+
+#. Default: "This file always exists with the same name on server :"
+msgid "This file always exists with the same name on server :"
+msgstr ""
+
+#. Default: "You don't have permission to add this content in this place."
+msgid "You don't have permission to add this content in this place."
+msgstr ""
+
+#. Default: "Only allowed :"
+msgid "Only allowed :"
+msgstr ""
+
+#. Default: "This file has invalid extension :"
+msgid "This file has invalid extension :"
+msgstr ""
+
+#. Default: "maximum file size is :"
+msgid "maximum file size is :"
+msgstr ""
+
+#. Default: "This file is too large :"
+msgid "This file is too large :"
+msgstr ""
+
+#. Default: "This file is empty :"
+msgid "This file is empty :"
+msgstr ""
+
+#. Default: "please try again."
+msgid "please try again."
+msgstr ""
+
+#. Default: "please select files again without it."
+msgid "please select files again without it."
+msgstr ""
+
+#. Default: "Failed"
+msgid "Failed"
+msgstr ""

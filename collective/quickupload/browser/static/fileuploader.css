@@ -11,6 +11,9 @@
     -webkit-border-radius:5px;
     border-radius:5px;
 }
+
+.qq-upload-button input[type="file"],
+.qq-upload-button input[type="file"]:hover {cursor: pointer !important;}
 .qq-upload-button-hover {background:#cc0000;cursor: pointer !important;}
 .qq-upload-button-focus {outline:1px dotted black;cursor: pointer !important;}
 
@@ -34,7 +37,7 @@
     margin:5px 0 0 0;
     padding:5px 10px;
     font-size: 11px;
-    height: 50px;
+    min-height: 50px;
 }
 
 .qq-upload-file {}
@@ -50,6 +53,10 @@
    /* note : the '/++resource++quickupload_static' inside url is for Plone3 portal_css compliance */
    background: transparent url("/++resource++quickupload_static/cancel.png") top left no-repeat;
 }
+
+
+
+.qq-upload-fail { background-color: #FDE5DD !important; }
 .qq-upload-failed-text {display:none; margin-left: 10px;}
 .qq-upload-fail .qq-upload-failed-text {display:inline; color: red;}
 
@@ -75,6 +82,8 @@
     height: 3px;
 }
 
+.qq-upload-fail .sizeBar { background-color: red !important; }
+
 .qq-upload-list li .sizeTotal {
    width: auto;
    float: right;
@@ -85,6 +94,7 @@
    clear: both;
 }
 
- .qq-upload-fail {
-     background-color: #FDE5DD !important;
- }
+.qq-upload-list li .server-error {
+    color: #880000;
+    clear: both;
+}

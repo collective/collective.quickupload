@@ -220,13 +220,21 @@ XHR_UPLOAD_JS = """
                       '<div class="qq-upload-button">%(ul_button_text)s</div>' +
                       '<ul class="qq-upload-list"></ul>' + 
                       '</div>',
+            fileTemplate: '<li>' +
+                    '<a class="qq-upload-cancel" href="#">&nbsp;</a>' +
+                    '<div class="qq-upload-infos"><span class="qq-upload-file"></span>' +
+                    '<span class="qq-upload-spinner"></span>' +
+                    '<span class="qq-upload-failed-text">%(ul_msg_failed)s</span></div>' +
+                    '<div class="qq-upload-size"></div>' +
+                '</li>',                      
             messages: {
                 serverError: "%(ul_error_server)s",
                 serverErrorAlwaysExist: "%(ul_error_always_exists)s {file}",
+                serverErrorZODBConflict: "%(ul_error_zodb_conflict)s {file}, %(ul_error_try_again)s",
                 serverErrorNoPermission: "%(ul_error_no_permission)s",
                 typeError: "%(ul_error_bad_ext)s {file}. %(ul_error_onlyallowed)s {extensions}.",
                 sizeError: "%(ul_error_file_large)s {file}, %(ul_error_maxsize_is)s {sizeLimit}.",
-                emptyError: "%(ul_error_empty_file)s {file}, %(ul_error_try_again)s"            
+                emptyError: "%(ul_error_empty_file)s {file}, %(ul_error_try_again_wo)s"            
             }            
         });           
     }
@@ -396,15 +404,18 @@ class QuickUploadInit(BrowserView):
             ul_msg_all_sucess      = self._utranslate( u'All files uploaded with success.'),
             ul_msg_some_sucess     = self._utranslate( u' files uploaded with success, '),
             ul_msg_some_errors     = self._utranslate( u" uploads return an error."),
-            ul_error_try_again     = self._utranslate( u"please select files again without it."),
+            ul_msg_failed          = self._utranslate( u"Failed"),
+            ul_error_try_again_wo  = self._utranslate( u"please select files again without it."),
+            ul_error_try_again     = self._utranslate( u"please try again."),
             ul_error_empty_file    = self._utranslate( u"This file is empty :"),
             ul_error_file_large    = self._utranslate( u"This file is too large :"),
             ul_error_maxsize_is    = self._utranslate( u"maximum file size is :"),
             ul_error_bad_ext       = self._utranslate( u"This file has invalid extension :"),
             ul_error_onlyallowed   = self._utranslate( u"Only allowed :"),
             ul_error_no_permission = self._utranslate( u"You don't have permission to add this content in this place."),
-            ul_error_always_exists = self._utranslate( u"This file always exists with the same id on server :"),
-            ul_error_server        = self._utranslate( u"Some files were not uploaded, please contact support and/or try again."),
+            ul_error_always_exists = self._utranslate( u"This file always exists with the same name on server :"),
+            ul_error_zodb_conflict = self._utranslate( u"A data base conflict error happened when uploading this file :"),
+            ul_error_server        = self._utranslate( u"Server error, please contact support and/or try again."),
         )        
         
         mediaupload = session.get('mediaupload', request.get('mediaupload', ''))  
@@ -507,12 +518,16 @@ class QuickUploadFile(QuickUploadAuthenticate):
             logger.info("uploading file with flash: filename=%s, title=%s, content_type=%s, portal_type=%s" % \
                     (file_name, title, content_type, portal_type))                             
             
-            f = factory(file_name, title, content_type, file_data, portal_type)
-            logger.info("file url: %s" % f.absolute_url())
-            
-            SecurityManagement.setSecurityManager(self.old_sm)   
-                    
-            return f.absolute_url()         
+            try :
+                f = factory(file_name, title, content_type, file_data, portal_type)
+            except :
+                # XXX todo : improve errors handlers for flashupload
+                raise
+            if f['success'] is not None :
+                o = f['success']
+                logger.info("file url: %s" % o.absolute_url())
+                SecurityManagement.setSecurityManager(self.old_sm)   
+                return o.absolute_url()         
 
     def quick_upload_file(self) :
         
@@ -558,12 +573,19 @@ class QuickUploadFile(QuickUploadAuthenticate):
             logger.info("uploading file with %s : filename=%s, title=%s, content_type=%s, portal_type=%s" % \
                     (upload_with, file_name, title, content_type, portal_type))                             
             
-            f = factory(file_name, title, content_type, file_data, portal_type)
-            logger.info("file url: %s" % f.absolute_url()) 
-            msg = {u'success': True}
-        
+            try :
+                f = factory(file_name, title, content_type, file_data, portal_type)
+            except :
+                return json.dumps({u'error': u'serverError'})
+            
+            if f['success'] is not None :
+                o = f['success']
+                logger.info("file url: %s" % o.absolute_url()) 
+                msg = {u'success': True}
+            else :
+                msg = {u'error': f['error']}
         else :
-            msg = {u'error': u'No file data'}
+            msg = {u'error': u'emptyError'}
             
         return json.dumps(msg)         
 

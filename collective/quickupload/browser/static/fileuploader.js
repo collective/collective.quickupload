@@ -147,12 +147,23 @@ qq.FileUploader.prototype = {
         
         return element;
     },
-    _error: function(code, fileName){
+    _error: function(code, fileName, id){
         var message = this._options.messages[code];
         message = message.replace('{file}', this._formatFileName(fileName));
         message = message.replace('{extensions}', this._options.allowedExtensions.join(', '));
         message = message.replace('{sizeLimit}', this._formatSize(this._options.sizeLimit));
-        this._options.showMessage(message);                
+        // global alert message on client error selection
+        if (typeof id=='undefined') this._options.showMessage(message);    
+        else {
+            var item = this._getItemByFileId(id);
+            var diverror = document.createElement("div");
+            item.appendChild(diverror);
+            eclass = document.createAttribute("class");
+            eclass.nodeValue = "server-error";
+            diverror.setAttributeNode(eclass);
+            diverror.innerText = message;
+            diverror.textContent = message;
+        }            
     },
     _formatFileName: function(name){
         if (name.length > 33){
@@ -276,7 +287,7 @@ qq.FileUploader.prototype = {
                     qq.addClass(item, self._classes.fail);
                     
                     if (result.error){
-                       self._error(result.error, fileName);
+                       self._error(result.error, fileName, id);
                     }
                 }
                     
@@ -603,6 +614,8 @@ qq.UploadHandlerForm.prototype = {
             self._options.onComplete(id, fileName, self._getIframeContentJSON(iframe));
             
             delete self._inputs[id];
+            uid = id.replace('qq-upload-handler-iframe','');
+            self._files[uid] = null;            
             // timeout added to fix busy state in FF3.6
             setTimeout(function(){
                 qq.remove(iframe);
@@ -617,6 +630,8 @@ qq.UploadHandlerForm.prototype = {
     cancel: function(id){        
         if (id in this._inputs){
             delete this._inputs[id];
+            uid = id.replace('qq-upload-handler-iframe','');
+            this._files[uid] = null;
         }        
 
         var iframe = document.getElementById(id);

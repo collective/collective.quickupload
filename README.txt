@@ -1,11 +1,15 @@
+==================
+Plone Quick Upload
+==================
+
 Description
 ===========
-This product offers a files quick upload tool for Plone, with multi selection,
-drag and drop, progress bar ....
+This product offers a multiple files upload tool for Plone, with multi selection,
+drag and drop, progress bar .... 
 
 To install it in your buildout, just add 'collective.quickupload' to your egg list.
 
-To install it in Plone, use the add ons control panel, select the Quick Upload Product
+To install it in Plone, use the add ons control panel, select "Plone Quick Upload" Product
 and install it.
 
 To see it in action, just assign the Quick Upload portlet somewhere in your site
@@ -21,15 +25,15 @@ collective.quickupload.browser
 
  -  A simple ajax view that can be called by any plone template.
     
- -  the view is using a javascript multiple upload tool based on fileuploader.js (a fork with some ameliorations of 
+ -  the view is using a javascript multiple upload tool based on fileuploader.js (a fork with many ameliorations of 
     http://valums.com/ajax-upload/) OR jquery.uploadify (based on flashupload see also collective.uploadify)
     
     - By default the javascript only method is used : the fileuploader.js is a pure ajax file uploader which uses
       html5 multiple file fields and ajax upload post method. It's not a jquery plugin. For modern browsers
-      like FireFox 3.6+, Chrome, or Safari 4+, it offers drag and drop, multi selection, and progress bar during upload.
+      like FireFox 3.6+, Chrome, or Safari 4+, it offers drag and drop, multi-selection, and progress bar during upload.
       For other browsers (IE7, IE8, ...),  the script offers a graceful hidden iframe upload fall back.
       
-    - Flashupload (jquery.uploadify) is more user friendly under MSIE, but has some problems :
+    - Flashupload (jquery.uploadify) is more user friendly under MSIE, but has some "big" problems :
 
       - not standard (use Flash)
        
@@ -54,22 +58,22 @@ collective.quickupload.browser
          
          if a mediatype is set in request :
           
-          -  an error will be raised in the form when the file content-type selected is not correct, when using the hidden iframe method.
+          -  an error will be raised in the form when the file content-type selected is not correct, when using the pure javascript tool.
         
-          -  Flashupload is more user friendly : only choosed content types are shown in selection  window, 
+          -  with Flashupload only choosed content types are shown in selection  window, 
              with a specific message "select images", "select video files" (...).
   
       -  force portal_type
   
-         if no portal_type is set in request, content_type_registry is used to find the good portal_type, otherwise the "File" portal_type will be used.
+         if portal_type is not set in request, content_type_registry is used to find the good portal_type, otherwise the "File" portal_type will be used.
 
  - a basic Plone Control panel with some options::
 
     - use flashupload (yes/no), default = no
 
-    - show titles fields in form (yes/no), default = no
+    - fill file's titles in form (yes/no), default = yes
 
-    - automatic upload on select (yes/no), default=yes
+    - automatic upload on select (yes/no), default=no
     
     - max size limit for each file in KB (default= 0 = no limit)
        
@@ -77,7 +81,7 @@ collective.quickupload.browser
 collective.quickupload.portlet
 ------------------------------
 
- - a portlet calling the quickupload ajax view (just an example of how to use the ajax view)
+ - a portlet calling the quickupload ajax view (it's also an example on how to use the quick_upload view)
 
  - the portlet is not assigned (can be done TTW or in another package)
 

@@ -52,6 +52,8 @@ class QuickUploadCapableFileFactory(object):
         charset = context.getCharset()
         name = name.decode(charset)
         error = ''
+        result = {}
+        result['success'] = None
         normalizer = component.getUtility(IIDNormalizer)
         chooser = INameChooser(self.context)
         newid = chooser.chooseName(normalizer.normalize(name), self.context.aq_parent)
@@ -68,11 +70,11 @@ class QuickUploadCapableFileFactory(object):
             try:
                 context.invokeFactory(type_name=portal_type, id=newid, title=title)
             except Unauthorized : 
-                error = 'You are not authorized to upload'
+                error = u'serverErrorNoPermission'
             except ConflictError : 
-                error = 'ZODB Conflict Error'
+                error = u'serverErrorZODBConflict'
             except :
-                error = 'Unknown error during upload'
+                error = u'serverError'
             if not error :
                 obj = getattr(context, newid)
                 primaryField = obj.getPrimaryField()
@@ -86,7 +88,7 @@ class QuickUploadCapableFileFactory(object):
             transaction.commit()
             upload_lock.release()
         
+        result['error'] = error
         if not error :
-            return obj
-        else :
-            raise
+            result['success'] = obj
+        return result

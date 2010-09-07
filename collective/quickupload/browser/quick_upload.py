@@ -18,6 +18,8 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile 
 from Products.ATContentTypes.interfaces import IImageContent
 from Products.CMFPlone.interfaces import IPloneSiteRoot
+from zope.app.container.interfaces import INameChooser
+from plone.i18n.normalizer.interfaces import IIDNormalizer
 
 import ticket as ticketmod
 from collective.quickupload import siteMessageFactory as _
@@ -538,7 +540,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
             filename = getattr(data,'filename', '')
             file_name = filename.split("\\")[-1]  
             upload_with = "CLASSIC FORM POST"
-        
+
 
         if not self._check_file_id(file_name) :
             return json.dumps({u'error': u'serverErrorAlwaysExist'})
@@ -574,7 +576,12 @@ class QuickUploadFile(QuickUploadAuthenticate):
     
     def _check_file_id(self, id):
         context = aq_inner(self.context)
-        if id in context.objectIds() :
+        charset = context.getCharset()
+        id = id.decode(charset)
+        normalizer = getUtility(IIDNormalizer)
+        chooser = INameChooser(context)
+        newid = chooser.chooseName(normalizer.normalize(id), self.context.aq_parent)
+        if newid in context.objectIds() :
             return 0
         return 1
 

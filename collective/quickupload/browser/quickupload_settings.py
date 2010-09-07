@@ -14,7 +14,7 @@ class IQuickUploadControlPanel(Interface):
     fields for quick upload control panel
     """
     use_flashupload = Bool(title=_(u"Use Flashupload"),
-                           description=_(u"By default, the upload script is a jquery only tool. "
+                           description=_(u"By default, the upload script is a javascript only tool. "
                                           "You can choose to replace it with a Flash upload based script. "
                                           "Take care : Flash Upload don't work behind an HTTP Authenticated server "
                                           "(Apache + Basic authentication, IIS + Windows NT Authentication ...) "),

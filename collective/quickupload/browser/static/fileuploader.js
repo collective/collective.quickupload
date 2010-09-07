@@ -266,17 +266,17 @@ qq.FileUploader.prototype = {
                 self._filesInProgress--;
 
                 // mark completed
-                var item = self._getItemByFileId(id);                
-                qq.remove(self._getElement(item, 'cancel'));
+                var item = self._getItemByFileId(id);          
                 qq.remove(self._getElement(item, 'spinner'));
                 
-                if (result.success){
+                if (result.success){      
+                    qq.remove(self._getElement(item, 'cancel'));
                     qq.addClass(item, self._classes.success);    
                 } else {
                     qq.addClass(item, self._classes.fail);
                     
                     if (result.error){
-                       self._options.showMessage(result.error); 
+                       self._error(result.error, fileName);
                     }
                 }
                     
@@ -809,7 +809,7 @@ qq.UploadHandlerXhr.prototype = {
         xhr.setRequestHeader("X-Requested-With", "XMLHttpRequest");
         xhr.setRequestHeader("X-File-Name", encodeURIComponent(name));
         // important : without content-type zope HTTPRequest don't accept the file
-        // so, for webkit which don't send content-type
+        // so, for webkit which don't send content-type header
         // we just set a bad octet/stream mime-type (not important since server side will do the good job)
         if (navigator.userAgent.indexOf("WebKit") > -1) {
             xhr.setRequestHeader("Content-Type", 'application/octet-stream');

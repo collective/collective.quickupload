@@ -167,13 +167,19 @@ XHR_UPLOAD_JS = """
     sendDataAndUpload_%(ul_id)s = function() {
         var handler = xhr_%(ul_id)s._handler;
         var files = handler._files;
+        var missing = 0;
         for ( var id = 0; id < files.length; id++ ) {
             if (files[id]) {
-                var fileContainer = jQuery('#%(ul_id)s .qq-upload-list li')[id];
+                var fileContainer = jQuery('#%(ul_id)s .qq-upload-list li')[id-missing];
                 jQuery('.qq-upload-spinner', fileContainer).css('display', 'inline-block');
-                var file_title = jQuery('.file_title_field', fileContainer).val();
+                var file_title = '';
+                if (fillTitles)  {
+                    file_title = jQuery('.file_title_field', fileContainer).val();
+                }
                 handler.upload(id, {'title': file_title, 'typeupload' : '%(typeupload)s'});
             }
+            // if file is null for any reason jq block is no more here
+            else missing++;
         }
     }    
     onAllUploadsComplete_%(ul_id)s = function(){

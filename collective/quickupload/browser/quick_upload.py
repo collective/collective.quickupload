@@ -2,6 +2,7 @@
 # for the flashupload
 # with many ameliorations
 
+import os
 import mimetypes
 import random
 import urllib
@@ -403,7 +404,7 @@ class QuickUploadInit(BrowserView):
             ul_id                  = self.uploader_id,
             ul_fill_titles         = self.qup_prefs.fill_titles and 'true' or 'false',
             ul_auto_upload         = self.qup_prefs.auto_upload and 'true' or 'false',
-            ul_size_limit          = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit) or '',
+            ul_size_limit          = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '',
             ul_xhr_size_limit      = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '0',
             ul_button_text         = self._utranslate(u'Browse'),
             ul_draganddrop_text    = self._utranslate(u'Drag and drop files to upload'),
@@ -511,6 +512,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
             
         file_name = request.form.get("Filename", "")
         file_data = request.form.get("Filedata", None)
+        print '\n\n>>> FILE DATA is \n\n %s <<<\n\n' %str(file_data)
         content_type = mimetypes.guess_type(file_name)[0]
         portal_type = request.form.get('typeupload', '')
         title =  request.form.get("title", None)
@@ -546,26 +548,28 @@ class QuickUploadFile(QuickUploadAuthenticate):
         # the good content type woul be text/json or text/plain but IE 
         # do not support it
         response.setHeader('Content-Type', 'text/html; charset=utf-8')               
-        
+
         if request.HTTP_X_REQUESTED_WITH :
             # using ajax upload
-            data = request.BODY
+            file_data = request.BODY
             file_name = urllib.unquote(request.HTTP_X_FILE_NAME)       
             upload_with = "XHR"
         else :
-            # using classic form post method (MSIE)
-            data = request.get('qqfile')
-            # with this method we must test the file size
-            if not self._check_file_size(data) :
-                return json.dumps({u'error': u'sizeError'})
-            filename = getattr(data,'filename', '')
+            # using classic form post method (MSIE<=8)
+            file_data = request.get("qqfile", None)
+            filename = getattr(file_data,'filename', '')
             file_name = filename.split("\\")[-1]  
             upload_with = "CLASSIC FORM POST"
+            # we must test the file size in this case (no client test)
+            if not self._check_file_size(file_data) :
+                logger.info("Test file size : the file %s is too big, upload rejected" % file_name) 
+                return json.dumps({u'error': u'sizeError'})
 
 
         if not self._check_file_id(file_name) :
+            logger.info("The file id for %s always exist, upload rejected" % file_name)
             return json.dumps({u'error': u'serverErrorAlwaysExist'})
-        file_data = data
+
         content_type = mimetypes.guess_type(file_name)[0]
         portal_type = getDataFromAllRequests(request, 'typeupload') or ''
         title =  getDataFromAllRequests(request, 'title') or ''
@@ -593,12 +597,18 @@ class QuickUploadFile(QuickUploadAuthenticate):
         else :
             msg = {u'error': u'emptyError'}
             
-        return json.dumps(msg)         
-
-    def _check_file_size(self, file):
-        file_size = len(file.read()) / 1024
+        return json.dumps(msg)          
+        
+    def _check_file_size(self, data):
         max_size = int(self.qup_prefs.size_limit)
-        if not max_size or file_size<=max_size:
+        if not max_size :
+            return 1
+        #file_size = len(data.read()) / 1024
+        data.seek(0, os.SEEK_END)
+        file_size = data.tell() / 1024
+        data.seek(0, os.SEEK_SET )
+        max_size = int(self.qup_prefs.size_limit)
+        if file_size<=max_size:
             return 1
         return 0    
     

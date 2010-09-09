@@ -31,7 +31,7 @@ qq.FileUploader = function(o){
         // method executed after selection and before upload
         onAfterSelect: function(id, fileName){},
         // if autoUpload is set to false nothing is done
-        // after selection excepted onAfterSelect method if set
+        // after selection excepted onAfterSelect method
         autoUpload: true,
         // simultnaeous uploads limit (2 by default)
         simUploadLimit: 2,
@@ -342,15 +342,13 @@ qq.FileUploader.prototype = {
         }    
         else this._options.onAfterSelect(file, id);
     },
-    _uploadFile: function(fileContainer, id){            
-        //this._handler.upload(id, this._options.params);    
+    _uploadFile: function(fileContainer, id){               
         this._queueUpload(id, this._options.params);     
     },      
     _uploadAll: function() {
         var allfiles = this._handler._files;
         for ( var id = 0; id < allfiles.length; id++ ) {
             if (allfiles[id]) {
-                //this._handler.upload(id, this._options.params);
                 this._queueUpload(id, this._options.params); 
             }
         }
@@ -358,7 +356,7 @@ qq.FileUploader.prototype = {
     _queueUpload: function(id, params) {
         var simUploadLimit = this._options.simUploadLimit;
         //alert(simUploadLimit + ' - ' + this._filesInProgress);
-        if (this._filesInProgress <= simUploadLimit || !simUploadLimit) {
+        if (this._filesInProgress <= simUploadLimit || simUploadLimit==0) {
             this._handler.upload(id, params);
         }
         else window.setTimeout(function(){this._queueUpload(id, params)}, 100);

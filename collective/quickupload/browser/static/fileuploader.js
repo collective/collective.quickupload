@@ -79,7 +79,8 @@ qq.FileUploader = function(o){
         },
         showMessage: function(message){
             alert(message);
-        }
+        },
+        debugMode: false
     };
 
     qq.extend(this._options, o);       
@@ -90,7 +91,13 @@ qq.FileUploader = function(o){
         throw new Error('element param of FileUploader should be dom node');
     }
     
-    this._element.innerHTML = this._options.template;
+    base_template  =  this._options.template;
+    debug_template = '<div class="qq-upload-debug">' +
+                     '  <strong>Current Uploads : </strong><span class="qq-upload-debug-curruploads"></span>' +
+                     '</div>';
+    if (this._options.debugMode) base_template = base_template + debug_template;  
+    this._element.innerHTML = base_template;
+
     
     // number of files being uploaded
     this._filesInProgress = 0;
@@ -99,6 +106,8 @@ qq.FileUploader = function(o){
     this._classes = this._options.classes;
     
     this._handler = this._createUploadHandler();    
+    
+    this._debugConsole = this.getDebugConsole();
     
     this._bindCancelEvent();
     
@@ -121,6 +130,13 @@ qq.FileUploader.prototype = {
     /**
      * Returns true if some files are being uploaded, false otherwise
      */
+    getDebugConsole: function(){
+        return qq.getByClass(this._element, 'qq-upload-debug')[0];
+    },
+    logDebug: function(type, logcontent) {
+       blocdebug = qq.getByClass(this._debugConsole, 'qq-upload-debug-'+type);
+       if (blocdebug) qq.setText(blocdebug[0], logcontent);       
+    },
     isUploading: function(){
         return !!this._filesInProgress;
     },  
@@ -273,12 +289,9 @@ qq.FileUploader.prototype = {
             action: this._options.action,            
             onProgress: function(id, fileName, loaded, total){
                 // is only called for xhr upload
-                self._filesInProgress++;
                 self._updateProgress(id, loaded, total);                    
             },
             onComplete: function(id, fileName, result){
-                self._filesInProgress--;
-
                 // mark completed
                 var item = self._getItemByFileId(id);          
                 qq.remove(self._getElement(item, 'spinner'));
@@ -293,7 +306,7 @@ qq.FileUploader.prototype = {
                        self._error(result.error, fileName, id);
                     }
                 }
-                    
+                self._filesInProgress--;
                 self._options.onComplete(id, fileName, result);                                
             }
         });
@@ -355,11 +368,15 @@ qq.FileUploader.prototype = {
     },    
     _queueUpload: function(id, params) {
         var simUploadLimit = this._options.simUploadLimit;
+        if (this._options.debugMode) this.logDebug('curruploads', this._filesInProgress);
         //alert(simUploadLimit + ' - ' + this._filesInProgress);
-        if (this._filesInProgress <= simUploadLimit || simUploadLimit==0) {
+        if (this._filesInProgress < simUploadLimit || !simUploadLimit) {
+            this._filesInProgress++;
             this._handler.upload(id, params);
         }
-        else window.setTimeout(function(){this._queueUpload(id, params)}, 100);
+        else {
+            var self = this;
+            window.setTimeout(function(){self._queueUpload(id, params)}, 100);}
     },
     _cancelAll: function() {
         var allfiles = this._handler._files;
@@ -634,8 +651,7 @@ qq.UploadHandlerForm.prototype = {
             }, 1);
         });
         
-        form.submit();     
-        self._filesInProgress++;   
+        form.submit();        
         qq.remove(form);        
         
         return id;

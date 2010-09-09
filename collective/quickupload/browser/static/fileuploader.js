@@ -351,13 +351,10 @@ qq.FileUploader.prototype = {
         this._options.onSubmit(id, name); 
         this._addToList(id, name);
         if (this._options.autoUpload) {
-            this._uploadFile(file, id);
+            this._queueUpload(id, this._options.params);
         }    
         else this._options.onAfterSelect(file, id);
-    },
-    _uploadFile: function(fileContainer, id){               
-        this._queueUpload(id, this._options.params);     
-    },      
+    },     
     _uploadAll: function() {
         var allfiles = this._handler._files;
         for ( var id = 0; id < allfiles.length; id++ ) {
@@ -372,6 +369,9 @@ qq.FileUploader.prototype = {
         //alert(simUploadLimit + ' - ' + this._filesInProgress);
         if (this._filesInProgress < simUploadLimit || !simUploadLimit) {
             this._filesInProgress++;
+            var item = this._getItemByFileId(id);          
+            var spinner = this._getElement(item, 'spinner');
+            qq.css(spinner, {'display':'inline-block'});
             this._handler.upload(id, params);
         }
         else {
@@ -637,7 +637,6 @@ qq.UploadHandlerForm.prototype = {
         var iframe = this._createIframe(id);
         var form = this._createForm(iframe, params);
         form.appendChild(input);
-
         var self = this;
         this._attachLoadEvent(iframe, function(){            
             self._options.onComplete(id, fileName, self._getIframeContentJSON(iframe));
@@ -808,8 +807,9 @@ qq.UploadHandlerXhr.prototype = {
         }
                         
         var xhr = this._xhrs[id] = new XMLHttpRequest();
+        
         var self = this;
-                                        
+        
         xhr.upload.onprogress = function(e){
             if (e.lengthComputable){
                 self._options.onProgress(id, name, e.loaded, e.total);

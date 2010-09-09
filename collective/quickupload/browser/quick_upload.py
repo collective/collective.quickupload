@@ -173,7 +173,6 @@ XHR_UPLOAD_JS = """
         for ( var id = 0; id < files.length; id++ ) {
             if (files[id]) {
                 var fileContainer = jQuery('#%(ul_id)s .qq-upload-list li')[id-missing];
-                jQuery('.qq-upload-spinner', fileContainer).css('display', 'inline-block');
                 var file_title = '';
                 if (fillTitles)  {
                     file_title = jQuery('.file_title_field', fileContainer).val();
@@ -202,15 +201,13 @@ XHR_UPLOAD_JS = """
     onUploadComplete_%(ul_id)s = function(id, fileName, responseJSON) {
         var uploader = xhr_%(ul_id)s;
         var uploadList = jQuery('#%(ul_id)s .qq-upload-list');
-        if (responseJSON.success) {
+        if (responseJSON.success) {        
             window.setTimeout( function() {
                 jQuery(uploader._getItemByFileId(id)).remove();
-                jQuery(document).ready(function(){
-                    // after the last upload, if no errors, reload the page
-                    var newlist = jQuery('li', uploadList);
-                    if (! newlist.length) window.setTimeout( function() {onAllUploadsComplete_%(ul_id)s()}, 200);
-                });        
-            }, 200);
+                // after the last upload, if no errors, reload the page
+                var newlist = jQuery('li', uploadList);
+                if (! newlist.length) window.setTimeout( function() {onAllUploadsComplete_%(ul_id)s()}, 5);       
+            }, 5);
         }
         
     }
@@ -553,7 +550,15 @@ class QuickUploadFile(QuickUploadAuthenticate):
 
         if request.HTTP_X_REQUESTED_WITH :
             # using ajax upload
-            file_data = request.BODY
+            try :
+                file_data = request.BODY
+            except :
+                # in case of cancel during xhr upload
+                logger.info("An upload has been aborted")
+                # not really useful here since the upload block
+                # is removed by "cancel" action, but
+                # could be useful if someone change the js behavior
+                return  json.dumps({u'error': u'emptyError'})
             file_name = urllib.unquote(request.HTTP_X_FILE_NAME)       
             upload_with = "XHR"
         else :

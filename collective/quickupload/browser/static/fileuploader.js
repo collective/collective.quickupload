@@ -369,7 +369,12 @@ qq.FileUploader.prototype = {
         //alert(simUploadLimit + ' - ' + this._filesInProgress);
         if (this._filesInProgress < simUploadLimit || !simUploadLimit) {
             this._filesInProgress++;
-            var item = this._getItemByFileId(id);          
+            if (this._handler instanceof qq.UploadHandlerXhr) var uid=id;
+            else if (typeof id=='number') {
+                var uid = 'qq-upload-handler-iframe' + id;
+            }
+            else  var uid = id;
+            var item = this._getItemByFileId(uid);          
             var spinner = this._getElement(item, 'spinner');
             qq.css(spinner, {'display':'inline-block'});
             this._handler.upload(id, params);

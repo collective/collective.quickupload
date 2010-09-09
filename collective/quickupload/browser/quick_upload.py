@@ -119,7 +119,7 @@ class QuickUploadView(BrowserView):
     
     def header_upload(self) :
         request = self.request
-        session = request.get('SESSION', None)
+        session = request.get('SESSION', {})
         medialabel = session.get('mediaupload', request.get('mediaupload', 'files'))
         if not medialabel :
             return _('Files Quick Upload')
@@ -392,7 +392,7 @@ class QuickUploadInit(BrowserView):
     def upload_settings(self):
         context = aq_inner(self.context)
         request = self.request
-        session = request.get('SESSION', None)
+        session = request.get('SESSION', {})
         portal_url = getToolByName(context, 'portal_url')()    
         # use a ticket for authentication (used for flashupload only)
         ticket = context.restrictedTraverse('@@quickupload_ticket')()

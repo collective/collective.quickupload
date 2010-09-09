@@ -5,11 +5,12 @@ Plone Quick Upload
 Description
 ===========
 This product offers a multiple files upload tool for Plone, with multi selection,
-drag and drop, progress bar .... 
+drag and drop and progress bar .... By default a pure javacript tool is used on 
+client side, with html5 file fields + XHR, and a graceful fallback for prehistoric browsers.
 
 To install it in your buildout, just add 'collective.quickupload' to your egg list.
 
-To install it in Plone, use the add ons control panel, select "Plone Quick Upload" Product
+To install it in Plone, use the Addons control panel, select "Plone Quick Upload" Product
 and install it.
 
 To see it in action, just assign the Quick Upload portlet somewhere in your site
@@ -25,8 +26,8 @@ collective.quickupload.browser
 
  -  A simple ajax view that can be called by any plone template.
     
- -  the view is using a javascript multiple upload tool based on fileuploader.js (a fork with many ameliorations of 
-    http://valums.com/ajax-upload/) OR jquery.uploadify (based on flashupload see also collective.uploadify)
+ -  the view is using a javascript multiple upload tool based on fileuploader.js (a fork with some changes of 
+    http://valums.com/ajax-upload/ thx to Andrew Valumns) OR jquery.uploadify (based on flashupload, see also collective.uploadify)
     
     - By default the javascript only method is used : the fileuploader.js is a pure ajax file uploader which uses
       html5 multiple file fields and ajax upload post method. It's not a jquery plugin. For modern browsers
@@ -76,6 +77,8 @@ collective.quickupload.browser
     - automatic upload on select (yes/no), default=no
     
     - max size limit for each file in KB (default= 0 = no limit)
+    
+    - silmutaneous uploads limit (default=2, 0 = no limit)
        
 
 collective.quickupload.portlet
@@ -104,6 +107,11 @@ quickupload.tests
  - test the upload of a file (different use cases and errors)
 
 
+Compliance
+==========
+
+- Plone 3.3.x, Plone4
+
 How To
 ======
 
@@ -118,5 +126,7 @@ How To
 More Information
 ================
 
-Contact me : jeanmat.grimaldi at gmail.com
+For Plone Quick Upload : jeanmat.grimaldi at gmail.com
+For fileuploader.js : Adrew Valumns - http://valums.com/ajax-upload/
+For jquery.uploadify : http://www.uploadify.com/
 

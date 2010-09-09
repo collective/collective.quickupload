@@ -37,6 +37,11 @@ class IQuickUploadControlPanel(Interface):
                       default=0,
                       required=True)
 
+    sim_upload_limit = Int( title=_(u"Silmutaneous uploads limit"),
+                            description=_(u"Number of silmutaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"),
+                            default=2,
+                            required=True)
+
 class QuickUploadControlPanelAdapter(SchemaAdapterBase):
 
     adapts(IPloneSiteRoot)
@@ -78,6 +83,14 @@ class QuickUploadControlPanelAdapter(SchemaAdapterBase):
         self.quProps._updateProperty('size_limit', value)
 
     size_limit = property(get_size_limit, set_size_limit)
+
+    def get_sim_upload_limit(self):
+        return self.quProps.getProperty('sim_upload_limit')
+        
+    def set_sim_upload_limit(self, value):
+        self.quProps._updateProperty('sim_upload_limit', value)
+
+    sim_upload_limit = property(get_sim_upload_limit, set_sim_upload_limit)
 
 
 class QuickUploadControlPanel(ControlPanelForm):

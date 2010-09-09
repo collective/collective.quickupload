@@ -166,7 +166,8 @@ XHR_UPLOAD_JS = """
         return false;
     }
     sendDataAndUpload_%(ul_id)s = function() {
-        var handler = xhr_%(ul_id)s._handler;
+        var uploader = xhr_%(ul_id)s;
+        var handler = uploader._handler;
         var files = handler._files;
         var missing = 0;
         for ( var id = 0; id < files.length; id++ ) {
@@ -177,7 +178,7 @@ XHR_UPLOAD_JS = """
                 if (fillTitles)  {
                     file_title = jQuery('.file_title_field', fileContainer).val();
                 }
-                handler.upload(id, {'title': file_title, 'typeupload' : '%(typeupload)s'});
+                uploader._queueUpload(id, {'title': file_title, 'typeupload' : '%(typeupload)s'});
             }
             // if file is null for any reason jq block is no more here
             else missing++;
@@ -222,6 +223,7 @@ XHR_UPLOAD_JS = """
             onComplete: onUploadComplete_%(ul_id)s,
             allowedExtensions: %(ul_file_extensions_list)s,
             sizeLimit: %(ul_xhr_size_limit)s,
+            simUploadLimit: %(ul_sim_upload_limit)s,
             template: '<div class="qq-uploader">' +
                       '<div class="qq-upload-drop-area"><span>%(ul_draganddrop_text)s</span></div>' +
                       '<div class="qq-upload-button">%(ul_button_text)s</div>' +
@@ -321,7 +323,7 @@ FLASH_UPLOAD_JS = """
             'onAllComplete' : onAllUploadsComplete_%(ul_id)s,
             'auto'          : autoUpload,
             'multi'         : true,
-            'simUploadLimit': 4,
+            'simUploadLimit': %(ul_sim_upload_limit)s,
             'sizeLimit'     : '%(ul_size_limit)s',
             'fileDesc'      : '%(ul_file_description)s',
             'fileExt'       : '%(ul_file_extensions)s',
@@ -406,6 +408,7 @@ class QuickUploadInit(BrowserView):
             ul_auto_upload         = self.qup_prefs.auto_upload and 'true' or 'false',
             ul_size_limit          = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '',
             ul_xhr_size_limit      = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '0',
+            ul_sim_upload_limit    = str(self.qup_prefs.sim_upload_limit),
             ul_button_text         = self._utranslate(u'Browse'),
             ul_draganddrop_text    = self._utranslate(u'Drag and drop files to upload'),
             ul_msg_all_sucess      = self._utranslate( u'All files uploaded with success.'),

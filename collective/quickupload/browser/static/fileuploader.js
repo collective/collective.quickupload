@@ -33,6 +33,8 @@ qq.FileUploader = function(o){
         // if set to false nothing is done
         // after selection excepted onAfterSelect method if set
         autoUpload: true,
+        // simultnaeous uploads limit (2 by default)
+        simUploadLimit: 2,
         onSubmit: function(id, fileName){},
         onComplete: function(id, fileName, responseJSON){},
         //
@@ -271,6 +273,7 @@ qq.FileUploader.prototype = {
             action: this._options.action,            
             onProgress: function(id, fileName, loaded, total){
                 // is only called for xhr upload
+                self._filesInProgress++;
                 self._updateProgress(id, loaded, total);                    
             },
             onComplete: function(id, fileName, result){
@@ -340,14 +343,26 @@ qq.FileUploader.prototype = {
         else this._options.onAfterSelect(file, id);
     },
     _uploadFile: function(fileContainer, id){            
-        this._handler.upload(id, this._options.params);        
+        //this._handler.upload(id, this._options.params);    
+        this._queueUpload(id, this._options.params);     
     },      
     _uploadAll: function() {
         var allfiles = this._handler._files;
         for ( var id = 0; id < allfiles.length; id++ ) {
-            if (allfiles[id]) this._handler.upload(id, this._options.params);
+            if (allfiles[id]) {
+                //this._handler.upload(id, this._options.params);
+                this._queueUpload(id, this._options.params); 
+            }
         }
     },    
+    _queueUpload: function(id, params) {
+        var simUploadLimit = this._options.simUploadLimit;
+        //alert(simUploadLimit + ' - ' + this._filesInProgress);
+        if (this._filesInProgress <= simUploadLimit || !simUploadLimit) {
+            this._handler.upload(id, params);
+        }
+        else window.setTimeout(function(){this._queueUpload(id, params)}, 100);
+    },
     _cancelAll: function() {
         var allfiles = this._handler._files;
         for ( var id = 0; id < allfiles.length; id++ ) {
@@ -387,12 +402,11 @@ qq.FileUploader.prototype = {
         item.qqFileId = id;
 
         var fileElement = this._getElement(item, 'file');        
-        qq.setText(fileElement, this._formatFileName(fileName));
-        //this._getElement(item, 'size').style.display = 'none';        
+        qq.setText(fileElement, this._formatFileName(fileName));    
 
         this._getElement('list').appendChild(item);
-
-        this._filesInProgress++;
+        // not the good place
+        //this._filesInProgress++;
     },
     _updateProgress: function(id, loaded, total){
         var item = this._getItemByFileId(id);
@@ -621,8 +635,9 @@ qq.UploadHandlerForm.prototype = {
                 qq.remove(iframe);
             }, 1);
         });
-
-        form.submit();        
+        
+        form.submit();     
+        self._filesInProgress++;   
         qq.remove(form);        
         
         return id;
@@ -794,9 +809,9 @@ qq.UploadHandlerXhr.prototype = {
             }
             
             if (xhr.readyState == 4){
-                                
+
                 self._options.onProgress(id, name, size, size);
-                
+
                 if (xhr.status == 200){
                     var response;
                     

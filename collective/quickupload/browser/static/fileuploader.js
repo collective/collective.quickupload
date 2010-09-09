@@ -30,7 +30,7 @@ qq.FileUploader = function(o){
         sizeLimit: 0,
         // method executed after selection and before upload
         onAfterSelect: function(id, fileName){},
-        // if set to false nothing is done
+        // if autoUpload is set to false nothing is done
         // after selection excepted onAfterSelect method if set
         autoUpload: true,
         // simultnaeous uploads limit (2 by default)

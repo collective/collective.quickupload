@@ -1,8 +1,10 @@
+# -*- coding: utf-8 -*-  
+
 from zope.testing import doctest
 from unittest import TestSuite, main
 from Testing import ZopeTestCase as ztc
+from collective.quickupload.tests.base import QuickUploadTestCase
 
-from collective.quickupload.tests import base
 
 
 OPTIONFLAGS = (doctest.ELLIPSIS |
@@ -11,17 +13,14 @@ OPTIONFLAGS = (doctest.ELLIPSIS |
 def test_suite():
     tests = [ 'installation.txt',
               'controlpanel.txt',
-              'ckeditor_jsconfig.txt',
-              'uninstall.txt',
-              'widget.txt',
-              'transform_uids.txt',
+              'quickupload_view.txt',
+              'portlet.txt',
              ]
     suite = TestSuite()
     for test in tests:
         suite.addTest(ztc.FunctionalDocFileSuite(test,
             optionflags=OPTIONFLAGS,
             package="collective.quickupload.tests",
-            test_class=base.FunctionalTestCase))
+            test_class=QuickUploadTestCase))
     return suite
-
 

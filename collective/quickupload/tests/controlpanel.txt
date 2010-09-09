@@ -1,0 +1,6 @@
+Plone Quick Upload Control Panel
+================================
+
+Login as Manager :
+
+    >>> self.loginAsManager()

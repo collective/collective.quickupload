@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 ## Copyright (C)2010 Alter Way Solutions
 
-from Acquisition import aq_inner
+from Acquisition import aq_inner, aq_base, aq_parent
 from zope.interface import implements
 from zope import schema
 from zope.schema.vocabulary import SimpleVocabulary
@@ -12,8 +12,14 @@ from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.CMFPlone.FactoryTool import TempFolder
 
 from collective.quickupload import siteMessageFactory as _
+
+def isTemporary(obj):
+    """Check to see if an object is temporary"""
+    parent = aq_base(aq_parent(aq_inner(obj)))
+    return hasattr(parent, 'meta_type') and parent.meta_type == TempFolder.meta_type
 
 
 class IQuickUploadPortlet(IPortletDataProvider):
@@ -81,13 +87,14 @@ class Renderer(base.Renderer):
         base.Renderer.__init__(self, *args)
         context = aq_inner(self.context)
         request = self.request
-        session = request.SESSION
+        session = request.get('SESSION', None)
         # empty typeupload and mediaupload session 
         # since the portlet don't use it, but another app could
-        if session.has_key('typeupload') :
-            session.delete('typeupload')
-        if session.has_key('mediaupload') :
-            session.delete('mediaupload')
+        if session :
+            if session.has_key('typeupload') :
+                session.delete('typeupload')
+            if session.has_key('mediaupload') :
+                session.delete('mediaupload')
         self.ploneview = context.restrictedTraverse('@@plone')
         self.pm = getToolByName(context, 'portal_membership')
 
@@ -99,7 +106,7 @@ class Renderer(base.Renderer):
         context = aq_inner(self.context)
         if self.ploneview.isStructuralFolder() and \
            self.pm.checkPermission('Add portal content', context) and \
-           context.title != '' :
+           not isTemporary(context) :
             return True
         return False
     

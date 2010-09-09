@@ -515,7 +515,6 @@ class QuickUploadFile(QuickUploadAuthenticate):
             
         file_name = request.form.get("Filename", "")
         file_data = request.form.get("Filedata", None)
-        print '\n\n>>> FILE DATA is \n\n %s <<<\n\n' %str(file_data)
         content_type = mimetypes.guess_type(file_name)[0]
         portal_type = request.form.get('typeupload', '')
         title =  request.form.get("title", None)

@@ -189,3 +189,51 @@ msgstr ""
 #. Default: "Failed"
 msgid "Failed"
 msgstr ""
+
+#. Default: "Use Flash Upload"
+msgid "title_use_flashupload"
+msgstr ""
+
+#. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8),  but has many problems : don't work in https, don't work behind HTTP Authentication ..."
+msgid "description_use_flashupload"
+msgstr ""
+
+#. Default: "Automatic upload on select"
+msgid "title_auto_upload"
+msgstr ""
+
+#. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles with this option set to True."
+msgid "description_auto_upload"
+msgstr ""
+
+#. Default: "Fill title before upload"
+msgid "title_fill_titles"
+msgstr ""
+
+#. Default: "If checked, you can fill the files titles before upload. Uncheck if you don't need titles."
+msgid "description_fill_titles"
+msgstr ""
+
+#. Default: "Size limit"
+msgid "title_size_limit"
+msgstr ""
+
+#. Default: "Size limit for each file in KB, 0 = no limit"
+msgid "description_size_limit"
+msgstr ""
+
+#. Default: "Silmutaneous uploads limit"
+msgid "title_sim_upload_limit"
+msgstr ""
+
+#. Default: "Number of silmutaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"
+msgid "description_sim_upload_limit"
+msgstr ""
+
+#. Default: "Quick Upload settings"
+msgid "Quick Upload settings"
+msgstr ""
+
+#. Default: "Control how the quick upload tool is used."
+msgid "Control how the quick upload tool is used."
+msgstr ""

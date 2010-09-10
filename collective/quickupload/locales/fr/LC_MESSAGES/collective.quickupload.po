@@ -193,5 +193,51 @@ msgstr "svp sélectionnez vos fichiers sans celui-ci."
 msgid "Failed"
 msgstr "Echoué"
 
+#. Default: "Use Flash Upload"
+msgid "title_use_flashupload"
+msgstr "Utiliser Flash Upload"
 
+#. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8),  but has many problems : don't work in https, don't work behind HTTP Authentication ..."
+msgid "description_use_flashupload"
+msgstr "Par défaut, le script d'envoi de fichiers est en pur javascript. Sélectionner cette option pour le remplacer par un script basé sur Flash Upload. Pour les navigateurs modernes l'outil en javascript est plus puissant. Flash Upload est seulement plus facile d'emploi sur les autres navigateurs (MSIE 7, MSIE 8), mais présente de nombreux inconvénients : ne marche pas en https, ne marche pas derrière une authentification HTTP ..."
+
+#. Default: "Automatic upload on select"
+msgid "title_auto_upload"
+msgstr "Envoi direct sur sélection"
+
+#. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles with this option set to True."
+msgid "description_auto_upload"
+msgstr "Sélectionner si vous voulez démarrer l'envoi de fichiers dés la sélection, sans avoir à soumettre le formulaire. Notez que vous ne pouvez pas choisir les titres de fichiers avec cette option sélectionnée."
+
+#. Default: "Fill title before upload"
+msgid "title_fill_titles"
+msgstr "Saisir les titres avant l'envoi"
+
+#. Default: "If checked, you can fill the files titles before upload. Uncheck if you don't need titles."
+msgid "description_fill_titles"
+msgstr "Si sélectionné, vous pouvez saisir les titres de fichiers avant leur envoi. Décochez, si vous n'avez pas besoin de titres."
+
+#. Default: "Size limit"
+msgid "title_size_limit"
+msgstr "Taille limite"
+
+#. Default: "Size limit for each file in KB, 0 = no limit"
+msgid "description_size_limit"
+msgstr "Taille limite de chaque fichier en KB, 0 = pas de limite"
+
+#. Default: "Silmutaneous uploads limit"
+msgid "title_sim_upload_limit"
+msgstr "Envois silmutanés maximum"
+
+#. Default: "Number of silmutaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"
+msgid "description_sim_upload_limit"
+msgstr "Nombre d'envois de fichiers envoyés silmutanément, au delà de ce nombre les fichiers sont placés en file d'attente, 0 = pas de limite"
+
+#. Default: "Quick Upload settings"
+msgid "Quick Upload settings"
+msgstr "Configuration de Quick Upload"
+
+#. Default: "Control how the quick upload tool is used."
+msgid "Control how the quick upload tool is used."
+msgstr "Contrôlez comment l'outil d'envoi rapide de fichiers est utilisé."
 

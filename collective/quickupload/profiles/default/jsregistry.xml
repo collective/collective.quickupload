@@ -9,4 +9,7 @@
  <javascript cacheable="True" compression="safe" conditionalcomment=""
     cookable="True" enabled="on" expression=""
     id="++resource++quickupload_static/fileuploader.js" inline="False"/>
+ <javascript cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++quickupload_static/helpers.js" inline="False"/>
 </object>

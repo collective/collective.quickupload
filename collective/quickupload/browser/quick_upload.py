@@ -135,85 +135,28 @@ class QuickUploadView(BrowserView):
         return context.restrictedTraverse('@@quick_upload_init')(for_id = self.uploader_id)
 
 
-XHR_UPLOAD_JS = """
+XHR_UPLOAD_JS = """       
     var fillTitles = %(ul_fill_titles)s;
     var auto = %(ul_auto_upload)s;
     addUploadFields_%(ul_id)s = function(file, id) {
         var uploader = xhr_%(ul_id)s;
-        if (fillTitles)  {
-            var labelfiletitle = jQuery('#uploadify_label_file_title').val();
-            var blocFile = uploader._getItemByFileId(id);
-            if (typeof id == 'string') id = parseInt(id.replace('qq-upload-handler-iframe',''));
-            jQuery('.qq-upload-cancel', blocFile).after('\
-                      <div class="uploadField">\
-                          <label>' + labelfiletitle + ' : </label> \
-                          <input type="text" \
-                                 class="file_title_field" \
-                                 id="title_' + id + '" \
-                                 name="title" \
-                                 value="" />\
-                      </div>\
-                       ')
-        }
-        showButtons_%(ul_id)s();
-    }
-    showButtons_%(ul_id)s = function() {
-        var handler = xhr_%(ul_id)s._handler;
-        if (handler._files.length) {
-            jQuery('.uploadifybuttons').show();
-            return 'ok';
-        }
-        return false;
+        PloneQuickUpload.addUploadFields(uploader, uploader._element, file, id, fillTitles);
     }
     sendDataAndUpload_%(ul_id)s = function() {
         var uploader = xhr_%(ul_id)s;
-        var handler = uploader._handler;
-        var files = handler._files;
-        var missing = 0;
-        for ( var id = 0; id < files.length; id++ ) {
-            if (files[id]) {
-                var fileContainer = jQuery('#%(ul_id)s .qq-upload-list li')[id-missing];
-                var file_title = '';
-                if (fillTitles)  {
-                    file_title = jQuery('.file_title_field', fileContainer).val();
-                }
-                uploader._queueUpload(id, {'title': file_title, 'typeupload' : '%(typeupload)s'});
-            }
-            // if file is null for any reason jq block is no more here
-            else missing++;
-        }
+        PloneQuickUpload.sendDataAndUpload(uploader, uploader._element, '%(typeupload)s');
     }    
-    onAllUploadsComplete_%(ul_id)s = function(){
-        Browser.onUploadComplete();
-    }
     clearQueue_%(ul_id)s = function() {
-        var handler = xhr_%(ul_id)s._handler;
-        var files = handler._files;
-        for ( var id = 0; id < files.length; id++ ) {
-            if (files[id]) {
-                handler.cancel(id);
-            }
-            jQuery('#%(ul_id)s .qq-upload-list li').remove();
-            handler._files = [];
-            if (typeof handler._inputs != 'undefined') handler._inputs = {};
-        }    
-    }    
-    onUploadComplete_%(ul_id)s = function(id, fileName, responseJSON) {
         var uploader = xhr_%(ul_id)s;
-        var uploadList = jQuery('#%(ul_id)s .qq-upload-list');
-        if (responseJSON.success) {        
-            window.setTimeout( function() {
-                jQuery(uploader._getItemByFileId(id)).remove();
-                // after the last upload, if no errors, reload the page
-                var newlist = jQuery('li', uploadList);
-                if (! newlist.length) window.setTimeout( function() {onAllUploadsComplete_%(ul_id)s()}, 5);       
-            }, 5);
-        }
-        
+        PloneQuickUpload.clearQueue(uploader, uploader._element);    
+    }    
+    onUploadComplete_%(ul_id)s = function(id, fileName, responseJSON) {       
+        var uploader = xhr_%(ul_id)s;
+        PloneQuickUpload.onUploadComplete(uploader, uploader._element, id, fileName, responseJSON);
     }
-    createUploader_%(ul_id)s= function(){            
+    createUploader_%(ul_id)s= function(){    
         xhr_%(ul_id)s = new qq.FileUploader({
-            element: document.getElementById('%(ul_id)s'),
+            element: jQuery('#%(ul_id)s')[0],
             action: '%(context_url)s/@@quick_upload_file',
             autoUpload: auto,
             onAfterSelect: addUploadFields_%(ul_id)s,
@@ -244,7 +187,6 @@ XHR_UPLOAD_JS = """
             }            
         });           
     }
-    
     jQuery(document).ready(createUploader_%(ul_id)s); 
 """        
 

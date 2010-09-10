@@ -6,7 +6,7 @@ Description
 ===========
 This product offers a multiple files upload tool for Plone, with multi selection,
 drag and drop, and progress bar. A pure javacript tool is used on client side,
-with html5 file fields + ajax upload for modern browsers, and a graceful fallback for other browsers.
+with html5 file fields and ajax upload for modern browsers, and a graceful fallback for other browsers.
 You can also choose to replace the javascript with jquery.uploadify, a flashupload based script 
 which could be interesting in rare situations (Plone site for MSIE client's browsers only, without 
 http authentication in front, and no https).
@@ -61,7 +61,7 @@ collective.quickupload.browser
   
     - the view can use some attributes set in session or request::
       
-      -  force mediatype (could be None, image, video, audio)
+      -  force mediatype (could be None, image, video, audio, or something like this '*.pdf;*.doc;')
          
          if a mediatype is set in request :
           
@@ -84,7 +84,7 @@ collective.quickupload.browser
     
     - max size limit for each file in KB (default= 0 = no limit)
     
-    - silmutaneous uploads limit (default=2, 0 = no limit)
+    - simultaneous uploads limit (default=2, 0 = no limit)
        
 
 collective.quickupload.portlet
@@ -126,7 +126,7 @@ These ameliorations have been done :
 
 - graphic progress bar
 
-- silmutaneous upload limit
+- simultaneous upload limit
 
 - can send all files in a second time, after multiple selections, and after different actions on form.
 
@@ -155,7 +155,7 @@ TODO
 
 - unit tests for upload methods
 
-
+- fileuploader.js refactorisation using jquery
 
 Support
 =======
@@ -171,8 +171,12 @@ https://svn.plone.org/svn/collective/collective.quickupload/
 More Information
 ================
 
-For Plone Quick Upload : Jean-mat Grimaldi http://macadames.wordpress.com
-For fileuploader.js (original script) : Adrew Valumns - http://valums.com/ajax-upload/
-For jquery.uploadify : http://www.uploadify.com/
+Jean-mat Grimaldi http://macadames.wordpress.com
 
-Thanks to : Adrew Valumns, 
+Thanks to : 
+
+- Adrew Valumns (for original fileuploader.js), 
+- Ramon Bartl (for some parts of code taken in collective.uploadify Plone product), 
+- Ronnie Garcia, Travis Nickels (for jquery.uploadify.js)
+- Gilles Lenfant David Pack and Christophe Combelles, Alter Way Solutions, for functional tests, ideas, and moral support.
+

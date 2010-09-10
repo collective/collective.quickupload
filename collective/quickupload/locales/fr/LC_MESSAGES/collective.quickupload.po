@@ -225,13 +225,13 @@ msgstr "Taille limite"
 msgid "description_size_limit"
 msgstr "Taille limite de chaque fichier en KB, 0 = pas de limite"
 
-#. Default: "Silmutaneous uploads limit"
+#. Default: "Simultaneous uploads limit"
 msgid "title_sim_upload_limit"
-msgstr "Envois silmutanés maximum"
+msgstr "Envois simultanés maximum"
 
-#. Default: "Number of silmutaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"
+#. Default: "Number of simultaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"
 msgid "description_sim_upload_limit"
-msgstr "Nombre d'envois de fichiers envoyés silmutanément, au delà de ce nombre les fichiers sont placés en file d'attente, 0 = pas de limite"
+msgstr "Nombre d'envois de fichiers envoyés simultanément, au delà de ce nombre les fichiers sont placés en file d'attente, 0 = pas de limite"
 
 #. Default: "Quick Upload settings"
 msgid "Quick Upload settings"

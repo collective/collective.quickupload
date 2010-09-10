@@ -39,8 +39,8 @@ class IQuickUploadControlPanel(Interface):
                       default=0,
                       required=True)
 
-    sim_upload_limit = Int( title=_(u"title_sim_upload_limit", default=u"Silmutaneous uploads limit"),
-                            description=_(u"description_sim_upload_limit", default=u"Number of silmutaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"),
+    sim_upload_limit = Int( title=_(u"title_sim_upload_limit", default=u"Simultaneous uploads limit"),
+                            description=_(u"description_sim_upload_limit", default=u"Number of simultaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"),
                             default=2,
                             required=True)
 

@@ -1,6 +1,52 @@
-Plone Quick Upload Control Panel
-================================
+Plone Quick Upload View
+=======================
+
+Test permission
+---------------
+
+Try to get the view on portal as anonymous user
+Must redirect to authentication page :
+
+    >>> self.browser.open('http://nohost/plone/@@quick_upload')
+    >>> self.browser.url
+    'http://nohost/plone/acl_users/credentials_cookie_auth/require_login?came_from=http%3A//nohost/plone/%40%40quick_upload'
 
 Login as Contributor :
 
     >>> self.loginAsContibutor()
+
+Try to get the view as contributor :
+
+    >>> self.browser.open('http://nohost/plone/@@quick_upload')
+    >>> self.browser.url
+    'http://nohost/plone/@@quick_upload'
+
+Test template depending on configuration
+----------------------------------------
+
+    >>> from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
+    >>> qup_prefs = IQuickUploadControlPanel(self.portal)
+
+Change the property use_flash_upload
+
+    >>> qup_prefs.use_flashupload = True
+
+Try to see if the view is impacted (use flash)
+
+    >>> self.browser.open('http://nohost/plone/@@quick_upload')  
+    >>> "http://nohost/plone/@@flash_upload_file" in self.browser.contents
+    True
+
+Change the property auto_upload
+
+    >>> qup_prefs.auto_upload = True
+    >>> self.browser.open('http://nohost/plone/@@quick_upload')  
+    >>> "var autoUpload = true" in self.browser.contents
+    True
+
+Change the property size_limit
+
+    >>> qup_prefs.size_limit = 200
+    >>> self.browser.open('http://nohost/plone/@@quick_upload')  
+    >>> "'sizeLimit'     : '204800'" in self.browser.contents
+    True

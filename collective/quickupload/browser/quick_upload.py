@@ -312,7 +312,7 @@ FLASH_UPLOAD_JS = """
     jQuery(document).ready(function() {
         jQuery('#%(ul_id)s').uploadify({
             'uploader'      : '%(portal_url)s/++resource++quickupload_static/uploader.swf',
-            'script'        : '%(context_url)s/@@quick_upload_file',
+            'script'        : '%(context_url)s/@@flash_upload_file',
             'cancelImg'     : '%(portal_url)s/++resource++quickupload_static/cancel.png',
             'folder'        : '%(physical_path)s',
             'onAllComplete' : onAllUploadsComplete_%(ul_id)s,

@@ -39,15 +39,23 @@
       class=".quick_upload.QuickUploadInit"
       permission="cmf.AddPortalContent"/>      
   
-  <!-- Quick upload file View
+  <!-- Quick upload file Views
        we use permission zope.Public 
-       on upload_file view (called in flash)
-       for users authenticated 
-       without cookie -->   
+       on flash_upload_file
+       because authentication is done
+       using a ticket -->   
            
   <browser:page
       for="*"
       name="quick_upload_file"
+      attribute="quick_upload_file"
+      class=".quick_upload.QuickUploadFile"
+      permission="cmf.AddPortalContent"/> 
+           
+  <browser:page
+      for="*"
+      name="flash_upload_file"
+      attribute="flash_upload_file"
       class=".quick_upload.QuickUploadFile"
       permission="zope.Public"/> 
            

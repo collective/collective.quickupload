@@ -245,8 +245,6 @@ XHR_UPLOAD_JS = """
         });           
     }
     
-    // in your app create uploader as soon as the DOM is ready
-    // don't wait for the window to load  
     jQuery(document).ready(createUploader_%(ul_id)s); 
 """        
 

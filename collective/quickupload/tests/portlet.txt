@@ -100,3 +100,13 @@ Test the Title when everything is empty (default header must be used)
     >>> output = r.render()
     >>> '<span>Files Quick Upload</span>' in output
     True
+
+Test Upload url and upload params
+    >>> r = renderer(context=self.folder, assignment=quickuploadportlet.Assignment(header=u"", upload_portal_type=u"Image", upload_media_type=u"image"))
+    >>> r = r.__of__(self.folder)
+    >>> r.update()
+    >>> output = r.render()
+    >>> '%s/@@quick_upload' %self.folder.absolute_url() in output
+    True
+    >>> 'typeupload=Image&amp;mediaupload=image' in output
+    True

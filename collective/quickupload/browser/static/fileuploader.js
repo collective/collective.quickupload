@@ -127,9 +127,6 @@ qq.FileUploader.prototype = {
     setParams: function(params){
         this._options.params = params;
     },
-    /**
-     * Returns true if some files are being uploaded, false otherwise
-     */
     getDebugConsole: function(){
         return qq.getByClass(this._element, 'qq-upload-debug')[0];
     },
@@ -137,6 +134,9 @@ qq.FileUploader.prototype = {
        blocdebug = qq.getByClass(this._debugConsole, 'qq-upload-debug-'+type);
        if (blocdebug) qq.setText(blocdebug[0], logcontent);       
     },
+    /**
+     * Returns true if some files are being uploaded, false otherwise
+     */    
     isUploading: function(){
         return !!this._filesInProgress;
     },  

@@ -5,11 +5,11 @@ Plone Quick Upload
 Description
 ===========
 This product offers a multiple files upload tool for Plone, with multi selection,
-drag and drop and progress bar. A pure javacript tool is used on client side,
-with html5 file fields + ajax upload, and a graceful fallback for prehistoric browsers.
-You can also choose to replace the javascript with jquery.uploadify, a flashupload based script, 
-it could be interesting in rare situations (Site without http authentication, and no https, 
-and with MSIE only as client).
+drag and drop, and progress bar. A pure javacript tool is used on client side,
+with html5 file fields + ajax upload for modern browsers, and a graceful fallback for other browsers.
+You can also choose to replace the javascript with jquery.uploadify, a flashupload based script 
+which could be interesting in rare situations (Plone site for MSIE client's browsers only, without 
+http authentication in front, and no https).
 
 To install it in your buildout, just add 'collective.quickupload' to your egg list, then
 
@@ -42,9 +42,9 @@ collective.quickupload.browser
       
     - Flashupload (jquery.uploadify) is more user friendly under MSIE, but has some "big" problems :
        
-      - cannot be used through https
-       
       - cannot be used behind any kind of http authentication (basic authentication, windowsNT authentication, ...)
+       
+      - cannot be used through https
 
       - not open source
 
@@ -116,6 +116,7 @@ Compliance
 
 - Plone 3.3.x, Plone4
 
+
 About fileuploader.js fork
 ==========================
 
@@ -154,6 +155,8 @@ TODO
 
 - unit tests for upload methods
 
+
+
 Support
 =======
 
@@ -172,3 +175,4 @@ For Plone Quick Upload : Jean-mat Grimaldi http://macadames.wordpress.com
 For fileuploader.js (original script) : Adrew Valumns - http://valums.com/ajax-upload/
 For jquery.uploadify : http://www.uploadify.com/
 
+Thanks to : Adrew Valumns, 

@@ -13,7 +13,7 @@ PloneQuickUpload.addUploadFields = function(uploader, domelement, file, id, fill
         if (typeof id == 'string') id = parseInt(id.replace('qq-upload-handler-iframe',''));
         jQuery('.qq-upload-cancel', blocFile).after('\
                   <div class="uploadField">\
-                      <label>' + labelfiletitle + ' : </label> \
+                      <label>' + labelfiletitle + '&nbsp;:&nbsp;</label> \
                       <input type="text" \
                              class="file_title_field" \
                              id="title_' + id + '" \

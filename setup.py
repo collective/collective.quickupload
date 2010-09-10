@@ -5,7 +5,7 @@ version = '1.0.0'
 
 setup(name='collective.quickupload',
       version=version,
-      description="Javascript Multiple upload View for Plone",
+      description="Pure javascript files upload tool for Plone, with drag and drop, multi selection, and progress bar.",
       long_description=open("README.txt").read() + "\n" +
                        open(os.path.join("docs", "HISTORY.txt")).read(),
       # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers

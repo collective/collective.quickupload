@@ -5,10 +5,15 @@ Plone Quick Upload
 Description
 ===========
 This product offers a multiple files upload tool for Plone, with multi selection,
-drag and drop and progress bar .... By default a pure javacript tool is used on 
-client side, with html5 file fields + XHR, and a graceful fallback for prehistoric browsers.
+drag and drop and progress bar. A pure javacript tool is used on client side,
+with html5 file fields + ajax upload, and a graceful fallback for prehistoric browsers.
+You can also choose to replace the javascript with jquery.uploadify, a flashupload based script, 
+it could be interesting in rare situations (Site without http authentication, and no https, 
+and with MSIE only as client).
 
-To install it in your buildout, just add 'collective.quickupload' to your egg list.
+To install it in your buildout, just add 'collective.quickupload' to your egg list, then
+
+  >> bin/buildout
 
 To install it in Plone, use the Addons control panel, select "Plone Quick Upload" Product
 and install it.
@@ -26,8 +31,9 @@ collective.quickupload.browser
 
  -  A simple ajax view that can be called by any plone template.
     
- -  the view is using a javascript multiple upload tool based on fileuploader.js (a fork with some changes of 
-    http://valums.com/ajax-upload/ thx to Andrew Valumns) OR jquery.uploadify (based on flashupload, see also collective.uploadify)
+ -  This view is using a javascript multiple upload tool based on fileuploader.js (a fork with many ameliorations of 
+    http://valums.com/ajax-upload/) OR jquery.uploadify.js (based on flashupload, see also collective.uploadify plone product
+    from which some parts of code have been taken)
     
     - By default the javascript only method is used : the fileuploader.js is a pure ajax file uploader which uses
       html5 multiple file fields and ajax upload post method. It's not a jquery plugin. For modern browsers
@@ -35,12 +41,12 @@ collective.quickupload.browser
       For other browsers (IE7, IE8, ...),  the script offers a graceful hidden iframe upload fall back.
       
     - Flashupload (jquery.uploadify) is more user friendly under MSIE, but has some "big" problems :
-
-      - not standard (use Flash)
        
       - cannot be used through https
        
       - cannot be used behind any kind of http authentication (basic authentication, windowsNT authentication, ...)
+
+      - not open source
 
     - the webmaster has the choice between these 2 solutions (see control panel below).
 
@@ -59,13 +65,13 @@ collective.quickupload.browser
          
          if a mediatype is set in request :
           
-          -  an error will be raised in the form when the file content-type selected is not correct, when using the pure javascript tool.
+          -  with fileuploader.js an error is raised in the form when a file content-type selected is not correct.
         
-          -  with Flashupload only choosed content types are shown in selection  window, 
+          -  with Flashupload, only choosed content types are shown in selection  window, 
              with a specific message "select images", "select video files" (...).
   
       -  force portal_type
-  
+         
          if portal_type is not set in request, content_type_registry is used to find the good portal_type, otherwise the "File" portal_type will be used.
 
  - a basic Plone Control panel with some options::
@@ -102,9 +108,7 @@ collective.quickupload.profiles
 quickupload.tests
 -----------------
 
- - test control panel and portlet
-
- - test the upload of a file (different use cases and errors)
+ - doctests for control panel, portlet, and quick_upload view
 
 
 Compliance
@@ -112,21 +116,59 @@ Compliance
 
 - Plone 3.3.x, Plone4
 
+About fileuploader.js fork
+==========================
+
+These ameliorations have been done :
+
+- queue uploads
+
+- graphic progress bar
+
+- silmutaneous upload limit
+
+- can send all files in a second time, after multiple selections, and after different actions on form.
+
+- can add new fields using a new method (onAfterSelect), associated to each file
+
+- debugMode and debugConsole
+
+- css improvements
+
 How To
 ======
 
 - How to add the quickupload view in my own template or viewlet ?
 
-  Just look the quickupload portlet code, it's easy.
+  Just look the quickupload portlet code, it's really easy.
   
-  You can also take a look at collective.plonefinder product which uses
-  collective.quickupload.
+  You can also take a look at collective.plonefinder product
+  http://plone.org/products/collective.plonefinder
+  which requires collective.quickupload.
 
+
+TODO
+====
+
+- javascript client tests
+
+- unit tests for upload methods
+
+Support
+=======
+
+A tracker will be open at http://plone.org/products/collective.quickupload/
+
+
+SVN
+===
+
+https://svn.plone.org/svn/collective/collective.quickupload/
 
 More Information
 ================
 
-For Plone Quick Upload : jeanmat.grimaldi at gmail.com
-For fileuploader.js : Adrew Valumns - http://valums.com/ajax-upload/
+For Plone Quick Upload : Jean-mat Grimaldi http://macadames.wordpress.com
+For fileuploader.js (original script) : Adrew Valumns - http://valums.com/ajax-upload/
 For jquery.uploadify : http://www.uploadify.com/
 

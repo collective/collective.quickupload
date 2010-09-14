@@ -56,7 +56,7 @@ class QuickUploadCapableFileFactory(object):
         result['success'] = None
         normalizer = component.getUtility(IIDNormalizer)
         chooser = INameChooser(self.context)
-        newid = chooser.chooseName(normalizer.normalize(name), self.context.aq_parent)
+        newid = chooser.chooseName(normalizer.normalize(name), context)
         if not title :
             # try to split filenames because we don't want 
             # big titles without spaces

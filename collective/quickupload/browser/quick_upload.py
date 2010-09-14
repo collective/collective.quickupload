@@ -565,7 +565,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
         id = id.decode(charset)
         normalizer = getUtility(IIDNormalizer)
         chooser = INameChooser(context)
-        newid = chooser.chooseName(normalizer.normalize(id), self.context.aq_parent)
+        newid = chooser.chooseName(normalizer.normalize(id), context)
         if newid in context.objectIds() :
             return 0
         return 1

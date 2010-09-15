@@ -6,6 +6,11 @@ Changelog
 
 * fix set_id or check_id methods
   now called on context, no more on aq_parent(context)
+  macadames 2010-09-14
+
+* slow down the removing of progressBar
+  to see something even when Plone is too fast :-)
+  macadames 2010-09-15  
 
 1.0.0
 -----

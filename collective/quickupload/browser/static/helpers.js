@@ -74,7 +74,7 @@ PloneQuickUpload.onUploadComplete = function(uploader, domelement, id, fileName,
             // after the last upload, if no errors, reload the page
             var newlist = jQuery('li', uploadList);
             if (! newlist.length) window.setTimeout( PloneQuickUpload.onAllUploadsComplete, 5);       
-        }, 5);
+        }, 50);
     }
     
 }

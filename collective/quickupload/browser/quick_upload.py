@@ -492,13 +492,16 @@ class QuickUploadFile(QuickUploadAuthenticate):
             # using ajax upload
             try :
                 file_data = request.BODY
-            except :
+            except AttributeError :
                 # in case of cancel during xhr upload
                 logger.info("An upload has been aborted")
                 # not really useful here since the upload block
                 # is removed by "cancel" action, but
                 # could be useful if someone change the js behavior
                 return  json.dumps({u'error': u'emptyError'})
+            except :
+                logger.info("Error when trying to read the file in request")
+                return json.dumps({u'error': u'serverError'})
             file_name = urllib.unquote(request.HTTP_X_FILE_NAME)       
             upload_with = "XHR"
         else :
@@ -518,6 +521,10 @@ class QuickUploadFile(QuickUploadAuthenticate):
             return json.dumps({u'error': u'serverErrorAlwaysExist'})
 
         content_type = mimetypes.guess_type(file_name)[0]
+        # sometimes plone mimetypes registry could be more powerful
+        if not content_type :
+            mtr = getToolByName(context, 'mimetypes_registry')
+            content_type = str(mtr.globFilename(file_name))
         portal_type = getDataFromAllRequests(request, 'typeupload') or ''
         title =  getDataFromAllRequests(request, 'title') or ''
         

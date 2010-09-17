@@ -12,6 +12,16 @@ Changelog
   to see something even when Plone is too fast :-)
   macadames 2010-09-15  
 
+* try to find the good content_type for uploaded files
+  using plone mime_types_registry when
+  mimetypes.guess_type(file_name) returns (None, None)
+  macadames 2010-09-17
+
+* fix strange ATFile behavior with content_types
+  when passing mutator(data, content_type=content_type)
+  the content_type is not always good
+  macadames 2010-09-17
+
 1.0.0
 -----
 

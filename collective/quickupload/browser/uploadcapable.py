@@ -84,6 +84,9 @@ class QuickUploadCapableFileFactory(object):
                 # the filename is not inside the file
                 if not obj.getFilename() :
                     obj.setFilename(name)
+                # XXX fix strange ATFile behavior with content_types
+                if obj.getContentType() != content_type :
+                    primaryField.setContentType(obj, content_type)
                 obj.reindexObject()
             transaction.commit()
             upload_lock.release()

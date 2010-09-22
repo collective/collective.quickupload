@@ -1,6 +1,12 @@
 Changelog
 =========
 
+1.0.2 SVN unreleased
+--------------------
+
+* IE7 css fixes (upload button was uggly)
+  macadames 2010-09-22
+
 1.0.1
 -----
 

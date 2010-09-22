@@ -98,3 +98,18 @@
     color: #880000;
     clear: both;
 }
+
+/* IE7 fixes */
+
+*+html .quick-uploader #label-upload {
+    float: none !important;
+}
+
+*+html .quick-uploader .qq-upload-button {
+    height: 20px !important;
+    padding: 4px !important;
+}
+
+*+html .quick-uploader .qq-upload-button input[type="file"] {
+    font-size: 23px !important;
+}

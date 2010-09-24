@@ -490,20 +490,22 @@ class QuickUploadFile(QuickUploadAuthenticate):
 
         if request.HTTP_X_REQUESTED_WITH :
             # using ajax upload
+            file_name = urllib.unquote(request.HTTP_X_FILE_NAME)       
+            upload_with = "XHR"
             try :
-                file_data = request.BODY
+                file = request.BODYFILE
+                file_data = file.read()
+                file.seek(0)
             except AttributeError :
                 # in case of cancel during xhr upload
-                logger.info("An upload has been aborted")
+                logger.info("Upload of %s has been aborted" %file_name)
                 # not really useful here since the upload block
                 # is removed by "cancel" action, but
                 # could be useful if someone change the js behavior
                 return  json.dumps({u'error': u'emptyError'})
             except :
-                logger.info("Error when trying to read the file in request")
+                logger.info("Error when trying to read the file %s in request"  %file_name)
                 return json.dumps({u'error': u'serverError'})
-            file_name = urllib.unquote(request.HTTP_X_FILE_NAME)       
-            upload_with = "XHR"
         else :
             # using classic form post method (MSIE<=8)
             file_data = request.get("qqfile", None)

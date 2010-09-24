@@ -83,7 +83,7 @@ class QuickUploadCapableFileFactory(object):
                 # XXX when getting file through request.BODYFILE (XHR direct upload)
                 # the filename is not inside the file
                 if not obj.getFilename() :
-                    obj.setFilename(name)
+                    obj.setFilename(str(name))
                 # XXX fix strange ATFile behavior with content_types
                 if obj.getContentType() != content_type :
                     primaryField.setContentType(obj, content_type)

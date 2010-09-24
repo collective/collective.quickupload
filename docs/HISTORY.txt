@@ -31,6 +31,10 @@ Changelog
 * Don't use unicode in setFileName
   macadames 2010-09-24
 
+* fix content-type header with FireFox xhr upload
+ (sometimes is missing)
+  macadames 2010-09-24
+
 1.0.0
 -----
 

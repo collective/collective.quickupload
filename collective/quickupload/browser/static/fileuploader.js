@@ -859,10 +859,10 @@ qq.UploadHandlerXhr.prototype = {
         xhr.setRequestHeader("X-File-Name", encodeURIComponent(name));
         // important : without content-type zope HTTPRequest don't accept the file
         // so, for webkit which don't send content-type header
-        // we just set a bad octet/stream mime-type (not important since server side will do the good job)
-        if (navigator.userAgent.indexOf("WebKit") > -1) {
-            xhr.setRequestHeader("Content-Type", 'application/octet-stream');
-        }
+        // but also with Mozilla sometimes
+        // we just set a bad octet/stream mime-type 
+        // (not important since server side will do the good job around mime-type)
+        xhr.setRequestHeader("Content-Type", 'application/octet-stream');
         xhr.send(file);
 
     },

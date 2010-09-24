@@ -17,7 +17,7 @@
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
-
+from types import UnicodeType
 import transaction
 from thread import allocate_lock
 from AccessControl import Unauthorized
@@ -50,6 +50,7 @@ class QuickUploadCapableFileFactory(object):
 
         context = aq_inner(self.context)
         charset = context.getCharset()
+        filename = name
         name = name.decode(charset)
         error = ''
         result = {}
@@ -82,8 +83,10 @@ class QuickUploadCapableFileFactory(object):
                 mutator(data, content_type=content_type)
                 # XXX when getting file through request.BODYFILE (XHR direct upload)
                 # the filename is not inside the file
+                # and the filename must be a string, not unicode
+                # otherwise Archetypes raise an error (so we use filename and not name)
                 if not obj.getFilename() :
-                    obj.setFilename(str(name))
+                    obj.setFilename(filename)
                 # XXX fix strange ATFile behavior with content_types
                 if obj.getContentType() != content_type :
                     primaryField.setContentType(obj, content_type)

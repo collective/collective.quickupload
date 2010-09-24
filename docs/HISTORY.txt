@@ -28,8 +28,7 @@ Changelog
   the content_type is not always good
   macadames 2010-09-17
 
-* transform file_name in str before using setFileName
-  fix some plone3 unicode bug
+* Don't use unicode in setFileName
   macadames 2010-09-24
 
 1.0.0

@@ -1,11 +1,19 @@
 Changelog
 =========
 
-1.0.2 SVN unreleased
---------------------
+1.0.2
+-----
 
 * IE7 css fixes (upload button was uggly)
   macadames 2010-09-22
+
+* fix content-type header with FireFox xhr upload
+  sometimes is missing
+  macadames 2010-09-24
+
+* don't use unicode in setFileName
+  because it break Archetypes File Field download (unicode decode error)
+  macadames 2010-09-24
 
 1.0.1
 -----

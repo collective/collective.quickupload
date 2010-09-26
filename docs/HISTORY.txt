@@ -4,7 +4,7 @@ Changelog
 1.0.2
 -----
 
-* IE7 css fixes (upload button was uggly)
+* IE7 css fixes upload button was uggly
   macadames 2010-09-22
 
 * fix content-type header with FireFox xhr upload
@@ -22,11 +22,11 @@ Changelog
 -----
 
 * fix set_id or check_id methods
-  now called on context, no more on aq_parent(context)
+  now called on context, no more on aq_parent(context) 
   macadames 2010-09-14
 
 * slow down the removing of progressBar
-  to see something even when Plone is too fast :-)
+  to see something even when Plone is too fast :-) 
   macadames 2010-09-15  
 
 * try to find the good content_type for uploaded files
@@ -43,7 +43,7 @@ Changelog
   macadames 2010-09-24
 
 * fix content-type header with FireFox xhr upload
- (sometimes is missing)
+  sometimes is missing
   macadames 2010-09-24
 
 1.0.0

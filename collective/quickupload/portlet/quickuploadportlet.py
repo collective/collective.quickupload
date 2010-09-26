@@ -74,6 +74,8 @@ class Assignment(base.Assignment):
         media = self.upload_media_type or 'files'
         if media == 'image' :
             return _('Images Quick Upload')
+        elif '*.' in media :
+            return _('Files Quick Upload')
         return _('%s Quick Upload' %media.capitalize())
 
 

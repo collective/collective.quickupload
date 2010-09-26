@@ -15,6 +15,9 @@ Changelog
   because it break Archetypes File Field download (unicode decode error)
   macadames 2010-09-24
 
+* minor fixes in medialabel for upload
+  macadames 2010-09-26
+
 1.0.1
 -----
 

@@ -121,6 +121,9 @@ class QuickUploadView(BrowserView):
         request = self.request
         session = request.get('SESSION', {})
         medialabel = session.get('mediaupload', request.get('mediaupload', 'files'))
+        # to improve
+        if '*.' in medialabel :
+            medialabel = ''
         if not medialabel :
             return _('Files Quick Upload')
         if medialabel == 'image' :

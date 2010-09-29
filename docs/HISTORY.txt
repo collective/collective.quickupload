@@ -1,6 +1,13 @@
 Changelog
 =========
 
+1.0.3 - SVN Unreleased
+----------------------
+
+* let an empty content_type when mimetype_registry return None as mimetype object.
+  will result in "application/octet-stream"
+  macadames 2010-09-29
+
 1.0.2
 -----
 

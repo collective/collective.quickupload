@@ -63,6 +63,7 @@ class QuickUploadCapableFileFactory(object):
         if not title :
             # try to split filenames because we don't want 
             # big titles without spaces
+            title = name.split('.')[0].replace('_',' ').replace('-',' ')
         else :
             upload_lock.acquire()
             transaction.begin()

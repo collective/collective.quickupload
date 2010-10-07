@@ -8,6 +8,10 @@ Changelog
   will result in "application/octet-stream"
   macadames 2010-09-29
 
+* use a specific interface in place of IFileFactory to avoid possible conflicts
+  with another products using the same interface
+  macadames and mroeder 2010-10-09
+
 1.0.2
 -----
 

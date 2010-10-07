@@ -11,7 +11,7 @@ from AccessControl import SecurityManagement
 from ZPublisher.HTTPRequest import HTTPRequest
 
 from zope.security.interfaces import Unauthorized
-from zope.filerepresentation.interfaces import IFileFactory
+from interfaces import IQuickUploadFileFactory
 from zope.component import getUtility
 
 from Products.CMFCore.utils import getToolByName
@@ -464,7 +464,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
             portal_type = ctr.findTypeName(file_name.lower(), '', '') or 'File'
         
         if file_data:
-            factory = IFileFactory(context)
+            factory = IQuickUploadFileFactory(context)
             logger.info("uploading file with flash: filename=%s, title=%s, content_type=%s, portal_type=%s" % \
                     (file_name, title, content_type, portal_type))                             
             
@@ -541,7 +541,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
             portal_type = ctr.findTypeName(file_name.lower(), '', '') or 'File'
         
         if file_data:
-            factory = IFileFactory(context)
+            factory = IQuickUploadFileFactory(context)
             logger.info("uploading file with %s : filename=%s, title=%s, content_type=%s, portal_type=%s" % \
                     (upload_with, file_name, title, content_type, portal_type))                             
             

@@ -27,7 +27,7 @@ from zope import interface
 from zope import component
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
-from zope.filerepresentation.interfaces import IFileFactory, IDirectoryFactory
+from interfaces import IQuickUploadFileFactory
 from zope.app.container.interfaces import INameChooser
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 
@@ -40,7 +40,7 @@ upload_lock = allocate_lock()
 
 
 class QuickUploadCapableFileFactory(object):
-    interface.implements(IFileFactory)
+    interface.implements(IQuickUploadFileFactory)
     component.adapts(IQuickUploadCapable)
 
     def __init__(self, context):

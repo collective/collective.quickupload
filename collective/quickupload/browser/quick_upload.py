@@ -581,6 +581,8 @@ class QuickUploadFile(QuickUploadAuthenticate):
         normalizer = getUtility(IIDNormalizer)
         chooser = INameChooser(context)
         newid = chooser.chooseName(normalizer.normalize(id), context)
+        # consolidation because it's different upon Plone versions     
+        newid = newid.replace('_','-').replace(' ','-').lower()
         if newid in context.objectIds() :
             return 0
         return 1

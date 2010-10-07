@@ -179,4 +179,5 @@ Thanks to :
 - Ramon Bartl (for some parts of code taken in collective.uploadify Plone product), 
 - Ronnie Garcia, Travis Nickels (for jquery.uploadify.js)
 - Gilles Lenfant David Pack and Christophe Combelles, Alter Way Solutions, for functional tests, ideas, and moral support.
+- Maik Roeder, for functional tests
 

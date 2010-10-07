@@ -12,6 +12,9 @@ Changelog
   with another products using the same interface
   macadames and mroeder 2010-10-09
 
+* files id consolidation
+  macadames and mroeder 2010-10-09
+
 1.0.2
 -----
 

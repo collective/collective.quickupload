@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.0.3 - SVN Unreleased
-----------------------
+1.0.3
+-----
 
 * let an empty content_type when mimetype_registry return None as mimetype object.
   will result in "application/octet-stream"
@@ -14,6 +14,7 @@ Changelog
 
 * files id consolidation
   macadames and mroeder 2010-10-09
+
 
 1.0.2
 -----

@@ -58,8 +58,8 @@ class QuickUploadCapableFileFactory(object):
         normalizer = component.getUtility(IIDNormalizer)
         chooser = INameChooser(self.context)
         newid = chooser.chooseName(normalizer.normalize(name), context)
-	# consolidation because it's different upon Plone versions     
-	newid = newid.replace('_','-').replace(' ','-').lower()
+        # consolidation because it's different upon Plone versions     
+        newid = newid.replace('_','-').replace(' ','-').lower()
         if not title :
             # try to split filenames because we don't want 
             # big titles without spaces

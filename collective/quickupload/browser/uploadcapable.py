@@ -66,6 +66,8 @@ class QuickUploadCapableFileFactory(object):
             # big titles without spaces
             title = name.split('.')[0].replace('_',' ').replace('-',' ')
         if newid in context.objectIds() :
+            # only here for flashupload method since a check_id is done 
+            # in standard uploader - see also XXX in quick_upload.py
             raise NameError, 'Object id %s always exist' %newid
         else :
             upload_lock.acquire()

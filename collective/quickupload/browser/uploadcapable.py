@@ -30,6 +30,7 @@ from zope.lifecycleevent import ObjectModifiedEvent
 from interfaces import IQuickUploadFileFactory
 from zope.app.container.interfaces import INameChooser
 from plone.i18n.normalizer.interfaces import IIDNormalizer
+from collective.quickupload import logger
 
 from Products.CMFPlone import utils as ploneutils
 from Products.CMFCore import utils as cmfutils
@@ -73,8 +74,10 @@ class QuickUploadCapableFileFactory(object):
                 error = u'serverErrorNoPermission'
             except ConflictError : 
                 error = u'serverErrorZODBConflict'
-            except :
+            except Exception, e:
                 error = u'serverError'
+                logger.exception(e)
+                
             if not error :
                 obj = getattr(context, newid)
                 primaryField = obj.getPrimaryField()

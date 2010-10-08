@@ -77,6 +77,7 @@ class QuickUploadCapableFileFactory(object):
             except Unauthorized : 
                 error = u'serverErrorNoPermission'
             except ConflictError : 
+                # rare with xhr upload / happens sometimes with flashupload
                 error = u'serverErrorZODBConflict'
             except Exception, e:
                 error = u'serverError'
@@ -84,19 +85,28 @@ class QuickUploadCapableFileFactory(object):
                 
             if not error :
                 obj = getattr(context, newid)
-                primaryField = obj.getPrimaryField()
-                mutator = primaryField.getMutator(obj)
-                mutator(data, content_type=content_type)
-                # XXX when getting file through request.BODYFILE (XHR direct upload)
-                # the filename is not inside the file
-                # and the filename must be a string, not unicode
-                # otherwise Archetypes raise an error (so we use filename and not name)
-                if not obj.getFilename() :
-                    obj.setFilename(filename)
-                # XXX fix strange ATFile behavior with content_types
-                if obj.getContentType() != content_type :
-                    primaryField.setContentType(obj, content_type)
-                obj.reindexObject()
+                if obj :
+                    primaryField = obj.getPrimaryField()
+                    if primaryField is not None:
+                        mutator = primaryField.getMutator(obj)
+                        mutator(data, content_type=content_type)
+                        # XXX when getting file through request.BODYFILE (XHR direct upload)
+                        # the filename is not inside the file
+                        # and the filename must be a string, not unicode
+                        # otherwise Archetypes raise an error (so we use filename and not name)
+                        if not obj.getFilename() :
+                            obj.setFilename(filename)
+                        # XXX fix strange ATFile behavior with content_types
+                        if obj.getContentType() != content_type :
+                            primaryField.setContentType(obj, content_type)
+                        obj.reindexObject()
+                    else :
+                        # some products remove the 'primary' attribute on ATFile or ATImage (which is very bad)
+                        error = u'serverError'
+                        logger.info("An error happens : impossible to get the primary field for file %s, rawdata can't be created" %obj.absolute_url())
+                else:
+                    error = u'serverError'
+                    logger.info("An error happens with setId from filename, the file has been created with a bad id, can't find %s" %newid)
             transaction.commit()
             upload_lock.release()
         

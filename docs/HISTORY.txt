@@ -8,12 +8,15 @@ Changelog
   will result in "application/octet-stream"
   macadames 2010-09-29
 
-* use a specific interface in place of IFileFactory to avoid possible conflicts
-  with another products using the same interface
-  macadames and mroeder 2010-10-09
+* use a specific interface IQuickUploadFactory in place of IFileFactory
+  to avoid possible conflicts with another products using the same interface
+  macadames and mroeder 2010-10-07
 
 * files id consolidation
-  macadames and mroeder 2010-10-09
+  macadames and mroeder 2010-10-07
+
+* log some rare exceptions (bad id, no primary field ...)
+  macadames and mroeder 2010-10-08
 
 
 1.0.2

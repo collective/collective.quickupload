@@ -50,3 +50,35 @@ Change the property size_limit
     >>> self.browser.open('http://nohost/plone/@@quick_upload')  
     >>> "'sizeLimit'     : '204800'" in self.browser.contents
     True
+
+Test template depending on request
+----------------------------------
+
+if mediaupload is set in request the upload javascript 
+configuration and the label could change
+
+First disable flashupload
+    >>> qup_prefs.use_flashupload = False
+
+Get the view with mediaupload = audio,
+The allowed extensions must be restricted to audio mime types
+
+    >>> self.browser.open('http://nohost/plone/@@quick_upload?mediaupload=audio') 
+    >>> "allowedExtensions: ['mp3', 'wav', 'ogg', 'mp4', 'wma', 'aif']" in self.browser.contents
+    True
+
+Get the view with mediaupload = image,
+The allowed extensions must be restricted to image mime types
+
+    >>> self.browser.open('http://nohost/plone/@@quick_upload?mediaupload=image') 
+    >>> "allowedExtensions: ['jpg', 'jpeg', 'gif', 'png']" in self.browser.contents
+    True      
+
+If typeupload is set to 'Image' portal_type
+The allowed extensions must also be restricted to image mime types
+even when mediaupload is not set
+
+    >>> self.browser.open('http://nohost/plone/@@quick_upload?typeupload=Image') 
+    >>> "allowedExtensions: ['jpg', 'jpeg', 'gif', 'png']" in self.browser.contents
+    True  
+

@@ -24,6 +24,9 @@ Changelog
   resolve http://plone.org/products/collective.quickupload/issues/5
   macadames and kayeva 2010-10-10
 
+* improve doctests (with last bugfixes on typeupload/mediaupload)
+  macadames 2010-10-10
+
 1.0.2
 -----
 

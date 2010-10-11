@@ -371,14 +371,14 @@ class QuickUploadInit(BrowserView):
         mediaupload = session.get('mediaupload', request.get('mediaupload', ''))  
         typeupload = session.get('typeupload', request.get('typeupload', ''))
         settings['typeupload'] = typeupload
-        if mediaupload :
-            ul_content_types_infos = self.ul_content_types_infos(mediaupload)
-        elif typeupload :
+        if typeupload :
             imageTypes = _listTypesForInterface(context, IImageContent)
             if typeupload in imageTypes :
                 ul_content_types_infos = self.ul_content_types_infos('image')
+            else :
+                ul_content_types_infos = self.ul_content_types_infos(mediaupload)
         else :
-            ul_content_types_infos = ('*.*;', [], '')
+            ul_content_types_infos = self.ul_content_types_infos(mediaupload)
         
         settings['ul_file_extensions'] = ul_content_types_infos[0]
         settings['ul_file_extensions_list'] = str(ul_content_types_infos[1])

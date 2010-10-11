@@ -116,6 +116,8 @@ Compliance
 
 - Plone 3.3.x, Plone4
 
+Plone3 support will stop with 1.0.3
+
 
 About fileuploader.js fork
 ==========================

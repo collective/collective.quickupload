@@ -10,14 +10,19 @@ Changelog
 
 * use a specific interface IQuickUploadFactory in place of IFileFactory
   to avoid possible conflicts with another products using the same interface
+  http://plone.org/products/collective.quickupload/issues/4
   macadames and mroeder 2010-10-07
 
 * files id consolidation
   macadames and mroeder 2010-10-07
 
 * log some rare exceptions (bad id, no primary field ...)
+  resolve http://plone.org/products/collective.quickupload/issues/6
   macadames and mroeder 2010-10-08
 
+* fix error in quick_upload.py when typeupload was defined without mediaupload
+  resolve http://plone.org/products/collective.quickupload/issues/5
+  macadames and kayeva 2010-10-10
 
 1.0.2
 -----

@@ -11,7 +11,6 @@ from zope.app.component.hooks import getSite
 from Products.ATContentTypes.interfaces import IFileContent, IImageContent
 from Products.Archetypes.interfaces.base import IBaseFolder
 from Products.CMFCore.utils import getToolByName
-from plone.app.portlets import PloneMessageFactory as _
 
 def _listTypesForInterface(portal, interface):
     """
@@ -50,7 +49,7 @@ def _infoDictForType(portal, ptype ):
     title = type_info.Title()
     product = type_info.product
     type_ui_info = ("%s (portal type: %s, product: %s)" %
-                    (_(title, default=title), ptype, product))
+                    (portal.translate(title, default=title), ptype, product))
     return {
         'portal_type': ptype,
         'type_ui_info': type_ui_info

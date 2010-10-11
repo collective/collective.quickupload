@@ -93,15 +93,14 @@ def _listTypesForInterface(context, interface):
     @return: ['Image', 'News Item']
     """
     archetype_tool = getToolByName(context, 'archetype_tool')
-    all_types = archetype_tool.listRegisteredTypes(inProject=True)
-    # zope3 Interface
+    #plone4
     try :
-        all_types = [tipe['portal_type'] for tipe in all_types
-                      if interface.implementedBy(tipe['klass'])]
-    # zope2 interface
+        all_types = [tipe.getId() for tipe in archetype_tool.listPortalTypesWithInterfaces([interface])]
+    #plone3
     except :
+        all_types = archetype_tool.listRegisteredTypes(inProject=True)
         all_types = [tipe['portal_type'] for tipe in all_types
-                      if interface.isImplementedByInstancesOf(tipe['klass'])]
+                     if interface.isImplementedByInstancesOf(tipe['klass'])]
     return dict.fromkeys(all_types).keys() 
 
 class QuickUploadView(BrowserView):

@@ -27,6 +27,9 @@ Changelog
 * improve doctests (with last bugfixes on typeupload/mediaupload)
   macadames 2010-10-10
 
+* fix doctests in Plone4 
+  macadames 2010-10-10
+
 1.0.2
 -----
 

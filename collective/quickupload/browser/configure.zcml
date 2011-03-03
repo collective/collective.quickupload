@@ -4,6 +4,8 @@
     xmlns:five="http://namespaces.zope.org/five"
     i18n_domain="collective.quickupload">
 
+    <include package="Products.CMFCore" />
+
   <adapter factory=".uploadcapable.QuickUploadCapableFileFactory" />
 
   <class class="Products.ATContentTypes.content.folder.ATFolder">

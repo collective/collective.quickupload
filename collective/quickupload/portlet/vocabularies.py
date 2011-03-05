@@ -2,17 +2,18 @@
 
 """ Vocabularies used by control panel or widget
 """
-try:
-    from zope.app.schema.vocabulary import IVocabularyFactory
-except ImportError:
-    from zope.schema.interfaces import IVocabularyFactory
-    
+
 from zope.interface import implements
+from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
-from zope.app.component.hooks import getSite
+try:
+    # Zope 2.13
+    from zope.component.hooks import getSite
+except ImportError:
+    # Zope 2.12
+    from zope.site.hooks import getSite
 from Products.ATContentTypes.interfaces import IFileContent, IImageContent
-from Products.Archetypes.interfaces.base import IBaseFolder
 from Products.CMFCore.utils import getToolByName
 
 def _listTypesForInterface(portal, interface):
@@ -24,7 +25,6 @@ def _listTypesForInterface(portal, interface):
     """
  
     archetype_tool = getToolByName(portal, 'archetype_tool')
-    portal_types = getToolByName(portal, 'portal_types')
     
     #plone4
     try :

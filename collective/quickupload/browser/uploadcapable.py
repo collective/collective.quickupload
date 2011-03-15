@@ -58,31 +58,35 @@ class QuickUploadCapableFileFactory(object):
         result['success'] = None
         normalizer = component.getUtility(IIDNormalizer)
         chooser = INameChooser(self.context)
-        newid = chooser.chooseName(normalizer.normalize(name), context)
-        # consolidation because it's different upon Plone versions     
+
+        # normalize all filename but dots
+        normalized = ".".join([normalizer.normalize(n) for n in name.split('.')])
+        newid = chooser.chooseName(normalized, context)
+
+        # consolidation because it's different upon Plone versions
         newid = newid.replace('_','-').replace(' ','-').lower()
         if not title :
-            # try to split filenames because we don't want 
+            # try to split filenames because we don't want
             # big titles without spaces
             title = name.split('.')[0].replace('_',' ').replace('-',' ')
         if newid in context.objectIds() :
-            # only here for flashupload method since a check_id is done 
+            # only here for flashupload method since a check_id is done
             # in standard uploader - see also XXX in quick_upload.py
-            raise NameError, 'Object id %s always exist' %newid
+            raise NameError, 'Object id %s already exists' %newid
         else :
             upload_lock.acquire()
             transaction.begin()
             try:
                 context.invokeFactory(type_name=portal_type, id=newid, title=title)
-            except Unauthorized : 
+            except Unauthorized :
                 error = u'serverErrorNoPermission'
-            except ConflictError : 
+            except ConflictError :
                 # rare with xhr upload / happens sometimes with flashupload
                 error = u'serverErrorZODBConflict'
             except Exception, e:
                 error = u'serverError'
                 logger.exception(e)
-                
+
             if not error :
                 obj = getattr(context, newid)
                 if obj :
@@ -109,7 +113,7 @@ class QuickUploadCapableFileFactory(object):
                     logger.info("An error happens with setId from filename, the file has been created with a bad id, can't find %s" %newid)
             transaction.commit()
             upload_lock.release()
-        
+
         result['error'] = error
         if not error :
             result['success'] = obj

@@ -1,6 +1,12 @@
 Changelog
 =========
 
+* Keep dots in filename during id normalization.
+  [thomasdesvenain]
+
+* Plone 4.1 compatibility.
+  [vincentfretin]
+
 1.0.3
 -----
 
@@ -27,7 +33,7 @@ Changelog
 * improve doctests (with last bugfixes on typeupload/mediaupload)
   macadames 2010-10-10
 
-* fix doctests in Plone4 
+* fix doctests in Plone4
   macadames 2010-10-10
 
 1.0.2
@@ -51,12 +57,12 @@ Changelog
 -----
 
 * fix set_id or check_id methods
-  now called on context, no more on aq_parent(context) 
+  now called on context, no more on aq_parent(context)
   macadames 2010-09-14
 
 * slow down the removing of progressBar
-  to see something even when Plone is too fast :-) 
-  macadames 2010-09-15  
+  to see something even when Plone is too fast :-)
+  macadames 2010-09-15
 
 * try to find the good content_type for uploaded files
   using plone mime_types_registry when
@@ -93,7 +99,7 @@ Changelog
   macadames - 2010/09/02
 
 - many improvements around fileuploader.js (fork) :
-  autoUpload option added 
+  autoUpload option added
   onAfterSelect option added
   refactoristion with these new options
   macadames - 2010/09/02

@@ -1,6 +1,9 @@
 Changelog
 =========
 
+* Mimetype detection works with blobs.
+  [thomasdesvenain]
+
 * Keep dots in filename during id normalization.
   [thomasdesvenain]
 

@@ -93,16 +93,14 @@ class QuickUploadCapableFileFactory(object):
                     primaryField = obj.getPrimaryField()
                     if primaryField is not None:
                         mutator = primaryField.getMutator(obj)
-                        mutator(data, content_type=content_type)
+                        # mimetype arg works with blob files
+                        mutator(data, content_type=content_type, mimetype=content_type)
                         # XXX when getting file through request.BODYFILE (XHR direct upload)
                         # the filename is not inside the file
                         # and the filename must be a string, not unicode
                         # otherwise Archetypes raise an error (so we use filename and not name)
                         if not obj.getFilename() :
                             obj.setFilename(filename)
-                        # XXX fix strange ATFile behavior with content_types
-                        if obj.getContentType() != content_type :
-                            primaryField.setContentType(obj, content_type)
                         obj.reindexObject()
                     else :
                         # some products remove the 'primary' attribute on ATFile or ATImage (which is very bad)

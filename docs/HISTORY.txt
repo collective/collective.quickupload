@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.1.0 (Unreleased)
+1.1.0 (2011-04-06)
 ------------------
 
 * Mimetype detection works with blobs (plone 4.0+ files).

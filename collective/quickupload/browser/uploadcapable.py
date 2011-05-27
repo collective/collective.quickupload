@@ -36,6 +36,7 @@ from Products.CMFPlone import utils as ploneutils
 from Products.CMFCore import utils as cmfutils
 
 from interfaces import IQuickUploadCapable
+from Products.Archetypes.event import ObjectInitializedEvent
 
 upload_lock = allocate_lock()
 
@@ -102,6 +103,7 @@ class QuickUploadCapableFileFactory(object):
                         if not obj.getFilename() :
                             obj.setFilename(filename)
                         obj.reindexObject()
+                        ObjectInitializedEvent(obj)
                     else :
                         # some products remove the 'primary' attribute on ATFile or ATImage (which is very bad)
                         error = u'serverError'

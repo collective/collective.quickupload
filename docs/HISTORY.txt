@@ -4,7 +4,9 @@ Changelog
 1.1.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+* Notify ObjectInializedEvent at upload.
+  Fixes http://plone.org/products/collective.quickupload/issues/7
+  [thomasdesvenain, thanks to lars.eisbaer]
 
 
 1.1.0 (2011-04-06)

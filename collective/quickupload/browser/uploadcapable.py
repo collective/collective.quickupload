@@ -18,8 +18,9 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 
 from types import UnicodeType
-import transaction
 from thread import allocate_lock
+
+import transaction
 from AccessControl import Unauthorized
 from ZODB.POSException import ConflictError
 from Acquisition import aq_inner
@@ -27,19 +28,19 @@ from zope import interface
 from zope import component
 from zope.event import notify
 from zope.lifecycleevent import ObjectModifiedEvent
-from interfaces import IQuickUploadFileFactory
 from zope.app.container.interfaces import INameChooser
-from plone.i18n.normalizer.interfaces import IIDNormalizer
-from collective.quickupload import logger
 
+from plone.i18n.normalizer.interfaces import IIDNormalizer
+from Products.Archetypes.event import ObjectInitializedEvent
 from Products.CMFPlone import utils as ploneutils
 from Products.CMFCore import utils as cmfutils
 
-from interfaces import IQuickUploadCapable
-from Products.Archetypes.event import ObjectInitializedEvent
+from collective.quickupload import logger
+from collective.quickupload.browser.interfaces import (
+    IQuickUploadCapable, IQuickUploadFileFactory)
+
 
 upload_lock = allocate_lock()
-
 
 class QuickUploadCapableFileFactory(object):
     interface.implements(IQuickUploadFileFactory)
@@ -103,7 +104,7 @@ class QuickUploadCapableFileFactory(object):
                         if not obj.getFilename() :
                             obj.setFilename(filename)
                         obj.reindexObject()
-                        ObjectInitializedEvent(obj)
+                        notify(ObjectInitializedEvent(obj))
                     else :
                         # some products remove the 'primary' attribute on ATFile or ATImage (which is very bad)
                         error = u'serverError'

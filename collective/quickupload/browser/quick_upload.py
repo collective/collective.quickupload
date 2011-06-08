@@ -460,7 +460,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
         
         if not portal_type :
             ctr = getToolByName(context, 'content_type_registry')
-            portal_type = ctr.findTypeName(file_name.lower(), '', '') or 'File'
+            portal_type = ctr.findTypeName(file_name.lower(), content_type, '') or 'File'
         
         if file_data:
             factory = IQuickUploadFileFactory(context)
@@ -537,7 +537,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
         
         if not portal_type :
             ctr = getToolByName(context, 'content_type_registry')
-            portal_type = ctr.findTypeName(file_name.lower(), '', '') or 'File'
+            portal_type = ctr.findTypeName(file_name.lower(), content_type, '') or 'File'
         
         if file_data:
             factory = IQuickUploadFileFactory(context)

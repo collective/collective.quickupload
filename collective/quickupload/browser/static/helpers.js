@@ -6,11 +6,27 @@
 
 var PloneQuickUpload = {};
     
-PloneQuickUpload.addUploadFields = function(uploader, domelement, file, id, fillTitles) {
+PloneQuickUpload.addUploadFields = function(uploader, domelement, file, id, fillTitles, fillDescriptions) {
+    var blocFile;
+    if (fillTitles || fillDescriptions)  {
+        blocFile = uploader._getItemByFileId(id);
+        if (typeof id == 'string') id = parseInt(id.replace('qq-upload-handler-iframe',''));
+    }
+    if (fillDescriptions)  {
+        var labelfiledescription = jQuery('#uploadify_label_file_description').val();
+        jQuery('.qq-upload-cancel', blocFile).after('\
+                  <div class="uploadField">\
+                      <label>' + labelfiledescription + '&nbsp;:&nbsp;</label> \
+                      <textarea rows="2" \
+                             class="file_description_field" \
+                             id="description_' + id + '" \
+                             name="description" \
+                             value="" />\
+                  </div>\
+                   ')
+    }
     if (fillTitles)  {
         var labelfiletitle = jQuery('#uploadify_label_file_title').val();
-        var blocFile = uploader._getItemByFileId(id);
-        if (typeof id == 'string') id = parseInt(id.replace('qq-upload-handler-iframe',''));
         jQuery('.qq-upload-cancel', blocFile).after('\
                   <div class="uploadField">\
                       <label>' + labelfiletitle + '&nbsp;:&nbsp;</label> \
@@ -45,7 +61,11 @@ PloneQuickUpload.sendDataAndUpload = function(uploader, domelement, typeupload) 
             if (fillTitles)  {
                 file_title = jQuery('.file_title_field', fileContainer).val();
             }
-            uploader._queueUpload(id, {'title': file_title, 'typeupload' : typeupload});
+            var file_description = '';
+            if (fillDescriptions)  {
+                file_description = jQuery('.file_description_field', fileContainer).val();
+            }
+            uploader._queueUpload(id, {'title': file_title, 'description': file_description, 'typeupload' : typeupload});
         }
         // if file is null for any reason jq block is no more here
         else missing++;

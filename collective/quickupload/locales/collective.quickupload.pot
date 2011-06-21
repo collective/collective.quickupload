@@ -202,7 +202,7 @@ msgstr ""
 msgid "title_auto_upload"
 msgstr ""
 
-#. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles with this option set to True."
+#. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
 msgid "description_auto_upload"
 msgstr ""
 
@@ -212,6 +212,14 @@ msgstr ""
 
 #. Default: "If checked, you can fill the files titles before upload. Uncheck if you don't need titles."
 msgid "description_fill_titles"
+msgstr ""
+
+#. Default: "Fill description before upload"
+msgid "title_fill_descriptions"
+msgstr ""
+
+#. Default: "If checked, you can fill the files descriptions before upload. Uncheck if you don't need descriptions."
+msgid "description_fill_descriptions"
 msgstr ""
 
 #. Default: "Size limit"

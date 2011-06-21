@@ -97,6 +97,12 @@ THE SOFTWARE.
   height: 13px;
 }
 
+.uploadField textarea {
+  font-size: 10px;
+  width: 100%;
+  float: left;
+}
+
 .uploadifyQueue {
   clear: both;
 }

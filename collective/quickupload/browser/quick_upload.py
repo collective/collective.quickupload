@@ -139,10 +139,11 @@ class QuickUploadView(BrowserView):
 
 XHR_UPLOAD_JS = """       
     var fillTitles = %(ul_fill_titles)s;
+    var fillDescriptions = %(ul_fill_descriptions)s;
     var auto = %(ul_auto_upload)s;
     addUploadFields_%(ul_id)s = function(file, id) {
         var uploader = xhr_%(ul_id)s;
-        PloneQuickUpload.addUploadFields(uploader, uploader._element, file, id, fillTitles);
+        PloneQuickUpload.addUploadFields(uploader, uploader._element, file, id, fillTitles, fillDescriptions);
     }
     sendDataAndUpload_%(ul_id)s = function() {
         var uploader = xhr_%(ul_id)s;
@@ -194,23 +195,37 @@ XHR_UPLOAD_JS = """
 
 FLASH_UPLOAD_JS = """
     var fillTitles = %(ul_fill_titles)s;
+    var fillDescriptions = %(ul_fill_descriptions)s;
     var autoUpload = %(ul_auto_upload)s;
     clearQueue_%(ul_id)s = function() {
         jQuery('#%(ul_id)s').uploadifyClearQueue();
     }
     addUploadifyFields_%(ul_id)s = function(event, data ) {
-        if (fillTitles && !autoUpload)  {
+        if ((fillTitles || fillDescriptions) && !autoUpload)  {
             var labelfiletitle = jQuery('#uploadify_label_file_title').val();
+            var labelfiledescription = jQuery('#uploadify_label_file_description').val();
             jQuery('#%(ul_id)sQueue .uploadifyQueueItem').each(function() {
                 ID = jQuery(this).attr('id').replace('%(ul_id)s','');
                 if (!jQuery('.uploadField' ,this).length) {
                   jQuery('.cancel' ,this).after('\
-                      <div class="uploadField">\
-                          <label>' + labelfiletitle + ' : </label> \
                           <input type="hidden" \
                                  class="file_id_field" \
                                  name="file_id" \
                                  value ="'  + ID + '" /> \
+                  ');            
+                  if (fillDescriptions) jQuery('.cancel' ,this).after('\
+                      <div class="uploadField">\
+                          <label>' + labelfiledescription + ' : </label> \
+                          <textarea rows="2" \
+                                 class="file_description_field" \
+                                 id="description_' + ID + '" \
+                                 name="description" \
+                                 value="" />\
+                      </div>\
+                  ');            
+                  if (fillTitles) jQuery('.cancel' ,this).after('\
+                      <div class="uploadField">\
+                          <label>' + labelfiletitle + ' : </label> \
                           <input type="text" \
                                  class="file_title_field" \
                                  id="title_' + ID + '" \
@@ -239,6 +254,9 @@ FLASH_UPLOAD_JS = """
             ID = jQuery('.file_id_field',this).val();
             if (fillTitles && !autoUpload) {
                 filesData['title'] = jQuery('.file_title_field',this).val();
+            }
+            if (fillDescriptions && !autoUpload) {
+                filesData['description'] = jQuery('.file_description_field',this).val();
             }
             jQuery('#%(ul_id)s').uploadifySettings('scriptData', filesData);     
             jQuery('#%(ul_id)s').uploadifyUpload(ID);       
@@ -344,6 +362,7 @@ class QuickUploadInit(BrowserView):
             physical_path          = "/".join(context.getPhysicalPath()),
             ul_id                  = self.uploader_id,
             ul_fill_titles         = self.qup_prefs.fill_titles and 'true' or 'false',
+            ul_fill_descriptions         = self.qup_prefs.fill_descriptions and 'true' or 'false',
             ul_auto_upload         = self.qup_prefs.auto_upload and 'true' or 'false',
             ul_size_limit          = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '',
             ul_xhr_size_limit      = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '0',
@@ -457,6 +476,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
         content_type = mimetypes.guess_type(file_name)[0]
         portal_type = request.form.get('typeupload', '')
         title =  request.form.get("title", None)
+        description =  request.form.get("description", None)
         
         if not portal_type :
             ctr = getToolByName(context, 'content_type_registry')
@@ -464,11 +484,11 @@ class QuickUploadFile(QuickUploadAuthenticate):
         
         if file_data:
             factory = IQuickUploadFileFactory(context)
-            logger.info("uploading file with flash: filename=%s, title=%s, content_type=%s, portal_type=%s" % \
-                    (file_name, title, content_type, portal_type))                             
+            logger.info("uploading file with flash: filename=%s, title=%s, description=%s, content_type=%s, portal_type=%s" % \
+                    (file_name, title, description, content_type, portal_type))                             
             
             try :
-                f = factory(file_name, title, content_type, file_data, portal_type)
+                f = factory(file_name, title, description, content_type, file_data, portal_type)
             except :
                 # XXX todo : improve errors handlers for flashupload
                 raise
@@ -534,6 +554,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
         
         portal_type = getDataFromAllRequests(request, 'typeupload') or ''
         title =  getDataFromAllRequests(request, 'title') or ''
+        description =  getDataFromAllRequests(request, 'description') or ''
         
         if not portal_type :
             ctr = getToolByName(context, 'content_type_registry')
@@ -541,11 +562,11 @@ class QuickUploadFile(QuickUploadAuthenticate):
         
         if file_data:
             factory = IQuickUploadFileFactory(context)
-            logger.info("uploading file with %s : filename=%s, title=%s, content_type=%s, portal_type=%s" % \
-                    (upload_with, file_name, title, content_type, portal_type))                             
+            logger.info("uploading file with %s : filename=%s, title=%s, description=%s, content_type=%s, portal_type=%s" % \
+                    (upload_with, file_name, title, description, content_type, portal_type))                             
             
             try :
-                f = factory(file_name, title, content_type, file_data, portal_type)
+                f = factory(file_name, title, description, content_type, file_data, portal_type)
             except :
                 return json.dumps({u'error': u'serverError'})
             

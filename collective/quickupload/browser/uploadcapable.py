@@ -49,7 +49,7 @@ class QuickUploadCapableFileFactory(object):
     def __init__(self, context):
         self.context = aq_inner(context)
 
-    def __call__(self, name, title, content_type, data, portal_type):
+    def __call__(self, name, title, description, content_type, data, portal_type):
 
         context = aq_inner(self.context)
         charset = context.getCharset()
@@ -79,7 +79,7 @@ class QuickUploadCapableFileFactory(object):
             upload_lock.acquire()
             transaction.begin()
             try:
-                context.invokeFactory(type_name=portal_type, id=newid, title=title)
+                context.invokeFactory(type_name=portal_type, id=newid, title=title, description=description)
             except Unauthorized :
                 error = u'serverErrorNoPermission'
             except ConflictError :

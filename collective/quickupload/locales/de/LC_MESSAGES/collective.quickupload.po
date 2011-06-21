@@ -202,9 +202,9 @@ msgstr "Standardmäßig wird nur JavaScript zum Hochladen verwendet. Aktivieren 
 msgid "title_auto_upload"
 msgstr "Automatisch nach Auswahl hochladen"
 
-#. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles with this option set to True."
+#. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
 msgid "description_auto_upload"
-msgstr "Auswählen, wenn die Dateien sofort nach dem Auswählen hochgeladen werden sollen. Bitte beachten, dass in diesem Fall keine Titel vergeben werden können."
+msgstr "Auswählen, wenn die Dateien sofort nach dem Auswählen hochgeladen werden sollen. Bitte beachten, dass in diesem Fall keine Titel oder Beschreibung vergeben werden können."
 
 #. Default: "Fill title before upload"
 msgid "title_fill_titles"
@@ -213,6 +213,14 @@ msgstr "Geben Sie einen Titel vor dem Hochladen ein"
 #. Default: "If checked, you can fill the files titles before upload. Uncheck if you don't need titles."
 msgid "description_fill_titles"
 msgstr "Wenn diese Option aktiviert ist, können Sie Titel vor dem Hochladen vergeben. Deaktivieren Sie diese Option, wenn Sie keine Titel brauchen."
+
+#. Default: "Fill description before upload"
+msgid "title_fill_descriptions"
+msgstr "Geben Sie einen Beschreibung vor dem Hochladen ein"
+
+#. Default: "If checked, you can fill the files descriptions before upload. Uncheck if you don't need descriptions."
+msgid "description_fill_descriptions"
+msgstr "Wenn diese Option aktiviert ist, können Sie Beschreibung vor dem Hochladen vergeben. Deaktivieren Sie diese Option, wenn Sie keine Beschreibung brauchen."
 
 #. Default: "Size limit"
 msgid "title_size_limit"

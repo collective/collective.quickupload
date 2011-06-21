@@ -27,6 +27,10 @@
              id="uploadify_label_file_title"
              i18n:domain="plone"
              i18n:attributes="value Title" />
+      <input type="hidden"
+             id="uploadify_label_file_description"
+             i18n:domain="plone"
+             i18n:attributes="value Description" />
       <div class="uploadifybuttons">
         <input type="button" 
                id="uploadify-upload"

@@ -205,9 +205,9 @@ msgstr "Par défaut, le script d'envoi de fichiers est en pur javascript. Sélec
 msgid "title_auto_upload"
 msgstr "Envoi direct sur sélection"
 
-#. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles with this option set to True."
+#. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
 msgid "description_auto_upload"
-msgstr "Sélectionner si vous voulez démarrer l'envoi de fichiers dés la sélection, sans avoir à soumettre le formulaire. Notez que vous ne pouvez pas choisir les titres de fichiers avec cette option sélectionnée."
+msgstr "Sélectionner si vous voulez démarrer l'envoi de fichiers dés la sélection, sans avoir à soumettre le formulaire. Notez que vous ne pouvez pas choisir les titres ou descriptions de fichiers avec cette option sélectionnée."
 
 #. Default: "Fill title before upload"
 msgid "title_fill_titles"
@@ -216,6 +216,14 @@ msgstr "Saisir les titres avant l'envoi"
 #. Default: "If checked, you can fill the files titles before upload. Uncheck if you don't need titles."
 msgid "description_fill_titles"
 msgstr "Si sélectionné, vous pouvez saisir les titres de fichiers avant leur envoi. Décochez, si vous n'avez pas besoin de titres."
+
+#. Default: "Fill description before upload"
+msgid "title_fill_descriptions"
+msgstr "Saisir les descriptions avant l'envoi"
+
+#. Default: "If checked, you can fill the files descriptions before upload. Uncheck if you don't need descriptions."
+msgid "description_fill_descriptions"
+msgstr "Si sélectionné, vous pouvez saisir les descriptions de fichiers avant leur envoi. Décochez, si vous n'avez pas besoin de descriptions."
 
 #. Default: "Size limit"
 msgid "title_size_limit"

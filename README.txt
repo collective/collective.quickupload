@@ -55,7 +55,7 @@ collective.quickupload.browser
     - the upload form can be viewed  only for objects providing IQuickUploadCapable, by default ATFolder, ATBTreeFolder and Plone Site
       are implementing IQuickUploadCapable
   
-    - the quickupload form allows to fill title for each uploaded file (see control panel below)
+    - the quickupload form allows to fill title and description for each uploaded file (see control panel below)
   
     - the quickupload view log and returns errors to the form (unauthorized, id always exist, type not allowed, etc ... )
   
@@ -79,6 +79,8 @@ collective.quickupload.browser
     - use flashupload (yes/no), default = no
 
     - fill file's titles in form (yes/no), default = yes
+
+    - fill file's descriptions in form (yes/no), default = no
 
     - automatic upload on select (yes/no), default=no
     

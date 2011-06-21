@@ -10,9 +10,10 @@ Changelog
 * Pass content_type to the ContentTypeRegistry
   Fixes http://plone.org/products/collective.quickupload/issues/13/
   [thomasw]
- 
 * Added Brazilian Portuguese translation
   [erico_andrei]
+* Quickupload form allows to fill description for each uploaded file
+  [regisrouet]
 
 
 1.1.0 (2011-04-06)

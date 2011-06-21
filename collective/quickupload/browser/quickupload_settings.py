@@ -24,7 +24,7 @@ class IQuickUploadControlPanel(Interface):
                            required=False)    
     auto_upload = Bool(title=_(u"title_auto_upload", default=u"Automatic upload on select"),
                                  description=_(u"description_auto_upload", default=u"Check if you want to start the files upload on select, without submit the form. "
-                                                "Note that you cannot choose file titles "
+                                                "Note that you cannot choose file titles or descriptions "
                                                 "with this option set to True."),
                                  default=False,
                                  required=False) 
@@ -32,6 +32,12 @@ class IQuickUploadControlPanel(Interface):
                                  description=_(u"description_fill_titles", default=u"If checked, you can fill the files titles "
                                                 "before upload. Uncheck if you don't need titles."),
                                  default=True,
+                                 required=False) 
+
+    fill_descriptions = Bool(title=_(u"title_fill_descriptions", default=u"Fill description before upload"),
+                                 description=_(u"description_fill_descriptions", default=u"If checked, you can fill the files descriptions "
+                                                "before upload. Uncheck if you don't need descriptions."),
+                                 default=False,
                                  required=False) 
 
     size_limit = Int( title=_(u"title_size_limit", default=u"Size limit"),
@@ -77,6 +83,14 @@ class QuickUploadControlPanelAdapter(SchemaAdapterBase):
         self.quProps._updateProperty('fill_titles', value)
 
     fill_titles = property(get_fill_titles, set_fill_titles)
+
+    def get_fill_descriptions(self):
+        return self.quProps.getProperty('fill_descriptions')
+        
+    def set_fill_descriptions(self, value):
+        self.quProps._updateProperty('fill_descriptions', value)
+
+    fill_descriptions = property(get_fill_descriptions, set_fill_descriptions)
 
     def get_size_limit(self):
         return self.quProps.getProperty('size_limit')

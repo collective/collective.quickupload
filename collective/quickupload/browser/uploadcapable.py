@@ -77,43 +77,45 @@ class QuickUploadCapableFileFactory(object):
             raise NameError, 'Object id %s already exists' %newid
         else :
             upload_lock.acquire()
-            transaction.begin()
             try:
-                context.invokeFactory(type_name=portal_type, id=newid, title=title, description=description)
-            except Unauthorized :
-                error = u'serverErrorNoPermission'
-            except ConflictError :
-                # rare with xhr upload / happens sometimes with flashupload
-                error = u'serverErrorZODBConflict'
-            except Exception, e:
-                error = u'serverError'
-                logger.exception(e)
-
-            if not error :
-                obj = getattr(context, newid)
-                if obj :
-                    primaryField = obj.getPrimaryField()
-                    if primaryField is not None:
-                        mutator = primaryField.getMutator(obj)
-                        # mimetype arg works with blob files
-                        mutator(data, content_type=content_type, mimetype=content_type)
-                        # XXX when getting file through request.BODYFILE (XHR direct upload)
-                        # the filename is not inside the file
-                        # and the filename must be a string, not unicode
-                        # otherwise Archetypes raise an error (so we use filename and not name)
-                        if not obj.getFilename() :
-                            obj.setFilename(filename)
-                        obj.reindexObject()
-                        notify(ObjectInitializedEvent(obj))
-                    else :
-                        # some products remove the 'primary' attribute on ATFile or ATImage (which is very bad)
-                        error = u'serverError'
-                        logger.info("An error happens : impossible to get the primary field for file %s, rawdata can't be created" %obj.absolute_url())
-                else:
+                transaction.begin()
+                try:
+                    context.invokeFactory(type_name=portal_type, id=newid, title=title, description=description)
+                except Unauthorized :
+                    error = u'serverErrorNoPermission'
+                except ConflictError :
+                    # rare with xhr upload / happens sometimes with flashupload
+                    error = u'serverErrorZODBConflict'
+                except Exception, e:
                     error = u'serverError'
-                    logger.info("An error happens with setId from filename, the file has been created with a bad id, can't find %s" %newid)
-            transaction.commit()
-            upload_lock.release()
+                    logger.exception(e)
+
+                if not error :
+                    obj = getattr(context, newid)
+                    if obj :
+                        primaryField = obj.getPrimaryField()
+                        if primaryField is not None:
+                            mutator = primaryField.getMutator(obj)
+                            # mimetype arg works with blob files
+                            mutator(data, content_type=content_type, mimetype=content_type)
+                            # XXX when getting file through request.BODYFILE (XHR direct upload)
+                            # the filename is not inside the file
+                            # and the filename must be a string, not unicode
+                            # otherwise Archetypes raise an error (so we use filename and not name)
+                            if not obj.getFilename() :
+                                obj.setFilename(filename)
+                            obj.reindexObject()
+                            notify(ObjectInitializedEvent(obj))
+                        else :
+                            # some products remove the 'primary' attribute on ATFile or ATImage (which is very bad)
+                            error = u'serverError'
+                            logger.info("An error happens : impossible to get the primary field for file %s, rawdata can't be created" %obj.absolute_url())
+                    else:
+                        error = u'serverError'
+                        logger.info("An error happens with setId from filename, the file has been created with a bad id, can't find %s" %newid)
+                transaction.commit()
+            finally:
+                upload_lock.release()
 
         result['error'] = error
         if not error :

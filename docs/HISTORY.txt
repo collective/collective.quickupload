@@ -4,7 +4,9 @@ Changelog
 1.1.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+* Added try/finally around upload_lock protected code to ensure that the lock
+  is released if an exception occurs.
+  [swampmonkey]
 
 
 1.1.1 (2011-06-27)

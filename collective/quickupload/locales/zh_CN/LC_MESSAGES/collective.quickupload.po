@@ -1,0 +1,251 @@
+# Translation of collective.quickupload.pot to
+# Translations for Products.ImageEditor.
+# Jian Aijun <jianaijun@gmail.com>, 2011.
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.quickupload\n"
+"POT-Creation-Date: 2010-07-26 11:30+0200\n"
+"PO-Revision-Date: 2011-07-11 08:14+0800\n"
+"Last-Translator: Jian Aijun <jianaijun@gmail.com>\n"
+"Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: zh_CN\n"
+"Language-Name: Chinese (Simplified)\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: collective.quickupload\n"
+
+#. Default: "Browse"
+msgid "Browse"
+msgstr "浏览"
+
+#. Default: "Drag and drop files to upload"
+msgid "Drag and drop files to upload"
+msgstr "拖放文件上传"
+
+#. Default: "Choose your files : "
+msgid "label_choose_your_files"
+msgstr "选择你的文件："
+
+#. Default: "Upload Files"
+msgid "label_upload_files"
+msgstr "上传文件"
+
+#. Default: "Clear Queue"
+msgid "label_clear_queue"
+msgstr "清除队列"
+
+#. Default: "All files uploaded with success."
+msgid "All files uploaded with success."
+msgstr "所有的文件上传成功。"
+
+#. Default: " files uploaded with success, "
+msgid " files uploaded with success, "
+msgstr " 文件上传成功，"
+
+#. Default: " uploads return an error."
+msgid " uploads return an error."
+msgstr " 上传返回一个错误。"
+
+#. Default: "Choose files to upload"
+msgid "Choose files to upload"
+msgstr "选择要上传的文件"
+
+#. Default: "Choose images to upload"
+msgid "Choose images to upload"
+msgstr "选择要上传的图片"
+
+#. Default: "Choose video files to upload"
+msgid "Choose video files to upload"
+msgstr "选择要上传的视频文件"
+
+#. Default: "Choose audio files to upload"
+msgid "Choose audio files to upload"
+msgstr "选择要上传的音频文件"
+
+#. Default: "Choose flash files to upload"
+msgid "Choose flash files to upload"
+msgstr "选择要上传的 Flash 文件"
+
+#. Default: "Files Quick Upload"
+msgid "header_file_quick_upload"
+msgstr "文件快速上传"
+
+#. Default: "Files quick upload"
+msgid "label_files_quick__upload"
+msgstr "文件快速上传"
+
+#. Default: "Default configuration (Content Type Registry)."
+msgid "label_default_portaltype_configuration"
+msgstr "默认配置（内容类型的注册表）"
+
+#. Default: "Quick Upload Portlet"
+msgid "Quick Upload Portlet"
+msgstr "快速上传 Portlet"
+
+#. Default: "Portlet displaying a quick and multiple upload form"
+msgid "Portlet displaying a quick and multiple upload form"
+msgstr ""
+
+msgid "Box title"
+msgstr ""
+
+msgid "Files quick upload"
+msgstr ""
+
+msgid "Content type"
+msgstr "内容类型"
+
+msgid "Choose the portal type used for file upload. Let the default configuration for an automatic portal type, depending on settings defined in content_type_registry."
+msgstr ""
+
+msgid "Media type"
+msgstr "媒体类型"
+
+msgid "Choose the media type used for file upload. image, audio, video ..."
+msgstr "选择要上传的媒体类型。图片，音频，视频..."
+
+msgid "All"
+msgstr "全部"
+
+msgid "Images"
+msgstr "图片"
+
+msgid "Video files"
+msgstr "视频文件"
+
+msgid "Audio files"
+msgstr "音频文件"
+
+msgid "Flash files"
+msgstr "Flash 文件"
+
+msgid "If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."
+msgstr ""
+
+#. Default: "Files Quick Upload"
+msgid "Files Quick Upload"
+msgstr "文件快速上传"
+
+#. Default: "Images Quick Upload"
+msgid "Images Quick Upload"
+msgstr "图片快速上传"
+
+#. Default: "Video Quick Upload"
+msgid "Video Quick Upload"
+msgstr "视频快速上传"
+
+#. Default: "Audio Quick Upload"
+msgid "Audio Quick Upload"
+msgstr "音频快速上传"
+
+#. Default: "Flash Quick Upload"
+msgid "Flash Quick Upload"
+msgstr "Flash 快速上传"
+
+#. Default: "Server error, please contact support and/or try again."
+msgid "Server error, please contact support and/or try again."
+msgstr "服务器错误，请联系网站管理员或稍后再试。"
+
+#. Default: "A data base conflict error happened when uploading this file :"
+msgid "A data base conflict error happened when uploading this file :"
+msgstr ""
+
+#. Default: "This file always exists with the same name on server :"
+msgid "This file always exists with the same name on server :"
+msgstr ""
+
+#. Default: "You don't have permission to add this content in this place."
+msgid "You don't have permission to add this content in this place."
+msgstr ""
+
+#. Default: "Only allowed :"
+msgid "Only allowed :"
+msgstr "只允许："
+
+#. Default: "This file has invalid extension :"
+msgid "This file has invalid extension :"
+msgstr "此文件扩展名无效："
+
+#. Default: "maximum file size is :"
+msgid "maximum file size is :"
+msgstr "最大文件大小是："
+
+#. Default: "This file is too large :"
+msgid "This file is too large :"
+msgstr "这个文件是太大："
+
+#. Default: "This file is empty :"
+msgid "This file is empty :"
+msgstr "这个文件是空的："
+
+#. Default: "please try again."
+msgid "please try again."
+msgstr "请再试一次。"
+
+#. Default: "please select files again without it."
+msgid "please select files again without it."
+msgstr ""
+
+#. Default: "Failed"
+msgid "Failed"
+msgstr "失败"
+
+#. Default: "Use Flash Upload"
+msgid "title_use_flashupload"
+msgstr "使用 Flash 上​​传"
+
+#. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8),  but has many problems : don't work in https, don't work behind HTTP Authentication ..."
+msgid "description_use_flashupload"
+msgstr ""
+
+#. Default: "Automatic upload on select"
+msgid "title_auto_upload"
+msgstr ""
+
+#. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
+msgid "description_auto_upload"
+msgstr ""
+
+#. Default: "Fill title before upload"
+msgid "title_fill_titles"
+msgstr ""
+
+#. Default: "If checked, you can fill the files titles before upload. Uncheck if you don't need titles."
+msgid "description_fill_titles"
+msgstr ""
+
+#. Default: "Fill description before upload"
+msgid "title_fill_descriptions"
+msgstr ""
+
+#. Default: "If checked, you can fill the files descriptions before upload. Uncheck if you don't need descriptions."
+msgid "description_fill_descriptions"
+msgstr ""
+
+#. Default: "Size limit"
+msgid "title_size_limit"
+msgstr "大小限制"
+
+#. Default: "Size limit for each file in KB, 0 = no limit"
+msgid "description_size_limit"
+msgstr ""
+
+#. Default: "Simultaneous uploads limit"
+msgid "title_sim_upload_limit"
+msgstr ""
+
+#. Default: "Number of simultaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"
+msgid "description_sim_upload_limit"
+msgstr ""
+
+#. Default: "Quick Upload settings"
+msgid "Quick Upload settings"
+msgstr "快速上载设置"
+
+#. Default: "Control how the quick upload tool is used."
+msgid "Control how the quick upload tool is used."
+msgstr ""
+

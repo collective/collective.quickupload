@@ -1,135 +1,128 @@
-# Translation of collective.quickupload.pot to German
 msgid ""
 msgstr ""
-"Project-Id-Version: collective.quickupload\n"
+"Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2011-07-07 11:21+0000\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: Pavel Bogdanovic <pb@prontonet.eu>\n"
-"Language-Team: \n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
 "MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0\n"
 "Language-Code: en\n"
-"Language-Name: German\n"
-"Preferred-Encodings: utf-8\n"
-"Domain: collective.quickupload\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
 
 #: ../portlet/quickuploadportlet.py:49
 msgid "All"
-msgstr "Alle"
+msgstr ""
 
 #: ../portlet/quickuploadportlet.py:52
 msgid "Audio files"
-msgstr "Audiodateien"
+msgstr ""
 
 #: ../portlet/quickuploadportlet.py:30
 msgid "Box title"
-msgstr "Box Titel"
+msgstr ""
 
 #: ../portlet/quickuploadportlet.py:45
 msgid "Choose the media type used for file upload. image, audio, video ..."
-msgstr "Wählen Sie einen erlaubten Medientyp für den Datei-Upload. Bild, Audio, Video ..."
+msgstr ""
 
 #: ../portlet/quickuploadportlet.py:37
 msgid "Choose the portal type used for file upload. Let the default configuration for an automatic portal type, depending on settings defined in content_type_registry."
-msgstr "Wählen Sie die Standardkonfiguration um die Einstellungen der content type registry zu übernehmen."
+msgstr ""
 
 #: ../portlet/quickuploadportlet.py:36
 msgid "Content type"
-msgstr "Inhaltstyp"
+msgstr ""
 
-#. Default: "Control how the quick upload tool is used."
 #: ../browser/quickupload_settings.py:115
 msgid "Control how the quick upload tool is used."
-msgstr "Konfigurieren Sie, wie der Quick Upload benutzt werden kann."
+msgstr ""
 
-#. Default: "Files Quick Upload"
 #: ../browser/quick_upload.py:127
 #: ../portlet/quickuploadportlet.py:78
 msgid "Files Quick Upload"
-msgstr "Datei Quick Upload"
+msgstr ""
 
 #: ../portlet/quickuploadportlet.py:53
 msgid "Flash files"
-msgstr "Flashdateien"
+msgstr ""
 
 #: ../portlet/quickuploadportlet.py:32
 msgid "If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."
-msgstr "Bei leerem Feld wird der Titel automatisch in Abhängigkeit der Medientypauswahl vergeben."
+msgstr ""
 
 #: ../portlet/quickuploadportlet.py:50
 msgid "Images"
-msgstr "Bilder"
+msgstr ""
 
-#. Default: "Images Quick Upload"
 #: ../browser/quick_upload.py:129
 #: ../portlet/quickuploadportlet.py:76
 msgid "Images Quick Upload"
-msgstr "Bilder Quick Upload"
+msgstr ""
 
 #: ../portlet/quickuploadportlet.py:44
 msgid "Media type"
-msgstr "Medientyp"
+msgstr ""
 
-#. Default: "Portlet displaying a quick and multiple upload form"
 #: ../profiles/default/portlets.xml
 msgid "Portlet displaying a quick and multiple upload form"
-msgstr "Portlet mit einem Mehrfach-Upload-Formular"
+msgstr ""
 
-#. Default: "Quick Upload Portlet"
 #: ../profiles/default/portlets.xml
 msgid "Quick Upload Portlet"
 msgstr ""
 
-#. Default: "Quick Upload settings"
 #: ../browser/quickupload_settings.py:114
 msgid "Quick Upload settings"
-msgstr "Einstellungen für den Quick Upload"
+msgstr ""
 
 #: ../portlet/quickuploadportlet.py:51
 msgid "Video files"
-msgstr "Videodateien"
+msgstr ""
 
 #. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
 #: ../browser/quickupload_settings.py:26
 msgid "description_auto_upload"
-msgstr "Auswählen, wenn die Dateien sofort nach dem Auswählen hochgeladen werden sollen. Bitte beachten, dass in diesem Fall keine Titel oder Beschreibung vergeben werden können."
+msgstr ""
 
 #. Default: "If checked, you can fill the files descriptions before upload. Uncheck if you don't need descriptions."
 #: ../browser/quickupload_settings.py:38
 msgid "description_fill_descriptions"
-msgstr "Wenn diese Option aktiviert ist, können Sie Beschreibung vor dem Hochladen vergeben. Deaktivieren Sie diese Option, wenn Sie keine Beschreibung brauchen."
+msgstr ""
 
 #. Default: "If checked, you can fill the files titles before upload. Uncheck if you don't need titles."
 #: ../browser/quickupload_settings.py:32
 msgid "description_fill_titles"
-msgstr "Wenn diese Option aktiviert ist, können Sie Titel vor dem Hochladen vergeben. Deaktivieren Sie diese Option, wenn Sie keine Titel brauchen."
+msgstr ""
 
 #. Default: "Number of simultaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"
 #: ../browser/quickupload_settings.py:49
 msgid "description_sim_upload_limit"
-msgstr "Überzählige Dateiuploads landen in einer Warteschlange, 0 = keine Begrenzung"
+msgstr ""
 
 #. Default: "Size limit for each file in KB, 0 = no limit"
 #: ../browser/quickupload_settings.py:44
 msgid "description_size_limit"
-msgstr "Dateigrößenlimit pro Datei in KB, 0 = kein Limit"
+msgstr ""
 
 #. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8),  but has many problems : don't work in https, don't work behind HTTP Authentication ..."
 #: ../browser/quickupload_settings.py:17
 msgid "description_use_flashupload"
-msgstr "Standardmäßig wird nur JavaScript zum Hochladen verwendet. Aktivieren Sie diese Option, um ein Flash-basiertes Upload-Skript zu verwenden. Moderne Browser unterstützen das JavaScript-Tool besser. Der Flash-Upload funktioniert bei älteren Browsern (MSIE 7, MSIE 8) besser, hat aber Probleme bei https und in Kombination mit HTTP-Authentifizierung."
+msgstr ""
 
 #. Default: "Choose your files:"
 #: ../browser/quick_upload.pt:19
 msgid "label_choose_your_files"
-msgstr "Dateien auswählen:"
+msgstr ""
 
 #. Default: "Clear Queue"
 #: ../browser/quick_upload.pt:41
 msgid "label_clear_queue"
-msgstr "Warteschlange löschen"
+msgstr ""
 
 #. Default: "${medialabel} Quick Upload"
 #: ../browser/quick_upload.py:130
@@ -140,35 +133,35 @@ msgstr ""
 #. Default: "Upload Files"
 #: ../browser/quick_upload.pt:35
 msgid "label_upload_files"
-msgstr "Dateien hochladen"
+msgstr ""
 
 #. Default: "Automatic upload on select"
 #: ../browser/quickupload_settings.py:25
 msgid "title_auto_upload"
-msgstr "Automatisch nach Auswahl hochladen"
+msgstr ""
 
 #. Default: "Fill description before upload"
 #: ../browser/quickupload_settings.py:37
 msgid "title_fill_descriptions"
-msgstr "Geben Sie einen Beschreibung vor dem Hochladen ein"
+msgstr ""
 
 #. Default: "Fill title before upload"
 #: ../browser/quickupload_settings.py:31
 msgid "title_fill_titles"
-msgstr "Geben Sie einen Titel vor dem Hochladen ein"
+msgstr ""
 
 #. Default: "Simultaneous uploads limit"
 #: ../browser/quickupload_settings.py:48
 msgid "title_sim_upload_limit"
-msgstr "Maximale Anzahl gleichzeitiger Uploads"
+msgstr ""
 
 #. Default: "Size limit"
 #: ../browser/quickupload_settings.py:43
 msgid "title_size_limit"
-msgstr "Dateigrößenlimit"
+msgstr ""
 
 #. Default: "Use Flash Upload"
 #: ../browser/quickupload_settings.py:16
 msgid "title_use_flashupload"
-msgstr "Flash-Upload benutzen"
+msgstr ""
 

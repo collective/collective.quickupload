@@ -16,7 +16,7 @@ from zope.component import getUtility
 
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile 
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.ATContentTypes.interfaces import IImageContent
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from zope.app.container.interfaces import INameChooser
@@ -42,7 +42,7 @@ def decodeQueryString(QueryString):
 		  },
 		 None,1)
   r.processInputs()
-  return r.form 
+  return r.form
 
 def getDataFromAllRequests(request, dataitem) :
     """
@@ -52,8 +52,8 @@ def getDataFromAllRequests(request, dataitem) :
     if data is None:
         # try to get data from QueryString
         data = decodeQueryString(request.get('QUERY_STRING','')).get(dataitem)
-    return data    
-    
+    return data
+
 def find_user(context, userid):
     """Walk up all of the possible acl_users to find the user with the
     given userid.
@@ -101,7 +101,7 @@ def _listTypesForInterface(context, interface):
         all_types = archetype_tool.listRegisteredTypes(inProject=True)
         all_types = [tipe['portal_type'] for tipe in all_types
                      if interface.isImplementedByInstancesOf(tipe['klass'])]
-    return dict.fromkeys(all_types).keys() 
+    return dict.fromkeys(all_types).keys()
 
 class QuickUploadView(BrowserView):
     """ The Quick Upload View
@@ -115,7 +115,7 @@ class QuickUploadView(BrowserView):
 
     def __call__(self):
         return self.template()
-    
+
     def header_upload(self) :
         request = self.request
         session = request.get('SESSION', {})
@@ -127,17 +127,18 @@ class QuickUploadView(BrowserView):
             return _('Files Quick Upload')
         if medialabel == 'image' :
             return _('Images Quick Upload')
-        return _('%s Quick Upload' %medialabel.capitalize())
-    
+        return _('label_media_quickupload', default='${medialabel} Quick Upload',
+                 mapping={'medialabel': medialabel.capitalize()})
+
     def _uploader_id(self) :
         return 'uploader%s' %str(random.random()).replace('.','')
-    
+
     def script_content(self) :
         context = aq_inner(self.context)
         return context.restrictedTraverse('@@quick_upload_init')(for_id = self.uploader_id)
 
 
-XHR_UPLOAD_JS = """       
+XHR_UPLOAD_JS = """
     var fillTitles = %(ul_fill_titles)s;
     var fillDescriptions = %(ul_fill_descriptions)s;
     var auto = %(ul_auto_upload)s;
@@ -148,16 +149,16 @@ XHR_UPLOAD_JS = """
     sendDataAndUpload_%(ul_id)s = function() {
         var uploader = xhr_%(ul_id)s;
         PloneQuickUpload.sendDataAndUpload(uploader, uploader._element, '%(typeupload)s');
-    }    
+    }
     clearQueue_%(ul_id)s = function() {
         var uploader = xhr_%(ul_id)s;
-        PloneQuickUpload.clearQueue(uploader, uploader._element);    
-    }    
-    onUploadComplete_%(ul_id)s = function(id, fileName, responseJSON) {       
+        PloneQuickUpload.clearQueue(uploader, uploader._element);
+    }
+    onUploadComplete_%(ul_id)s = function(id, fileName, responseJSON) {
         var uploader = xhr_%(ul_id)s;
         PloneQuickUpload.onUploadComplete(uploader, uploader._element, id, fileName, responseJSON);
     }
-    createUploader_%(ul_id)s= function(){    
+    createUploader_%(ul_id)s= function(){
         xhr_%(ul_id)s = new qq.FileUploader({
             element: jQuery('#%(ul_id)s')[0],
             action: '%(context_url)s/@@quick_upload_file',
@@ -170,7 +171,7 @@ XHR_UPLOAD_JS = """
             template: '<div class="qq-uploader">' +
                       '<div class="qq-upload-drop-area"><span>%(ul_draganddrop_text)s</span></div>' +
                       '<div class="qq-upload-button">%(ul_button_text)s</div>' +
-                      '<ul class="qq-upload-list"></ul>' + 
+                      '<ul class="qq-upload-list"></ul>' +
                       '</div>',
             fileTemplate: '<li>' +
                     '<a class="qq-upload-cancel" href="#">&nbsp;</a>' +
@@ -178,7 +179,7 @@ XHR_UPLOAD_JS = """
                     '<span class="qq-upload-spinner"></span>' +
                     '<span class="qq-upload-failed-text">%(ul_msg_failed)s</span></div>' +
                     '<div class="qq-upload-size"></div>' +
-                '</li>',                      
+                '</li>',
             messages: {
                 serverError: "%(ul_error_server)s",
                 serverErrorAlwaysExist: "%(ul_error_always_exists)s {file}",
@@ -186,12 +187,12 @@ XHR_UPLOAD_JS = """
                 serverErrorNoPermission: "%(ul_error_no_permission)s",
                 typeError: "%(ul_error_bad_ext)s {file}. %(ul_error_onlyallowed)s {extensions}.",
                 sizeError: "%(ul_error_file_large)s {file}, %(ul_error_maxsize_is)s {sizeLimit}.",
-                emptyError: "%(ul_error_empty_file)s {file}, %(ul_error_try_again_wo)s"            
-            }            
-        });           
+                emptyError: "%(ul_error_empty_file)s {file}, %(ul_error_try_again_wo)s"
+            }
+        });
     }
-    jQuery(document).ready(createUploader_%(ul_id)s); 
-"""        
+    jQuery(document).ready(createUploader_%(ul_id)s);
+"""
 
 FLASH_UPLOAD_JS = """
     var fillTitles = %(ul_fill_titles)s;
@@ -212,7 +213,7 @@ FLASH_UPLOAD_JS = """
                                  class="file_id_field" \
                                  name="file_id" \
                                  value ="'  + ID + '" /> \
-                  ');            
+                  ');
                   if (fillDescriptions) jQuery('.cancel' ,this).after('\
                       <div class="uploadField">\
                           <label>' + labelfiledescription + ' : </label> \
@@ -222,7 +223,7 @@ FLASH_UPLOAD_JS = """
                                  name="description" \
                                  value="" />\
                       </div>\
-                  ');            
+                  ');
                   if (fillTitles) jQuery('.cancel' ,this).after('\
                       <div class="uploadField">\
                           <label>' + labelfiletitle + ' : </label> \
@@ -232,7 +233,7 @@ FLASH_UPLOAD_JS = """
                                  name="title" \
                                  value="" />\
                       </div>\
-                  ');            
+                  ');
                 }
             });
         }
@@ -258,8 +259,8 @@ FLASH_UPLOAD_JS = """
             if (fillDescriptions && !autoUpload) {
                 filesData['description'] = jQuery('.file_description_field',this).val();
             }
-            jQuery('#%(ul_id)s').uploadifySettings('scriptData', filesData);     
-            jQuery('#%(ul_id)s').uploadifyUpload(ID);       
+            jQuery('#%(ul_id)s').uploadifySettings('scriptData', filesData);
+            jQuery('#%(ul_id)s').uploadifyUpload(ID);
         })
     }
     onAllUploadsComplete_%(ul_id)s = function(event, data){
@@ -293,7 +294,7 @@ FLASH_UPLOAD_JS = """
     });
 """
 
-        
+
 class QuickUploadInit(BrowserView):
     """ Initialize uploadify js
     """
@@ -329,18 +330,18 @@ class QuickUploadInit(BrowserView):
         elif mediaupload :
             # you can also pass a list of extensions in mediaupload request var
             # with this syntax '*.aaa;*.bbb;'
-            ext = mediaupload 
-            msg = u'Choose file for upload : ' + ext 
-        
+            ext = mediaupload
+            msg = u'Choose file for upload : ' + ext
+
         try :
             extlist = [f.split('.')[1].strip() for f in ext.split(';') if f.strip()]
         except :
             extlist = []
         if extlist==['*'] :
             extlist = []
-        
+
         return ( ext, extlist, self._utranslate(msg))
-    
+
     def _utranslate(self, msg):
         # XXX fixme : the _ (SiteMessageFactory) doesn't work
         context = aq_inner(self.context)
@@ -350,10 +351,10 @@ class QuickUploadInit(BrowserView):
         context = aq_inner(self.context)
         request = self.request
         session = request.get('SESSION', {})
-        portal_url = getToolByName(context, 'portal_url')()    
+        portal_url = getToolByName(context, 'portal_url')()
         # use a ticket for authentication (used for flashupload only)
         ticket = context.restrictedTraverse('@@quickupload_ticket')()
-        
+
         settings = dict(
             ticket                 = ticket,
             portal_url             = portal_url,
@@ -384,9 +385,9 @@ class QuickUploadInit(BrowserView):
             ul_error_always_exists = self._utranslate( u"This file always exists with the same name on server :"),
             ul_error_zodb_conflict = self._utranslate( u"A data base conflict error happened when uploading this file :"),
             ul_error_server        = self._utranslate( u"Server error, please contact support and/or try again."),
-        )        
-        
-        mediaupload = session.get('mediaupload', request.get('mediaupload', ''))  
+        )
+
+        mediaupload = session.get('mediaupload', request.get('mediaupload', ''))
         typeupload = session.get('typeupload', request.get('typeupload', ''))
         settings['typeupload'] = typeupload
         if typeupload :
@@ -397,20 +398,20 @@ class QuickUploadInit(BrowserView):
                 ul_content_types_infos = self.ul_content_types_infos(mediaupload)
         else :
             ul_content_types_infos = self.ul_content_types_infos(mediaupload)
-        
+
         settings['ul_file_extensions'] = ul_content_types_infos[0]
         settings['ul_file_extensions_list'] = str(ul_content_types_infos[1])
         settings['ul_file_description'] = ul_content_types_infos[2]
-            
+
         return settings
 
     def __call__(self, for_id="uploader"):
         self.uploader_id = for_id
         settings = self.upload_settings()
         if self.qup_prefs.use_flashupload :
-            return FLASH_UPLOAD_JS % settings     
-        return XHR_UPLOAD_JS % settings   
-        
+            return FLASH_UPLOAD_JS % settings
+        return XHR_UPLOAD_JS % settings
+
 
 class QuickUploadAuthenticate(BrowserView):
     """
@@ -421,27 +422,27 @@ class QuickUploadAuthenticate(BrowserView):
     for authentication because sending cookie in all requests
     is not secure.
     """
-    def __init__(self, context, request):        
+    def __init__(self, context, request):
         self.context = context
-        self.request = request     
+        self.request = request
         portal = getUtility(IPloneSiteRoot)
         self.qup_prefs = IQuickUploadControlPanel(portal)
         self.use_flashupload = self.qup_prefs.use_flashupload
-            
+
     def _auth_with_ticket (self):
         """
         with flashupload authentication is done using a ticket
         """
-        
+
         context = aq_inner(self.context)
         request = self.request
         url = context.absolute_url()
 
-        ticket = getDataFromAllRequests(request, 'ticket')  
+        ticket = getDataFromAllRequests(request, 'ticket')
         if ticket is None:
-            raise Unauthorized('No ticket specified')        
-        
-        logger.info('Authenticate using ticket, the ticket is "%s"' % str(ticket)) 
+            raise Unauthorized('No ticket specified')
+
+        logger.info('Authenticate using ticket, the ticket is "%s"' % str(ticket))
         username = ticketmod.ticketOwner(url, ticket)
         if username is None:
             logger.info('Ticket "%s" was invalidated, cannot be used '
@@ -451,42 +452,42 @@ class QuickUploadAuthenticate(BrowserView):
         self.old_sm = SecurityManagement.getSecurityManager()
         user = find_user(context, username)
         SecurityManagement.newSecurityManager(self.request, user)
-        logger.info('Switched to user "%s"' % username)   
+        logger.info('Switched to user "%s"' % username)
 
-        
+
 class QuickUploadFile(QuickUploadAuthenticate):
     """ Upload a file
-    """  
-    
+    """
+
     def __call__(self):
         """
-        """        
+        """
         if self.use_flashupload :
-            return self.flash_upload_file()  
+            return self.flash_upload_file()
         return self.quick_upload_file()
-                            
+
     def flash_upload_file(self) :
-        
+
         context = aq_inner(self.context)
-        request = self.request        
-        self._auth_with_ticket()         
-            
+        request = self.request
+        self._auth_with_ticket()
+
         file_name = request.form.get("Filename", "")
         file_data = request.form.get("Filedata", None)
         content_type = mimetypes.guess_type(file_name)[0]
         portal_type = request.form.get('typeupload', '')
         title =  request.form.get("title", None)
         description =  request.form.get("description", None)
-        
+
         if not portal_type :
             ctr = getToolByName(context, 'content_type_registry')
             portal_type = ctr.findTypeName(file_name.lower(), content_type, '') or 'File'
-        
+
         if file_data:
             factory = IQuickUploadFileFactory(context)
             logger.info("uploading file with flash: filename=%s, title=%s, description=%s, content_type=%s, portal_type=%s" % \
-                    (file_name, title, description, content_type, portal_type))                             
-            
+                    (file_name, title, description, content_type, portal_type))
+
             try :
                 f = factory(file_name, title, description, content_type, file_data, portal_type)
             except :
@@ -495,24 +496,24 @@ class QuickUploadFile(QuickUploadAuthenticate):
             if f['success'] is not None :
                 o = f['success']
                 logger.info("file url: %s" % o.absolute_url())
-                SecurityManagement.setSecurityManager(self.old_sm)   
-                return o.absolute_url()         
+                SecurityManagement.setSecurityManager(self.old_sm)
+                return o.absolute_url()
 
     def quick_upload_file(self) :
-        
+
         context = aq_inner(self.context)
         request = self.request
-        response = request.RESPONSE      
-        
+        response = request.RESPONSE
+
         response.setHeader('Expires', 'Sat, 1 Jan 2000 00:00:00 GMT')
-        response.setHeader('Cache-control', 'no-cache') 
-        # the good content type woul be text/json or text/plain but IE 
+        response.setHeader('Cache-control', 'no-cache')
+        # the good content type woul be text/json or text/plain but IE
         # do not support it
-        response.setHeader('Content-Type', 'text/html; charset=utf-8')               
+        response.setHeader('Content-Type', 'text/html; charset=utf-8')
 
         if request.HTTP_X_REQUESTED_WITH :
             # using ajax upload
-            file_name = urllib.unquote(request.HTTP_X_FILE_NAME)       
+            file_name = urllib.unquote(request.HTTP_X_FILE_NAME)
             upload_with = "XHR"
             try :
                 file = request.BODYFILE
@@ -532,11 +533,11 @@ class QuickUploadFile(QuickUploadAuthenticate):
             # using classic form post method (MSIE<=8)
             file_data = request.get("qqfile", None)
             filename = getattr(file_data,'filename', '')
-            file_name = filename.split("\\")[-1]  
+            file_name = filename.split("\\")[-1]
             upload_with = "CLASSIC FORM POST"
             # we must test the file size in this case (no client test)
             if not self._check_file_size(file_data) :
-                logger.info("Test file size : the file %s is too big, upload rejected" % file_name) 
+                logger.info("Test file size : the file %s is too big, upload rejected" % file_name)
                 return json.dumps({u'error': u'sizeError'})
 
 
@@ -551,36 +552,36 @@ class QuickUploadFile(QuickUploadAuthenticate):
             oct = mtr.globFilename(file_name)
             if oct is not None :
                 content_type = str(oct)
-        
+
         portal_type = getDataFromAllRequests(request, 'typeupload') or ''
         title =  getDataFromAllRequests(request, 'title') or ''
         description =  getDataFromAllRequests(request, 'description') or ''
-        
+
         if not portal_type :
             ctr = getToolByName(context, 'content_type_registry')
             portal_type = ctr.findTypeName(file_name.lower(), content_type, '') or 'File'
-        
+
         if file_data:
             factory = IQuickUploadFileFactory(context)
             logger.info("uploading file with %s : filename=%s, title=%s, description=%s, content_type=%s, portal_type=%s" % \
-                    (upload_with, file_name, title, description, content_type, portal_type))                             
-            
+                    (upload_with, file_name, title, description, content_type, portal_type))
+
             try :
                 f = factory(file_name, title, description, content_type, file_data, portal_type)
             except :
                 return json.dumps({u'error': u'serverError'})
-            
+
             if f['success'] is not None :
                 o = f['success']
-                logger.info("file url: %s" % o.absolute_url()) 
+                logger.info("file url: %s" % o.absolute_url())
                 msg = {u'success': True}
             else :
                 msg = {u'error': f['error']}
         else :
             msg = {u'error': u'emptyError'}
-            
-        return json.dumps(msg)          
-        
+
+        return json.dumps(msg)
+
     def _check_file_size(self, data):
         max_size = int(self.qup_prefs.size_limit)
         if not max_size :
@@ -592,8 +593,8 @@ class QuickUploadFile(QuickUploadAuthenticate):
         max_size = int(self.qup_prefs.size_limit)
         if file_size<=max_size:
             return 1
-        return 0    
-    
+        return 0
+
     def _check_file_id(self, id):
         context = aq_inner(self.context)
         charset = context.getCharset()
@@ -601,7 +602,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
         normalizer = getUtility(IIDNormalizer)
         chooser = INameChooser(context)
         newid = chooser.chooseName(normalizer.normalize(id), context)
-        # consolidation because it's different upon Plone versions     
+        # consolidation because it's different upon Plone versions
         newid = newid.replace('_','-').replace(' ','-').lower()
         if newid in context.objectIds() :
             return 0
@@ -611,29 +612,29 @@ class QuickUploadCheckFile(BrowserView):
     """
     check if file exists
     """
-     
+
 
     def quick_upload_check_file(self) :
-        
+
         context = aq_inner(self.context)
-        request = self.request          
-        url = context.absolute_url()       
-        
+        request = self.request
+        url = context.absolute_url()
+
         always_exist = {}
         formdict = request.form
         ids = context.objectIds()
-        
+
         for k,v in formdict.items():
             if k!='folder' :
                 if v in ids :
                     always_exist[k] = v
-        
+
         return str(always_exist)
-    
-    
+
+
     def __call__(self):
         """
-        """        
-        return self.quick_upload_check_file()  
-        
-                             
+        """
+        return self.quick_upload_check_file()
+
+

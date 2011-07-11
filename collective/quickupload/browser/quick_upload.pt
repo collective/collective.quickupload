@@ -17,11 +17,11 @@
         Files Quick Upload
       </h4>
       <label i18n:translate="label_choose_your_files"
-             id="label-upload">Choose your files : </label>    
+             id="label-upload">Choose your files:</label>
       <!-- uploader comes here -->
       <div id="uploader"
            class="main-uploader"
-           tal:attributes="id uploader_id"></div>              
+           tal:attributes="id uploader_id"></div>
       <!-- upload button -->
       <input type="hidden"
              id="uploadify_label_file_title"
@@ -32,20 +32,20 @@
              i18n:domain="plone"
              i18n:attributes="value Description" />
       <div class="uploadifybuttons">
-        <input type="button" 
+        <input type="button"
                id="uploadify-upload"
                class="context uploadifybutton"
                value="Upload Files"
                i18n:attributes="value label_upload_files"
                tal:attributes="onclick string:sendDataAndUpload_${uploader_id}()" />
-        <input type="button" 
+        <input type="button"
                id="uploadify-clear-queue"
                class="context uploadifybutton"
                value="Clear Queue"
                i18n:attributes="value label_clear_queue"
-               tal:attributes="onclick string:clearQueue_${uploader_id}()" /> 
+               tal:attributes="onclick string:clearQueue_${uploader_id}()" />
       </div>
-    </div>        
+    </div>
     <!-- uploadify javascript -->
     <script type="text/javascript"
             tal:content="structure view/script_content">

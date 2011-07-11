@@ -51,7 +51,7 @@ class IQuickUploadPortlet(IPortletDataProvider):
                                                                        SimpleTerm('video', 'video', _(u"Video files")),
                                                                        SimpleTerm('audio', 'audio', _(u"Audio files")),
                                                                        SimpleTerm('flash', 'flash', _(u"Flash files")),
-                                                                       ]), )    
+                                                                       ]), )
 
 class Assignment(base.Assignment):
     """Portlet assignment.
@@ -76,7 +76,8 @@ class Assignment(base.Assignment):
             return _('Images Quick Upload')
         elif '*.' in media :
             return _('Files Quick Upload')
-        return _('%s Quick Upload' %media.capitalize())
+        return _('label_media_quickupload', default='${medialabel} Quick Upload',
+                 mapping={'medialabel': media.capitalize()})
 
 
 class Renderer(base.Renderer):
@@ -90,7 +91,7 @@ class Renderer(base.Renderer):
         context = aq_inner(self.context)
         request = self.request
         session = request.get('SESSION', None)
-        # empty typeupload and mediaupload session 
+        # empty typeupload and mediaupload session
         # since the portlet don't use it, but another app could
         if session :
             if session.has_key('typeupload') :
@@ -102,7 +103,7 @@ class Renderer(base.Renderer):
 
     def render(self):
         return xhtml_compress(self._template())
-    
+
     @property
     def available(self):
         context = aq_inner(self.context)
@@ -111,23 +112,23 @@ class Renderer(base.Renderer):
            not isTemporary(context) :
             return True
         return False
-    
+
     def getUploadUrl(self):
         """
         return upload url
         in current folder
         """
         context = aq_inner(self.context)
-        folder_url = self.ploneview.getCurrentFolderUrl()                      
+        folder_url = self.ploneview.getCurrentFolderUrl()
         return '%s/@@quick_upload' %folder_url
-        
+
     def getDataForUploadUrl(self):
         data_url = ''
         if self.data.upload_portal_type != 'auto' :
-            data_url+= 'typeupload=%s&' % self.data.upload_portal_type      
+            data_url+= 'typeupload=%s&' % self.data.upload_portal_type
         if self.data.upload_media_type :
-            data_url+= 'mediaupload=%s' % self.data.upload_media_type  
-        return data_url      
+            data_url+= 'mediaupload=%s' % self.data.upload_media_type
+        return data_url
 
 
 class AddForm(base.AddForm):

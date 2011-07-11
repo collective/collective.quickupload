@@ -4,7 +4,11 @@ Changelog
 1.1.2 (unreleased)
 ------------------
 
-* Fixed .pot and .po files.
+* Fixed portlet field validation.
+  [thomasdesvenain]
+
+* Fixed internationalizations.
+  Fixed .pot and .po files.
   [thomasdesvenain]
 
 * Added try/finally around upload_lock protected code to ensure that the lock

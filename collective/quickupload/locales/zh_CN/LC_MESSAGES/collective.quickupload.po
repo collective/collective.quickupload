@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
 "POT-Creation-Date: 2011-07-07 11:21+0000\n"
-"PO-Revision-Date: 2011-07-24 18:32+0800\n"
+"PO-Revision-Date: 2011-07-25 10:06+0800\n"
 "Last-Translator: Jian Aijun <jianaijun@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -31,7 +31,7 @@ msgstr "面板标题"
 
 #: ../portlet/quickuploadportlet.py:45
 msgid "Choose the media type used for file upload. image, audio, video ..."
-msgstr "选择想要上传的媒体类型。图片，音频，视频..."
+msgstr "选择想要上传的媒体类型。图片，音频，视频 ..."
 
 #: ../portlet/quickuploadportlet.py:37
 msgid "Choose the portal type used for file upload. Let the default configuration for an automatic portal type, depending on settings defined in content_type_registry."
@@ -58,7 +58,7 @@ msgstr "Flash 文件"
 
 #: ../portlet/quickuploadportlet.py:32
 msgid "If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."
-msgstr "如果标题为空，面板标题将是　‘媒体类型‘ + 快速上传。"
+msgstr "如果标题为空，面板标题将是 ‘媒体类型‘ + 快速上传。"
 
 #: ../portlet/quickuploadportlet.py:50
 msgid "Images"
@@ -77,7 +77,7 @@ msgstr "媒体类型"
 #. Default: "Portlet displaying a quick and multiple upload form"
 #: ../profiles/default/portlets.xml
 msgid "Portlet displaying a quick and multiple upload form"
-msgstr ""
+msgstr "提供一个多文件快速上传工具"
 
 #. Default: "Quick Upload Portlet"
 #: ../profiles/default/portlets.xml
@@ -87,7 +87,7 @@ msgstr "快速上传面板"
 #. Default: "Quick Upload settings"
 #: ../browser/quickupload_settings.py:114
 msgid "Quick Upload settings"
-msgstr "快速上载设置"
+msgstr "快速上传设置"
 
 #: ../portlet/quickuploadportlet.py:51
 msgid "Video files"
@@ -96,7 +96,7 @@ msgstr "视频文件"
 #. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
 #: ../browser/quickupload_settings.py:26
 msgid "description_auto_upload"
-msgstr ""
+msgstr "如果选中，选择文件后会自动上传，不需进一步确认。请注意，这种方式您无法事先填写文件标题或描述。"
 
 #. Default: "If checked, you can fill the files descriptions before upload. Uncheck if you don't need descriptions."
 #: ../browser/quickupload_settings.py:38
@@ -121,7 +121,7 @@ msgstr "每个文件的大小限制，单位：KB，0 代表沒有限制。"
 #. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8),  but has many problems : don't work in https, don't work behind HTTP Authentication ..."
 #: ../browser/quickupload_settings.py:17
 msgid "description_use_flashupload"
-msgstr ""
+msgstr "默认情况下，系统使用 JavaScript 处理上传。如果选中，会改用 FLASH 来上传。现代的浏览器都提供功能强大的 JavaScript。 而 Flash 上传方式，并非所有浏览器都支持，并且还有很多问题，例如：不支持 HTTPS，不支持 HTTPS 认证方式 ..."
 
 #. Default: "Choose your files:"
 #: ../browser/quick_upload.pt:19

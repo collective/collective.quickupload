@@ -4,7 +4,7 @@ Changelog
 1.1.2 (unreleased)
 ------------------
 
-* Javascripts are loaded for authenticated users only.
+* Javascripts and css are loaded for authenticated users only.
   Refs http://plone.org/products/collective.quickupload/issues/11.
   [frisi, thomasdesvenain]
 

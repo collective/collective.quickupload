@@ -15,6 +15,9 @@ Changelog
   is released if an exception occurs.
   [swampmonkey]
 
+* Added Spanish translation
+  [hvelarde]
+
 
 1.1.1 (2011-06-27)
 ------------------
@@ -49,8 +52,8 @@ Changelog
 1.0.3
 -----
 
-* let an empty content_type when mimetype_registry return None as mimetype object.
-  will result in "application/octet-stream"
+* let an empty content_type when mimetype_registry return None as mimetype
+  object will result in "application/octet-stream"
   macadames 2010-09-29
 
 * use a specific interface IQuickUploadFactory in place of IFileFactory

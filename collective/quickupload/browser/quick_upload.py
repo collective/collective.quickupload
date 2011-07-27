@@ -85,14 +85,17 @@ def find_user(context, userid):
 
     return user
 
+
 def _listTypesForInterface(context, interface):
     """
     List of portal types that have File interface
-    @param context: context
-    @param interface: Zope interface
+    @param portal: context
+    @param interface: Zope inteface
     @return: ['Image', 'News Item']
     """
+
     archetype_tool = getToolByName(context, 'archetype_tool')
+
     #plone4
     try :
         all_types = [tipe.getId() for tipe in archetype_tool.listPortalTypesWithInterfaces([interface])]
@@ -101,7 +104,12 @@ def _listTypesForInterface(context, interface):
         all_types = archetype_tool.listRegisteredTypes(inProject=True)
         all_types = [tipe['portal_type'] for tipe in all_types
                      if interface.isImplementedByInstancesOf(tipe['klass'])]
-    return dict.fromkeys(all_types).keys()
+
+    # fix for bug in listRegisteredTypes which returns 2 'ATFolder'
+    # when asking for IBaseFolder interface
+    unik_types = dict.fromkeys(all_types).keys()
+    return unik_types
+
 
 class QuickUploadView(BrowserView):
     """ The Quick Upload View

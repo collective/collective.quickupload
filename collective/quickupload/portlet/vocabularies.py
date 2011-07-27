@@ -11,29 +11,7 @@ from zope.schema.vocabulary import SimpleTerm
 from Products.ATContentTypes.interfaces import IFileContent, IImageContent
 from Products.CMFCore.utils import getToolByName
 
-def _listTypesForInterface(portal, interface):
-    """
-    List of portal types that have File interface
-    @param portal: plone site
-    @param interface: Zope 2 inteface
-    @return: [{'portal_type': xx, 'type_ui_info': UI type info}, ...]
-    """
-
-    archetype_tool = getToolByName(portal, 'archetype_tool')
-
-    #plone4
-    try :
-        all_types = [tipe.getId() for tipe in archetype_tool.listPortalTypesWithInterfaces([interface])]
-    #plone3
-    except :
-        all_types = archetype_tool.listRegisteredTypes(inProject=True)
-        all_types = [tipe['portal_type'] for tipe in all_types
-                     if interface.isImplementedByInstancesOf(tipe['klass'])]
-
-    # fix for bug in listRegisteredTypes which returns 2 'ATFolder'
-    # when asking for IBaseFolder interface
-    unik_types = dict.fromkeys(all_types).keys()
-    return [_infoDictForType(portal, tipe) for tipe in unik_types]
+from collective.quickupload.browser.quick_upload import _listTypesForInterface
 
 def _infoDictForType(portal, ptype ):
     """
@@ -61,8 +39,8 @@ class UploadFileTypeVocabulary(object):
     def __call__(self, context):
         context = getattr(context, 'context', context)
         portal = getToolByName(context, 'portal_url').getPortalObject()
-        flt = _listTypesForInterface(portal, IFileContent)
-        ilt = _listTypesForInterface(portal, IImageContent)
+        flt = [_infoDictForType(portal, tipe) for tipe in _listTypesForInterface(portal, IFileContent)]
+        ilt = [_infoDictForType(portal, tipe) for tipe in _listTypesForInterface(portal, IImageContent)]
         items = [SimpleTerm('auto', 'auto', context.translate('label_default_portaltype_configuration',
                                                       default=u'Default configuration (Content Type Registry).',
                                                       domain='collective.quickupload')),]

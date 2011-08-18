@@ -4,6 +4,9 @@ Changelog
 1.2.0 (unreleased)
 ------------------
 
+* Remove !important in css, that shouldn't be used in base css.
+  [thomasdesvenain]
+
 * Portlet has a bottom left and bottom right.
   [thomasdesvenain]
 

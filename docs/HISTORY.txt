@@ -1,8 +1,11 @@
 Changelog
 =========
 
-1.1.2 (unreleased)
+1.2.0 (unreleased)
 ------------------
+
+* Portlet has a bottom left and bottom right.
+  [thomasdesvenain]
 
 * Javascripts and css are loaded for authenticated users only.
   Refs http://plone.org/products/collective.quickupload/issues/11.

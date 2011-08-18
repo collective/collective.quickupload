@@ -32,8 +32,8 @@ THE SOFTWARE.
 }
 
 .uploadifyError {
-    border: 2px solid #FBCBBC !important;
-    background-color: #FDE5DD !important;
+    border: 2px solid #FBCBBC;
+    background-color: #FDE5DD;
 }
 
 .uploadifyQueueItem .cancel {
@@ -58,7 +58,7 @@ THE SOFTWARE.
 
 .main-uploader {
     margin-bottom: 15px;
-    min-height: 25px; 
+    min-height: 25px;
 }
 
 .uploadifybuttons {
@@ -72,18 +72,18 @@ THE SOFTWARE.
     cursor:pointer;
     text-align:center;
     text-decoration:none;
-    padding: 0 2px !important;
-    background: none !important;
+    padding: 0 2px;
+    background: none;
 }
 
 #label-upload{
-  display:block !important;
-  float:left !important;
-  padding: 18px 0 !important;
+  display:block;
+  float:left;
+  padding: 18px 0;
 }
 
 .quick-uploader object {
-  margin: 10px 0 0 10px !important;
+  margin: 10px 0 0 10px;
   float: right;
 }
 
@@ -108,7 +108,7 @@ THE SOFTWARE.
 }
 
 .QuickUploadPortlet h4 {
-  display: none !important;
+  display: none;
 }
 
 /* vim: set ft=css ts=4 sw=4 expandtab : */

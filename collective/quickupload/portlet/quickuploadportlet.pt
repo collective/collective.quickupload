@@ -9,7 +9,7 @@
         <span class="portletTopRight"></span>
     </dt>
 
-    <dd class="portletItem odd">
+    <dd class="portletItem odd lastItem">
       <script  type="text/javascript">
           // workaround this MSIE bug :
           // https://dev.plone.org/plone/ticket/10894
@@ -29,24 +29,26 @@
                              url: uploadUrl,
                              data: uploadData,
                              dataType: 'html',
-                             contentType: 'text/html; charset=utf-8', 
-                             success: function(html) { 
-                                UlDiv.html(html);             
-                             } });    
-              }); 
+                             contentType: 'text/html; charset=utf-8',
+                             success: function(html) {
+                                UlDiv.html(html);
+                             } });
+              });
           }
           jQuery(document).ready(loadUploader);
       </script>
       <div class="uploaderContainer">
-          <input type="hidden" 
+          <input type="hidden"
                  name="uploadUrl"
                  class="uploadUrl"
                  tal:attributes="value view/getUploadUrl" />
-          <input type="hidden" 
+          <input type="hidden"
                  name="uploadData"
                  class="uploadData"
-                 tal:attributes="value view/getDataForUploadUrl" />               
+                 tal:attributes="value view/getDataForUploadUrl" />
       </div>
+      <span class="portletBottomLeft"></span>
+      <span class="portletBottomRight"></span>
     </dd>
 
 </dl>

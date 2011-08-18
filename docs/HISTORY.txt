@@ -4,6 +4,9 @@ Changelog
 1.2.0 (unreleased)
 ------------------
 
+* User defined title is internationalized in plone domain.
+  [thomasdesvenain]
+
 * Remove !important in css, that shouldn't be used in base css.
   [thomasdesvenain]
 

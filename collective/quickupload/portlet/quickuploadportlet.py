@@ -7,6 +7,8 @@ from zope import schema
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
 from zope.formlib import form
+from zope.i18nmessageid import MessageFactory
+
 from plone.memoize.compress import xhtml_compress
 from plone.portlets.interfaces import IPortletDataProvider
 from plone.app.portlets.portlets import base
@@ -15,6 +17,8 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone.FactoryTool import TempFolder
 
 from collective.quickupload import siteMessageFactory as _
+
+PMF = MessageFactory('plone')
 
 def isTemporary(obj):
     """Check to see if an object is temporary"""
@@ -70,7 +74,7 @@ class Assignment(base.Assignment):
         """portlet title
         """
         if self.header :
-            return self.header
+            return PMF(self.header)
         media = self.upload_media_type or 'files'
         if media == 'image' :
             return _('Images Quick Upload')

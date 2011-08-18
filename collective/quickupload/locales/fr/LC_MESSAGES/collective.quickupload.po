@@ -134,7 +134,7 @@ msgstr "Annuler"
 #: ../browser/quick_upload.py:130
 #: ../portlet/quickuploadportlet.py:79
 msgid "label_media_quickupload"
-msgstr ""
+msgstr "Télécharger des ${medialabel}"
 
 #. Default: "Upload Files"
 #: ../browser/quick_upload.pt:35

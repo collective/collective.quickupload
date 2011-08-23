@@ -4,6 +4,10 @@ Changelog
 1.1.2 (unreleased)
 ------------------
 
+* Use IQuickUploadCapable interface to test if portlet has to be displayed.
+  Avoid some 404 errors.
+  [thomasdesvenain]
+
 * User defined title is internationalized in plone domain.
   [thomasdesvenain]
 

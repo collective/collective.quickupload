@@ -17,13 +17,18 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone.FactoryTool import TempFolder
 
 from collective.quickupload import siteMessageFactory as _
+from collective.quickupload.browser.interfaces import IQuickUploadCapable
 
 PMF = MessageFactory('plone')
 
 def isTemporary(obj):
     """Check to see if an object is temporary"""
+    if obj.isTemporary():
+        return False
+
     parent = aq_base(aq_parent(aq_inner(obj)))
-    return hasattr(parent, 'meta_type') and parent.meta_type == TempFolder.meta_type
+    return hasattr(parent, 'meta_type') \
+        and parent.meta_type == TempFolder.meta_type
 
 
 class IQuickUploadPortlet(IPortletDataProvider):
@@ -111,9 +116,9 @@ class Renderer(base.Renderer):
     @property
     def available(self):
         context = aq_inner(self.context)
-        if self.ploneview.isStructuralFolder() and \
+        if IQuickUploadCapable.providedBy(context) and \
            self.pm.checkPermission('Add portal content', context) and \
-           not isTemporary(context) :
+           not isTemporary(context):
             return True
         return False
 

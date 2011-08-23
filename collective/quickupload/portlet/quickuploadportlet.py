@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 ## Copyright (C)2010 Alter Way Solutions
-
+from Products.Archetypes.utils import shasattr
 from Acquisition import aq_inner, aq_base, aq_parent
 from zope.interface import implements
 from zope import schema
@@ -23,6 +23,8 @@ PMF = MessageFactory('plone')
 
 def isTemporary(obj):
     """Check to see if an object is temporary"""
+    if not shasattr(obj, 'isTemporary'):
+        return False
     if obj.isTemporary():
         return False
 

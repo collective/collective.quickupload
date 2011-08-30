@@ -4,6 +4,9 @@ Changelog
 1.1.2 (unreleased)
 ------------------
 
+* Add more messages into po files + french translations.
+  [thomasdesvenain]
+
 * Use IQuickUploadCapable interface to test if portlet has to be displayed.
   Avoid some 404 errors.
   [thomasdesvenain]

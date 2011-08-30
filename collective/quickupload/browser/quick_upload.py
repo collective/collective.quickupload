@@ -6,13 +6,14 @@ import os
 import mimetypes
 import random
 import urllib
+
 from Acquisition import aq_inner, aq_parent
 from AccessControl import SecurityManagement
 from ZPublisher.HTTPRequest import HTTPRequest
-
 from zope.security.interfaces import Unauthorized
 from interfaces import IQuickUploadFileFactory
 from zope.component import getUtility
+from zope.i18n import translate
 
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
@@ -325,21 +326,21 @@ class QuickUploadInit(BrowserView):
         msg = u'Choose files to upload'
         if mediaupload == 'image' :
             ext = '*.jpg;*.jpeg;*.gif;*.png;'
-            msg = u'Choose images to upload'
+            msg = _(u'Choose images to upload')
         elif mediaupload == 'video' :
             ext = '*.flv;*.avi;*.wmv;*.mpg;'
-            msg = u'Choose video files to upload'
+            msg = _(u'Choose video files to upload')
         elif mediaupload == 'audio' :
             ext = '*.mp3;*.wav;*.ogg;*.mp4;*.wma;*.aif;'
-            msg = u'Choose audio files to upload'
+            msg = _(u'Choose audio files to upload')
         elif mediaupload == 'flash' :
             ext = '*.swf;'
-            msg = u'Choose flash files to upload'
+            msg = _(u'Choose flash files to upload')
         elif mediaupload :
             # you can also pass a list of extensions in mediaupload request var
             # with this syntax '*.aaa;*.bbb;'
             ext = mediaupload
-            msg = u'Choose file for upload : ' + ext
+            msg = _(u'Choose file for upload: ${ext}', mapping={'ext': ext})
 
         try :
             extlist = [f.split('.')[1].strip() for f in ext.split(';') if f.strip()]
@@ -348,12 +349,10 @@ class QuickUploadInit(BrowserView):
         if extlist==['*'] :
             extlist = []
 
-        return ( ext, extlist, self._utranslate(msg))
+        return ( ext, extlist, self._translate(msg))
 
-    def _utranslate(self, msg):
-        # XXX fixme : the _ (SiteMessageFactory) doesn't work
-        context = aq_inner(self.context)
-        return context.translate(msg, domain="collective.quickupload")
+    def _translate(self, msg):
+        return translate(msg, context=self.request)
 
     def upload_settings(self):
         context = aq_inner(self.context)
@@ -376,23 +375,23 @@ class QuickUploadInit(BrowserView):
             ul_size_limit          = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '',
             ul_xhr_size_limit      = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '0',
             ul_sim_upload_limit    = str(self.qup_prefs.sim_upload_limit),
-            ul_button_text         = self._utranslate(u'Browse'),
-            ul_draganddrop_text    = self._utranslate(u'Drag and drop files to upload'),
-            ul_msg_all_sucess      = self._utranslate( u'All files uploaded with success.'),
-            ul_msg_some_sucess     = self._utranslate( u' files uploaded with success, '),
-            ul_msg_some_errors     = self._utranslate( u" uploads return an error."),
-            ul_msg_failed          = self._utranslate( u"Failed"),
-            ul_error_try_again_wo  = self._utranslate( u"please select files again without it."),
-            ul_error_try_again     = self._utranslate( u"please try again."),
-            ul_error_empty_file    = self._utranslate( u"This file is empty :"),
-            ul_error_file_large    = self._utranslate( u"This file is too large :"),
-            ul_error_maxsize_is    = self._utranslate( u"maximum file size is :"),
-            ul_error_bad_ext       = self._utranslate( u"This file has invalid extension :"),
-            ul_error_onlyallowed   = self._utranslate( u"Only allowed :"),
-            ul_error_no_permission = self._utranslate( u"You don't have permission to add this content in this place."),
-            ul_error_always_exists = self._utranslate( u"This file always exists with the same name on server :"),
-            ul_error_zodb_conflict = self._utranslate( u"A data base conflict error happened when uploading this file :"),
-            ul_error_server        = self._utranslate( u"Server error, please contact support and/or try again."),
+            ul_button_text         = self._translate(_(u'Browse')),
+            ul_draganddrop_text    = self._translate(_(u'Drag and drop files to upload')),
+            ul_msg_all_sucess      = self._translate(_(u'All files uploaded with success.')),
+            ul_msg_some_sucess     = self._translate(_(u' files uploaded with success, ')),
+            ul_msg_some_errors     = self._translate(_(u" uploads return an error.")),
+            ul_msg_failed          = self._translate(_(u"Failed")),
+            ul_error_try_again_wo  = self._translate(_(u"please select files again without it.")),
+            ul_error_try_again     = self._translate(_(u"please try again.")),
+            ul_error_empty_file    = self._translate(_(u"This file is empty:")),
+            ul_error_file_large    = self._translate(_(u"This file is too large:")),
+            ul_error_maxsize_is    = self._translate(_(u"maximum file size is:")),
+            ul_error_bad_ext       = self._translate(_(u"This file has invalid extension:")),
+            ul_error_onlyallowed   = self._translate(_(u"Only allowed:")),
+            ul_error_no_permission = self._translate(_(u"You don't have permission to add this content in this place.")),
+            ul_error_always_exists = self._translate(_(u"This file always exists with the same name on server:")),
+            ul_error_zodb_conflict = self._translate(_(u"A data base conflict error happened when uploading this file:")),
+            ul_error_server        = self._translate(_(u"Server error, please contact support and/or try again.")),
         )
 
         mediaupload = session.get('mediaupload', request.get('mediaupload', ''))

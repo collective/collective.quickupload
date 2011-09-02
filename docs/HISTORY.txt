@@ -1,8 +1,15 @@
 Changelog
 =========
 
-1.1.2 (unreleased)
+1.2.0 (unreleased)
 ------------------
+
+* A folder type can implement IQuickUploadNotCapable
+  so that upload is not allowed on it.
+  [thomasdesvenain]
+
+* We can include minimal.zcml file only to manually set IUploadCapable types.
+  [thomasdesvenain]
 
 * Add more messages into po files + french translations.
   [thomasdesvenain]

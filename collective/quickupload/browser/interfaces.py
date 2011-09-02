@@ -11,6 +11,10 @@ class IQuickUploadCapable(Interface):
     """Any container/object which supports quick uploading
     """
 
+class IQuickUploadNotCapable(Interface):
+    """Any container/object which NEVER supports quick uploading
+    """
+
 class IQuickUploadFileFactory(IFileFactory):
     """used for QuickUploadFileFactory
     """

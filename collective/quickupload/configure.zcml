@@ -6,22 +6,18 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.quickupload">
 
-  <five:registerPackage package="." initialize=".initialize" />
+  <include file="minimal.zcml" />
 
-  <include package=".browser" />
-  <include package=".upgrades" />
+  <class class="Products.ATContentTypes.content.folder.ATFolder">
+    <implements interface=".interfaces.IQuickUploadCapable" />
+  </class>
 
-  <!-- the quickupload portlet is an example on how to use the quickupload view -->
-  <include package=".portlet" />
+  <class class="Products.ATContentTypes.content.folder.ATBTreeFolder">
+    <implements interface=".interfaces.IQuickUploadCapable" />
+  </class>
 
-  <i18n:registerTranslations directory="locales" />
-
-  <genericsetup:registerProfile
-      name="default"
-      title="Plone Quick Upload"
-      directory="profiles/default"
-      description="A quick upload form for Plone"
-      provides="Products.GenericSetup.interfaces.EXTENSION"
-      />
+  <class class="Products.CMFPlone.Portal.PloneSite">
+    <implements interface=".interfaces.IQuickUploadCapable" />
+  </class>
 
 </configure>

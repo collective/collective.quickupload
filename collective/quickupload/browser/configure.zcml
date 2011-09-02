@@ -8,66 +8,54 @@
 
   <adapter factory=".uploadcapable.QuickUploadCapableFileFactory" />
 
-  <class class="Products.ATContentTypes.content.folder.ATFolder">
-    <implements interface=".interfaces.IQuickUploadCapable" />
-  </class>
-
-  <class class="Products.ATContentTypes.content.folder.ATBTreeFolder">
-    <implements interface=".interfaces.IQuickUploadCapable" />
-  </class>
-
-  <class class="Products.CMFPlone.Portal.PloneSite">
-    <implements interface=".interfaces.IQuickUploadCapable" />
-  </class>       
-        
   <!-- resource directory for widget static files -->
   <browser:resourceDirectory
       name="quickupload_static"
       directory="static"
-      />  	        
+      />
 
   <!-- Quick Upload View -->
-       
+
   <browser:page
       for=".interfaces.IQuickUploadCapable"
       name="quick_upload"
       class=".quick_upload.QuickUploadView"
-      permission="cmf.AddPortalContent"/>     
-    
+      permission="cmf.AddPortalContent"/>
+
   <!-- Quick Upload javascript Init -->
   <browser:page
       for="*"
       name="quick_upload_init"
       class=".quick_upload.QuickUploadInit"
-      permission="cmf.AddPortalContent"/>      
-  
+      permission="cmf.AddPortalContent"/>
+
   <!-- Quick upload file Views
-       we use permission zope.Public 
+       we use permission zope.Public
        on flash_upload_file
        because authentication is done
-       using a ticket -->   
-           
+       using a ticket -->
+
   <browser:page
       for="*"
       name="quick_upload_file"
       attribute="quick_upload_file"
       class=".quick_upload.QuickUploadFile"
-      permission="cmf.AddPortalContent"/> 
-           
+      permission="cmf.AddPortalContent"/>
+
   <browser:page
       for="*"
       name="flash_upload_file"
       attribute="flash_upload_file"
       class=".quick_upload.QuickUploadFile"
-      permission="zope.Public"/> 
-           
+      permission="zope.Public"/>
+
   <!-- Quick Upload check file -->
-  
+
   <browser:page
       for="*"
       name="quick_upload_check_file"
       class=".quick_upload.QuickUploadCheckFile"
-      permission="cmf.AddPortalContent"/> 
+      permission="cmf.AddPortalContent"/>
 
 
   <!-- ticket view which generate a ticket for each user/folder absolute url
@@ -80,15 +68,15 @@
       permission="cmf.AddPortalContent"
       />
 
-  <!-- quick upload control panel adapter -->    
+  <!-- quick upload control panel adapter -->
   <adapter factory=".quickupload_settings.QuickUploadControlPanelAdapter" />
-  
-  <!-- quick upload control panel form view -->    
+
+  <!-- quick upload control panel form view -->
   <browser:page
       name="quickupload-controlpanel"
       for="Products.CMFPlone.interfaces.IPloneSiteRoot"
       class=".quickupload_settings.QuickUploadControlPanel"
       permission="cmf.ManagePortal"
-      />    
+      />
 
 </configure>

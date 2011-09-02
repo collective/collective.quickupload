@@ -27,6 +27,7 @@ import ticket as ticketmod
 from collective.quickupload import siteMessageFactory as _
 from collective.quickupload import logger
 from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
+from collective.quickupload.browser.interfaces import IQuickUploadNotCapable
 
 try :
     # python 2.6
@@ -123,6 +124,9 @@ class QuickUploadView(BrowserView):
         self.uploader_id = self._uploader_id()
 
     def __call__(self):
+        if IQuickUploadNotCapable.providedBy(self.context):
+            raise Unauthorized
+
         return self.template()
 
     def header_upload(self) :

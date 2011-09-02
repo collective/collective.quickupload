@@ -17,7 +17,8 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone.FactoryTool import TempFolder
 
 from collective.quickupload import siteMessageFactory as _
-from collective.quickupload.browser.interfaces import IQuickUploadCapable
+from collective.quickupload.browser.interfaces import (
+    IQuickUploadCapable, IQuickUploadNotCapable)
 
 PMF = MessageFactory('plone')
 
@@ -118,11 +119,10 @@ class Renderer(base.Renderer):
     @property
     def available(self):
         context = aq_inner(self.context)
-        if IQuickUploadCapable.providedBy(context) and \
-           self.pm.checkPermission('Add portal content', context) and \
-           not isTemporary(context):
-            return True
-        return False
+        return (IQuickUploadCapable.providedBy(context) and
+                not IQuickUploadNotCapable.providedBy(context) and
+                self.pm.checkPermission('Add portal content', context) and
+                not isTemporary(context))
 
     def getUploadUrl(self):
         """

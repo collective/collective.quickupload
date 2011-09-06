@@ -4,6 +4,10 @@ Changelog
 1.2.0 (unreleased)
 ------------------
 
+* Use ``plone.app.portlets.ManagePortlets`` permission, allows site-admins
+  to add/edit the portlet.
+  [ggozad]
+
 * A folder type can implement IQuickUploadNotCapable
   so that upload is not allowed on it.
   [thomasdesvenain]

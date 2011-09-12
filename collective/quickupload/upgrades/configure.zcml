@@ -4,8 +4,8 @@
     i18n_domain="extranetprivr">
 
   <genericsetup:upgradeStep
-      title="Migration profile for extranetprivr.policy to Plone 4"
-      description="Migration profile for extranetprivr.policy to 1100"
+      title="Javascripts and css are loaded for authenticated users only."
+      description=""
       source="1.0.3"
       destination="2"
       handler=".upgrades.v1_v2"

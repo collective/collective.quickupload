@@ -20,6 +20,7 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.ATContentTypes.interfaces import IImageContent
 from Products.CMFPlone.interfaces import IPloneSiteRoot
+from Products.Sessions.SessionDataManager import SessionDataManagerErr
 from zope.app.container.interfaces import INameChooser
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 
@@ -131,8 +132,14 @@ class QuickUploadView(BrowserView):
 
     def header_upload(self) :
         request = self.request
-        session = request.get('SESSION', {})
-        medialabel = session.get('mediaupload', request.get('mediaupload', 'files'))
+        try:
+            session = request.get('SESSION', {})
+            medialabel = session.get('mediaupload',
+                    request.get('mediaupload', 'files'))
+        except SessionDataManagerErr:
+            logger.debug('Error occurred getting session data. Falling back to '
+                    'request.')
+            medialabel = request.get('mediaupload', 'files')
         # to improve
         if '*.' in medialabel :
             medialabel = ''
@@ -361,7 +368,17 @@ class QuickUploadInit(BrowserView):
     def upload_settings(self):
         context = aq_inner(self.context)
         request = self.request
-        session = request.get('SESSION', {})
+        try:
+            session = request.get('SESSION', {})
+            mediaupload = session.get('mediaupload',
+                    request.get('mediaupload', ''))
+            typeupload = session.get('typeupload',
+                    request.get('typeupload', ''))
+        except SessionDataManagerErr:
+            logger.debug('Error occurred getting session data. Falling back to '
+                    'request.')
+            mediaupload = request.get('mediaupload', '')
+            typeupload = request.get('typeupload', '')
         portal_url = getToolByName(context, 'portal_url')()
         # use a ticket for authentication (used for flashupload only)
         ticket = context.restrictedTraverse('@@quickupload_ticket')()
@@ -398,8 +415,6 @@ class QuickUploadInit(BrowserView):
             ul_error_server        = self._translate(_(u"Server error, please contact support and/or try again.")),
         )
 
-        mediaupload = session.get('mediaupload', request.get('mediaupload', ''))
-        typeupload = session.get('typeupload', request.get('typeupload', ''))
         settings['typeupload'] = typeupload
         if typeupload :
             imageTypes = _listTypesForInterface(context, IImageContent)

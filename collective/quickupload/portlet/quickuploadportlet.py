@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 ## Copyright (C)2010 Alter Way Solutions
+from Products.Sessions.SessionDataManager import SessionDataManagerErr
 from Products.Archetypes.utils import shasattr
 from Acquisition import aq_inner, aq_base, aq_parent
 from zope.interface import implements
@@ -17,6 +18,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.CMFPlone.FactoryTool import TempFolder
 
 from collective.quickupload import siteMessageFactory as _
+from collective.quickupload import logger
 from collective.quickupload.browser.interfaces import (
     IQuickUploadCapable, IQuickUploadNotCapable)
 
@@ -102,7 +104,12 @@ class Renderer(base.Renderer):
         base.Renderer.__init__(self, *args)
         context = aq_inner(self.context)
         request = self.request
-        session = request.get('SESSION', None)
+        try:
+            session = request.get('SESSION', None)
+        except SessionDataManagerErr:
+            logger.debug('Error occurred getting session data. Falling back to '
+                    'request.')
+            session = None
         # empty typeupload and mediaupload session
         # since the portlet don't use it, but another app could
         if session :

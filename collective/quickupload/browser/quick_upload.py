@@ -404,7 +404,7 @@ class QuickUploadInit(BrowserView):
             ul_msg_failed          = self._translate(_(u"Failed")),
             ul_error_try_again_wo  = self._translate(_(u"please select files again without it.")),
             ul_error_try_again     = self._translate(_(u"please try again.")),
-            ul_error_empty_file    = self._translate(_(u"This file is empty:")),
+            ul_error_empty_file    = self._translate(_(u"Selected elements contain an empty file or a folder:")),
             ul_error_file_large    = self._translate(_(u"This file is too large:")),
             ul_error_maxsize_is    = self._translate(_(u"maximum file size is:")),
             ul_error_bad_ext       = self._translate(_(u"This file has invalid extension:")),

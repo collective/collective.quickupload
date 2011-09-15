@@ -18,15 +18,15 @@ msgstr ""
 
 #: ../browser/quick_upload.py:402
 msgid " files uploaded with success, "
-msgstr ""
+msgstr " archivos cargados exitosamente, "
 
 #: ../browser/quick_upload.py:403
 msgid " uploads return an error."
-msgstr ""
+msgstr " cargas retornaron un error."
 
 #: ../browser/quick_upload.py:414
 msgid "A data base conflict error happened when uploading this file:"
-msgstr ""
+msgstr "Ocurrió un conflicto en la base de datos durante la carga de este archivo:"
 
 #: ../portlet/quickuploadportlet.py:63
 msgid "All"
@@ -34,7 +34,7 @@ msgstr "Todos"
 
 #: ../browser/quick_upload.py:401
 msgid "All files uploaded with success."
-msgstr ""
+msgstr "Todos los archivos fueron cargados con éxito."
 
 #: ../portlet/quickuploadportlet.py:66
 msgid "Audio files"
@@ -46,23 +46,23 @@ msgstr "Título de la caja"
 
 #: ../browser/quick_upload.py:399
 msgid "Browse"
-msgstr ""
+msgstr "Mostrar"
 
 #: ../browser/quick_upload.py:346
 msgid "Choose audio files to upload"
-msgstr ""
+msgstr "Elija los archivos de audio que va a cargar"
 
 #: ../browser/quick_upload.py:354
 msgid "Choose file for upload: ${ext}"
-msgstr ""
+msgstr "Elija el archivo para la carga: ${ext}"
 
 #: ../browser/quick_upload.py:349
 msgid "Choose flash files to upload"
-msgstr ""
+msgstr "Elija los archivos flash que va a cargar"
 
 #: ../browser/quick_upload.py:340
 msgid "Choose images to upload"
-msgstr ""
+msgstr "Elija las imágenes que va a cargar"
 
 #: ../portlet/quickuploadportlet.py:59
 msgid "Choose the media type used for file upload. image, audio, video ..."
@@ -74,7 +74,7 @@ msgstr "Elija el tipo de contenido usado para la carga de archivos. Utilice la c
 
 #: ../browser/quick_upload.py:343
 msgid "Choose video files to upload"
-msgstr ""
+msgstr "Elija los videos que va a cargar"
 
 #: ../portlet/quickuploadportlet.py:50
 msgid "Content type"
@@ -86,11 +86,11 @@ msgstr "Controla como se usa la herramienta de carga rápida."
 
 #: ../browser/quick_upload.py:400
 msgid "Drag and drop files to upload"
-msgstr ""
+msgstr "Arrastre y suelte lso archivos que va a cargar"
 
 #: ../browser/quick_upload.py:404
 msgid "Failed"
-msgstr ""
+msgstr "Fallo"
 
 #: ../browser/quick_upload.py:147
 #: ../portlet/quickuploadportlet.py:92
@@ -120,7 +120,7 @@ msgstr "Tipo de medio"
 
 #: ../browser/quick_upload.py:411
 msgid "Only allowed:"
-msgstr ""
+msgstr "Sólo se permite:"
 
 #: ../profiles/default/portlets.xml
 msgid "Portlet displaying a quick and multiple upload form"
@@ -136,23 +136,23 @@ msgstr "Configuración de Quick Upload"
 
 #: ../browser/quick_upload.py:407
 msgid "Selected elements contain an empty file or a folder:"
-msgstr ""
+msgstr "Los elementos seleccionados contienen un archvio vacío o una carpeta:"
 
 #: ../browser/quick_upload.py:415
 msgid "Server error, please contact support and/or try again."
-msgstr ""
+msgstr "Error del servidor, por favor contacte a soporte y/o intente de nuevo."
 
 #: ../browser/quick_upload.py:413
 msgid "This file always exists with the same name on server:"
-msgstr ""
+msgstr "Un archivo con este mismo nombre ya existe en el servidor:"
 
 #: ../browser/quick_upload.py:410
 msgid "This file has invalid extension:"
-msgstr ""
+msgstr "Este archivo tiene una extensión no válida:"
 
 #: ../browser/quick_upload.py:408
 msgid "This file is too large:"
-msgstr ""
+msgstr "Este archivo es demasiado grande:"
 
 #: ../portlet/quickuploadportlet.py:65
 msgid "Video files"
@@ -160,7 +160,7 @@ msgstr "Archivos de video"
 
 #: ../browser/quick_upload.py:412
 msgid "You don't have permission to add this content in this place."
-msgstr ""
+msgstr "Usted no tiene permiso para agregar este contenido en este lugar."
 
 #. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
 #: ../browser/quickupload_settings.py:26
@@ -216,15 +216,15 @@ msgstr "Carga de archivos"
 
 #: ../browser/quick_upload.py:409
 msgid "maximum file size is:"
-msgstr ""
+msgstr "el tamaño máximo de los archivos es:"
 
 #: ../browser/quick_upload.py:405
 msgid "please select files again without it."
-msgstr ""
+msgstr "por favor selecciones archivos de nuevo sin éste."
 
 #: ../browser/quick_upload.py:406
 msgid "please try again."
-msgstr ""
+msgstr "por favor intente de nuevo."
 
 #. Default: "Automatic upload on select"
 #: ../browser/quickupload_settings.py:25

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2011-09-14 07:19+0000\n"
+"POT-Creation-Date: 2011-09-15 11:34+0000\n"
 "PO-Revision-Date: 2011-07-25 10:06+0800\n"
 "Last-Translator: Jian Aijun <jianaijun@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
@@ -17,67 +17,67 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "Domain: collective.quickupload\n"
 
-#: ../browser/quick_upload.py:385
+#: ../browser/quick_upload.py:402
 msgid " files uploaded with success, "
 msgstr ""
 
-#: ../browser/quick_upload.py:386
+#: ../browser/quick_upload.py:403
 msgid " uploads return an error."
 msgstr ""
 
-#: ../browser/quick_upload.py:397
+#: ../browser/quick_upload.py:414
 msgid "A data base conflict error happened when uploading this file:"
 msgstr ""
 
-#: ../portlet/quickuploadportlet.py:61
+#: ../portlet/quickuploadportlet.py:63
 msgid "All"
 msgstr "全部"
 
-#: ../browser/quick_upload.py:384
+#: ../browser/quick_upload.py:401
 msgid "All files uploaded with success."
 msgstr ""
 
-#: ../portlet/quickuploadportlet.py:64
+#: ../portlet/quickuploadportlet.py:66
 msgid "Audio files"
 msgstr "音频文件"
 
-#: ../portlet/quickuploadportlet.py:42
+#: ../portlet/quickuploadportlet.py:44
 msgid "Box title"
 msgstr "面板标题"
 
-#: ../browser/quick_upload.py:382
+#: ../browser/quick_upload.py:399
 msgid "Browse"
 msgstr ""
 
-#: ../browser/quick_upload.py:339
+#: ../browser/quick_upload.py:346
 msgid "Choose audio files to upload"
 msgstr ""
 
-#: ../browser/quick_upload.py:347
+#: ../browser/quick_upload.py:354
 msgid "Choose file for upload: ${ext}"
 msgstr ""
 
-#: ../browser/quick_upload.py:342
+#: ../browser/quick_upload.py:349
 msgid "Choose flash files to upload"
 msgstr ""
 
-#: ../browser/quick_upload.py:333
+#: ../browser/quick_upload.py:340
 msgid "Choose images to upload"
 msgstr ""
 
-#: ../portlet/quickuploadportlet.py:57
+#: ../portlet/quickuploadportlet.py:59
 msgid "Choose the media type used for file upload. image, audio, video ..."
 msgstr "选择想要上传的媒体类型。图片，音频，视频 ..."
 
-#: ../portlet/quickuploadportlet.py:49
+#: ../portlet/quickuploadportlet.py:51
 msgid "Choose the portal type used for file upload. Let the default configuration for an automatic portal type, depending on settings defined in content_type_registry."
 msgstr "选择上传文件使用的网站内容类型，使用默认配置，系统会根据内容类型注册表的设置自动处理。"
 
-#: ../browser/quick_upload.py:336
+#: ../browser/quick_upload.py:343
 msgid "Choose video files to upload"
 msgstr ""
 
-#: ../portlet/quickuploadportlet.py:48
+#: ../portlet/quickuploadportlet.py:50
 msgid "Content type"
 msgstr "内容类型"
 
@@ -86,43 +86,43 @@ msgstr "内容类型"
 msgid "Control how the quick upload tool is used."
 msgstr "控制如何使用快速上传工具。"
 
-#: ../browser/quick_upload.py:383
+#: ../browser/quick_upload.py:400
 msgid "Drag and drop files to upload"
 msgstr ""
 
-#: ../browser/quick_upload.py:387
+#: ../browser/quick_upload.py:404
 msgid "Failed"
 msgstr ""
 
 #. Default: "Files Quick Upload"
-#: ../browser/quick_upload.py:140
-#: ../portlet/quickuploadportlet.py:90
+#: ../browser/quick_upload.py:147
+#: ../portlet/quickuploadportlet.py:92
 msgid "Files Quick Upload"
 msgstr "文件快速上传"
 
-#: ../portlet/quickuploadportlet.py:65
+#: ../portlet/quickuploadportlet.py:67
 msgid "Flash files"
 msgstr "Flash 文件"
 
-#: ../portlet/quickuploadportlet.py:44
+#: ../portlet/quickuploadportlet.py:46
 msgid "If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."
 msgstr "如果标题为空，面板标题将是 ‘媒体类型‘ + 快速上传。"
 
-#: ../portlet/quickuploadportlet.py:62
+#: ../portlet/quickuploadportlet.py:64
 msgid "Images"
 msgstr "图片"
 
 #. Default: "Images Quick Upload"
-#: ../browser/quick_upload.py:142
-#: ../portlet/quickuploadportlet.py:88
+#: ../browser/quick_upload.py:149
+#: ../portlet/quickuploadportlet.py:90
 msgid "Images Quick Upload"
 msgstr "图片快速上传"
 
-#: ../portlet/quickuploadportlet.py:56
+#: ../portlet/quickuploadportlet.py:58
 msgid "Media type"
 msgstr "媒体类型"
 
-#: ../browser/quick_upload.py:394
+#: ../browser/quick_upload.py:411
 msgid "Only allowed:"
 msgstr ""
 
@@ -141,31 +141,31 @@ msgstr "快速上传面板"
 msgid "Quick Upload settings"
 msgstr "快速上传设置"
 
-#: ../browser/quick_upload.py:390
+#: ../browser/quick_upload.py:407
 msgid "Selected elements contain an empty file or a folder:"
 msgstr ""
 
-#: ../browser/quick_upload.py:398
+#: ../browser/quick_upload.py:415
 msgid "Server error, please contact support and/or try again."
 msgstr ""
 
-#: ../browser/quick_upload.py:396
+#: ../browser/quick_upload.py:413
 msgid "This file always exists with the same name on server:"
 msgstr ""
 
-#: ../browser/quick_upload.py:393
+#: ../browser/quick_upload.py:410
 msgid "This file has invalid extension:"
 msgstr ""
 
-#: ../browser/quick_upload.py:391
+#: ../browser/quick_upload.py:408
 msgid "This file is too large:"
 msgstr ""
 
-#: ../portlet/quickuploadportlet.py:63
+#: ../portlet/quickuploadportlet.py:65
 msgid "Video files"
 msgstr "视频文件"
 
-#: ../browser/quick_upload.py:395
+#: ../browser/quick_upload.py:412
 msgid "You don't have permission to add this content in this place."
 msgstr ""
 
@@ -199,8 +199,9 @@ msgstr "每个文件的大小限制，单位：KB，0 代表沒有限制。"
 msgid "description_use_flashupload"
 msgstr "默认情况下，系统使用 JavaScript 处理上传。如果选中，会改用 FLASH 来上传。现代的浏览器都提供功能强大的 JavaScript。 而 Flash 上传方式，并非所有浏览器都支持，并且还有很多问题，例如：不支持 HTTPS，不支持 HTTPS 认证方式 ..."
 
-#. Default: "Choose your files:"
+#. Default: "Drag and drop or choose your files:"
 #: ../browser/quick_upload.pt:19
+#, fuzzy
 msgid "label_choose_your_files"
 msgstr "选择文件："
 
@@ -210,8 +211,8 @@ msgid "label_clear_queue"
 msgstr "清除队列"
 
 #. Default: "${medialabel} Quick Upload"
-#: ../browser/quick_upload.py:143
-#: ../portlet/quickuploadportlet.py:91
+#: ../browser/quick_upload.py:150
+#: ../portlet/quickuploadportlet.py:93
 msgid "label_media_quickupload"
 msgstr "${medialabel} 快速上传"
 
@@ -220,15 +221,15 @@ msgstr "${medialabel} 快速上传"
 msgid "label_upload_files"
 msgstr "上传文件"
 
-#: ../browser/quick_upload.py:392
+#: ../browser/quick_upload.py:409
 msgid "maximum file size is:"
 msgstr ""
 
-#: ../browser/quick_upload.py:388
+#: ../browser/quick_upload.py:405
 msgid "please select files again without it."
 msgstr ""
 
-#: ../browser/quick_upload.py:389
+#: ../browser/quick_upload.py:406
 msgid "please try again."
 msgstr ""
 

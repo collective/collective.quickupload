@@ -17,7 +17,7 @@
         Files Quick Upload
       </h4>
       <label i18n:translate="label_choose_your_files"
-             id="label-upload">Choose your files:</label>
+             id="label-upload">Drag and drop or choose your files:</label>
       <!-- uploader comes here -->
       <div id="uploader"
            class="main-uploader"

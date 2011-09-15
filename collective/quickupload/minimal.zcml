@@ -23,4 +23,12 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Remove Plone Quick Upload"
+      directory="profiles/uninstall"
+      description="Removes quick upload form from Plone"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
 </configure>

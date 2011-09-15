@@ -4,6 +4,10 @@ Changelog
 1.2.0 (unreleased)
 ------------------
 
+* Added support for tests using plone.app.testing; control panel is now
+  removed when package is uninstalled.
+  [hvelarde]
+
 * Catch errors if sessions are disabled.
   [swampmonkey]
 

@@ -17,15 +17,15 @@ msgstr ""
 
 #: ../browser/quick_upload.py:402
 msgid " files uploaded with success, "
-msgstr ""
+msgstr " arquivos enviados com sucesso, "
 
 #: ../browser/quick_upload.py:403
 msgid " uploads return an error."
-msgstr ""
+msgstr " envios retornaram erros."
 
 #: ../browser/quick_upload.py:414
 msgid "A data base conflict error happened when uploading this file:"
-msgstr ""
+msgstr "Um conflito de base de dados ocorreu durante o envio deste arquivo:"
 
 #: ../portlet/quickuploadportlet.py:63
 msgid "All"
@@ -33,11 +33,11 @@ msgstr "Todos"
 
 #: ../browser/quick_upload.py:401
 msgid "All files uploaded with success."
-msgstr ""
+msgstr "Todos os arquivos enviados com sucesso."
 
 #: ../portlet/quickuploadportlet.py:66
 msgid "Audio files"
-msgstr "Arquivos de aúdio"
+msgstr "Arquivos de áudio"
 
 #: ../portlet/quickuploadportlet.py:44
 msgid "Box title"
@@ -45,23 +45,23 @@ msgstr "Título do portlet"
 
 #: ../browser/quick_upload.py:399
 msgid "Browse"
-msgstr ""
+msgstr "Procurar"
 
 #: ../browser/quick_upload.py:346
 msgid "Choose audio files to upload"
-msgstr ""
+msgstr "Escolha os arquivos de áudio a serem enviados"
 
 #: ../browser/quick_upload.py:354
 msgid "Choose file for upload: ${ext}"
-msgstr ""
+msgstr "Escolha arquivos para envio: ${ext}"
 
 #: ../browser/quick_upload.py:349
 msgid "Choose flash files to upload"
-msgstr ""
+msgstr "Escolha arquivos flash para envio"
 
 #: ../browser/quick_upload.py:340
 msgid "Choose images to upload"
-msgstr ""
+msgstr "Escolha imagens para envio"
 
 #: ../portlet/quickuploadportlet.py:59
 msgid "Choose the media type used for file upload. image, audio, video ..."
@@ -73,7 +73,7 @@ msgstr "Selecione o tipo de conteúdo utilizado para o envio dos arquivos. A con
 
 #: ../browser/quick_upload.py:343
 msgid "Choose video files to upload"
-msgstr ""
+msgstr "Escolha os arquivos de vídeo para envio"
 
 #: ../portlet/quickuploadportlet.py:50
 msgid "Content type"
@@ -86,11 +86,11 @@ msgstr "Controle como o envio rápido de arquivos é utilizado."
 
 #: ../browser/quick_upload.py:400
 msgid "Drag and drop files to upload"
-msgstr ""
+msgstr "Clique e arraste os arquivos a serem enviados"
 
 #: ../browser/quick_upload.py:404
 msgid "Failed"
-msgstr ""
+msgstr "Falhou"
 
 #. Default: "Files Quick Upload"
 #: ../browser/quick_upload.py:147
@@ -122,7 +122,7 @@ msgstr "Tipo de mídia"
 
 #: ../browser/quick_upload.py:411
 msgid "Only allowed:"
-msgstr ""
+msgstr "Permitido apenas:"
 
 #. Default: "Portlet displaying a quick and multiple upload form"
 #: ../profiles/default/portlets.xml
@@ -141,23 +141,23 @@ msgstr "Configurações do envio rápido"
 
 #: ../browser/quick_upload.py:407
 msgid "Selected elements contain an empty file or a folder:"
-msgstr ""
+msgstr "Os elementos selecionados contém arquivos vazios ou uma pasta:"
 
 #: ../browser/quick_upload.py:415
 msgid "Server error, please contact support and/or try again."
-msgstr ""
+msgstr "Erro do servidor, por favor contate o suporte ou tente novamente."
 
 #: ../browser/quick_upload.py:413
 msgid "This file always exists with the same name on server:"
-msgstr ""
+msgstr "Um arquivo com o mesmo nome existe no servidor:"
 
 #: ../browser/quick_upload.py:410
 msgid "This file has invalid extension:"
-msgstr ""
+msgstr "Este arquivo tem uma extensão inválida:"
 
 #: ../browser/quick_upload.py:408
 msgid "This file is too large:"
-msgstr ""
+msgstr "Este arquivo é muito grande:"
 
 #: ../portlet/quickuploadportlet.py:65
 msgid "Video files"
@@ -165,18 +165,17 @@ msgstr "Arquivos de vídeo"
 
 #: ../browser/quick_upload.py:412
 msgid "You don't have permission to add this content in this place."
-msgstr ""
+msgstr "Você não tem permissão para adicionar conteúdos neste local."
 
 #. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
 #: ../browser/quickupload_settings.py:26
-#, fuzzy
 msgid "description_auto_upload"
-msgstr "Clique aqui caso queira que o envio dos arquivos ocorra automaticamente, sem o envio do formulário. Importante lembrar que você não poderá editar o título destes arquivos antes do envio caso esta opção esteja ativada."
+msgstr "Clique aqui caso queira que o envio dos arquivos ocorra automaticamente, sem o envio do formulário. Importante lembrar que você não poderá editar o título ou descrição destes arquivos antes do envio caso esta opção esteja ativada."
 
 #. Default: "If checked, you can fill the files descriptions before upload. Uncheck if you don't need descriptions."
 #: ../browser/quickupload_settings.py:38
 msgid "description_fill_descriptions"
-msgstr ""
+msgstr "Quando selecionado, você poderá informar as descrições para os arquivos antes do envio. Não selecione caso as descrições não sejam necessárias. "
 
 #. Default: "If checked, you can fill the files titles before upload. Uncheck if you don't need titles."
 #: ../browser/quickupload_settings.py:32
@@ -200,9 +199,8 @@ msgstr "Por padrão o script de envio usado utiliza apenas javascript. Selecione
 
 #. Default: "Drag and drop or choose your files:"
 #: ../browser/quick_upload.pt:19
-#, fuzzy
 msgid "label_choose_your_files"
-msgstr "Selecione os arquivos:"
+msgstr "Clique e arraste ou selecione os arquivos:"
 
 #. Default: "Clear Queue"
 #: ../browser/quick_upload.pt:41
@@ -213,7 +211,7 @@ msgstr "Limpar fila"
 #: ../browser/quick_upload.py:150
 #: ../portlet/quickuploadportlet.py:93
 msgid "label_media_quickupload"
-msgstr ""
+msgstr "Envio rápido de ${medialabel}"
 
 #. Default: "Upload Files"
 #: ../browser/quick_upload.pt:35
@@ -222,15 +220,15 @@ msgstr "Upload de arquivos"
 
 #: ../browser/quick_upload.py:409
 msgid "maximum file size is:"
-msgstr ""
+msgstr "tamanho máximo do arquivo é:"
 
 #: ../browser/quick_upload.py:405
 msgid "please select files again without it."
-msgstr ""
+msgstr "por favor selecione os arquivos novamente sem ele."
 
 #: ../browser/quick_upload.py:406
 msgid "please try again."
-msgstr ""
+msgstr "por favor, tente novamente."
 
 #. Default: "Automatic upload on select"
 #: ../browser/quickupload_settings.py:25
@@ -240,7 +238,7 @@ msgstr "Envio automático após a seleção"
 #. Default: "Fill description before upload"
 #: ../browser/quickupload_settings.py:37
 msgid "title_fill_descriptions"
-msgstr ""
+msgstr "Preencha as descrições antes do envio."
 
 #. Default: "Fill title before upload"
 #: ../browser/quickupload_settings.py:31

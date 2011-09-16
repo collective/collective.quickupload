@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2011-09-15 11:34+0000\n"
+"POT-Creation-Date: 2011-09-15 12:01+0000\n"
 "PO-Revision-Date: 2010-07-26 11:30+0200\n"
 "Last-Translator: Jean-mat Grimaldi <jeanmat.grimaldi@gmail.com>\n"
 "Language-Team: \n"
@@ -147,8 +147,8 @@ msgid "Server error, please contact support and/or try again."
 msgstr "Erreur serveur, veuillez réessayer ou contacter votre administrateur."
 
 #: ../browser/quick_upload.py:413
-msgid "This file always exists with the same name on server:"
-msgstr "Ce fichier existe déjà avec le même nom sur le serveur :"
+msgid "This file already exists with the same name on server:"
+msgstr "Le dossier contient déjà un fichier de ce nom :"
 
 #: ../browser/quick_upload.py:410
 msgid "This file has invalid extension:"

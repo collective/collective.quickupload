@@ -4,6 +4,9 @@ Changelog
 1.2.0 (unreleased)
 ------------------
 
+* Fixed error message when trying to upload a file which ever exist in folder.
+  [thomasdesvenain]
+
 * Added support for tests using plone.app.testing; control panel is now
   removed when package is uninstalled.
   [hvelarde]

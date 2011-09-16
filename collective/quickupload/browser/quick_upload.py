@@ -202,7 +202,7 @@ XHR_UPLOAD_JS = """
                 '</li>',
             messages: {
                 serverError: "%(ul_error_server)s",
-                serverErrorAlwaysExist: "%(ul_error_always_exists)s {file}",
+                serverErrorAlreadyExists: "%(ul_error_already_exists)s {file}",
                 serverErrorZODBConflict: "%(ul_error_zodb_conflict)s {file}, %(ul_error_try_again)s",
                 serverErrorNoPermission: "%(ul_error_no_permission)s",
                 typeError: "%(ul_error_bad_ext)s {file}. %(ul_error_onlyallowed)s {extensions}.",
@@ -410,7 +410,7 @@ class QuickUploadInit(BrowserView):
             ul_error_bad_ext       = self._translate(_(u"This file has invalid extension:")),
             ul_error_onlyallowed   = self._translate(_(u"Only allowed:")),
             ul_error_no_permission = self._translate(_(u"You don't have permission to add this content in this place.")),
-            ul_error_always_exists = self._translate(_(u"This file always exists with the same name on server:")),
+            ul_error_already_exists = self._translate(_(u"This file already exists with the same name on server:")),
             ul_error_zodb_conflict = self._translate(_(u"A data base conflict error happened when uploading this file:")),
             ul_error_server        = self._translate(_(u"Server error, please contact support and/or try again.")),
         )
@@ -526,7 +526,6 @@ class QuickUploadFile(QuickUploadAuthenticate):
                 return o.absolute_url()
 
     def quick_upload_file(self) :
-
         context = aq_inner(self.context)
         request = self.request
         response = request.RESPONSE
@@ -547,13 +546,13 @@ class QuickUploadFile(QuickUploadAuthenticate):
                 file.seek(0)
             except AttributeError :
                 # in case of cancel during xhr upload
-                logger.info("Upload of %s has been aborted" %file_name)
+                logger.info("Upload of %s has been aborted", file_name)
                 # not really useful here since the upload block
                 # is removed by "cancel" action, but
                 # could be useful if someone change the js behavior
                 return  json.dumps({u'error': u'emptyError'})
             except :
-                logger.info("Error when trying to read the file %s in request"  %file_name)
+                logger.info("Error when trying to read the file %s in request", file_name)
                 return json.dumps({u'error': u'serverError'})
         else :
             # using classic form post method (MSIE<=8)
@@ -567,9 +566,9 @@ class QuickUploadFile(QuickUploadAuthenticate):
                 return json.dumps({u'error': u'sizeError'})
 
 
-        if not self._check_file_id(file_name) :
-            logger.info("The file id for %s always exist, upload rejected" % file_name)
-            return json.dumps({u'error': u'serverErrorAlwaysExist'})
+        if not self._check_file_id(file_name) or file_name in context:
+            logger.debug("The file id for %s already exists, upload rejected" % file_name)
+            return json.dumps({u'error': u'serverErrorAlreadyExists'})
 
         content_type = mimetypes.guess_type(file_name)[0]
         # sometimes plone mimetypes registry could be more powerful
@@ -646,16 +645,16 @@ class QuickUploadCheckFile(BrowserView):
         request = self.request
         url = context.absolute_url()
 
-        always_exist = {}
+        already_exists = {}
         formdict = request.form
         ids = context.objectIds()
 
         for k,v in formdict.items():
             if k!='folder' :
                 if v in ids :
-                    always_exist[k] = v
+                    already_exists[k] = v
 
-        return str(always_exist)
+        return str(already_exists)
 
 
     def __call__(self):

@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2011-09-15 11:34+0000\n"
+"POT-Creation-Date: 2011-09-15 12:01+0000\n"
 "PO-Revision-Date: 2011-09-16 15:59+0800\n"
 "Last-Translator: Jian Aijun <jianaijun@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
@@ -150,7 +150,7 @@ msgid "Server error, please contact support and/or try again."
 msgstr "服务器错误，请联系支持或重试。"
 
 #: ../browser/quick_upload.py:413
-msgid "This file always exists with the same name on server:"
+msgid "This file already exists with the same name on server:"
 msgstr ""
 
 #: ../browser/quick_upload.py:410

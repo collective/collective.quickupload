@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
 "POT-Creation-Date: 2011-09-15 11:34+0000\n"
-"PO-Revision-Date: 2011-07-25 10:06+0800\n"
+"PO-Revision-Date: 2011-09-16 15:59+0800\n"
 "Last-Translator: Jian Aijun <jianaijun@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -19,11 +19,11 @@ msgstr ""
 
 #: ../browser/quick_upload.py:402
 msgid " files uploaded with success, "
-msgstr ""
+msgstr " 已成功上传，"
 
 #: ../browser/quick_upload.py:403
 msgid " uploads return an error."
-msgstr ""
+msgstr " 上传返回一个错误。"
 
 #: ../browser/quick_upload.py:414
 msgid "A data base conflict error happened when uploading this file:"
@@ -35,7 +35,7 @@ msgstr "全部"
 
 #: ../browser/quick_upload.py:401
 msgid "All files uploaded with success."
-msgstr ""
+msgstr "所有文件上传成功。"
 
 #: ../portlet/quickuploadportlet.py:66
 msgid "Audio files"
@@ -47,23 +47,23 @@ msgstr "面板标题"
 
 #: ../browser/quick_upload.py:399
 msgid "Browse"
-msgstr ""
+msgstr "浏览"
 
 #: ../browser/quick_upload.py:346
 msgid "Choose audio files to upload"
-msgstr ""
+msgstr "选择要上传的音频文件"
 
 #: ../browser/quick_upload.py:354
 msgid "Choose file for upload: ${ext}"
-msgstr ""
+msgstr "选择上传的文件：${ext}"
 
 #: ../browser/quick_upload.py:349
 msgid "Choose flash files to upload"
-msgstr ""
+msgstr "选择要上传的 Flash 文件"
 
 #: ../browser/quick_upload.py:340
 msgid "Choose images to upload"
-msgstr ""
+msgstr "选择要上传的图片文件"
 
 #: ../portlet/quickuploadportlet.py:59
 msgid "Choose the media type used for file upload. image, audio, video ..."
@@ -75,7 +75,7 @@ msgstr "选择上传文件使用的网站内容类型，使用默认配置，系
 
 #: ../browser/quick_upload.py:343
 msgid "Choose video files to upload"
-msgstr ""
+msgstr "选择要上传的视频文件"
 
 #: ../portlet/quickuploadportlet.py:50
 msgid "Content type"
@@ -88,11 +88,11 @@ msgstr "控制如何使用快速上传工具。"
 
 #: ../browser/quick_upload.py:400
 msgid "Drag and drop files to upload"
-msgstr ""
+msgstr "拖放文件上传"
 
 #: ../browser/quick_upload.py:404
 msgid "Failed"
-msgstr ""
+msgstr "失败"
 
 #. Default: "Files Quick Upload"
 #: ../browser/quick_upload.py:147
@@ -124,7 +124,7 @@ msgstr "媒体类型"
 
 #: ../browser/quick_upload.py:411
 msgid "Only allowed:"
-msgstr ""
+msgstr "只允许："
 
 #. Default: "Portlet displaying a quick and multiple upload form"
 #: ../profiles/default/portlets.xml
@@ -147,7 +147,7 @@ msgstr ""
 
 #: ../browser/quick_upload.py:415
 msgid "Server error, please contact support and/or try again."
-msgstr ""
+msgstr "服务器错误，请联系支持或重试。"
 
 #: ../browser/quick_upload.py:413
 msgid "This file always exists with the same name on server:"
@@ -155,11 +155,11 @@ msgstr ""
 
 #: ../browser/quick_upload.py:410
 msgid "This file has invalid extension:"
-msgstr ""
+msgstr "此文件的扩展名无效："
 
 #: ../browser/quick_upload.py:408
 msgid "This file is too large:"
-msgstr ""
+msgstr "此文件是太大："
 
 #: ../portlet/quickuploadportlet.py:65
 msgid "Video files"
@@ -167,7 +167,7 @@ msgstr "视频文件"
 
 #: ../browser/quick_upload.py:412
 msgid "You don't have permission to add this content in this place."
-msgstr ""
+msgstr "您没有在这个地方添加内容的权限。"
 
 #. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
 #: ../browser/quickupload_settings.py:26
@@ -201,9 +201,8 @@ msgstr "默认情况下，系统使用 JavaScript 处理上传。如果选中，
 
 #. Default: "Drag and drop or choose your files:"
 #: ../browser/quick_upload.pt:19
-#, fuzzy
 msgid "label_choose_your_files"
-msgstr "选择文件："
+msgstr "拖放或选择文件："
 
 #. Default: "Clear Queue"
 #: ../browser/quick_upload.pt:41
@@ -223,7 +222,7 @@ msgstr "上传文件"
 
 #: ../browser/quick_upload.py:409
 msgid "maximum file size is:"
-msgstr ""
+msgstr "最大文件大小是："
 
 #: ../browser/quick_upload.py:405
 msgid "please select files again without it."
@@ -231,7 +230,7 @@ msgstr ""
 
 #: ../browser/quick_upload.py:406
 msgid "please try again."
-msgstr ""
+msgstr "请重试。"
 
 #. Default: "Automatic upload on select"
 #: ../browser/quickupload_settings.py:25

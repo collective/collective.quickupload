@@ -6,7 +6,7 @@
 
 var PloneQuickUpload = {};
     
-PloneQuickUpload.addUploadFields = function(uploader, domelement, file, id, fillTitles, fillDescriptions) {
+PloneQuickUpload.addUploadFields = function(uploader, domelement, file, id, fillTitles, fillDescriptions, fillSubject) {
     var blocFile;
     if (fillTitles || fillDescriptions)  {
         blocFile = uploader._getItemByFileId(id);
@@ -38,6 +38,19 @@ PloneQuickUpload.addUploadFields = function(uploader, domelement, file, id, fill
                   </div>\
                    ')
     }
+    if (fillSubject)  {
+        var labelfilesubject = jQuery('#uploadify_label_file_subject').val();
+        jQuery('.qq-upload-cancel', blocFile).after('\
+                  <div class="uploadField">\
+                      <label>' + labelfilesubject + '&nbsp;:&nbsp;</label> \
+                      <input type="text" \
+                             class="file_subject_field" \
+                             id="subject_' + id + '" \
+                             name="subject" \
+                             value="" />\
+                  </div>\
+                   ')
+    }
     PloneQuickUpload.showButtons(uploader, domelement);
 }
 
@@ -65,7 +78,11 @@ PloneQuickUpload.sendDataAndUpload = function(uploader, domelement, typeupload) 
             if (fillDescriptions)  {
                 file_description = jQuery('.file_description_field', fileContainer).val();
             }
-            uploader._queueUpload(id, {'title': file_title, 'description': file_description, 'typeupload' : typeupload});
+            var file_subject = '';
+            if (fillSubject)  {
+                file_subject = jQuery('.file_subject_field', fileContainer).val();
+            }
+            uploader._queueUpload(id, {'subject': file_subject, 'title': file_title, 'description': file_description, 'typeupload' : typeupload});
         }
         // if file is null for any reason jq block is no more here
         else missing++;

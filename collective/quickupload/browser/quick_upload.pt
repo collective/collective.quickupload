@@ -28,6 +28,10 @@
              i18n:domain="plone"
              i18n:attributes="value Title" />
       <input type="hidden"
+             id="uploadify_label_file_subject"
+             i18n:domain="plone"
+             i18n:attributes="value Subject" />
+      <input type="hidden"
              id="uploadify_label_file_description"
              i18n:domain="plone"
              i18n:attributes="value Description" />

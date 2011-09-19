@@ -161,10 +161,11 @@ class QuickUploadView(BrowserView):
 XHR_UPLOAD_JS = """
     var fillTitles = %(ul_fill_titles)s;
     var fillDescriptions = %(ul_fill_descriptions)s;
+    var fillSubject = %(ul_fill_subject)s;
     var auto = %(ul_auto_upload)s;
     addUploadFields_%(ul_id)s = function(file, id) {
         var uploader = xhr_%(ul_id)s;
-        PloneQuickUpload.addUploadFields(uploader, uploader._element, file, id, fillTitles, fillDescriptions);
+        PloneQuickUpload.addUploadFields(uploader, uploader._element, file, id, fillTitles, fillDescriptions, fillSubject);
     }
     sendDataAndUpload_%(ul_id)s = function() {
         var uploader = xhr_%(ul_id)s;
@@ -217,6 +218,7 @@ XHR_UPLOAD_JS = """
 FLASH_UPLOAD_JS = """
     var fillTitles = %(ul_fill_titles)s;
     var fillDescriptions = %(ul_fill_descriptions)s;
+    var fillSubject = %(ul_fill_subject)s;
     var autoUpload = %(ul_auto_upload)s;
     clearQueue_%(ul_id)s = function() {
         jQuery('#%(ul_id)s').uploadifyClearQueue();
@@ -382,7 +384,7 @@ class QuickUploadInit(BrowserView):
         portal_url = getToolByName(context, 'portal_url')()
         # use a ticket for authentication (used for flashupload only)
         ticket = context.restrictedTraverse('@@quickupload_ticket')()
-
+        # XXX FIXME add subject to the control panel
         settings = dict(
             ticket                 = ticket,
             portal_url             = portal_url,
@@ -392,6 +394,7 @@ class QuickUploadInit(BrowserView):
             ul_id                  = self.uploader_id,
             ul_fill_titles         = self.qup_prefs.fill_titles and 'true' or 'false',
             ul_fill_descriptions         = self.qup_prefs.fill_descriptions and 'true' or 'false',
+            ul_fill_subject = 'true',
             ul_auto_upload         = self.qup_prefs.auto_upload and 'true' or 'false',
             ul_size_limit          = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '',
             ul_xhr_size_limit      = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '0',
@@ -581,6 +584,8 @@ class QuickUploadFile(QuickUploadAuthenticate):
         portal_type = getDataFromAllRequests(request, 'typeupload') or ''
         title =  getDataFromAllRequests(request, 'title') or ''
         description =  getDataFromAllRequests(request, 'description') or ''
+        subject =  getDataFromAllRequests(request, 'subject') or ''
+        
 
         if not portal_type :
             ctr = getToolByName(context, 'content_type_registry')
@@ -588,11 +593,11 @@ class QuickUploadFile(QuickUploadAuthenticate):
 
         if file_data:
             factory = IQuickUploadFileFactory(context)
-            logger.info("uploading file with %s : filename=%s, title=%s, description=%s, content_type=%s, portal_type=%s" % \
-                    (upload_with, file_name, title, description, content_type, portal_type))
+            logger.info("uploading file with %s : filename=%s, title=%s, description=%s, subject=%s,content_type=%s, portal_type=%s" % \
+                    (upload_with, file_name, title, description, subject, content_type, portal_type))
 
             try :
-                f = factory(file_name, title, description, content_type, file_data, portal_type)
+                f = factory(file_name, title, description, subject, content_type, file_data, portal_type)
             except :
                 return json.dumps({u'error': u'serverError'})
 

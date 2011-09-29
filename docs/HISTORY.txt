@@ -4,8 +4,8 @@ Changelog
 1.2.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Update with more Norwegian translations.
+  [tormod, hannosch]
 
 1.2.0 (2011-09-22)
 ------------------

@@ -4,6 +4,10 @@ Changelog
 1.2.1 (unreleased)
 ------------------
 
+- If chameleon is installed the i18n:attributes don't get translated if the
+  tag doesn't already have the attribute(s).
+  [swampmonkey]
+
 - Update with more Norwegian translations.
   [tormod, hannosch]
 

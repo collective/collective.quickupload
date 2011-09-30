@@ -157,6 +157,15 @@ class QuickUploadView(BrowserView):
         context = aq_inner(self.context)
         return context.restrictedTraverse('@@quick_upload_init')(for_id = self.uploader_id)
 
+    def can_drag_and_drop(self):
+           
+       user_agent = self.request.get_header('User-Agent')                      
+       if user_agent and (("msie" in user_agent.lower())  
+           or ("microsoft internet explorer" in user_agent.lower())):
+           return False
+       else:
+           return True
+
 
 XHR_UPLOAD_JS = """
     var fillTitles = %(ul_fill_titles)s;

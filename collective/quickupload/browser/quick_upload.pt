@@ -16,8 +16,12 @@
           tal:content="view/header_upload">
         Files Quick Upload
       </h4>
-      <label i18n:translate="label_choose_your_files"
+      <label tal:condition="view/can_drag_and_drop" 
+             i18n:translate="label_choose_your_files"
              id="label-upload">Drag and drop or choose your files:</label>
+      <label tal:condition="not:view/can_drag_and_drop" 
+             i18n:translate="label_choose_your_files_nodrag"
+             id="label-upload">Choose your files:</label>
       <!-- uploader comes here -->
       <div id="uploader"
            class="main-uploader"

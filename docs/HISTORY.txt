@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.2.1 (unreleased)
+1.2.1 (2011-10-10)
 ------------------
 
 - Don't speak about drag and drop feature if navigator is IE.

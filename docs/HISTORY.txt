@@ -4,6 +4,10 @@ Changelog
 1.2.1 (unreleased)
 ------------------
 
+- Don't speak about drag and drop feature if navigator is IE.
+  (it doesn't works unless version is IE 9.)
+  [thomasdesvenain]
+
 - If chameleon is installed the i18n:attributes don't get translated if the
   tag doesn't already have the attribute(s).
   [swampmonkey]

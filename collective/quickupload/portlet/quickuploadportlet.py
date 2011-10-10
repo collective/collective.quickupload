@@ -113,13 +113,16 @@ class Assignment(base.Assignment):
         """
         if self.header :
             return PMF(self.header)
-        media = self.upload_media_type or 'files'
-        if media == 'image' :
-            return _('Images Quick Upload')
-        elif '*.' in media :
+
+        media = self.upload_media_type
+        if not media or '*.' in media:
             return _('Files Quick Upload')
-        return _('label_media_quickupload', default='${medialabel} Quick Upload',
-                 mapping={'medialabel': media.capitalize()})
+        elif media == 'image' :
+            return _('Images Quick Upload')
+        else:
+            return _('label_media_quickupload',
+                     default='${medialabel} Quick Upload',
+                     mapping={'medialabel': media.capitalize()})
 
 
 class Renderer(base.Renderer):

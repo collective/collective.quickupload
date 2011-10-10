@@ -7,11 +7,20 @@ from zope.interface import implements
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleVocabulary
 from zope.schema.vocabulary import SimpleTerm
+from zope.schema import getFieldsInOrder
 
 from Products.ATContentTypes.interfaces import IFileContent, IImageContent
 from Products.CMFCore.utils import getToolByName
 
 from collective.quickupload.browser.quick_upload import _listTypesForInterface
+
+try:
+    from plone.dexterity.interfaces import IDexterityFTI
+    from plone.namedfile.interfaces import INamedFileField, INamedImageField
+    HAS_DEXTERITY = True
+except:
+    HAS_DEXTERITY = False
+
 
 def _infoDictForType(portal, ptype ):
     """
@@ -48,6 +57,15 @@ class UploadFileTypeVocabulary(object):
                   for t in flt ])
         items.extend([ SimpleTerm(t['portal_type'], t['portal_type'], t['type_ui_info'])
                   for t in ilt ])
+
+        for fti in portal.portal_types.objectValues():
+            if IDexterityFTI.providedBy(fti):
+                fields = getFieldsInOrder(fti.lookupSchema())
+                for fieldname, field in fields:
+                    if INamedFileField.providedBy(field) or INamedImageField.providedBy(field):
+                        items.append(SimpleTerm(fti.getId(), fti.getId(), fti.Title()))
+                        break
+
         return SimpleVocabulary(items)
 
 

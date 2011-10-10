@@ -201,7 +201,7 @@ msgstr "Seleccione los archivos:"
 #. Default: "Choose your files:"
 #: ../browser/quick_upload.pt:22
 msgid "label_choose_your_files_nodrag"
-msgstr ""
+msgstr "Seleccione los archivos:"
 
 #. Default: "Clear Queue"
 #: ../browser/quick_upload.pt:45

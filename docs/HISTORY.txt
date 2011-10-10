@@ -4,9 +4,6 @@ Changelog
 1.2.1 (unreleased)
 ------------------
 
-- Check whether File/Image are locally addable before showing the portlet.
-  [ggozad]
-
 - If chameleon is installed the i18n:attributes don't get translated if the
   tag doesn't already have the attribute(s).
   [swampmonkey]

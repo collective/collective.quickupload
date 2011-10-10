@@ -154,10 +154,13 @@ class Renderer(base.Renderer):
     @property
     def available(self):
         context = aq_inner(self.context)
+        allowed_types = context.getLocallyAllowedTypes()
         return (IQuickUploadCapable.providedBy(context) and
                 not IQuickUploadNotCapable.providedBy(context) and
                 self.pm.checkPermission('Add portal content', context) and
-                not isTemporary(context))
+                not isTemporary(context) and
+                ('File' in allowed_types or
+                 'Image' in allowed_types))
 
     def getUploadUrl(self):
         """

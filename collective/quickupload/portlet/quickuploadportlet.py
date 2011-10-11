@@ -157,10 +157,22 @@ class Renderer(base.Renderer):
     @property
     def available(self):
         context = aq_inner(self.context)
-        return (IQuickUploadCapable.providedBy(context) and
-                not IQuickUploadNotCapable.providedBy(context) and
-                self.pm.checkPermission('Add portal content', context) and
-                not isTemporary(context))
+
+        if not IQuickUploadCapable.providedBy(context):
+            return False
+        elif IQuickUploadNotCapable.providedBy(context):
+            return False
+        elif not self.pm.checkPermission('Add portal content', context):
+            return False
+        elif isTemporary(context):
+            return False
+
+        upload_portal_type = self.data.upload_portal_type
+        if upload_portal_type and upload_portal_type not in [t.id for t
+                                            in self.context.getAllowedTypes()]:
+            return False
+        else:
+            return True
 
     def getUploadUrl(self):
         """

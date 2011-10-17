@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
 "POT-Creation-Date: 2011-09-30 15:48+0000\n"
-"PO-Revision-Date: 2011-09-16 15:59+0800\n"
+"PO-Revision-Date: 2011-10-17 17:19+0800\n"
 "Last-Translator: Jian Aijun <jianaijun@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -27,7 +27,7 @@ msgstr " 上传返回一个错误。"
 
 #: ../browser/quick_upload.py:423
 msgid "A data base conflict error happened when uploading this file:"
-msgstr ""
+msgstr "上传这个文件时，数据库发生冲突："
 
 #: ../portlet/quickuploadportlet.py:91
 msgid "All"
@@ -143,7 +143,7 @@ msgstr "快速上传设置"
 
 #: ../browser/quick_upload.py:416
 msgid "Selected elements contain an empty file or a folder:"
-msgstr ""
+msgstr "选择的元素包含一个空的文件或文件夹："
 
 #: ../browser/quick_upload.py:424
 msgid "Server error, please contact support and/or try again."
@@ -151,7 +151,7 @@ msgstr "服务器错误，请联系支持或重试。"
 
 #: ../browser/quick_upload.py:422
 msgid "This file already exists with the same name on server:"
-msgstr ""
+msgstr "在服务器上已存在与此文件同名的文件："
 
 #: ../browser/quick_upload.py:419
 msgid "This file has invalid extension:"
@@ -207,7 +207,7 @@ msgstr "拖放或选择文件："
 #. Default: "Choose your files:"
 #: ../browser/quick_upload.pt:22
 msgid "label_choose_your_files_nodrag"
-msgstr ""
+msgstr "选择文件："
 
 #. Default: "Clear Queue"
 #: ../browser/quick_upload.pt:45

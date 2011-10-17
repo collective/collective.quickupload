@@ -4,6 +4,12 @@ Changelog
 1.3 (unreleased)
 ----------------
 
+- Make sure that the portlet is rendered if upload_portal_type is set to auto.
+  [swampmonkey]
+
+- Prevent diazo themes from theming the json response.
+  [swampmonkey]
+
 - If downloaded content type has been selected in portlet settings
   and content type can't been added in current folder,
   portlet is hidden.

@@ -544,6 +544,8 @@ class QuickUploadFile(QuickUploadAuthenticate):
         # the good content type woul be text/json or text/plain but IE
         # do not support it
         response.setHeader('Content-Type', 'text/html; charset=utf-8')
+        # disable diazo themes
+        request.response.setHeader('X-Theme-Disabled', 'True')
 
         if request.HTTP_X_REQUESTED_WITH :
             # using ajax upload

@@ -168,8 +168,9 @@ class Renderer(base.Renderer):
             return False
 
         upload_portal_type = self.data.upload_portal_type
-        if upload_portal_type and upload_portal_type not in [t.id for t
-                                            in self.context.getAllowedTypes()]:
+        if (upload_portal_type and upload_portal_type != 'auto'
+                and upload_portal_type not in [t.id for t
+                        in self.context.getAllowedTypes()]):
             return False
         else:
             return True

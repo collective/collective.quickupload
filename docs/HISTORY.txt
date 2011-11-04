@@ -21,6 +21,8 @@ Changelog
   @TODO: use adapters for file field setting with conditional zcml
   [thomasdesvenain]
 
+- Updated Chinese translation.
+  [jianaijun]
 
 1.2.1 (2011-10-10)
 ------------------

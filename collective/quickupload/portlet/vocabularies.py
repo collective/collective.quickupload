@@ -59,12 +59,14 @@ class UploadFileTypeVocabulary(object):
                   for t in ilt ])
 
         for fti in portal.portal_types.objectValues():
-            if IDexterityFTI.providedBy(fti):
-                fields = getFieldsInOrder(fti.lookupSchema())
-                for fieldname, field in fields:
-                    if INamedFileField.providedBy(field) or INamedImageField.providedBy(field):
-                        items.append(SimpleTerm(fti.getId(), fti.getId(), fti.Title()))
-                        break
+            try:
+                if IDexterityFTI.providedBy(fti):
+                    fields = getFieldsInOrder(fti.lookupSchema())
+                    for fieldname, field in fields:
+                        if INamedFileField.providedBy(field) or INamedImageField.providedBy(field):
+                            items.append(SimpleTerm(fti.getId(), fti.getId(), fti.Title()))
+                            break
+            except: continue # TODO: on not-installed-dexterity: ontinue.orwhat
 
         return SimpleVocabulary(items)
 

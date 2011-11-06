@@ -18,7 +18,6 @@ Changelog
 - Works with dexterity.
   We can upload dexterity content types which have a file or image field.
   We can upload contents in dexterity containers.
-  @TODO: use adapters for file field setting with conditional zcml
   [thomasdesvenain]
 
 - Updated Chinese translation.

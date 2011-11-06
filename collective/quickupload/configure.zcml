@@ -27,4 +27,12 @@
 	 </class>
   </configure>
 
+  <adapter factory=".archetypes.ArchetypesFileSetter" />
+
+  <configure zcml:condition="installed plone.app.dexterity">
+
+    <adapter factory=".dexterity.DexterityFileSetter" />
+
+  </configure>
+
 </configure>

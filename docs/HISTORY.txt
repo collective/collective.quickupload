@@ -4,6 +4,9 @@ Changelog
 1.3 (unreleased)
 ----------------
 
+- Added Italian translation
+  [giacomos]
+
 - Make sure that the portlet is rendered if upload_portal_type is set to auto.
   [swampmonkey]
 

@@ -10,6 +10,13 @@ from plone.namedfile.interfaces import (
 from plone.namedfile.file import (
    NamedFile, NamedImage, NamedBlobFile, NamedBlobImage)
 
+try:
+    from plone.namedfile.interfaces import INamedBlobFileField, INamedBlobImageField
+    from plone.namedfile.file import NamedBlobFile, NamedBlobImage
+    HAVE_BLOBS = True
+except:
+    HAVE_BLOBS = False
+
 from Products.Archetypes.event import ObjectInitializedEvent
 from Products.CMFCore.utils import getToolByName
 
@@ -48,10 +55,10 @@ class DexterityFileSetter(object):
             file_field = file_fields[0]
 
         # TODO: use adapters
-        if INamedFileField.providedBy(file_field):
+        if HAVE_BLOBS and INamedFileField.providedBy(file_field):
             value = NamedFile(data=data,  contentType=content_type,
                               filename=unicode(filename))
-        elif INamedBlobFileField.providedBy(file_field):
+        elif HAVE_BLOBS and INamedBlobFileField.providedBy(file_field):
             value = NamedBlobFile(data=data,  contentType=content_type,
                               filename=unicode(filename))
         elif INamedImageField.providedBy(file_field):

@@ -158,9 +158,9 @@ class QuickUploadView(BrowserView):
         return context.restrictedTraverse('@@quick_upload_init')(for_id = self.uploader_id)
 
     def can_drag_and_drop(self):
-           
-       user_agent = self.request.get_header('User-Agent')                      
-       if user_agent and (("msie" in user_agent.lower())  
+
+       user_agent = self.request.get_header('User-Agent')
+       if user_agent and (("msie" in user_agent.lower())
            or ("microsoft internet explorer" in user_agent.lower())):
            return False
        else:
@@ -400,7 +400,7 @@ class QuickUploadInit(BrowserView):
             physical_path          = "/".join(context.getPhysicalPath()),
             ul_id                  = self.uploader_id,
             ul_fill_titles         = self.qup_prefs.fill_titles and 'true' or 'false',
-            ul_fill_descriptions         = self.qup_prefs.fill_descriptions and 'true' or 'false',
+            ul_fill_descriptions   = self.qup_prefs.fill_descriptions and 'true' or 'false',
             ul_auto_upload         = self.qup_prefs.auto_upload and 'true' or 'false',
             ul_size_limit          = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '',
             ul_xhr_size_limit      = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '0',
@@ -520,8 +520,10 @@ class QuickUploadFile(QuickUploadAuthenticate):
 
         if file_data:
             factory = IQuickUploadFileFactory(context)
-            logger.info("uploading file with flash: filename=%s, title=%s, description=%s, content_type=%s, portal_type=%s" % \
-                    (file_name, title, description, content_type, portal_type))
+            logger.debug("Uploading file with flash: filename=%s, title=%s, "
+                         "description=%s, content_type=%s, portal_type=%s" % (
+                       file_name, title, description, content_type, portal_type)
+                         )
 
             try :
                 f = factory(file_name, title, description, content_type, file_data, portal_type)
@@ -557,13 +559,13 @@ class QuickUploadFile(QuickUploadAuthenticate):
                 file.seek(0)
             except AttributeError :
                 # in case of cancel during xhr upload
-                logger.info("Upload of %s has been aborted", file_name)
+                logger.error("Upload of %s has been aborted", file_name)
                 # not really useful here since the upload block
                 # is removed by "cancel" action, but
                 # could be useful if someone change the js behavior
                 return  json.dumps({u'error': u'emptyError'})
             except :
-                logger.info("Error when trying to read the file %s in request", file_name)
+                logger.error("Error when trying to read the file %s in request", file_name)
                 return json.dumps({u'error': u'serverError'})
         else :
             # using classic form post method (MSIE<=8)
@@ -604,7 +606,8 @@ class QuickUploadFile(QuickUploadAuthenticate):
 
             try :
                 f = factory(file_name, title, description, content_type, file_data, portal_type)
-            except :
+            except Exception, e:
+                logger.error("Error creating %s file : %s", file_name, str(e))
                 return json.dumps({u'error': u'serverError'})
 
             if f['success'] is not None :

@@ -4,6 +4,10 @@ Changelog
 1.3.1 (unreleased)
 ------------------
 
+- Display quickupload portlet on display views only
+  (disable it on edit forms, etc).
+  [thomasdesvenain]
+
 - Add error logs when failures happen.
   [thomasdesvenain]
 

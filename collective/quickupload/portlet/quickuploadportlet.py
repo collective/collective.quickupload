@@ -21,6 +21,8 @@ from collective.quickupload import siteMessageFactory as _
 from collective.quickupload import logger
 from collective.quickupload.browser.interfaces import (
     IQuickUploadCapable, IQuickUploadNotCapable)
+from plone.app.layout.globals.interfaces import IViewView
+from plone.app.content.browser.interfaces import IFolderContentsView
 
 PMF = MessageFactory('plone')
 
@@ -156,6 +158,10 @@ class Renderer(base.Renderer):
 
     @property
     def available(self):
+        if not (IViewView.providedBy(self.view) \
+             or IFolderContentsView.providedBy(self.view)):
+            return False
+
         context = aq_inner(self.context)
 
         if not IQuickUploadCapable.providedBy(context):

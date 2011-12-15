@@ -6,9 +6,9 @@ from zope.event import notify
 from plone.dexterity.interfaces import IDexterityContent
 from plone.rfc822.interfaces import IPrimaryField
 from plone.namedfile.interfaces import (
-   INamedFileField, INamedImageField, INamedBlobFileField, INamedBlobImageField)
+   INamedFileField, INamedImageField)
 from plone.namedfile.file import (
-   NamedFile, NamedImage, NamedBlobFile, NamedBlobImage)
+   NamedFile, NamedImage)
 
 try:
     from plone.namedfile.interfaces import INamedBlobFileField, INamedBlobImageField

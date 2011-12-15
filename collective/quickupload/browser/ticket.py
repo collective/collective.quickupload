@@ -81,7 +81,7 @@ class TicketView(object):
         response = self.request.response
         response.setHeader('Cache-Control',
                            'no-cache, no-store, must-revalidate')
-        response.setHeader('Pragma', 'no-ache')
+        response.setHeader('Pragma', 'no-cache')
         response.setHeader('Expires', 'Mon, 26 Jul 1997 05:00:00 GMT')
 
         logger.debug('Getting ready to issue new ticket')

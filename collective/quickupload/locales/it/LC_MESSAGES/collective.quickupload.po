@@ -167,7 +167,7 @@ msgstr "Non si dispone dei permessi per aggiungere questo contenuto in questa po
 #. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
 #: ../browser/quickupload_settings.py:26
 msgid "description_auto_upload"
-msgstr "Selezionare se si vuole iniziare il caricamento dei file alla selezione, senza inviare il form. Notare che non sarà possibile scegliere i titoli o le descrizioni con questa opzione abilitata"
+msgstr "Seleziona per iniziare il caricamento automaticamente appena i file vengono selezionati, senza inviare il form. Notare che non sarà possibile scegliere i titoli o le descrizioni con questa opzione abilitata"
 
 #. Default: "If checked, you can fill the files descriptions before upload. Uncheck if you don't need descriptions."
 #: ../browser/quickupload_settings.py:38
@@ -177,7 +177,7 @@ msgstr "Se selezionata, sarà possibile inserire le descrizioni dei file prima d
 #. Default: "If checked, you can fill the files titles before upload. Uncheck if you don't need titles."
 #: ../browser/quickupload_settings.py:32
 msgid "description_fill_titles"
-msgstr "Se selezionata, sarà possibile inserire i titoli dei file prima del caricamentp. Deselezionare se non si necessita dei titoli."
+msgstr "Se selezionata, sarà possibile inserire i titoli dei file prima del caricamento. Deselezionare se non si necessita dei titoli."
 
 #. Default: "Number of simultaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"
 #: ../browser/quickupload_settings.py:49
@@ -192,7 +192,7 @@ msgstr "Dimesione massima per ogni file in KB, 0 = nessun limite"
 #. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8),  but has many problems : don't work in https, don't work behind HTTP Authentication ..."
 #: ../browser/quickupload_settings.py:17
 msgid "description_use_flashupload"
-msgstr "Per impostazione predefinita, lo script di upload è uno strumento di solo javascript. Seleziona questa opzione per sostituirlo con uno script Flash. Per i browser moderni il javascript è più potente. Il caricamento Flash è più semplice per l'utente di altri browser (MSIE 7, MSIE 8), ma ha molti problemi : non supporta l'https, non funzione dietro a una autenticazione HTTP ..."
+msgstr "Di default, lo script di upload è uno strumento di solo javascript. Seleziona questa opzione per sostituirlo con uno script Flash. Per i browser moderni il javascript è più potente. Il caricamento Flash è più semplice per l'utente di altri browser (MSIE 7, MSIE 8), ma ha molti problemi : non supporta l'https, non funziona dietro a una autenticazione HTTP, etc."
 
 #. Default: "Drag and drop or choose your files:"
 #: ../browser/quick_upload.pt:19

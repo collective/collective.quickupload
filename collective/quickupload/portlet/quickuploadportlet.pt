@@ -1,0 +1,29 @@
+<dl class="portlet QuickUploadPortlet"
+    i18n:domain="collective.quickupload">
+
+    <dt class="portletHeader"
+        tal:define="ptitle view/data/title"
+        tal:condition="ptitle">
+        <span class="portletTopLeft"></span>
+        <span tal:content="ptitle" />
+        <span class="portletTopRight"></span>
+    </dt>
+
+    <dd class="portletItem odd lastItem">
+      <script  type="text/javascript" tal:content="view/javascript">
+      </script>
+      <div class="uploaderContainer">
+          <input type="hidden"
+                 name="uploadUrl"
+                 class="uploadUrl"
+                 tal:attributes="value view/getUploadUrl" />
+          <input type="hidden"
+                 name="uploadData"
+                 class="uploadData"
+                 tal:attributes="value view/getDataForUploadUrl" />
+      </div>
+      <span class="portletBottomLeft"></span>
+      <span class="portletBottomRight"></span>
+    </dd>
+
+</dl>

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<object name="portal_properties" meta_type="Plone Properties Tool">
+ <object name="quickupload_properties" meta_type="Plone Property Sheet">
+  <property name="title">Quick Upload properties</property>
+  <property name="use_flashupload" type="boolean">False</property>
+  <property name="auto_upload" type="boolean">False</property>
+  <property name="fill_titles" type="boolean">True</property>
+  <property name="fill_descriptions" type="boolean">False</property>
+  <property name="size_limit" type="int">0</property>
+  <property name="sim_upload_limit" type="int">2</property>
+ </object> 
+</object>

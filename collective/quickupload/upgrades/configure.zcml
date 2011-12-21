@@ -1,0 +1,14 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    i18n_domain="extranetprivr">
+
+  <genericsetup:upgradeStep
+      title="Javascripts and css are loaded for authenticated users only."
+      description=""
+      source="1.0.3"
+      destination="2"
+      handler=".upgrades.v1_v2"
+      profile="collective.quickupload:default" />
+
+</configure>

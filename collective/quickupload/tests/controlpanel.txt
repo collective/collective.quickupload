@@ -1,0 +1,57 @@
+Plone Quick Upload Control Panel
+================================
+
+Login as Manager :
+
+    >>> self.loginAsManager()
+    >>> ptool = self.ptool
+
+Get the quick upload property sheet which stores configuration data :
+
+    >>> quickupload_properties = ptool.quickupload_properties
+
+Viewing the Quick Upload control panel
+--------------------------------------
+
+    >>> self.browser.open('http://nohost/plone/@@quickupload-controlpanel')
+    >>> self.browser.url
+    'http://nohost/plone/@@quickupload-controlpanel'
+
+Click the cancel button:
+
+    >>> self.browser.getControl(name="form.actions.cancel").click()
+    >>> self.browser.url.endswith('plone_control_panel')
+    True
+
+There should be still no changes:
+
+    >>> 'Changes canceled.' in self.browser.contents
+    True
+
+Make some changes
+-----------------
+
+    >>> self.browser.open('http://nohost/plone/@@quickupload-controlpanel')
+
+    >>> self.browser.getControl('Automatic upload on select').selected = True
+    >>> self.browser.getControl(name='form.size_limit').value = '200'
+
+
+Click the save button:
+
+    >>> self.browser.getControl("Save").click()
+    >>> self.browser.url.endswith('quickupload-controlpanel')
+    True
+
+We should be informed that something has changed:
+
+    >>> 'Changes saved.' in self.browser.contents
+    True
+
+Make sure the changes have been applied correctly to the quick upload properties sheet:
+
+    >>> quickupload_properties.auto_upload
+    True
+
+    >>> quickupload_properties.size_limit
+    200

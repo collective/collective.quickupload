@@ -1,0 +1,43 @@
+<configure
+    xmlns="http://namespaces.zope.org/zope"
+    xmlns:five="http://namespaces.zope.org/five"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
+    xmlns:plone="http://namespaces.plone.org/plone"
+    xmlns:zcml="http://namespaces.zope.org/zcml"
+    i18n_domain="collective.quickupload">
+
+  <five:registerPackage package="." initialize=".initialize" />
+  <include package=".browser" />
+  <include package=".upgrades" />
+
+  <!-- the quickupload portlet is an example on how to use the quickupload view -->
+  <include package=".portlet" />
+
+  <i18n:registerTranslations directory="locales" />
+
+  <genericsetup:registerProfile
+      name="default"
+      title="Plone Quick Upload"
+      directory="profiles/default"
+      description="A quick upload form for Plone"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <genericsetup:registerProfile
+      name="uninstall"
+      title="Remove Plone Quick Upload"
+      directory="profiles/uninstall"
+      description="Removes quick upload form from Plone"
+      provides="Products.GenericSetup.interfaces.EXTENSION"
+      />
+
+  <adapter factory=".archetypes.ArchetypesFileSetter" />
+
+  <configure zcml:condition="installed plone.app.dexterity">
+
+    <adapter factory=".dexterity.DexterityFileSetter" />
+
+  </configure>
+
+</configure>

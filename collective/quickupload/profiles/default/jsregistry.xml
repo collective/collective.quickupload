@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts" meta_type="JavaScripts Registry">
+ <javascript cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++quickupload_static/swfobject.js" inline="False"
+    authenticated="True" />
+ <javascript cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++quickupload_static/jquery.uploadify.js" inline="False"
+    authenticated="True" />
+ <javascript cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++quickupload_static/fileuploader.js" inline="False"
+    authenticated="True" />
+ <javascript cacheable="True" compression="safe" conditionalcomment=""
+    cookable="True" enabled="on" expression=""
+    id="++resource++quickupload_static/helpers.js" inline="False"
+    authenticated="True" />
+</object>

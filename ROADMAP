@@ -1,0 +1,3 @@
+1.2.0 : dexterity compatibility
+   - we can add dexterity type with quickupload
+   - we can display upload view on a dexterity container

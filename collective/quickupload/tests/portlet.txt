@@ -1,0 +1,112 @@
+Plone Quick Upload Portlet
+==========================
+
+    >>> from zope.component import getUtility, getMultiAdapter
+    >>> from plone.portlets.interfaces import IPortletType
+    >>> from plone.portlets.interfaces import IPortletManager
+    >>> from plone.portlets.interfaces import IPortletAssignment
+    >>> from plone.portlets.interfaces import IPortletDataProvider
+    >>> from plone.portlets.interfaces import IPortletRenderer
+    >>> from plone.app.portlets.storage import PortletAssignmentMapping
+    >>> from collective.quickupload.portlet import quickuploadportlet
+
+    >>> self.login()
+    >>> self.setRoles(('Manager',))
+
+Test if portlet is registered
+-----------------------------
+
+    >>> qu_portlet = getUtility(IPortletType, name='collective.quickupload.QuickUploadPortlet')
+    >>> qu_portlet.addview
+    'collective.quickupload.QuickUploadPortlet'
+
+Test portlet interface
+----------------------
+
+    >>> qu_portlet = quickuploadportlet.Assignment()
+    >>> IPortletAssignment.providedBy(qu_portlet)
+    True
+    >>> IPortletDataProvider.providedBy(qu_portlet.data)
+    True
+    
+Test portlet Add View
+---------------------
+
+    >>> qu_portlet = getUtility(IPortletType, name='collective.quickupload.QuickUploadPortlet')
+    >>> mapping = self.portal.restrictedTraverse('++contextportlets++plone.rightcolumn')
+    >>> for m in mapping.keys():
+    ...     del mapping[m]
+    >>> addview = mapping.restrictedTraverse('+/collective.quickupload.QuickUploadPortlet')
+    >>> addview.createAndAdd(data={'header':u'', 'upload_portal_type': u'', 'upload_media_type': u''})
+    >>> len(mapping)
+    1
+    >>> isinstance(mapping.values()[0], quickuploadportlet.Assignment)
+    True
+
+Test portlet Edit View
+----------------------
+
+    >>> mapping = PortletAssignmentMapping()
+    >>> request = self.folder.REQUEST
+    >>> mapping['foo'] = quickuploadportlet.Assignment(header=u"", upload_portal_type=u"Image", upload_media_type=u"image")
+    >>> editview = getMultiAdapter((mapping['foo'], request), name='edit')
+    >>> isinstance(editview, quickuploadportlet.EditForm)
+    True
+
+Test portlet Rendering
+----------------------
+
+    >>> request = self.folder.REQUEST
+    >>> view = self.folder.restrictedTraverse('@@plone')
+    >>> manager = getUtility(IPortletManager, name='plone.rightcolumn', context=self.portal)
+    >>> assignment = quickuploadportlet.Assignment(header=u"", upload_portal_type=u"Image", upload_media_type=u"image")
+    >>> renderer = getMultiAdapter((self.folder, request, view, manager, assignment), IPortletRenderer)
+    >>> isinstance(renderer, quickuploadportlet.Renderer)
+    True
+    >>> renderer.available
+    True
+
+Test portlet Template
+---------------------
+
+    >>> def renderer(context=None, request=None, view=None, manager=None, assignment=None):
+    ...     context = context or self.folder
+    ...     request = request or self.folder.REQUEST
+    ...     view = view or self.folder.restrictedTraverse('@@plone')
+    ...     manager = manager or getUtility(IPortletManager, name='plone.rightcolumn', context=self.portal)
+    ...     assignment = assignment or quickuploadportlet.Assignment(header=u"", upload_portal_type=u"", upload_media_type=u"")
+    ...     return getMultiAdapter((context, request, view, manager, assignment), IPortletRenderer)
+
+Test the Title when header is empty but not the mediatype (must use the mediatype 'image' in this case)    
+    >>> r = renderer(context=self.portal, assignment=quickuploadportlet.Assignment(header=u"", upload_portal_type=u"", upload_media_type=u"image"))
+    >>> r = r.__of__(self.folder)
+    >>> r.update()
+    >>> output = r.render()
+    >>> '<span>Images Quick Upload</span>' in output
+    True
+
+Test the Title when header is not empty (title must use the header in this case)    
+    >>> r = renderer(context=self.portal, assignment=quickuploadportlet.Assignment(header=u"Upload Strange Files", upload_portal_type=u"", upload_media_type=u"flash"))
+    >>> r = r.__of__(self.folder)
+    >>> r.update()
+    >>> output = r.render()
+    >>> '<span>Upload Strange Files</span>' in output
+    True
+
+Test the Title when everything is empty (default header must be used)    
+    >>> r = renderer(context=self.portal, assignment=quickuploadportlet.Assignment(header=u"", upload_portal_type=u"", upload_media_type=u""))
+    >>> r = r.__of__(self.folder)
+    >>> r.update()
+    >>> output = r.render()
+    >>> '<span>Files Quick Upload</span>' in output
+    True
+
+Test Upload url and upload params
+    >>> r = renderer(context=self.folder, assignment=quickuploadportlet.Assignment(header=u"", upload_portal_type=u"Image", upload_media_type=u"image"))
+    >>> r = r.__of__(self.folder)
+    >>> r.update()
+    >>> output = r.render()
+    >>> '%s/@@quick_upload' %self.folder.absolute_url() in output
+    True
+    >>> 'typeupload=Image&amp;mediaupload=image' in output
+    True

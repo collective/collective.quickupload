@@ -1,0 +1,267 @@
+# Translation of collective.quickupload.pot to
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.quickupload\n"
+"POT-Creation-Date: 2011-09-30 15:48+0000\n"
+"PO-Revision-Date: 2011-06-16 12:39-0300\n"
+"Last-Translator: Erico Andrei <erico@simplesconsultoria.com.br>\n"
+"Language-Team: Simples Consultoria <contato@simplesconsultoria.com.br>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: pt_BR\n"
+"Language-Name: Brazilian Portuguese\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: collective.quickupload\n"
+
+#: ../browser/quick_upload.py:411
+msgid " files uploaded with success, "
+msgstr " arquivos enviados com sucesso, "
+
+#: ../browser/quick_upload.py:412
+msgid " uploads return an error."
+msgstr " envios retornaram erros."
+
+#: ../browser/quick_upload.py:423
+msgid "A data base conflict error happened when uploading this file:"
+msgstr "Um conflito de base de dados ocorreu durante o envio deste arquivo:"
+
+#: ../portlet/quickuploadportlet.py:91
+msgid "All"
+msgstr "Todos"
+
+#: ../browser/quick_upload.py:410
+msgid "All files uploaded with success."
+msgstr "Todos os arquivos enviados com sucesso."
+
+#: ../portlet/quickuploadportlet.py:94
+msgid "Audio files"
+msgstr "Arquivos de áudio"
+
+#: ../portlet/quickuploadportlet.py:72
+msgid "Box title"
+msgstr "Título do portlet"
+
+#: ../browser/quick_upload.py:408
+msgid "Browse"
+msgstr "Procurar"
+
+#: ../browser/quick_upload.py:355
+msgid "Choose audio files to upload"
+msgstr "Escolha os arquivos de áudio a serem enviados"
+
+#: ../browser/quick_upload.py:363
+msgid "Choose file for upload: ${ext}"
+msgstr "Escolha arquivos para envio: ${ext}"
+
+#: ../browser/quick_upload.py:358
+msgid "Choose flash files to upload"
+msgstr "Escolha arquivos flash para envio"
+
+#: ../browser/quick_upload.py:349
+msgid "Choose images to upload"
+msgstr "Escolha imagens para envio"
+
+#: ../portlet/quickuploadportlet.py:87
+msgid "Choose the media type used for file upload. image, audio, video ..."
+msgstr "Escolha o tipo de mídia utilizado para o envio dos arquivos. Imagem, áudio, vídeo..."
+
+#: ../portlet/quickuploadportlet.py:79
+msgid "Choose the portal type used for file upload. Let the default configuration for an automatic portal type, depending on settings defined in content_type_registry."
+msgstr "Selecione o tipo de conteúdo utilizado para o envio dos arquivos. A configuração padrão detecta o tipo de conteúdo dependendo das informações existentes no content_type_registry"
+
+#: ../browser/quick_upload.py:352
+msgid "Choose video files to upload"
+msgstr "Escolha os arquivos de vídeo para envio"
+
+#: ../portlet/quickuploadportlet.py:78
+msgid "Content type"
+msgstr "Tipo de conteúdo"
+
+#. Default: "Control how the quick upload tool is used."
+#: ../browser/quickupload_settings.py:115
+msgid "Control how the quick upload tool is used."
+msgstr "Controle como o envio rápido de arquivos é utilizado."
+
+#: ../browser/quick_upload.py:409
+msgid "Drag and drop files to upload"
+msgstr "Clique e arraste os arquivos a serem enviados"
+
+#: ../browser/quick_upload.py:413
+msgid "Failed"
+msgstr "Falhou"
+
+#. Default: "Files Quick Upload"
+#: ../browser/quick_upload.py:147
+#: ../portlet/quickuploadportlet.py:120
+msgid "Files Quick Upload"
+msgstr "Envio rápido de arquivos"
+
+#: ../portlet/quickuploadportlet.py:95
+msgid "Flash files"
+msgstr "Arquivos Flash"
+
+#: ../portlet/quickuploadportlet.py:74
+msgid "If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."
+msgstr "Caso o título seja deixado em branco, o título do portlet será o Tipo de mídia + Envio Rápido de Arquivos"
+
+#: ../portlet/quickuploadportlet.py:92
+msgid "Images"
+msgstr "Imagens"
+
+#. Default: "Images Quick Upload"
+#: ../browser/quick_upload.py:149
+#: ../portlet/quickuploadportlet.py:118
+msgid "Images Quick Upload"
+msgstr "Envio rápido de imagens"
+
+#: ../portlet/quickuploadportlet.py:86
+msgid "Media type"
+msgstr "Tipo de mídia"
+
+#: ../browser/quick_upload.py:420
+msgid "Only allowed:"
+msgstr "Permitido apenas:"
+
+#. Default: "Portlet displaying a quick and multiple upload form"
+#: ../profiles/default/portlets.xml
+msgid "Portlet displaying a quick and multiple upload form"
+msgstr "Portlet exibindo um formulário para envio de múltiplos arquivos"
+
+#. Default: "Quick Upload Portlet"
+#: ../profiles/default/portlets.xml
+msgid "Quick Upload Portlet"
+msgstr "Portlet de envio de arquivos"
+
+#. Default: "Quick Upload settings"
+#: ../browser/quickupload_settings.py:114
+msgid "Quick Upload settings"
+msgstr "Configurações do envio rápido"
+
+#: ../browser/quick_upload.py:416
+msgid "Selected elements contain an empty file or a folder:"
+msgstr "Os elementos selecionados contém arquivos vazios ou uma pasta:"
+
+#: ../browser/quick_upload.py:424
+msgid "Server error, please contact support and/or try again."
+msgstr "Erro do servidor, por favor contate o suporte ou tente novamente."
+
+#: ../browser/quick_upload.py:422
+msgid "This file already exists with the same name on server:"
+msgstr "Um arquivo com o mesmo nome existe no servidor:"
+
+#: ../browser/quick_upload.py:419
+msgid "This file has invalid extension:"
+msgstr "Este arquivo tem uma extensão inválida:"
+
+#: ../browser/quick_upload.py:417
+msgid "This file is too large:"
+msgstr "Este arquivo é muito grande:"
+
+#: ../portlet/quickuploadportlet.py:93
+msgid "Video files"
+msgstr "Arquivos de vídeo"
+
+#: ../browser/quick_upload.py:421
+msgid "You don't have permission to add this content in this place."
+msgstr "Você não tem permissão para adicionar conteúdos neste local."
+
+#. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
+#: ../browser/quickupload_settings.py:26
+msgid "description_auto_upload"
+msgstr "Clique aqui caso queira que o envio dos arquivos ocorra automaticamente, sem o envio do formulário. Importante lembrar que você não poderá editar o título ou descrição destes arquivos antes do envio caso esta opção esteja ativada."
+
+#. Default: "If checked, you can fill the files descriptions before upload. Uncheck if you don't need descriptions."
+#: ../browser/quickupload_settings.py:38
+msgid "description_fill_descriptions"
+msgstr "Quando selecionado, você poderá informar as descrições para os arquivos antes do envio. Não selecione caso as descrições não sejam necessárias. "
+
+#. Default: "If checked, you can fill the files titles before upload. Uncheck if you don't need titles."
+#: ../browser/quickupload_settings.py:32
+msgid "description_fill_titles"
+msgstr "Caso selecionado, você poderá informar os títulos dos arquivos antes do envio. Caso não precise dos títulos, não selecione esta opção."
+
+#. Default: "Number of simultaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"
+#: ../browser/quickupload_settings.py:49
+msgid "description_sim_upload_limit"
+msgstr "Número de arquivos enviados simultaneamente, acima deste limite os envios serão enfileirados. 0 = sem limite"
+
+#. Default: "Size limit for each file in KB, 0 = no limit"
+#: ../browser/quickupload_settings.py:44
+msgid "description_size_limit"
+msgstr "Limite do envio para cada arquivo em KB, 0 = sem limite"
+
+#. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8),  but has many problems : don't work in https, don't work behind HTTP Authentication ..."
+#: ../browser/quickupload_settings.py:17
+msgid "description_use_flashupload"
+msgstr "Por padrão o script de envio usado utiliza apenas javascript. Selecione esta opção para trocá-lo por uma ferramenta de envio que utiliza a tecnologia Flash. Para navegadores modernos a ferramenta javascript é mais poderosa. A ferramenta em Flash é mais amigável para navegadores antigos (MSIE 7 e MSIE 8), mas apresenta vários limitantes: Não suporta https nem autenticação HTTP..."
+
+#. Default: "Drag and drop or choose your files:"
+#: ../browser/quick_upload.pt:19
+msgid "label_choose_your_files"
+msgstr "Clique e arraste ou selecione os arquivos:"
+
+#. Default: "Choose your files:"
+#: ../browser/quick_upload.pt:22
+msgid "label_choose_your_files_nodrag"
+msgstr "Selecione os arquivos:"
+
+#. Default: "Clear Queue"
+#: ../browser/quick_upload.pt:45
+msgid "label_clear_queue"
+msgstr "Limpar fila"
+
+#. Default: "${medialabel} Quick Upload"
+#: ../browser/quick_upload.py:150
+#: ../portlet/quickuploadportlet.py:121
+msgid "label_media_quickupload"
+msgstr "Envio rápido de ${medialabel}"
+
+#. Default: "Upload Files"
+#: ../browser/quick_upload.pt:39
+msgid "label_upload_files"
+msgstr "Upload de arquivos"
+
+#: ../browser/quick_upload.py:418
+msgid "maximum file size is:"
+msgstr "tamanho máximo do arquivo é:"
+
+#: ../browser/quick_upload.py:414
+msgid "please select files again without it."
+msgstr "por favor selecione os arquivos novamente sem ele."
+
+#: ../browser/quick_upload.py:415
+msgid "please try again."
+msgstr "por favor, tente novamente."
+
+#. Default: "Automatic upload on select"
+#: ../browser/quickupload_settings.py:25
+msgid "title_auto_upload"
+msgstr "Envio automático após a seleção"
+
+#. Default: "Fill description before upload"
+#: ../browser/quickupload_settings.py:37
+msgid "title_fill_descriptions"
+msgstr "Preencha as descrições antes do envio."
+
+#. Default: "Fill title before upload"
+#: ../browser/quickupload_settings.py:31
+msgid "title_fill_titles"
+msgstr "Preencha os títulos antes do envio"
+
+#. Default: "Simultaneous uploads limit"
+#: ../browser/quickupload_settings.py:48
+msgid "title_sim_upload_limit"
+msgstr "Limite de envio de arquivos simultâneos"
+
+#. Default: "Size limit"
+#: ../browser/quickupload_settings.py:43
+msgid "title_size_limit"
+msgstr "Limite de envio"
+
+#. Default: "Use Flash Upload"
+#: ../browser/quickupload_settings.py:16
+msgid "title_use_flashupload"
+msgstr "Utilizar o upload com Flash"
+

@@ -39,7 +39,7 @@ PloneQuickUpload.addUploadFields = function(uploader, domelement, file, id, fill
                    ')
     }
     PloneQuickUpload.showButtons(uploader, domelement);
-}
+};
 
 PloneQuickUpload.showButtons = function(uploader, domelement) {
     var handler = uploader._handler;
@@ -48,7 +48,7 @@ PloneQuickUpload.showButtons = function(uploader, domelement) {
         return 'ok';
     }
     return false;
-}
+};
 
 PloneQuickUpload.sendDataAndUpload = function(uploader, domelement, typeupload) {
     var handler = uploader._handler;
@@ -70,10 +70,12 @@ PloneQuickUpload.sendDataAndUpload = function(uploader, domelement, typeupload) 
         // if file is null for any reason jq block is no more here
         else missing++;
     }
-}    
+};
+    
 PloneQuickUpload.onAllUploadsComplete = function(){
     Browser.onUploadComplete();
-}
+};
+
 PloneQuickUpload.clearQueue = function(uploader, domelement) {
     var handler = uploader._handler;
     var files = handler._files;
@@ -85,7 +87,8 @@ PloneQuickUpload.clearQueue = function(uploader, domelement) {
         handler._files = [];
         if (typeof handler._inputs != 'undefined') handler._inputs = {};
     }    
-}    
+};
+
 PloneQuickUpload.onUploadComplete = function(uploader, domelement, id, fileName, responseJSON) {
     var uploadList = jQuery('.qq-upload-list', domelement);
     if (responseJSON.success) {        
@@ -96,5 +99,4 @@ PloneQuickUpload.onUploadComplete = function(uploader, domelement, id, fileName,
             if (! newlist.length) window.setTimeout( PloneQuickUpload.onAllUploadsComplete, 5);       
         }, 50);
     }
-    
-}
+};

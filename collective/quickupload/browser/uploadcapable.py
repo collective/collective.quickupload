@@ -30,7 +30,7 @@ from zope.app.container.interfaces import INameChooser
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 
 from collective.quickupload import logger
-from collective.quickupload.browser.interfaces import (
+from collective.quickupload.interfaces import (
     IQuickUploadCapable, IQuickUploadFileFactory)
 from collective.quickupload.interfaces import IQuickUploadFileSetter
 

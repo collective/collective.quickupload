@@ -1,21 +1,9 @@
 # -*- coding: utf-8 -*-
 #
-# File: interfaces.py
+import logging
+log = logging.getLogger('collective.quickupload.interfaces')
+log.warning("Importing interfaces from collective.quickupload.browser.interfaces is deprecated, "
+            "please import from collective.quickupload.interfaces")
 
-
-
-from zope.interface import Interface
-from zope.filerepresentation.interfaces import IFileFactory
-
-class IQuickUploadCapable(Interface):
-    """Any container/object which supports quick uploading
-    """
-
-class IQuickUploadNotCapable(Interface):
-    """Any container/object which NEVER supports quick uploading
-    """
-
-class IQuickUploadFileFactory(IFileFactory):
-    """used for QuickUploadFileFactory
-    """
-
+from collective.quickupload.interfaces import (
+    IQuickUploadCapable, IQuickUploadNotCapable, IQuickUploadFileFactory)

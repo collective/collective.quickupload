@@ -19,7 +19,7 @@ from Products.CMFPlone.FactoryTool import TempFolder
 
 from collective.quickupload import siteMessageFactory as _
 from collective.quickupload import logger
-from collective.quickupload.browser.interfaces import (
+from collective.quickupload.interfaces import (
     IQuickUploadCapable, IQuickUploadNotCapable)
 from plone.app.layout.globals.interfaces import IViewView
 from plone.app.content.browser.interfaces import IFolderContentsView

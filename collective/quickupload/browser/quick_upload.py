@@ -28,7 +28,7 @@ import ticket as ticketmod
 from collective.quickupload import siteMessageFactory as _
 from collective.quickupload import logger
 from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
-from collective.quickupload.browser.interfaces import IQuickUploadNotCapable
+from collective.quickupload.interfaces import IQuickUploadNotCapable
 
 try :
     # python 2.6

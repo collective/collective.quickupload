@@ -10,20 +10,20 @@
   <include file="minimal.zcml" />
 
   <class class="Products.ATContentTypes.content.folder.ATFolder">
-    <implements interface=".browser.interfaces.IQuickUploadCapable" />
+    <implements interface=".interfaces.IQuickUploadCapable" />
   </class>
 
   <class class="Products.ATContentTypes.content.folder.ATBTreeFolder">
-    <implements interface=".browser.interfaces.IQuickUploadCapable" />
+    <implements interface=".interfaces.IQuickUploadCapable" />
   </class>
 
   <class class="Products.CMFPlone.Portal.PloneSite">
-    <implements interface=".browser.interfaces.IQuickUploadCapable" />
+    <implements interface=".interfaces.IQuickUploadCapable" />
   </class>
 
   <configure zcml:condition="installed plone.app.dexterity">
 	 <class class="plone.dexterity.content.Container">
-	   <implements interface=".browser.interfaces.IQuickUploadCapable" />
+	   <implements interface=".interfaces.IQuickUploadCapable" />
 	 </class>
   </configure>
 

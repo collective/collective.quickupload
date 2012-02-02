@@ -14,6 +14,7 @@ from zope.security.interfaces import Unauthorized
 from interfaces import IQuickUploadFileFactory
 from zope.component import getUtility
 from zope.i18n import translate
+from zope.app.container.interfaces import INameChooser
 
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
@@ -21,21 +22,23 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.ATContentTypes.interfaces import IImageContent
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Sessions.SessionDataManager import SessionDataManagerErr
-from zope.app.container.interfaces import INameChooser
-from plone.i18n.normalizer.interfaces import IIDNormalizer
+from plone.i18n.normalizer.interfaces import (
+    IIDNormalizer, IUserPreferredFileNameNormalizer)
 
 import ticket as ticketmod
 from collective.quickupload import siteMessageFactory as _
 from collective.quickupload import logger
 from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
 from collective.quickupload.interfaces import IQuickUploadNotCapable
+from Products.CMFPlone.utils import normalizeString
 
 try :
     # python 2.6
     import json
-except :
+except ImportError:
     # plone 3.3
     import simplejson as json
+
 
 def decodeQueryString(QueryString):
   """decode *QueryString* into a dictionary, as ZPublisher would do"""
@@ -47,6 +50,7 @@ def decodeQueryString(QueryString):
   r.processInputs()
   return r.form
 
+
 def getDataFromAllRequests(request, dataitem) :
     """
     Sometimes data is send using POST METHOD and QUERYSTRING
@@ -56,6 +60,7 @@ def getDataFromAllRequests(request, dataitem) :
         # try to get data from QueryString
         data = decodeQueryString(request.get('QUERY_STRING','')).get(dataitem)
     return data
+
 
 def find_user(context, userid):
     """Walk up all of the possible acl_users to find the user with the
@@ -137,18 +142,21 @@ class QuickUploadView(BrowserView):
             medialabel = session.get('mediaupload',
                     request.get('mediaupload', 'files'))
         except SessionDataManagerErr:
-            logger.debug('Error occurred getting session data. Falling back to '
-                    'request.')
+            logger.debug('Error occurred getting session data. '
+                         'Falling back to request.')
             medialabel = request.get('mediaupload', 'files')
+
         # to improve
         if '*.' in medialabel :
             medialabel = ''
         if not medialabel :
             return _('Files Quick Upload')
-        if medialabel == 'image' :
+        elif medialabel == 'image' :
             return _('Images Quick Upload')
-        return _('label_media_quickupload', default='${medialabel} Quick Upload',
-                 mapping={'medialabel': medialabel.capitalize()})
+        else:
+            return _('label_media_quickupload',
+                     default='${medialabel} Quick Upload',
+                     mapping={'medialabel': medialabel.capitalize()})
 
     def _uploader_id(self) :
         return 'uploader%s' %str(random.random()).replace('.','')
@@ -572,12 +580,13 @@ class QuickUploadFile(QuickUploadAuthenticate):
             file_data = request.get("qqfile", None)
             filename = getattr(file_data,'filename', '')
             file_name = filename.split("\\")[-1]
+            file_name = IUserPreferredFileNameNormalizer(self.request
+                            ).normalize(file_name)
             upload_with = "CLASSIC FORM POST"
             # we must test the file size in this case (no client test)
             if not self._check_file_size(file_data) :
-                logger.info("Test file size : the file %s is too big, upload rejected" % file_name)
+                logger.info("Test file size : the file %s is too big, upload rejected" % filename)
                 return json.dumps({u'error': u'sizeError'})
-
 
         if not self._check_file_id(file_name) or file_name in context:
             logger.debug("The file id for %s already exists, upload rejected" % file_name)
@@ -637,15 +646,17 @@ class QuickUploadFile(QuickUploadAuthenticate):
     def _check_file_id(self, id):
         context = aq_inner(self.context)
         charset = context.getCharset()
-        id = id.decode(charset)
+        id = id.decode(charset).rsplit('.', 1)
         normalizer = getUtility(IIDNormalizer)
         chooser = INameChooser(context)
-        newid = chooser.chooseName(normalizer.normalize(id), context)
+        newid = '.'.join((normalizer.normalize(id[0]), id[1]))
+        newid = chooser.chooseName(newid, context)
         # consolidation because it's different upon Plone versions
-        newid = newid.replace('_','-').replace(' ','-').lower()
         if newid in context.objectIds() :
-            return 0
-        return 1
+            return False
+        else:
+            return True
+
 
 class QuickUploadCheckFile(BrowserView):
     """

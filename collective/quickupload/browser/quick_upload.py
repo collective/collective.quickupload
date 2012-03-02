@@ -622,7 +622,12 @@ class QuickUploadFile(QuickUploadAuthenticate):
             if f['success'] is not None :
                 o = f['success']
                 logger.info("file url: %s" % o.absolute_url())
-                msg = {u'success': True}
+                msg = {
+                    u'success': True,
+                    u'uid': o.UID(),
+                    u'name': o.getId(),
+                    u'title': o.pretty_title_or_id()
+                }
             else :
                 msg = {u'error': f['error']}
         else :

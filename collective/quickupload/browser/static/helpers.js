@@ -1,11 +1,11 @@
 /**
  *
  * JQuery Helpers for Plone Quick Upload
- *   
- */    
+ *
+ */
 
 var PloneQuickUpload = {};
-    
+
 PloneQuickUpload.addUploadFields = function(uploader, domelement, file, id, fillTitles, fillDescriptions) {
     var blocFile;
     if (fillTitles || fillDescriptions)  {
@@ -71,8 +71,9 @@ PloneQuickUpload.sendDataAndUpload = function(uploader, domelement, typeupload) 
         else missing++;
     }
 };
-    
+
 PloneQuickUpload.onAllUploadsComplete = function(){
+    jQuery(document).trigger('qq-allfiles-uploaded');
     Browser.onUploadComplete();
 };
 
@@ -86,17 +87,18 @@ PloneQuickUpload.clearQueue = function(uploader, domelement) {
         jQuery('.qq-upload-list li', domelement).remove();
         handler._files = [];
         if (typeof handler._inputs != 'undefined') handler._inputs = {};
-    }    
+    }
 };
 
 PloneQuickUpload.onUploadComplete = function(uploader, domelement, id, fileName, responseJSON) {
     var uploadList = jQuery('.qq-upload-list', domelement);
-    if (responseJSON.success) {        
+    if (responseJSON.success) {
         window.setTimeout( function() {
             jQuery(uploader._getItemByFileId(id)).remove();
             // after the last upload, if no errors, reload the page
             var newlist = jQuery('li', uploadList);
-            if (! newlist.length) window.setTimeout( PloneQuickUpload.onAllUploadsComplete, 5);       
+            jQuery(document).trigger('qq-file-uploaded', responseJSON);
+            if (! newlist.length) window.setTimeout( PloneQuickUpload.onAllUploadsComplete, 5);
         }, 50);
     }
 };

@@ -88,6 +88,7 @@ PloneQuickUpload.clearQueue = function(uploader, domelement) {
         handler._files = [];
         if (typeof handler._inputs != 'undefined') handler._inputs = {};
     }
+    jQuery('.uploadifybuttons').hide();
 };
 
 PloneQuickUpload.onUploadComplete = function(uploader, domelement, id, fileName, responseJSON) {

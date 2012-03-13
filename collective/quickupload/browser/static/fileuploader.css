@@ -2,7 +2,7 @@
 
 .qq-upload-button {
     display:block; /* or inline-block */
-    width: 105px; padding: 7px; text-align:center;    
+    width: 105px; padding: 7px; text-align:center;
     background:#880000; border-bottom:1px solid #ddd;color:#fff;
     float: right;
     cursor: pointer !important;
@@ -28,7 +28,7 @@
 
 .qq-upload-list {display: block; margin:15px 0; padding:0; list-style:disc; clear: both; list-style: none outside none}
 
-.qq-upload-list li { 
+.qq-upload-list li {
     clear: both;
     display: block;
     list-style: none outside none;
@@ -40,8 +40,7 @@
 }
 
 .qq-upload-file {}
-/* note : the '/++resource++quickupload_static' inside url is for Plone3 portal_css compliance */
-.qq-upload-spinner {display:none; background: url("/++resource++quickupload_static/loading.gif"); width:15px; height:15px; vertical-align:text-bottom; margin-left: 10px}
+.qq-upload-spinner {display:none; background: url("++resource++quickupload_static/loading.gif"); width:15px; height:15px; vertical-align:text-bottom; margin-left: 10px}
 .qq-upload-size,.qq-upload-cancel {font-size:11px;}
 
 .qq-upload-list .qq-upload-cancel {
@@ -49,8 +48,7 @@
    float: right;
    width: 16px;
    height: 16px;
-   /* note : the '/++resource++quickupload_static' inside url is for Plone3 portal_css compliance */
-   background: transparent url("/++resource++quickupload_static/cancel.png") top left no-repeat;
+   background: transparent url("++resource++quickupload_static/cancel.png") top left no-repeat;
 }
 
 

@@ -11,4 +11,12 @@
       handler=".upgrades.v1_v2"
       profile="collective.quickupload:default" />
 
+  <genericsetup:upgradeStep
+      title="Upgrade css and js."
+      description=""
+      source="2"
+      destination="3"
+      handler=".upgrades.v2_v3"
+      profile="collective.quickupload:default" />
+
 </configure>

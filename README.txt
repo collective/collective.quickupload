@@ -205,4 +205,4 @@ Thanks to :
 - Ronnie Garcia, Travis Nickels (for jquery.uploadify.js)
 - Gilles Lenfant David Pack and Christophe Combelles, Alter Way Solutions, for functional tests, ideas, and moral support.
 - Maik Roeder, for functional tests
-
+- Thomas Desvenain, current maintainer

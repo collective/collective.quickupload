@@ -3,6 +3,12 @@ Changelog
 
 1.3.2 (unreleased)
 ------------------
+- Fix CSS images for sites using virtual host _vh_ components.
+  [dokai]
+
+- Hide buttons after clearing the queue.
+  [giacomos]
+
 - Trigger custom JS events after each file upload and also when all files
   were uploaded
   [avoinea]

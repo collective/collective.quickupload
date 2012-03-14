@@ -1,8 +1,9 @@
 Changelog
 =========
 
-1.3.2 (unreleased)
-------------------
+1.4 (unreleased)
+----------------
+
 - Fix CSS images for sites using virtual host _vh_ components.
   [dokai]
 

@@ -624,7 +624,6 @@ class QuickUploadFile(QuickUploadAuthenticate):
             if f['success'] is not None :
                 o = f['success']
                 logger.info("file url: %s" % o.absolute_url())
-                import pdb; pdb.set_trace()
                 msg = {
                     u'success': True,
                     u'uid': IUUID(o, ''),

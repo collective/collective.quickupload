@@ -627,7 +627,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
                 import pdb; pdb.set_trace()
                 msg = {
                     u'success': True,
-                    u'uid': IUUID(o, None),
+                    u'uid': IUUID(o, ''),
                     u'name': o.getId(),
                     u'title': o.pretty_title_or_id()
                 }

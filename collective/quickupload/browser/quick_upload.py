@@ -22,6 +22,7 @@ from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.ATContentTypes.interfaces import IImageContent
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Sessions.SessionDataManager import SessionDataManagerErr
+from plone.uuid.interfaces import IUUID
 from plone.i18n.normalizer.interfaces import (
     IIDNormalizer, IUserPreferredFileNameNormalizer)
 
@@ -41,14 +42,15 @@ except ImportError:
 
 
 def decodeQueryString(QueryString):
-  """decode *QueryString* into a dictionary, as ZPublisher would do"""
-  r= HTTPRequest(None,
-		 {'QUERY_STRING' : QueryString,
-		  'SERVER_URL' : '',
-		  },
-		 None,1)
-  r.processInputs()
-  return r.form
+    """decode *QueryString* into a dictionary, as ZPublisher would do"""
+    r = HTTPRequest(
+        None,
+        {'QUERY_STRING' : QueryString,
+         'SERVER_URL' : '',
+         },
+        None,1)
+    r.processInputs()
+    return r.form
 
 
 def getDataFromAllRequests(request, dataitem) :
@@ -622,9 +624,10 @@ class QuickUploadFile(QuickUploadAuthenticate):
             if f['success'] is not None :
                 o = f['success']
                 logger.info("file url: %s" % o.absolute_url())
+                import pdb; pdb.set_trace()
                 msg = {
                     u'success': True,
-                    u'uid': o.UID(),
+                    u'uid': IUUID(o, None),
                     u'name': o.getId(),
                     u'title': o.pretty_title_or_id()
                 }

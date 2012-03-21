@@ -4,7 +4,9 @@ Changelog
 1.4.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Use IUUID adapter instead of UID method in order to make it work also
+  with Dexterity items.
+  [avoinea]
 
 
 1.4 (2012-03-14)

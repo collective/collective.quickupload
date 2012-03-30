@@ -147,7 +147,7 @@ msgstr "Server Fehler, bitte kontaktieren Sie den Support und/oder versuchen Sie
 
 #: ../browser/quick_upload.py:422
 msgid "This file already exists with the same name on server:"
-msgstr "Es existiert bereits eine Datei mit dem folgenden Name:"
+msgstr "Es existiert bereits eine Datei mit dem folgendem Name:"
 
 #: ../browser/quick_upload.py:419
 msgid "This file has invalid extension:"
@@ -163,7 +163,7 @@ msgstr "Videodateien"
 
 #: ../browser/quick_upload.py:421
 msgid "You don't have permission to add this content in this place."
-msgstr "Sie dürfen hier diesen Inhalt nicht hinzufügen."
+msgstr "Sie dürfen diesen Inhalt hier nicht hinzufügen."
 
 #. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
 #: ../browser/quickupload_settings.py:26

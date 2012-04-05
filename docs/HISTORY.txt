@@ -4,7 +4,8 @@ Changelog
 1.4.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- German translations completed.
+  [mathias.leimgruber]
 
 
 1.4 (2012-03-14)

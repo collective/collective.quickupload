@@ -23,3 +23,7 @@ class IQuickUploadFileFactory(IFileFactory):
     """used for QuickUploadFileFactory
     """
 
+
+class IQuickUploadFileUpdater(IFileFactory):
+    """used for QuickUploadFileFactory
+    """

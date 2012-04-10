@@ -1,8 +1,14 @@
 Changelog
 =========
 
-1.4.1 (unreleased)
-------------------
+1.5 (unreleased)
+----------------
+
+- We can update existing files through quickupload.
+  If user try to upload a file that already exists,
+  if he is allowed to modify this existing object,
+  the file, title and description fields are replaced with new values.
+  [thomasdesvenain]
 
 - German translations completed.
   [mathias.leimgruber]

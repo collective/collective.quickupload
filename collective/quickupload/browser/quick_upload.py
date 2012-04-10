@@ -11,26 +11,26 @@ from Acquisition import aq_inner, aq_parent
 from AccessControl import SecurityManagement
 from ZPublisher.HTTPRequest import HTTPRequest
 from zope.security.interfaces import Unauthorized
-from interfaces import IQuickUploadFileFactory
 from zope.component import getUtility
 from zope.i18n import translate
-from zope.app.container.interfaces import INameChooser
 
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.ATContentTypes.interfaces import IImageContent
 from Products.CMFPlone.interfaces import IPloneSiteRoot
+from Products.CMFCore.permissions import ModifyPortalContent
 from Products.Sessions.SessionDataManager import SessionDataManagerErr
-from plone.i18n.normalizer.interfaces import (
-    IIDNormalizer, IUserPreferredFileNameNormalizer)
+from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
 
 import ticket as ticketmod
 from collective.quickupload import siteMessageFactory as _
 from collective.quickupload import logger
 from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
-from collective.quickupload.interfaces import IQuickUploadNotCapable
-from Products.CMFPlone.utils import normalizeString
+from collective.quickupload.interfaces import (
+    IQuickUploadNotCapable, IQuickUploadFileFactory, IQuickUploadFileUpdater)
+
+from .uploadcapable import get_id_from_filename
 
 try :
     # python 2.6
@@ -348,7 +348,6 @@ class QuickUploadInit(BrowserView):
         mediaupload could be 'image', 'video', 'audio' or any
         extension like '*.doc'
         """
-        context = aq_inner(self.context)
         ext = '*.*;'
         extlist = []
         msg = u'Choose files to upload'
@@ -588,9 +587,23 @@ class QuickUploadFile(QuickUploadAuthenticate):
                 logger.info("Test file size : the file %s is too big, upload rejected" % filename)
                 return json.dumps({u'error': u'sizeError'})
 
-        if not self._check_file_id(file_name) or file_name in context:
-            logger.debug("The file id for %s already exists, upload rejected" % file_name)
-            return json.dumps({u'error': u'serverErrorAlreadyExists'})
+        # overwrite file
+        newid = get_id_from_filename(file_name, context)
+        if newid in context or file_name in context:
+            updated_object = context.get(newid, False) or context[file_name]
+            mtool = getToolByName(context, 'portal_membership')
+            if mtool.checkPermission(ModifyPortalContent, updated_object):
+                can_overwrite = True
+            else:
+                can_overwrite = False
+
+            if not can_overwrite:
+                logger.debug("The file id for %s already exists, upload rejected" % file_name)
+                return json.dumps({u'error': u'serverErrorAlreadyExists'})
+
+            overwrite_existing_file = updated_object
+        else:
+            overwrite_existing_file = False
 
         content_type = mimetypes.guess_type(file_name)[0]
         # sometimes plone mimetypes registry could be more powerful
@@ -609,15 +622,26 @@ class QuickUploadFile(QuickUploadAuthenticate):
             portal_type = ctr.findTypeName(file_name.lower(), content_type, '') or 'File'
 
         if file_data:
-            factory = IQuickUploadFileFactory(context)
-            logger.info("uploading file with %s : filename=%s, title=%s, description=%s, content_type=%s, portal_type=%s" % \
-                    (upload_with, file_name, title, description, content_type, portal_type))
+            if overwrite_existing_file:
+                updater = IQuickUploadFileUpdater(context)
+                logger.info("reuploading %s file with %s : title=%s, description=%s, content_type=%s" % \
+                        (overwrite_existing_file.absolute_url(), upload_with, title, description, content_type))
+                try :
+                    f = updater(overwrite_existing_file, file_name, title,
+                                description, content_type, file_data)
+                except Exception, e:
+                    logger.error("Error updating %s file : %s", file_name, str(e))
+                    return json.dumps({u'error': u'serverError'})
 
-            try :
-                f = factory(file_name, title, description, content_type, file_data, portal_type)
-            except Exception, e:
-                logger.error("Error creating %s file : %s", file_name, str(e))
-                return json.dumps({u'error': u'serverError'})
+            else:
+                factory = IQuickUploadFileFactory(context)
+                logger.info("uploading file with %s : filename=%s, title=%s, description=%s, content_type=%s, portal_type=%s" % \
+                        (upload_with, file_name, title, description, content_type, portal_type))
+                try :
+                    f = factory(file_name, title, description, content_type, file_data, portal_type)
+                except Exception, e:
+                    logger.error("Error creating %s file : %s", file_name, str(e))
+                    return json.dumps({u'error': u'serverError'})
 
             if f['success'] is not None :
                 o = f['success']
@@ -649,18 +673,12 @@ class QuickUploadFile(QuickUploadAuthenticate):
         return 0
 
     def _check_file_id(self, id):
-        context = aq_inner(self.context)
-        charset = context.getCharset()
-        id = id.decode(charset).rsplit('.', 1)
-        normalizer = getUtility(IIDNormalizer)
-        chooser = INameChooser(context)
-        newid = '.'.join((normalizer.normalize(id[0]), id[1]))
-        newid = chooser.chooseName(newid, context)
         # consolidation because it's different upon Plone versions
-        if newid in context.objectIds() :
+        newid = get_id_from_filename(id, self.context)
+        if newid in self.context.objectIds() :
             return False
         else:
-            return True
+            return newid
 
 
 class QuickUploadCheckFile(BrowserView):
@@ -673,7 +691,6 @@ class QuickUploadCheckFile(BrowserView):
 
         context = aq_inner(self.context)
         request = self.request
-        url = context.absolute_url()
 
         already_exists = {}
         formdict = request.form

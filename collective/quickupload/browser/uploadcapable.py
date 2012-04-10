@@ -65,7 +65,8 @@ class QuickUploadCapableFileFactory(object):
             # try to split filenames because we don't want
             # big titles without spaces
             title = filename.split('.')[0].replace('_',' ').replace('-',' ')
-        if newid in context.objectIds() :
+
+        if newid in context:
             # only here for flashupload method since a check_id is done
             # in standard uploader - see also XXX in quick_upload.py
             raise NameError, 'Object id %s already exists' %newid
@@ -74,7 +75,8 @@ class QuickUploadCapableFileFactory(object):
             try:
                 transaction.begin()
                 try:
-                    context.invokeFactory(type_name=portal_type, id=newid, title=title, description=description)
+                    context.invokeFactory(type_name=portal_type, id=newid,
+                                          title=title, description=description)
                 except Unauthorized :
                     error = u'serverErrorNoPermission'
                 except ConflictError :
@@ -102,6 +104,7 @@ class QuickUploadCapableFileFactory(object):
         result['error'] = error
         if not error :
             result['success'] = obj
+
         return result
 
 

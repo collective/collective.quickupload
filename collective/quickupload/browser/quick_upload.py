@@ -601,9 +601,9 @@ class QuickUploadFile(QuickUploadAuthenticate):
                 logger.debug("The file id for %s already exists, upload rejected" % file_name)
                 return json.dumps({u'error': u'serverErrorAlreadyExists'})
 
-            overwrite_existing_file = updated_object
+            overwritten_file = updated_object
         else:
-            overwrite_existing_file = False
+            overwritten_file = None
 
         content_type = mimetypes.guess_type(file_name)[0]
         # sometimes plone mimetypes registry could be more powerful
@@ -622,12 +622,12 @@ class QuickUploadFile(QuickUploadAuthenticate):
             portal_type = ctr.findTypeName(file_name.lower(), content_type, '') or 'File'
 
         if file_data:
-            if overwrite_existing_file:
+            if overwritten_file is not None:
                 updater = IQuickUploadFileUpdater(context)
                 logger.info("reuploading %s file with %s : title=%s, description=%s, content_type=%s" % \
-                        (overwrite_existing_file.absolute_url(), upload_with, title, description, content_type))
+                        (overwritten_file.absolute_url(), upload_with, title, description, content_type))
                 try :
-                    f = updater(overwrite_existing_file, file_name, title,
+                    f = updater(overwritten_file, file_name, title,
                                 description, content_type, file_data)
                 except Exception, e:
                     logger.error("Error updating %s file : %s", file_name, str(e))
@@ -671,14 +671,6 @@ class QuickUploadFile(QuickUploadAuthenticate):
         if file_size<=max_size:
             return 1
         return 0
-
-    def _check_file_id(self, id):
-        # consolidation because it's different upon Plone versions
-        newid = get_id_from_filename(id, self.context)
-        if newid in self.context.objectIds() :
-            return False
-        else:
-            return newid
 
 
 class QuickUploadCheckFile(BrowserView):

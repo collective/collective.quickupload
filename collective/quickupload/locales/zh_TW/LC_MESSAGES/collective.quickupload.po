@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2011-09-30 15:48+0000\n"
+"POT-Creation-Date: 2012-04-05 12:29+0000\n"
 "PO-Revision-Date: 2011-10-01 12:20+0800\n"
 "Last-Translator: TsungWei Hu <marr.tw@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
@@ -15,67 +15,67 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "Domain: collective.quickupload\n"
 
-#: ../browser/quick_upload.py:411
+#: ../browser/quick_upload.py:418
 msgid " files uploaded with success, "
 msgstr " 個檔案上傳成功，"
 
-#: ../browser/quick_upload.py:412
+#: ../browser/quick_upload.py:419
 msgid " uploads return an error."
 msgstr " 個檔案上傳失敗。"
 
-#: ../browser/quick_upload.py:423
+#: ../browser/quick_upload.py:430
 msgid "A data base conflict error happened when uploading this file:"
 msgstr "上傳這個檔案的時候，發生資料庫衝突："
 
-#: ../portlet/quickuploadportlet.py:91
+#: ../portlet/quickuploadportlet.py:93
 msgid "All"
 msgstr "全部"
 
-#: ../browser/quick_upload.py:410
+#: ../browser/quick_upload.py:417
 msgid "All files uploaded with success."
 msgstr "全部檔案上傳成功。"
 
-#: ../portlet/quickuploadportlet.py:94
+#: ../portlet/quickuploadportlet.py:96
 msgid "Audio files"
 msgstr "聲音檔"
 
-#: ../portlet/quickuploadportlet.py:72
+#: ../portlet/quickuploadportlet.py:74
 msgid "Box title"
 msgstr "方框標題"
 
-#: ../browser/quick_upload.py:408
+#: ../browser/quick_upload.py:415
 msgid "Browse"
 msgstr "瀏覽"
 
-#: ../browser/quick_upload.py:355
+#: ../browser/quick_upload.py:362
 msgid "Choose audio files to upload"
 msgstr "選擇聲音檔來上傳"
 
-#: ../browser/quick_upload.py:363
+#: ../browser/quick_upload.py:370
 msgid "Choose file for upload: ${ext}"
 msgstr "選擇檔案來上傳： ${ext}"
 
-#: ../browser/quick_upload.py:358
+#: ../browser/quick_upload.py:365
 msgid "Choose flash files to upload"
 msgstr "選擇 Flash 檔案來上傳"
 
-#: ../browser/quick_upload.py:349
+#: ../browser/quick_upload.py:356
 msgid "Choose images to upload"
 msgstr "選擇圖檔來上傳"
 
-#: ../portlet/quickuploadportlet.py:87
+#: ../portlet/quickuploadportlet.py:89
 msgid "Choose the media type used for file upload. image, audio, video ..."
 msgstr "選擇想要上傳的媒體類型，像是圖檔、聲音檔、影片檔。"
 
-#: ../portlet/quickuploadportlet.py:79
+#: ../portlet/quickuploadportlet.py:81
 msgid "Choose the portal type used for file upload. Let the default configuration for an automatic portal type, depending on settings defined in content_type_registry."
 msgstr "選擇想要上傳的內容型別，使用預設值的話，系統會依照型別註冊的結果自動處理。"
 
-#: ../browser/quick_upload.py:352
+#: ../browser/quick_upload.py:359
 msgid "Choose video files to upload"
 msgstr "選擇影片檔來上傳"
 
-#: ../portlet/quickuploadportlet.py:78
+#: ../portlet/quickuploadportlet.py:80
 msgid "Content type"
 msgstr "內容型別"
 
@@ -84,43 +84,43 @@ msgstr "內容型別"
 msgid "Control how the quick upload tool is used."
 msgstr "設定批次上傳工具的操作方式。"
 
-#: ../browser/quick_upload.py:409
+#: ../browser/quick_upload.py:416
 msgid "Drag and drop files to upload"
 msgstr "拖拉檔案來上傳"
 
-#: ../browser/quick_upload.py:413
+#: ../browser/quick_upload.py:420
 msgid "Failed"
 msgstr "失敗"
 
 #. Default: "Files Quick Upload"
-#: ../browser/quick_upload.py:147
-#: ../portlet/quickuploadportlet.py:120
+#: ../browser/quick_upload.py:153
+#: ../portlet/quickuploadportlet.py:121
 msgid "Files Quick Upload"
 msgstr "檔案批次上傳"
 
-#: ../portlet/quickuploadportlet.py:95
+#: ../portlet/quickuploadportlet.py:97
 msgid "Flash files"
 msgstr "Flash 檔"
 
-#: ../portlet/quickuploadportlet.py:74
+#: ../portlet/quickuploadportlet.py:76
 msgid "If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."
 msgstr "標題空白的話，會配合型別自動指定標題。"
 
-#: ../portlet/quickuploadportlet.py:92
+#: ../portlet/quickuploadportlet.py:94
 msgid "Images"
 msgstr "圖檔"
 
 #. Default: "Images Quick Upload"
-#: ../browser/quick_upload.py:149
-#: ../portlet/quickuploadportlet.py:118
+#: ../browser/quick_upload.py:155
+#: ../portlet/quickuploadportlet.py:123
 msgid "Images Quick Upload"
 msgstr "圖檔批次上傳"
 
-#: ../portlet/quickuploadportlet.py:86
+#: ../portlet/quickuploadportlet.py:88
 msgid "Media type"
 msgstr "媒體類型"
 
-#: ../browser/quick_upload.py:420
+#: ../browser/quick_upload.py:427
 msgid "Only allowed:"
 msgstr "只允許："
 
@@ -139,31 +139,31 @@ msgstr "批次上傳方框"
 msgid "Quick Upload settings"
 msgstr "批次上傳設定"
 
-#: ../browser/quick_upload.py:416
+#: ../browser/quick_upload.py:423
 msgid "Selected elements contain an empty file or a folder:"
 msgstr "選擇的項目裡包含空檔或目錄："
 
-#: ../browser/quick_upload.py:424
+#: ../browser/quick_upload.py:431
 msgid "Server error, please contact support and/or try again."
 msgstr "伺服器發生錯誤，請聯絡管理人員。"
 
-#: ../browser/quick_upload.py:422
+#: ../browser/quick_upload.py:429
 msgid "This file already exists with the same name on server:"
 msgstr "這個檔案已經存在："
 
-#: ../browser/quick_upload.py:419
+#: ../browser/quick_upload.py:426
 msgid "This file has invalid extension:"
 msgstr "這個檔案存在錯誤的延伸檔名："
 
-#: ../browser/quick_upload.py:417
+#: ../browser/quick_upload.py:424
 msgid "This file is too large:"
 msgstr "這個檔案大小超過限制："
 
-#: ../portlet/quickuploadportlet.py:93
+#: ../portlet/quickuploadportlet.py:95
 msgid "Video files"
 msgstr "影片檔"
 
-#: ../browser/quick_upload.py:421
+#: ../browser/quick_upload.py:428
 msgid "You don't have permission to add this content in this place."
 msgstr "沒有權限在目錄裡新增這個項目。"
 
@@ -208,30 +208,35 @@ msgid "label_choose_your_files_nodrag"
 msgstr "選擇檔案："
 
 #. Default: "Clear Queue"
-#: ../browser/quick_upload.pt:45
+#: ../browser/quick_upload.pt:47
 msgid "label_clear_queue"
 msgstr "全部取消"
 
 #. Default: "${medialabel} Quick Upload"
-#: ../browser/quick_upload.py:150
-#: ../portlet/quickuploadportlet.py:121
+#: ../browser/quick_upload.py:157
+#: ../portlet/quickuploadportlet.py:125
 msgid "label_media_quickupload"
 msgstr "${medialabel} 上傳檔案"
 
 #. Default: "Upload Files"
-#: ../browser/quick_upload.pt:39
+#: ../browser/quick_upload.pt:41
 msgid "label_upload_files"
 msgstr "上傳檔案"
 
-#: ../browser/quick_upload.py:418
+#: ../browser/quick_upload.py:425
 msgid "maximum file size is:"
 msgstr "檔案大小限制是："
 
-#: ../browser/quick_upload.py:414
+#. Default: "${filename} file has been replaced"
+#: ../browser/uploadcapable.py:132
+msgid "msg_file_replaced"
+msgstr ""
+
+#: ../browser/quick_upload.py:421
 msgid "please select files again without it."
 msgstr "請不要選擇它，並重新上傳一次。"
 
-#: ../browser/quick_upload.py:415
+#: ../browser/quick_upload.py:422
 msgid "please try again."
 msgstr "請再試一次。"
 

@@ -7,6 +7,7 @@
     <include package="Products.CMFCore" />
 
   <adapter factory=".uploadcapable.QuickUploadCapableFileFactory" />
+  <adapter factory=".uploadcapable.QuickUploadCapableFileUpdater" />
 
   <!-- resource directory for widget static files -->
   <browser:resourceDirectory

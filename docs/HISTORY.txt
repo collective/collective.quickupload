@@ -4,6 +4,10 @@ Changelog
 1.5 (unreleased)
 ----------------
 
+- Use IUUID adapter instead of UID method in order to make it work also
+  with Dexterity items.
+  [avoinea]
+
 - We can update existing files through quickupload.
   If user try to upload a file that already exists,
   if he is allowed to modify this existing object,

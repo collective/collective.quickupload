@@ -21,6 +21,7 @@ from Products.ATContentTypes.interfaces import IImageContent
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFCore.permissions import ModifyPortalContent
 from Products.Sessions.SessionDataManager import SessionDataManagerErr
+from plone.uuid.interfaces import IUUID
 from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
 
 import ticket as ticketmod
@@ -30,7 +31,7 @@ from collective.quickupload.browser.quickupload_settings import IQuickUploadCont
 from collective.quickupload.interfaces import (
     IQuickUploadNotCapable, IQuickUploadFileFactory, IQuickUploadFileUpdater)
 
-from .uploadcapable import get_id_from_filename
+from collective.quickupload.browser.uploadcapable import get_id_from_filename
 
 try :
     # python 2.6
@@ -41,14 +42,15 @@ except ImportError:
 
 
 def decodeQueryString(QueryString):
-  """decode *QueryString* into a dictionary, as ZPublisher would do"""
-  r= HTTPRequest(None,
-		 {'QUERY_STRING' : QueryString,
-		  'SERVER_URL' : '',
-		  },
-		 None,1)
-  r.processInputs()
-  return r.form
+    """decode *QueryString* into a dictionary, as ZPublisher would do"""
+    r = HTTPRequest(
+        None,
+        {'QUERY_STRING' : QueryString,
+         'SERVER_URL' : '',
+         },
+        None,1)
+    r.processInputs()
+    return r.form
 
 
 def getDataFromAllRequests(request, dataitem) :
@@ -648,7 +650,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
                 logger.info("file url: %s" % o.absolute_url())
                 msg = {
                     u'success': True,
-                    u'uid': o.UID(),
+                    u'uid': IUUID(o, ''),
                     u'name': o.getId(),
                     u'title': o.pretty_title_or_id()
                 }

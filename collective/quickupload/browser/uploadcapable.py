@@ -26,6 +26,7 @@ from zope import interface
 from zope import component
 from zope.event import notify
 from zope.app.container.interfaces import INameChooser
+from zope.lifecycleevent import ObjectModifiedEvent
 
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.statusmessages.interfaces import IStatusMessage
@@ -132,6 +133,7 @@ class QuickUploadCapableFileUpdater(object):
             obj.setDescription(description)
 
         error = IQuickUploadFileSetter(obj).set(data, filename, content_type)
+        notify(ObjectModifiedEvent(obj))
         obj.reindexObject()
 
         result['error'] = error

@@ -1,9 +1,7 @@
 from zope.component import adapts
 from zope.interface import implements
-from zope.event import notify
 
 from Products.Archetypes.interfaces.base import IBaseObject
-from Products.Archetypes.event import ObjectInitializedEvent
 
 from collective.quickupload.interfaces import IQuickUploadFileSetter
 from collective.quickupload import logger
@@ -28,7 +26,6 @@ class ArchetypesFileSetter(object):
                 obj.setFilename(filename)
 
             obj.reindexObject()
-            notify(ObjectInitializedEvent(obj))
         else :
             # some products remove the 'primary' attribute on ATFile or ATImage (which is very bad)
             error = u'serverError'

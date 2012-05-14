@@ -24,10 +24,12 @@ from ZODB.POSException import ConflictError
 from Acquisition import aq_inner
 from zope import interface
 from zope import component
+from zope.event import notify
 from zope.app.container.interfaces import INameChooser
 
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.statusmessages.interfaces import IStatusMessage
+from Products.Archetypes.event import ObjectInitializedEvent
 
 from collective.quickupload import logger
 from collective.quickupload.interfaces import (
@@ -95,6 +97,8 @@ class QuickUploadCapableFileFactory(object):
                     obj = getattr(context, newid)
                     if obj:
                         error = IQuickUploadFileSetter(obj).set(data, filename, content_type)
+                        notify(ObjectInitializedEvent(obj))
+                        obj.reindexObject()
 
                 #@TODO : rollback if there has been an error
                 transaction.commit()
@@ -128,6 +132,7 @@ class QuickUploadCapableFileUpdater(object):
             obj.setDescription(description)
 
         error = IQuickUploadFileSetter(obj).set(data, filename, content_type)
+        obj.reindexObject()
 
         result['error'] = error
         if not error :

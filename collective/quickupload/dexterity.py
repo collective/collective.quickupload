@@ -1,7 +1,6 @@
 from zope.component import adapts
 from zope.interface import implements
 from zope.schema import getFieldsInOrder
-from zope.event import notify
 
 from plone.dexterity.interfaces import IDexterityContent
 from plone.rfc822.interfaces import IPrimaryField
@@ -17,7 +16,6 @@ try:
 except:
     HAVE_BLOBS = False
 
-from Products.Archetypes.event import ObjectInitializedEvent
 from Products.CMFCore.utils import getToolByName
 
 from collective.quickupload.interfaces import IQuickUploadFileSetter
@@ -69,6 +67,4 @@ class DexterityFileSetter(object):
                               filename=unicode(filename))
 
         file_field.set(obj, value)
-        obj.reindexObject()
-        notify(ObjectInitializedEvent(obj))
         return error

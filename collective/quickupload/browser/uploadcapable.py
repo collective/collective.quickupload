@@ -40,9 +40,16 @@ from collective.quickupload import siteMessageFactory as _
 
 upload_lock = allocate_lock()
 
+
+class MissingExtension(Exception):
+    """Exception when the file has no extension."""
+
+
 def get_id_from_filename(filename, context):
     charset = context.getCharset()
     id = filename.decode(charset).rsplit('.', 1)
+    if len(id) != 2:
+        raise MissingExtension('It seems like the file extension is missing.')
     normalizer = component.getUtility(IIDNormalizer)
     chooser = INameChooser(context)
     newid = '.'.join((normalizer.normalize(id[0]), id[1]))

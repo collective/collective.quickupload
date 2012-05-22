@@ -17,6 +17,8 @@ Changelog
 - German translations completed.
   [mathias.leimgruber]
 
+- Raises MissingExtension exception when filename does not have the extension.
+  [taito]
 
 1.4 (2012-03-14)
 ----------------

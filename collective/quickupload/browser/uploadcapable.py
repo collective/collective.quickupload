@@ -42,7 +42,7 @@ upload_lock = allocate_lock()
 
 
 class MissingExtension(Exception):
-    """Exception when the file has no extension."""
+    """Exception when the filename has no extension."""
 
 
 def get_id_from_filename(filename, context):

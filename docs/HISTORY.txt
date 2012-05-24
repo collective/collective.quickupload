@@ -4,8 +4,8 @@ Changelog
 1.6 (unreleased)
 ----------------
 
-- Nothing changed yet.
-
+- Fixed Spanish language code.
+  [thomasdesvenain]
 
 1.5 (2012-05-24)
 ----------------

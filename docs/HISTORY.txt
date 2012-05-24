@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5 (unreleased)
+1.5 (2012-05-24)
 ----------------
 
 - Use IUUID adapter instead of UID method in order to make it work also

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2012-04-05 12:29+0000\n"
-"PO-Revision-Date: 2011-11-27 23:00+0200\n"
+"PO-Revision-Date: 2012-06-14 14:22+0200\n"
 "Last-Translator: Giacomo Spettoli <giacomo.spettoli@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -48,7 +48,7 @@ msgstr "Titolo del box"
 
 #: ../browser/quick_upload.py:415
 msgid "Browse"
-msgstr "Mostra"
+msgstr "Sfoglia"
 
 #: ../browser/quick_upload.py:362
 msgid "Choose audio files to upload"

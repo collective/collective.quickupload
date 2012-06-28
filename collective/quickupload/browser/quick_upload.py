@@ -581,6 +581,11 @@ class QuickUploadFile(QuickUploadAuthenticate):
             file_data = request.get("qqfile", None)
             filename = getattr(file_data,'filename', '')
             file_name = filename.split("\\")[-1]
+            try:
+                file_name = file_name.decode('utf-8')
+            except UnicodeDecodeError:
+                pass
+
             file_name = IUserPreferredFileNameNormalizer(self.request
                             ).normalize(file_name)
             upload_with = "CLASSIC FORM POST"

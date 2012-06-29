@@ -4,6 +4,9 @@ Changelog
 1.5.2 (unreleased)
 ------------------
 
+- Better error message when MissingExtension error.
+  [thomasdesvenain]
+
 - Fixed upload when filename has special characters under IE.
   [thomasdesvenain]
 

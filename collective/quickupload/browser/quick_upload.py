@@ -31,7 +31,8 @@ from collective.quickupload.browser.quickupload_settings import IQuickUploadCont
 from collective.quickupload.interfaces import (
     IQuickUploadNotCapable, IQuickUploadFileFactory, IQuickUploadFileUpdater)
 
-from collective.quickupload.browser.uploadcapable import get_id_from_filename
+from collective.quickupload.browser.uploadcapable import get_id_from_filename,\
+    MissingExtension
 
 try :
     # python 2.6
@@ -226,7 +227,8 @@ XHR_UPLOAD_JS = """
                 serverErrorNoPermission: "%(ul_error_no_permission)s",
                 typeError: "%(ul_error_bad_ext)s {file}. %(ul_error_onlyallowed)s {extensions}.",
                 sizeError: "%(ul_error_file_large)s {file}, %(ul_error_maxsize_is)s {sizeLimit}.",
-                emptyError: "%(ul_error_empty_file)s {file}, %(ul_error_try_again_wo)s"
+                emptyError: "%(ul_error_empty_file)s {file}, %(ul_error_try_again_wo)s",
+                missingExtension: "%(ul_error_empty_extension)s {file}",
             }
         });
     }
@@ -423,6 +425,7 @@ class QuickUploadInit(BrowserView):
             ul_error_try_again_wo  = self._translate(_(u"please select files again without it.")),
             ul_error_try_again     = self._translate(_(u"please try again.")),
             ul_error_empty_file    = self._translate(_(u"Selected elements contain an empty file or a folder:")),
+            ul_error_empty_extension = self._translate(_(u"This file has no extension:")),
             ul_error_file_large    = self._translate(_(u"This file is too large:")),
             ul_error_maxsize_is    = self._translate(_(u"maximum file size is:")),
             ul_error_bad_ext       = self._translate(_(u"This file has invalid extension:")),
@@ -595,7 +598,11 @@ class QuickUploadFile(QuickUploadAuthenticate):
                 return json.dumps({u'error': u'sizeError'})
 
         # overwrite file
-        newid = get_id_from_filename(file_name, context)
+        try:
+            newid = get_id_from_filename(file_name, context)
+        except MissingExtension:
+            return json.dumps({u'error': u'missingExtension'})
+
         if newid in context or file_name in context:
             updated_object = context.get(newid, False) or context[file_name]
             mtool = getToolByName(context, 'portal_membership')

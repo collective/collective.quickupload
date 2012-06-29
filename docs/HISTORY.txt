@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5.2 (unreleased)
+1.5.2 (2012-06-29)
 ------------------
 
 - Fixed upload when filename has special characters under IE.

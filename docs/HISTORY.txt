@@ -4,6 +4,11 @@ Changelog
 1.5.3 (unreleased)
 ------------------
 
+- Portlet form doesn't break
+  when a content type implements IFileContent and IImageContent.
+  Fixes http://github.com/collective/collective.quickupload/issues/9.
+  [vito80ba, thomasdesvenain]
+
 - Works without plone.uuid
   (for example with a Plone 4.0.x basic install).
   [frisi, do3cc, thomasdesvenain]

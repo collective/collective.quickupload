@@ -21,8 +21,16 @@ from Products.ATContentTypes.interfaces import IImageContent
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFCore.permissions import ModifyPortalContent
 from Products.Sessions.SessionDataManager import SessionDataManagerErr
-from plone.uuid.interfaces import IUUID
 from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
+
+
+import pkg_resources
+try:
+    pkg_resources.get_distribution('plone.uuid')
+    from plone.uuid.interfaces import IUUID
+    HAS_UUID = True
+except pkg_resources.DistributionNotFound:
+    HAS_UUID = False
 
 import ticket as ticketmod
 from collective.quickupload import siteMessageFactory as _
@@ -653,9 +661,14 @@ class QuickUploadFile(QuickUploadAuthenticate):
             if f['success'] is not None :
                 o = f['success']
                 logger.info("file url: %s" % o.absolute_url())
+                if HAS_UUID:
+                    uid = IUUID(o)
+                else:
+                    uid = o.UID()
+
                 msg = {
                     u'success': True,
-                    u'uid': IUUID(o, ''),
+                    u'uid': uid,
                     u'name': o.getId(),
                     u'title': o.pretty_title_or_id()
                 }

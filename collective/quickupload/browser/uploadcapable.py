@@ -74,7 +74,7 @@ class QuickUploadCapableFileFactory(object):
         if not title :
             # try to split filenames because we don't want
             # big titles without spaces
-            title = filename.split('.')[0].replace('_',' ').replace('-',' ')
+            title = filename.rsplit('.', 1)[0].replace('_',' ').replace('-',' ')
 
         if newid in context:
             # only here for flashupload method since a check_id is done

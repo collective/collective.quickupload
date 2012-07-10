@@ -4,6 +4,11 @@ Changelog
 1.5.3 (unreleased)
 ------------------
 
+- Fixed title generation 
+  if we have more than one "." character in file name.
+  Fixes http://plone.org/products/collective.quickupload/issues/24
+  [Manuel Reinhart, thomasdesvenain]
+
 - Portlet form doesn't break
   when a content type implements IFileContent and IImageContent.
   Fixes http://github.com/collective/collective.quickupload/issues/9.

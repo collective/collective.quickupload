@@ -8,6 +8,9 @@ Changelog
   (for example with a Plone 4.0.x basic install).
   [frisi, do3cc, thomasdesvenain]
 
+- Updated chinese translation.
+  [jianaijun]
+
 
 1.5.2 (2012-06-29)
 ------------------

@@ -227,7 +227,7 @@ msgstr "la dimesione massima dei file è:"
 #. Default: "${filename} file has been replaced"
 #: ../browser/uploadcapable.py:132
 msgid "msg_file_replaced"
-msgstr ""
+msgstr "Il file ${filename} è stato sostituito"
 
 #: ../browser/quick_upload.py:421
 msgid "please select files again without it."

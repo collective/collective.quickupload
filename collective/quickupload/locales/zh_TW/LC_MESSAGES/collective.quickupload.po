@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
 "POT-Creation-Date: 2012-04-05 12:29+0000\n"
-"PO-Revision-Date: 2011-10-01 12:20+0800\n"
+"PO-Revision-Date: 2012-08-14 00:10+0800\n"
 "Last-Translator: TsungWei Hu <marr.tw@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -145,7 +145,7 @@ msgstr "選擇的項目裡包含空檔或目錄："
 
 #: ../browser/quick_upload.py:431
 msgid "Server error, please contact support and/or try again."
-msgstr "伺服器發生錯誤，請聯絡管理人員。"
+msgstr "請檢查目錄裡是否已存在這個檔名的檔案，或是聯絡管理人員。"
 
 #: ../browser/quick_upload.py:429
 msgid "This file already exists with the same name on server:"
@@ -230,7 +230,7 @@ msgstr "檔案大小限制是："
 #. Default: "${filename} file has been replaced"
 #: ../browser/uploadcapable.py:132
 msgid "msg_file_replaced"
-msgstr ""
+msgstr "${filename} 個檔案被覆蓋更新"
 
 #: ../browser/quick_upload.py:421
 msgid "please select files again without it."

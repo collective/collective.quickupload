@@ -105,8 +105,7 @@ class QuickUploadCapableFileFactory(object):
                     obj = getattr(context, newid)
                     if obj:
                         error = IQuickUploadFileSetter(obj).set(data, filename, content_type)
-                        notify(ObjectInitializedEvent(obj))
-                        obj.reindexObject()
+                        obj.processForm()
 
                 #@TODO : rollback if there has been an error
                 transaction.commit()

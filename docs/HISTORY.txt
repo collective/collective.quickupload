@@ -4,7 +4,9 @@ Changelog
 1.5.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Remove creation flag once content has been created
+  and file loaded.
+  [thomasdesvenain]
 
 
 1.5.3 (2012-07-13)

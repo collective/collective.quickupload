@@ -8,6 +8,8 @@ Changelog
   and file loaded.
   [thomasdesvenain]
 
+- Updated zh-tw and it translations.
+  [l34marr, giacomos]
 
 1.5.3 (2012-07-13)
 ------------------

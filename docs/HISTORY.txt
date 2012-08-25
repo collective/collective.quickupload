@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5.5 (unreleased)
+1.5.5 (2012-08-25)
 ------------------
 
 - Added a specific error message if upload failed

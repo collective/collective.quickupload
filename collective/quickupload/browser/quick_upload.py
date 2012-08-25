@@ -629,7 +629,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
             oct = mtr.globFilename(file_name)
             if oct is not None :
                 content_type = str(oct)
-
+        
         portal_type = getDataFromAllRequests(request, 'typeupload') or ''
         title =  getDataFromAllRequests(request, 'title') or ''
         description =  getDataFromAllRequests(request, 'description') or ''

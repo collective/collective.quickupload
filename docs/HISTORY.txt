@@ -4,7 +4,9 @@ Changelog
 1.5.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added a specific error message if upload failed
+  because content type is disallowed in the folder.
+  [thomasdesvenain]
 
 
 1.5.4 (2012-08-17)

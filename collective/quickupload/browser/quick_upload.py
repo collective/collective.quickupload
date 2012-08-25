@@ -232,6 +232,7 @@ XHR_UPLOAD_JS = """
                 serverErrorAlreadyExists: "%(ul_error_already_exists)s {file}",
                 serverErrorZODBConflict: "%(ul_error_zodb_conflict)s {file}, %(ul_error_try_again)s",
                 serverErrorNoPermission: "%(ul_error_no_permission)s",
+                serverErrorDisallowedType: "%(ul_error_disallowed_type)s",
                 typeError: "%(ul_error_bad_ext)s {file}. %(ul_error_onlyallowed)s {extensions}.",
                 sizeError: "%(ul_error_file_large)s {file}, %(ul_error_maxsize_is)s {sizeLimit}.",
                 emptyError: "%(ul_error_empty_file)s {file}, %(ul_error_try_again_wo)s"
@@ -436,6 +437,7 @@ class QuickUploadInit(BrowserView):
             ul_error_bad_ext       = self._translate(_(u"This file has invalid extension:")),
             ul_error_onlyallowed   = self._translate(_(u"Only allowed:")),
             ul_error_no_permission = self._translate(_(u"You don't have permission to add this content in this place.")),
+            ul_error_disallowed_type = self._translate(_(u"This type of element is not allowed in this folder.",)),
             ul_error_already_exists = self._translate(_(u"This file already exists with the same name on server:")),
             ul_error_zodb_conflict = self._translate(_(u"A data base conflict error happened when uploading this file:")),
             ul_error_server        = self._translate(_(u"Server error, please contact support and/or try again.")),

@@ -92,15 +92,17 @@ class QuickUploadCapableFileFactory(object):
                 except ConflictError :
                     # rare with xhr upload / happens sometimes with flashupload
                     error = u'serverErrorZODBConflict'
+                except ValueError:
+                    error = u'serverErrorDisallowedType'
                 except Exception, e:
                     error = u'serverError'
                     logger.exception(e)
 
                 if error:
-                    error = u'serverError'
-                    logger.info("An error happens with setId from filename, "
-                                "the file has been created with a bad id, "
-                                "can't find %s", newid)
+                    if error == u'serverError':
+                        logger.info("An error happens with setId from filename, "
+                                    "the file has been created with a bad id, "
+                                    "can't find %s", newid)
                 else:
                     obj = getattr(context, newid)
                     if obj:

@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "POT-Creation-Date: 2012-08-25 18:27+0000\n"
-"PO-Revision-Date: 2012-06-14 14:22+0200\n"
+"PO-Revision-Date: 2012-09-24 14:22+0200\n"
 "Last-Translator: Giacomo Spettoli <giacomo.spettoli@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -158,7 +158,7 @@ msgstr "Questo file è troppo grande:"
 
 #: ../browser/quick_upload.py:440
 msgid "This type of element is not allowed in this folder."
-msgstr ""
+msgstr "Non è permesso aggiungere questo tipo di contenuto in questa cartella."
 
 #: ../portlet/quickuploadportlet.py:95
 msgid "Video files"
@@ -216,7 +216,7 @@ msgstr "Svuota la coda"
 #. Default: "Default configuration (Content Type Registry)."
 #: ../portlet/vocabularies.py:54
 msgid "label_default_portaltype_configuration"
-msgstr ""
+msgstr "Configurazione predefinita (Registro dei tipi di contenuto)."
 
 #. Default: "${medialabel} Quick Upload"
 #: ../browser/quick_upload.py:167

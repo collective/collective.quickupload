@@ -53,7 +53,7 @@ class DexterityFileSetter(object):
             file_field = file_fields[0]
 
         # TODO: use adapters
-        if HAVE_BLOBS and INamedBlobImageField.providedBy(field):
+        if HAVE_BLOBS and INamedBlobImageField.providedBy(file_field):
             value = NamedBlobImage(data=data,  contentType=content_type,
                               filename=unicode(filename, 'utf-8'))
         elif HAVE_BLOBS and INamedBlobFileField.providedBy(file_field):

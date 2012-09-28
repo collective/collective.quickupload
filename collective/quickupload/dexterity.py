@@ -55,16 +55,16 @@ class DexterityFileSetter(object):
         # TODO: use adapters
         if HAVE_BLOBS and INamedBlobImageField.providedBy(field):
             value = NamedBlobImage(data=data,  contentType=content_type,
-                              filename=unicode(filename))
+                              filename=unicode(filename, 'utf-8'))
         elif HAVE_BLOBS and INamedBlobFileField.providedBy(file_field):
             value = NamedBlobFile(data=data,  contentType=content_type,
-                              filename=unicode(filename))
+                              filename=unicode(filename, 'utf-8'))
         elif INamedImageField.providedBy(file_field):
             value = NamedImage(data=data,  contentType=content_type,
-                              filename=unicode(file_field))
+                              filename=unicode(file_field, 'utf-8'))
         elif INamedFileField.providedBy(file_field):
             value = NamedFile(data=data,  contentType=content_type,
-                              filename=unicode(filename))
+                              filename=unicode(filename, 'utf-8'))
 
         file_field.set(obj, value)
         return error

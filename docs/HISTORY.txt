@@ -4,7 +4,11 @@ Changelog
 1.5.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Updated po files and french translation.
+  [thomasdesvenain]
+
+- Updated italian translation.
+  [giacomos]
 
 
 1.5.5 (2012-08-25)
@@ -28,7 +32,7 @@ Changelog
 1.5.3 (2012-07-13)
 ------------------
 
-- Fixed title generation 
+- Fixed title generation
   if we have more than one "." character in file name.
   Fixes http://plone.org/products/collective.quickupload/issues/24
   [Manuel Reinhart, thomasdesvenain]

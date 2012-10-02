@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2012-04-05 12:29+0000\n"
+"POT-Creation-Date: 2012-08-25 18:27+0000\n"
 "PO-Revision-Date: 2010-07-26 11:30+0200\n"
 "Last-Translator: Jean-mat Grimaldi <jeanmat.grimaldi@gmail.com>\n"
 "Language-Team: \n"
@@ -16,15 +16,15 @@ msgstr ""
 "Domain: collective.quickupload\n"
 "X-Is-Fallback-For: fr-be fr-ca fr-lu fr-mc fr-ch fr-fr\n"
 
-#: ../browser/quick_upload.py:418
+#: ../browser/quick_upload.py:429
 msgid " files uploaded with success, "
 msgstr " fichiers téléversés avec succès, "
 
-#: ../browser/quick_upload.py:419
+#: ../browser/quick_upload.py:430
 msgid " uploads return an error."
 msgstr " téléversements ont échoué."
 
-#: ../browser/quick_upload.py:430
+#: ../browser/quick_upload.py:442
 msgid "A data base conflict error happened when uploading this file:"
 msgstr "Un conflit sur la base de données est survenu pendant le téléversement de ce fichier :"
 
@@ -32,7 +32,7 @@ msgstr "Un conflit sur la base de données est survenu pendant le téléversemen
 msgid "All"
 msgstr "Tous"
 
-#: ../browser/quick_upload.py:417
+#: ../browser/quick_upload.py:428
 msgid "All files uploaded with success."
 msgstr "Tous les fichiers ont été téléversés avec succès."
 
@@ -44,23 +44,23 @@ msgstr "Fichiers audio"
 msgid "Box title"
 msgstr "Titre de la boîte"
 
-#: ../browser/quick_upload.py:415
+#: ../browser/quick_upload.py:426
 msgid "Browse"
 msgstr "Parcourir"
 
-#: ../browser/quick_upload.py:362
+#: ../browser/quick_upload.py:373
 msgid "Choose audio files to upload"
 msgstr "Choisissez les fichiers audio à téléverser"
 
-#: ../browser/quick_upload.py:370
+#: ../browser/quick_upload.py:381
 msgid "Choose file for upload: ${ext}"
 msgstr "Choisissez les fichiers à téléverser : ${ext}"
 
-#: ../browser/quick_upload.py:365
+#: ../browser/quick_upload.py:376
 msgid "Choose flash files to upload"
 msgstr "Choisissez les fichiers flash à téléverser"
 
-#: ../browser/quick_upload.py:356
+#: ../browser/quick_upload.py:367
 msgid "Choose images to upload"
 msgstr "Choisissez les images à téléverser"
 
@@ -72,7 +72,7 @@ msgstr "Choisir le type de média utilisé pour l'envoi de fichiers.  image, aud
 msgid "Choose the portal type used for file upload. Let the default configuration for an automatic portal type, depending on settings defined in content_type_registry."
 msgstr "Choisir le type de contenu utilisé pour l'envoi de fichiers. Laisser la configuration par défaut pour que le type soit choisi automatiquement en fonction des paramètres définis dans content_type_registry."
 
-#: ../browser/quick_upload.py:359
+#: ../browser/quick_upload.py:370
 msgid "Choose video files to upload"
 msgstr "Choisissez les vidéos à téléverser"
 
@@ -85,16 +85,16 @@ msgstr "Type de contenu"
 msgid "Control how the quick upload tool is used."
 msgstr "Contrôlez comment l'outil d'envoi rapide de fichiers est utilisé."
 
-#: ../browser/quick_upload.py:416
+#: ../browser/quick_upload.py:427
 msgid "Drag and drop files to upload"
 msgstr "Glissez-déposez les fichiers à téléverser"
 
-#: ../browser/quick_upload.py:420
+#: ../browser/quick_upload.py:431
 msgid "Failed"
 msgstr "Echec"
 
 #. Default: "Files Quick Upload"
-#: ../browser/quick_upload.py:153
+#: ../browser/quick_upload.py:163
 #: ../portlet/quickuploadportlet.py:121
 msgid "Files Quick Upload"
 msgstr "Envoi Rapide de Fichiers"
@@ -112,7 +112,7 @@ msgid "Images"
 msgstr "Images"
 
 #. Default: "Images Quick Upload"
-#: ../browser/quick_upload.py:155
+#: ../browser/quick_upload.py:165
 #: ../portlet/quickuploadportlet.py:123
 msgid "Images Quick Upload"
 msgstr "Envoi Rapide d'Images"
@@ -121,7 +121,7 @@ msgstr "Envoi Rapide d'Images"
 msgid "Media type"
 msgstr "Type de média"
 
-#: ../browser/quick_upload.py:427
+#: ../browser/quick_upload.py:438
 msgid "Only allowed:"
 msgstr "Seulement autorisé :"
 
@@ -138,31 +138,35 @@ msgstr "Portlet de Téléversement Rapide"
 msgid "Quick Upload settings"
 msgstr "Configuration de Quick Upload"
 
-#: ../browser/quick_upload.py:423
+#: ../browser/quick_upload.py:434
 msgid "Selected elements contain an empty file or a folder:"
 msgstr "Les éléments sélectionnés contiennent un fichier vide ou un dossier :"
 
-#: ../browser/quick_upload.py:431
+#: ../browser/quick_upload.py:443
 msgid "Server error, please contact support and/or try again."
 msgstr "Erreur serveur, veuillez réessayer ou contacter votre administrateur."
 
-#: ../browser/quick_upload.py:429
+#: ../browser/quick_upload.py:441
 msgid "This file already exists with the same name on server:"
 msgstr "Le dossier contient déjà un fichier de ce nom :"
 
-#: ../browser/quick_upload.py:426
+#: ../browser/quick_upload.py:437
 msgid "This file has invalid extension:"
 msgstr "Ce fichier a une extension invalide :"
 
-#: ../browser/quick_upload.py:424
+#: ../browser/quick_upload.py:435
 msgid "This file is too large:"
 msgstr "Ce fichier est trop gros :"
+
+#: ../browser/quick_upload.py:440
+msgid "This type of element is not allowed in this folder."
+msgstr "Ce type d'élément n'est pas autorisé dans ce dossier."
 
 #: ../portlet/quickuploadportlet.py:95
 msgid "Video files"
 msgstr "Fichiers vidéo"
 
-#: ../browser/quick_upload.py:428
+#: ../browser/quick_upload.py:439
 msgid "You don't have permission to add this content in this place."
 msgstr "Vous n'avez pas la permission d'ajouter ce contenu à cet endroit."
 
@@ -211,8 +215,13 @@ msgstr "Choisissez les fichiers :"
 msgid "label_clear_queue"
 msgstr "Annuler"
 
+#. Default: "Default configuration (Content Type Registry)."
+#: ../portlet/vocabularies.py:54
+msgid "label_default_portaltype_configuration"
+msgstr "Configuration par défaut (Content Type Registry)"
+
 #. Default: "${medialabel} Quick Upload"
-#: ../browser/quick_upload.py:157
+#: ../browser/quick_upload.py:167
 #: ../portlet/quickuploadportlet.py:125
 msgid "label_media_quickupload"
 msgstr "Téléverser des ${medialabel}"
@@ -222,20 +231,20 @@ msgstr "Téléverser des ${medialabel}"
 msgid "label_upload_files"
 msgstr "Envoyer fichiers"
 
-#: ../browser/quick_upload.py:425
+#: ../browser/quick_upload.py:436
 msgid "maximum file size is:"
 msgstr "la taille maximum d'un fichier est :"
 
 #. Default: "${filename} file has been replaced"
-#: ../browser/uploadcapable.py:132
+#: ../browser/uploadcapable.py:150
 msgid "msg_file_replaced"
 msgstr "Le fichier ${filename} a été remplacé"
 
-#: ../browser/quick_upload.py:421
+#: ../browser/quick_upload.py:432
 msgid "please select files again without it."
 msgstr "veuillez sélectionner de nouveau les fichiers sans celui-ci"
 
-#: ../browser/quick_upload.py:422
+#: ../browser/quick_upload.py:433
 msgid "please try again."
 msgstr "veuillez essayer à nouveau"
 

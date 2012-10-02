@@ -13,6 +13,7 @@ from Products.ATContentTypes.interfaces import IFileContent, IImageContent
 from Products.CMFCore.utils import getToolByName
 
 from collective.quickupload.browser.quick_upload import _listTypesForInterface
+from collective.quickupload import siteMessageFactory as _
 
 try:
     from plone.dexterity.interfaces import IDexterityFTI
@@ -22,7 +23,7 @@ except:
     HAS_DEXTERITY = False
 
 
-def _infoDictForType(portal, ptype ):
+def _infoDictForType(portal, ptype):
     """
     UI type infos
     @param ptype: a portal type name
@@ -50,13 +51,13 @@ class UploadFileTypeVocabulary(object):
         portal = getToolByName(context, 'portal_url').getPortalObject()
         flt = [_infoDictForType(portal, tipe) for tipe in _listTypesForInterface(portal, IFileContent)]
         ilt = [_infoDictForType(portal, tipe) for tipe in _listTypesForInterface(portal, IImageContent)]
-        items = [SimpleTerm('auto', 'auto', context.translate('label_default_portaltype_configuration',
-                                                      default=u'Default configuration (Content Type Registry).',
-                                                      domain='collective.quickupload')),]
-        items.extend([ SimpleTerm(t['portal_type'], t['portal_type'], t['type_ui_info'])
-                  for t in flt ])
-        items.extend([ SimpleTerm(t['portal_type'], t['portal_type'], t['type_ui_info'])
-                  for t in ilt ])
+        items = [SimpleTerm('auto', 'auto', context.translate(_('label_default_portaltype_configuration',
+                                                      default=u'Default configuration (Content Type Registry).')))]
+        items.extend([SimpleTerm(t['portal_type'], t['portal_type'], t['type_ui_info'])
+                  for t in flt])
+        file_types = [t['portal_type'] for t in flt]
+        items.extend([SimpleTerm(t['portal_type'], t['portal_type'], t['type_ui_info'])
+                  for t in ilt if t['portal_type'] not in file_types])
 
         for fti in portal.portal_types.objectValues():
             if HAS_DEXTERITY and IDexterityFTI.providedBy(fti):
@@ -70,4 +71,3 @@ class UploadFileTypeVocabulary(object):
 
 
 UploadFileTypeVocabularyFactory = UploadFileTypeVocabulary()
-

@@ -14,6 +14,11 @@ class Fixture(PloneSandboxLayer):
         # Load ZCML
         import collective.quickupload
         self.loadZCML(package=collective.quickupload)
+        try:
+            import plone.namedfile
+            self.loadZCML(package=plone.namedfile)
+        except:
+            pass
 
     def setUpPloneSite(self, portal):
         # Install into Plone site using portal_setup

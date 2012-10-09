@@ -4,6 +4,9 @@ Changelog
 1.5.6 (unreleased)
 ------------------
 
+- Dexterity-related fixes.
+  [till44]
+
 - Updated po files and french translation.
   [thomasdesvenain]
 

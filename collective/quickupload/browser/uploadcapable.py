@@ -25,7 +25,12 @@ from Acquisition import aq_inner
 from zope import interface
 from zope import component
 from zope.event import notify
-from zope.app.container.interfaces import INameChooser
+
+try:
+    from zope.app.container.interfaces import INameChooser
+except ImportError:
+    from zope.container.interfaces import INameChooser
+    
 from zope.lifecycleevent import ObjectModifiedEvent
 
 from plone.i18n.normalizer.interfaces import IIDNormalizer

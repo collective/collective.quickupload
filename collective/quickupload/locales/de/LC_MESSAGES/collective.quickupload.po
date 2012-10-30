@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
 "POT-Creation-Date: 2012-10-02 12:41+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"PO-Revision-Date: 2012-10-30 14:23+0100\n"
 "Last-Translator: Pavel Bogdanovic <pb@prontonet.eu>\n"
 "Language-Team: \n"
 "MIME-Version: 1.0\n"
@@ -207,9 +207,8 @@ msgstr "Standardmäßig wird nur JavaScript zum Hochladen verwendet. Aktivieren 
 
 #. Default: "Drag and drop or choose your files:"
 #: ../browser/quick_upload.pt:19
-#, fuzzy
 msgid "label_choose_your_files"
-msgstr "Dateien auswählen:"
+msgstr "Dateien auswählen oder in diesen Bereich ziehen:"
 
 #. Default: "Choose your files:"
 #: ../browser/quick_upload.pt:22

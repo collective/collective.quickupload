@@ -4,6 +4,9 @@ Changelog
 1.5.7 (unreleased)
 ------------------
 
+- Update German translations.
+  [jone]
+
 - made it work with plone 4.3 (import changed)
   [jensens, bennyboy]
 

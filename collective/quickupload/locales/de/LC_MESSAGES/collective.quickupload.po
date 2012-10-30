@@ -157,7 +157,7 @@ msgstr "Die folgende Datei hat eine ungültige Dateiendung:"
 
 #: ../browser/quick_upload.py:437
 msgid "This file has no extension:"
-msgstr ""
+msgstr "Die Datei hat keine Dateiendung:"
 
 #: ../browser/quick_upload.py:438
 msgid "This file is too large:"
@@ -165,7 +165,7 @@ msgstr "Die folgende Datei ist zu gross:"
 
 #: ../browser/quick_upload.py:443
 msgid "This type of element is not allowed in this folder."
-msgstr ""
+msgstr "Diese Art von Dokument ist in diesem Ordner nicht erlaubt."
 
 #: ../portlet/quickuploadportlet.py:95
 msgid "Video files"
@@ -224,13 +224,13 @@ msgstr "Warteschlange löschen"
 #. Default: "Default configuration (Content Type Registry)."
 #: ../portlet/vocabularies.py:54
 msgid "label_default_portaltype_configuration"
-msgstr ""
+msgstr "Standard konfiguration (Content Type Registry)."
 
 #. Default: "${medialabel} Quick Upload"
 #: ../browser/quick_upload.py:168
 #: ../portlet/quickuploadportlet.py:125
 msgid "label_media_quickupload"
-msgstr ""
+msgstr "${medialabel} Quick Upload"
 
 #. Default: "Upload Files"
 #: ../browser/quick_upload.pt:41
@@ -244,7 +244,7 @@ msgstr "Die maximale Grösse ist:"
 #. Default: "${filename} file has been replaced"
 #: ../browser/uploadcapable.py:150
 msgid "msg_file_replaced"
-msgstr ""
+msgstr "Datei ${filename} wurde ersetzt"
 
 #: ../browser/quick_upload.py:434
 msgid "please select files again without it."
@@ -283,4 +283,3 @@ msgstr "Dateigrößenlimit"
 #: ../browser/quickupload_settings.py:16
 msgid "title_use_flashupload"
 msgstr "Flash-Upload benutzen"
-

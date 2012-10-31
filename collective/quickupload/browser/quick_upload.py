@@ -144,6 +144,9 @@ class QuickUploadView(BrowserView):
         if IQuickUploadNotCapable.providedBy(self.context):
             raise Unauthorized
 
+        # disable diazo themes
+        self.request.response.setHeader('X-Theme-Disabled', 'True')
+
         return self.template()
 
     def header_upload(self) :

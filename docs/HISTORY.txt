@@ -4,6 +4,9 @@ Changelog
 1.5.7 (unreleased)
 ------------------
 
+- Disabled Diazo theming in the @@quickupload view.
+  [dokai]
+
 - Update German translations.
   [jone]
 

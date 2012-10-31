@@ -5,7 +5,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
 "POT-Creation-Date: 2012-10-02 12:41+0000\n"
-"PO-Revision-Date: 2012-02-01 18:02+0200\n"
+"PO-Revision-Date: 2012-10-31 20:47+0200\n"
 "Last-Translator: Petri Savolainen <petri.savolainen@koodaamo.fi>\n"
 "Language-Team: SUOMEKSI <LL@li.org>\n"
 "MIME-Version: 1.0\n"
@@ -155,7 +155,7 @@ msgstr "Tiedoston pääte ei ole sallittu:"
 
 #: ../browser/quick_upload.py:437
 msgid "This file has no extension:"
-msgstr ""
+msgstr "Tiedostolla ei ole päätettä:"
 
 #: ../browser/quick_upload.py:438
 msgid "This file is too large:"
@@ -163,7 +163,7 @@ msgstr "Tiedosto on liian iso:"
 
 #: ../browser/quick_upload.py:443
 msgid "This type of element is not allowed in this folder."
-msgstr ""
+msgstr "Tämän tyyppinen tiedosto ei ole sallittu tässä kohteessa."
 
 #: ../portlet/quickuploadportlet.py:95
 msgid "Video files"
@@ -221,19 +221,18 @@ msgstr "Peru siirto"
 #. Default: "Default configuration (Content Type Registry)."
 #: ../portlet/vocabularies.py:54
 msgid "label_default_portaltype_configuration"
-msgstr ""
+msgstr "Oletuskonfiguraatio (Content Type Registry)"
 
 #. Default: "${medialabel} Quick Upload"
 #: ../browser/quick_upload.py:168
 #: ../portlet/quickuploadportlet.py:125
 msgid "label_media_quickupload"
-msgstr ""
+msgstr "${medialabel} pikalataus"
 
 #. Default: "Upload Files"
 #: ../browser/quick_upload.pt:41
-#, fuzzy
 msgid "label_upload_files"
-msgstr "Tuo tiedostot"
+msgstr "Lataa tiedostot"
 
 #: ../browser/quick_upload.py:439
 msgid "maximum file size is:"
@@ -242,7 +241,7 @@ msgstr "enimmäiskoko on:"
 #. Default: "${filename} file has been replaced"
 #: ../browser/uploadcapable.py:150
 msgid "msg_file_replaced"
-msgstr ""
+msgstr "Tiedosto ${filename} on korvattu"
 
 #: ../browser/quick_upload.py:434
 msgid "please select files again without it."

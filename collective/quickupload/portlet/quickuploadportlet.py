@@ -58,7 +58,9 @@ JAVASCRIPT = """
                      dataType: 'html',
                      contentType: 'text/html; charset=utf-8',
                      success: function(html) {
-                        UlDiv.html(html);
+                        if (html.indexOf('quick-uploader') != -1) {
+                            UlDiv.html(html);
+                        }
                      } });
       });
   }

@@ -40,7 +40,7 @@ setup(name='collective.quickupload',
         'setuptools',
         ],
       extras_require={
-        'test': ['plone.app.testing'],
+        'test': ['plone.app.testing', 'mock'],
         },
       entry_points="""
       [z3c.autoinclude.plugin]

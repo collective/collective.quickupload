@@ -1,0 +1,284 @@
+# Translation of collective.quickupload.pot to Slovak
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.quickupload\n"
+"POT-Creation-Date: 2012-12-22 12:41+0000\n"
+"PO-Revision-Date: 2012-12-22 14:23+0100\n"
+"Last-Translator: Roman Lacko <backup.rlacko@gmail.com>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: collective.quickupload\n"
+
+#: ../browser/quick_upload.py:431
+msgid " files uploaded with success, "
+msgstr " súbory úspešne prevzaté, "
+
+#: ../browser/quick_upload.py:432
+msgid " uploads return an error."
+msgstr " prevzatie skončené s chybou"
+
+#: ../browser/quick_upload.py:445
+msgid "A data base conflict error happened when uploading this file:"
+msgstr "Nastal konflikt počas prevzatia tohto súboru:"
+
+#: ../portlet/quickuploadportlet.py:93
+msgid "All"
+msgstr "Všetko"
+
+#: ../browser/quick_upload.py:430
+msgid "All files uploaded with success."
+msgstr "Všetky súbory úspešne prevzaté."
+
+#: ../portlet/quickuploadportlet.py:96
+msgid "Audio files"
+msgstr "Audio súbory"
+
+#: ../portlet/quickuploadportlet.py:74
+msgid "Box title"
+msgstr "Názov"
+
+#: ../browser/quick_upload.py:428
+msgid "Browse"
+msgstr "Vybrať"
+
+#: ../browser/quick_upload.py:375
+msgid "Choose audio files to upload"
+msgstr "Zvoliť audio súbory."
+
+#: ../browser/quick_upload.py:383
+msgid "Choose file for upload: ${ext}"
+msgstr "Zvoliť súbory na prevzatie: ${ext}"
+
+#: ../browser/quick_upload.py:378
+msgid "Choose flash files to upload"
+msgstr "Zvoliť flash súbory"
+
+#: ../browser/quick_upload.py:369
+msgid "Choose images to upload"
+msgstr "Zvoliť obrázky."
+
+#: ../portlet/quickuploadportlet.py:89
+msgid "Choose the media type used for file upload. image, audio, video ..."
+msgstr "Zvoliť typ média, ktorý bude použitý počas prevzatia súborov. obrázok, audio, video ..."
+
+#: ../portlet/quickuploadportlet.py:81
+msgid "Choose the portal type used for file upload. Let the default configuration for an automatic portal type, depending on settings defined in content_type_registry."
+msgstr "Zvoliť portálový typ, ktorý bude použitý počas prevzatia súborov. Ponechať východzie nastavenie pre autonatický výber portálového typu."
+
+#: ../browser/quick_upload.py:372
+msgid "Choose video files to upload"
+msgstr "Zvoliť video súbory"
+
+#: ../portlet/quickuploadportlet.py:80
+msgid "Content type"
+msgstr "Typ obsahu"
+
+#. Default: "Control how the quick upload tool is used."
+#: ../browser/quickupload_settings.py:115
+msgid "Control how the quick upload tool is used."
+msgstr "Nastaviť používanie pomôcky quick upload."
+
+#: ../browser/quick_upload.py:429
+msgid "Drag and drop files to upload"
+msgstr "Vložiť súbory na prevzatie"
+
+#: ../browser/quick_upload.py:433
+msgid "Failed"
+msgstr "Chyba"
+
+#. Default: "Files Quick Upload"
+#: ../browser/quick_upload.py:164
+#: ../portlet/quickuploadportlet.py:121
+msgid "Files Quick Upload"
+msgstr "Súbory Quick Upload"
+
+#: ../portlet/quickuploadportlet.py:97
+msgid "Flash files"
+msgstr "Flash súbory"
+
+#: ../portlet/quickuploadportlet.py:76
+msgid "If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."
+msgstr "Ak názov je prázdny, názov portletu bude Typ média + ' Quick Upload'."
+
+#: ../portlet/quickuploadportlet.py:94
+msgid "Images"
+msgstr "Obrázky"
+
+#. Default: "Images Quick Upload"
+#: ../browser/quick_upload.py:166
+#: ../portlet/quickuploadportlet.py:123
+msgid "Images Quick Upload"
+msgstr "Obrázky Quick Upload"
+
+#: ../portlet/quickuploadportlet.py:88
+msgid "Media type"
+msgstr "Typ média"
+
+#: ../browser/quick_upload.py:441
+msgid "Only allowed:"
+msgstr "Povolené iba:"
+
+#. Default: "Portlet displaying a quick and multiple upload form"
+#: ../profiles/default/portlets.xml
+msgid "Portlet displaying a quick and multiple upload form"
+msgstr "Portlet pre zobrazenie formy rýchleho a viacnásobného prevzatia"
+
+#. Default: "Quick Upload Portlet"
+#: ../profiles/default/portlets.xml
+msgid "Quick Upload Portlet"
+msgstr "Quick Upload Portlet"
+
+#. Default: "Quick Upload settings"
+#: ../browser/quickupload_settings.py:114
+msgid "Quick Upload settings"
+msgstr "Nastavenia pre Quick Upload"
+
+#: ../browser/quick_upload.py:436
+msgid "Selected elements contain an empty file or a folder:"
+msgstr "Vybrané elementy obsahujú prázdne súbory alebo adresáre:"
+
+#: ../browser/quick_upload.py:446
+msgid "Server error, please contact support and/or try again."
+msgstr "Chyba servera, prosím kontaktujte podporu a/alebo zopakujte prevzatie."
+
+#: ../browser/quick_upload.py:444
+msgid "This file already exists with the same name on server:"
+msgstr "Tento súbor už existuje s rovnakým menom na serveri:"
+
+#: ../browser/quick_upload.py:440
+msgid "This file has invalid extension:"
+msgstr "Tento súbor má neznámu príponu:"
+
+#: ../browser/quick_upload.py:437
+msgid "This file has no extension:"
+msgstr "Tento súbor nemá žiadnu príponu:"
+
+#: ../browser/quick_upload.py:438
+msgid "This file is too large:"
+msgstr "Tento súbor je príliš veľký:"
+
+#: ../browser/quick_upload.py:443
+msgid "This type of element is not allowed in this folder."
+msgstr "Tento typ elementu nie je povolený v tejto zložke."
+
+#: ../portlet/quickuploadportlet.py:95
+msgid "Video files"
+msgstr "Video súbory"
+
+#: ../browser/quick_upload.py:442
+msgid "You don't have permission to add this content in this place."
+msgstr "Nemáte oprávnenie pridať tento objekt na toto miesto."
+
+#. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
+#: ../browser/quickupload_settings.py:26
+msgid "description_auto_upload"
+msgstr "Potvrdťe ak chcete začať prevzatie súborov hned po ich výbere. Povolením tejto možnosťi však nebudete môcť zadať meno a popis súboru."
+
+#. Default: "If checked, you can fill the files descriptions before upload. Uncheck if you don't need descriptions."
+#: ../browser/quickupload_settings.py:38
+msgid "description_fill_descriptions"
+msgstr "Povolením tejto možnosťi budete môcť zadať popis súborov ešte pred ich prevzatím. Zrušte ak nepotrebujete zadať popis."
+
+#. Default: "If checked, you can fill the files titles before upload. Uncheck if you don't need titles."
+#: ../browser/quickupload_settings.py:32
+msgid "description_fill_titles"
+msgstr "Povolením tejto možnosťi budete môcť zadať meno súborov ešte pred ich prevzatím. Zrušte ak nepotrebujete zadať meno."
+
+#. Default: "Number of simultaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"
+#: ../browser/quickupload_settings.py:49
+msgid "description_sim_upload_limit"
+msgstr "Počet súčasne prevzatých súborov, súbory nad tento počet sú umiestnené do fronty, 0 = bez limitu"
+
+#. Default: "Size limit for each file in KB, 0 = no limit"
+#: ../browser/quickupload_settings.py:44
+msgid "description_size_limit"
+msgstr "Limit veľkosti pre každý súbor v KB, 0 = žiadny limit"
+
+#. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8),  but has many problems : don't work in https, don't work behind HTTP Authentication ..."
+#: ../browser/quickupload_settings.py:17
+msgid "description_use_flashupload"
+msgstr "V predvolenom nastavení, skript na prevzatie je len javascript. Zaškrtnite túto voľbu, aby ste ho nahradili flashom. Pre moderné prehliadače je javascript vhodnejší. Flash je prívetivejšie pre niektoré prehliadače (MSIE 7, MSIE 8), ale má mnoho problémov: nefunguje v https ani s HTTP autentikáciou ..."
+
+#. Default: "Drag and drop or choose your files:"
+#: ../browser/quick_upload.pt:19
+msgid "label_choose_your_files"
+msgstr "Pretiahnite sem alebo vyberte súbory na prevzatie:"
+
+#. Default: "Choose your files:"
+#: ../browser/quick_upload.pt:22
+msgid "label_choose_your_files_nodrag"
+msgstr "Vyberte súbory na prevzatie:"
+
+#. Default: "Clear Queue"
+#: ../browser/quick_upload.pt:47
+msgid "label_clear_queue"
+msgstr "Vyčistiť frontu"
+
+#. Default: "Default configuration (Content Type Registry)."
+#: ../portlet/vocabularies.py:54
+msgid "label_default_portaltype_configuration"
+msgstr "Predvolená konfigurácia (Content Type Registry)."
+
+#. Default: "${medialabel} Quick Upload"
+#: ../browser/quick_upload.py:168
+#: ../portlet/quickuploadportlet.py:125
+msgid "label_media_quickupload"
+msgstr "${medialabel} Quick Upload"
+
+#. Default: "Upload Files"
+#: ../browser/quick_upload.pt:41
+msgid "label_upload_files"
+msgstr "Prevziať súbory"
+
+#: ../browser/quick_upload.py:439
+msgid "maximum file size is:"
+msgstr "maximálna veľkosť súboru je:"
+
+#. Default: "${filename} file has been replaced"
+#: ../browser/uploadcapable.py:150
+msgid "msg_file_replaced"
+msgstr "Súbor ${filename} bol nahradený"
+
+#: ../browser/quick_upload.py:434
+msgid "please select files again without it."
+msgstr "prosím vyberte súbory ešte raz bez neho."
+
+#: ../browser/quick_upload.py:435
+msgid "please try again."
+msgstr "skúste to znova prosím."
+
+#. Default: "Automatic upload on select"
+#: ../browser/quickupload_settings.py:25
+msgid "title_auto_upload"
+msgstr "Autoatické prevzatie po výbere"
+
+#. Default: "Fill description before upload"
+#: ../browser/quickupload_settings.py:37
+msgid "title_fill_descriptions"
+msgstr "Zadať popis pred prevzatím"
+
+#. Default: "Fill title before upload"
+#: ../browser/quickupload_settings.py:31
+msgid "title_fill_titles"
+msgstr "Zadať meno pred prevzatím"
+
+#. Default: "Simultaneous uploads limit"
+#: ../browser/quickupload_settings.py:48
+msgid "title_sim_upload_limit"
+msgstr "Maximálny počet simultánne prevzatých súborov"
+
+#. Default: "Size limit"
+#: ../browser/quickupload_settings.py:43
+msgid "title_size_limit"
+msgstr "Maximálna veľkosť"
+
+#. Default: "Use Flash Upload"
+#: ../browser/quickupload_settings.py:16
+msgid "title_use_flashupload"
+msgstr "Použiť flash k prevzatiu"

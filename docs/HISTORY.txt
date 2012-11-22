@@ -4,6 +4,9 @@ Changelog
 1.5.7 (unreleased)
 ------------------
 
+- Slovak translation.
+  [lck]
+
 - Insert html from ajax response into portlet only on expected response.
   If the user does not have sufficient privileges, the login page is returned
   in the ajax response instead of the expected portlet content.

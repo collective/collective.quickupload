@@ -30,12 +30,10 @@ try:
     from zope.app.container.interfaces import INameChooser
 except ImportError:
     from zope.container.interfaces import INameChooser
-    
-from zope.lifecycleevent import ObjectModifiedEvent
 
 from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.statusmessages.interfaces import IStatusMessage
-from Products.Archetypes.event import ObjectInitializedEvent
+from Products.Archetypes.event import ObjectEditedEvent
 
 from collective.quickupload import logger
 from collective.quickupload.interfaces import (
@@ -52,12 +50,12 @@ class MissingExtension(Exception):
 
 def get_id_from_filename(filename, context):
     charset = context.getCharset()
-    id = filename.decode(charset).rsplit('.', 1)
-    if len(id) != 2:
+    name = filename.decode(charset).rsplit('.', 1)
+    if len(name) != 2:
         raise MissingExtension('It seems like the file extension is missing.')
     normalizer = component.getUtility(IIDNormalizer)
     chooser = INameChooser(context)
-    newid = '.'.join((normalizer.normalize(id[0]), id[1]))
+    newid = '.'.join((normalizer.normalize(name[0]), name[1]))
     newid = newid.replace('_','-').replace(' ','-').lower()
     return chooser.chooseName(newid, context)
 
@@ -134,7 +132,6 @@ class QuickUploadCapableFileUpdater(object):
         self.context = aq_inner(context)
 
     def __call__(self, obj, filename, title, description, content_type, data):
-        error = ''
         result = {}
         result['success'] = None
 
@@ -146,7 +143,8 @@ class QuickUploadCapableFileUpdater(object):
             obj.setDescription(description)
 
         error = IQuickUploadFileSetter(obj).set(data, filename, content_type)
-        notify(ObjectModifiedEvent(obj))
+        # notify edited instead of modified whereas version history is not saved
+        notify(ObjectEditedEvent(obj))
         obj.reindexObject()
 
         result['error'] = error

@@ -240,7 +240,7 @@ XHR_UPLOAD_JS = """
                 typeError: "%(ul_error_bad_ext)s {file}. %(ul_error_onlyallowed)s {extensions}.",
                 sizeError: "%(ul_error_file_large)s {file}, %(ul_error_maxsize_is)s {sizeLimit}.",
                 emptyError: "%(ul_error_empty_file)s {file}, %(ul_error_try_again_wo)s",
-                missingExtension: "%(ul_error_empty_extension)s {file}",
+                missingExtension: "%(ul_error_empty_extension)s {file}"
             }
         });
     }

@@ -4,6 +4,9 @@ Changelog
 1.5.7 (unreleased)
 ------------------
 
+- Removed trailing comma.
+  [Julian Infanger]
+
 - Fix: if auto version policy is selected for content type,
   a version is saved when we replace a file using quickupload
   (notify object edited instead of object modified).

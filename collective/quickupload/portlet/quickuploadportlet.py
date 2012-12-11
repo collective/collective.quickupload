@@ -145,7 +145,6 @@ class Renderer(base.Renderer):
         request = self.request
         try:
             session = request.get('SESSION', None)
-            print 'aaa'
         except SessionDataManagerErr:
             logger.debug('Error occurred getting session data. Falling back to '
                     'request.')

@@ -1,7 +1,7 @@
 from zope.component import adapts
 from zope.interface import implements
 
-from Products.Archetypes.interfaces.base import IBaseObject
+from Products.Archetypes.interfaces import IBaseObject
 
 from collective.quickupload.interfaces import IQuickUploadFileSetter
 from collective.quickupload import logger

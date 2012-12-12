@@ -29,6 +29,11 @@ Changelog
 - made it work with plone 4.3 (import changed)
   [jensens, bennyboy]
 
+- updated italian translation
+  [keul]
+
+- do not create ``SESSION`` object when not needed (see #21)
+  [keul]
 
 1.5.6 (2012-10-09)
 ------------------

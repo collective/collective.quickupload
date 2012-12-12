@@ -138,6 +138,10 @@ class Renderer(base.Renderer):
     def __init__(self, *args):
         base.Renderer.__init__(self, *args)
         context = aq_inner(self.context)
+        self.ploneview = context.restrictedTraverse('@@plone')
+        self.pm = getToolByName(context, 'portal_membership')
+
+    def _clean_session(self):
         request = self.request
         try:
             session = request.get('SESSION', None)
@@ -152,10 +156,9 @@ class Renderer(base.Renderer):
                 session.delete('typeupload')
             if session.has_key('mediaupload') :
                 session.delete('mediaupload')
-        self.ploneview = context.restrictedTraverse('@@plone')
-        self.pm = getToolByName(context, 'portal_membership')
 
     def render(self):
+        self._clean_session()
         return xhtml_compress(self._template())
 
     @property

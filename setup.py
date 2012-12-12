@@ -14,6 +14,7 @@ setup(name='collective.quickupload',
           "Programming Language :: Python",
           "Framework :: Plone :: 4.0",
           "Framework :: Plone :: 4.1",
+          "Framework :: Plone :: 4.3",
           "Natural Language :: English",
           "Natural Language :: French",
           "Natural Language :: German",
@@ -40,7 +41,7 @@ setup(name='collective.quickupload',
         'setuptools',
         ],
       extras_require={
-        'test': ['plone.app.testing', 'mock'],
+        'test': ['plone.app.testing', 'mock', 'plone.app.dexterity'],
         },
       entry_points="""
       [z3c.autoinclude.plugin]

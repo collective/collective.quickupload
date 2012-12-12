@@ -54,10 +54,9 @@ def get_id_from_filename(filename, context):
     if len(name) != 2:
         raise MissingExtension('It seems like the file extension is missing.')
     normalizer = component.getUtility(IIDNormalizer)
-    chooser = INameChooser(context)
     newid = '.'.join((normalizer.normalize(name[0]), name[1]))
     newid = newid.replace('_','-').replace(' ','-').lower()
-    return chooser.chooseName(newid, context)
+    return newid
 
 
 class QuickUploadCapableFileFactory(object):
@@ -73,6 +72,8 @@ class QuickUploadCapableFileFactory(object):
         result = {}
         result['success'] = None
         newid = get_id_from_filename(filename, context)
+        chooser = INameChooser(context)
+        newid = chooser.chooseName(newid, context)
         # consolidation because it's different upon Plone versions
         if not title :
             # try to split filenames because we don't want

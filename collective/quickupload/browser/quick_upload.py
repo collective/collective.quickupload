@@ -594,8 +594,10 @@ class QuickUploadFile(QuickUploadAuthenticate):
                 return json.dumps({u'error': u'serverError'})
         else :
             # using classic form post method (MSIE<=8)
-            file_data = request.get("qqfile", None)
-            filename = getattr(file_data,'filename', '')
+            file = request.get("qqfile", None)
+            file_data = file.read()
+            file.seek(0)
+            filename = getattr(file,'filename', '')
             file_name = filename.split("\\")[-1]
             try:
                 file_name = file_name.decode('utf-8')

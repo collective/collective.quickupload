@@ -4,6 +4,10 @@ Changelog
 1.5.7 (unreleased)
 ------------------
 
+- Add flash fallback for IE. Configurable throught quick upload
+  control panel. It's disabled by default
+  [mathias.leimgruber]
+
 - Removed trailing comma.
   [Julian Infanger]
 

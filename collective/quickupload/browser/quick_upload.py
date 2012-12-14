@@ -465,10 +465,21 @@ class QuickUploadInit(BrowserView):
 
         return settings
 
+    def use_flash_as_fallback(self):
+        # Use flash as fallback if xhr multiupload is not available
+        # Currently this affects only IE
+        user_agent = self.request.get_header('User-Agent')
+        is_ie = user_agent and (("msie" in user_agent.lower())
+            or ("microsoft internet explorer" in user_agent.lower()))
+        force_flash = self.qup_prefs.use_flash_as_fallback
+
+        return is_ie and force_flash
+
     def __call__(self, for_id="uploader"):
         self.uploader_id = for_id
         settings = self.upload_settings()
-        if self.qup_prefs.use_flashupload :
+
+        if self.qup_prefs.use_flashupload or self.use_flash_as_fallback():
             return FLASH_UPLOAD_JS % settings
         return XHR_UPLOAD_JS % settings
 

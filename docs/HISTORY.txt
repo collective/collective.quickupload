@@ -4,7 +4,7 @@ Changelog
 1.5.7 (unreleased)
 ------------------
 
-- Ensure new document is not generated when a document with same id exist.
+- Ensure new document is not generated when a document with same id exists.
   (Fix: feature of 1.5 release didn't work when filename had characters not normalized)
   [thomasdesvenain]
 

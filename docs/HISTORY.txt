@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5.7 (unreleased)
+1.5.7 (2012-12-21)
 ------------------
 
 - Ensure new document is not generated when a document with same id exists.

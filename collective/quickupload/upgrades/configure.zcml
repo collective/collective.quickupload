@@ -19,4 +19,12 @@
       handler=".upgrades.v2_v3"
       profile="collective.quickupload:default" />
 
+  <genericsetup:upgradeStep
+      title="Add use_flash_as_fallback property"
+      description=""
+      source="3"
+      destination="4"
+      handler=".upgrades.v3_v4"
+      profile="collective.quickupload:default" />
+
 </configure>

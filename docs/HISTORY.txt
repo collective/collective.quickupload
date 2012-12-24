@@ -4,7 +4,9 @@ Changelog
 1.5.8 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add flash fallback for IE. Configurable throught quick upload
+  control panel. It's disabled by default
+  [mathias.leimgruber]
 
 
 1.5.7 (2012-12-21)

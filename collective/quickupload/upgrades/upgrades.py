@@ -16,3 +16,10 @@ def upgrade_resources(context):
                                      'cssregistry')
     getToolByName(context, 'portal_css').cookResources()
     getToolByName(context, 'portal_javascripts').cookResources()
+
+
+def v3_v4(context):
+    #Add property to quickupload property sheet
+    ptool = getToolByName(context, 'portal_properties')
+    qu_props = ptool.get('quickupload_properties')
+    qu_props._setProperty('use_flash_as_fallback', False, 'boolean')

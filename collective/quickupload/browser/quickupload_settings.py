@@ -22,6 +22,15 @@ class IQuickUploadControlPanel(Interface):
                                           "but has many problems : don't work in https, don't work behind HTTP Authentication ..."),
                            default=False,
                            required=False)    
+    use_flash_as_fallback = Bool(title=_(u"title_use_flash_fallback",
+                                         default=u"Use flash as fallback for "
+                                                 "IE"),
+                                 description=_(
+                                     u"description_use_flash_fallback",
+                                     default=u"Check if you want to use flash "
+                                              "upload as fallback for IE"),
+                                 default=False,
+                                 required=False)
     auto_upload = Bool(title=_(u"title_auto_upload", default=u"Automatic upload on select"),
                                  description=_(u"description_auto_upload", default=u"Check if you want to start the files upload on select, without submit the form. "
                                                 "Note that you cannot choose file titles or descriptions "
@@ -67,6 +76,15 @@ class QuickUploadControlPanelAdapter(SchemaAdapterBase):
         self.quProps._updateProperty('use_flashupload', value)
 
     use_flashupload = property(get_use_flashupload, set_use_flashupload)
+
+    def get_use_flash_as_fallback(self):
+        return self.quProps.getProperty('use_flash_as_fallback')
+
+    def set_use_flash_as_fallback(self, value):
+        self.quProps._updateProperty('use_flash_as_fallback', value)
+
+    use_flash_as_fallback = property(get_use_flash_as_fallback,
+                                     set_use_flash_as_fallback)
 
     def get_auto_upload(self):
         return self.quProps.getProperty('auto_upload')

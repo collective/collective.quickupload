@@ -154,7 +154,7 @@ msgstr "Questo file ha un'estensione non valida:"
 
 #: ../browser/quick_upload.py:440
 msgid "This file has no extension:"
-msgstr ""
+msgstr "Questo file non ha estensione:"
 
 #: ../browser/quick_upload.py:441
 msgid "This file is too large:"

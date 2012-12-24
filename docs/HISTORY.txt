@@ -1,12 +1,20 @@
 Changelog
 =========
 
-1.5.7 (unreleased)
+1.5.8 (unreleased)
 ------------------
 
 - Add flash fallback for IE. Configurable throught quick upload
   control panel. It's disabled by default
   [mathias.leimgruber]
+
+
+1.5.7 (2012-12-21)
+------------------
+
+- Ensure new document is not generated when a document with same id exists.
+  (Fix: feature of 1.5 release didn't work when filename had characters not normalized)
+  [thomasdesvenain]
 
 - Removed trailing comma.
   [Julian Infanger]
@@ -33,6 +41,11 @@ Changelog
 - made it work with plone 4.3 (import changed)
   [jensens, bennyboy]
 
+- updated italian translation
+  [keul]
+
+- do not create ``SESSION`` object when not needed (see #21)
+  [keul]
 
 1.5.6 (2012-10-09)
 ------------------

@@ -4,6 +4,9 @@ Changelog
 1.5.8 (unreleased)
 ------------------
 
+- Fixed: do not remove file extensions at upload.
+  [thomasdesvenain]
+
 - Add flash fallback for IE. Configurable throught quick upload
   control panel. It's disabled by default
   [mathias.leimgruber]

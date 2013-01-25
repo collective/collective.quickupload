@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5.8 (unreleased)
+1.5.8 (2013-01-25)
 ------------------
 
 - Fixed: do not remove file extensions at upload.

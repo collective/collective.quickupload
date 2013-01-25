@@ -1,7 +1,7 @@
 from setuptools import setup, find_packages
 import os
 
-version = '1.5.8.dev0'
+version = '1.5.8'
 
 setup(name='collective.quickupload',
       version=version,

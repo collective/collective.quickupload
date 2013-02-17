@@ -4,7 +4,9 @@ Changelog
 1.5.9 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fixed creation of dexterity-content
+  (regression sneaked in via d2bf4ff)
+  [till44]
 
 
 1.5.8 (2013-01-25)

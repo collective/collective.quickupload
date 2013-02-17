@@ -112,7 +112,10 @@ class QuickUploadCapableFileFactory(object):
                     if obj:
                         error = IQuickUploadFileSetter(obj).set(data, filename, content_type)
                         obj._at_rename_after_creation = False
-                        obj.processForm()
+                        try:
+                            obj.processForm()
+                        except AttributeError:
+                            pass
                         del obj._at_rename_after_creation
 
                 #@TODO : rollback if there has been an error

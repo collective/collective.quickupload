@@ -49,7 +49,9 @@ class MissingExtension(Exception):
 
 
 def get_id_from_filename(filename, context):
-    name = filename.decode('utf-8').rsplit('.', 1)
+    charset = getattr(context, 'getCharset', None) and context.getCharset() \
+        or 'utf-8'
+    name = filename.decode(charset).rsplit('.', 1)
     if len(name) != 2:
         raise MissingExtension('It seems like the file extension is missing.')
     normalizer = component.getUtility(IIDNormalizer)

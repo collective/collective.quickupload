@@ -49,7 +49,8 @@ class MissingExtension(Exception):
 
 
 def get_id_from_filename(filename, context):
-    charset = context.getCharset()
+    charset = getattr(context, 'getCharset', None) and context.getCharset() \
+        or 'utf-8'
     name = filename.decode(charset).rsplit('.', 1)
     if len(name) != 2:
         raise MissingExtension('It seems like the file extension is missing.')

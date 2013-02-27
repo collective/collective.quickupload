@@ -49,15 +49,17 @@ class UploadFileTypeVocabulary(object):
     def __call__(self, context):
         context = getattr(context, 'context', context)
         portal = getToolByName(context, 'portal_url').getPortalObject()
-        flt = [_infoDictForType(portal, tipe) for tipe in _listTypesForInterface(portal, IFileContent)]
-        ilt = [_infoDictForType(portal, tipe) for tipe in _listTypesForInterface(portal, IImageContent)]
         items = [SimpleTerm('auto', 'auto', context.translate(_('label_default_portaltype_configuration',
                                                       default=u'Default configuration (Content Type Registry).')))]
-        items.extend([SimpleTerm(t['portal_type'], t['portal_type'], t['type_ui_info'])
-                  for t in flt])
-        file_types = [t['portal_type'] for t in flt]
-        items.extend([SimpleTerm(t['portal_type'], t['portal_type'], t['type_ui_info'])
-                  for t in ilt if t['portal_type'] not in file_types])
+        archetype_tool = getToolByName(context, 'archetype_tool', None)
+        if archetype_tool:
+            flt = [_infoDictForType(portal, tipe) for tipe in _listTypesForInterface(portal, IFileContent)]
+            ilt = [_infoDictForType(portal, tipe) for tipe in _listTypesForInterface(portal, IImageContent)]
+            items.extend([SimpleTerm(t['portal_type'], t['portal_type'], t['type_ui_info'])
+                      for t in flt])
+            file_types = [t['portal_type'] for t in flt]
+            items.extend([SimpleTerm(t['portal_type'], t['portal_type'], t['type_ui_info'])
+                      for t in ilt if t['portal_type'] not in file_types])
 
         for fti in portal.portal_types.objectValues():
             if HAS_DEXTERITY and IDexterityFTI.providedBy(fti):

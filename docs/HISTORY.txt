@@ -4,6 +4,9 @@ Changelog
 1.5.9 (unreleased)
 ------------------
 
+- Handle HTTP status code 500 explicitly.
+  [durko]
+
 - Fixed creation of dexterity-content
   (regression sneaked in via d2bf4ff)
   [till44]

@@ -103,3 +103,47 @@ PloneQuickUpload.onUploadComplete = function(uploader, domelement, id, fileName,
         }, 50);
     }
 };
+
+/* Open the collective.quickupload ajax view when #contentview-upload (an action) is clicked.
+   The hidden input field is wrapped in a form in a viewlet: form#quickuploader-viewlet
+*/
+
+PloneQuickUpload.showUploaderViewlet = function () {
+    // If it gets called again when it's already opened it loads the
+    // content of the page into the element
+    if ( jQuery(".quick-uploader").length < 1 ) {
+        jQuery(this).addClass("selected");
+        jQuery("form#quickuploader-viewlet").each(function(){
+            var uploadUrl =  jQuery('.uploadUrl', this).val();
+            var uploadData =  jQuery('.uploadData', this).val();
+            var UlDiv = jQuery(this);
+            jQuery.ajax({
+                type: 'GET',
+                url: uploadUrl,
+                data: uploadData,
+                dataType: 'html',
+                contentType: 'text/html; charset=utf-8',
+                success: function(html) {
+                    UlDiv.html(html);
+                } });
+        });
+    };
+};
+
+// workaround this MSIE bug :
+// https://dev.plone.org/plone/ticket/10894
+if (jQuery.browser.msie)
+    jQuery("#settings").remove();
+var Browser = {};
+Browser.onUploadComplete = function() {
+    window.location.reload();
+}
+
+jQuery(document).ready( function () {
+    // Disable the action link
+    uploadAction = jQuery("#contentview-upload")
+        .find("a")
+        .removeAttr("href");
+
+    jQuery("#contentview-upload").click(PloneQuickUpload.showUploaderViewlet);
+})

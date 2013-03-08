@@ -80,4 +80,14 @@
       permission="cmf.ManagePortal"
       />
 
+  <!-- viewlet for the quick uploader, as an alternative to the portlet -->
+  <browser:viewlet
+    name="collective.quickupload.QuickUploadViewlet"
+    manager="plone.app.layout.viewlets.interfaces.IAboveContent"
+    class=".viewlets.QuickUploadViewlet"
+    template="quickupload_viewlet.pt"
+    for="*"
+    permission="zope2.View"
+    />
+
 </configure>

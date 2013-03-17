@@ -13,11 +13,12 @@ from ZPublisher.HTTPRequest import HTTPRequest
 from zope.security.interfaces import Unauthorized
 from zope.component import getUtility
 from zope.i18n import translate
+from zope.schema import getFieldsInOrder
 
 from Products.CMFCore.utils import getToolByName
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.ATContentTypes.interfaces import IImageContent
+from Products.ATContentTypes.interfaces import IFileContent, IImageContent
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFCore.permissions import ModifyPortalContent
 from Products.Sessions.SessionDataManager import SessionDataManagerErr
@@ -33,6 +34,7 @@ except pkg_resources.DistributionNotFound:
     HAS_UUID = False
 
 import ticket as ticketmod
+from collective.quickupload import HAS_DEXTERITY
 from collective.quickupload import siteMessageFactory as _
 from collective.quickupload import logger
 from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
@@ -42,7 +44,11 @@ from collective.quickupload.interfaces import (
 from collective.quickupload.browser.uploadcapable import get_id_from_filename,\
     MissingExtension
 
-try :
+if HAS_DEXTERITY:
+    from plone.dexterity.interfaces import IDexterityFTI
+    from plone.namedfile.interfaces import INamedFileField, INamedImageField
+
+try:
     # python 2.6
     import json
 except ImportError:
@@ -105,24 +111,50 @@ def find_user(context, userid):
     return user
 
 
-def _listTypesForInterface(context, interface):
+def _listTypesForInterface(context, iftype='file'):
     """
-    List of portal types that have File interface
+    List of portal types that have File or Image interface
     @param portal: context
-    @param interface: Zope inteface
+    @param iftype:
+        Type of interface to query for, can be either 'file' or 'image'
     @return: ['Image', 'News Item']
     """
 
-    archetype_tool = getToolByName(context, 'archetype_tool')
+    archetype_tool = getToolByName(context, 'archetype_tool', None)
+    types_tool = getToolByName(context, 'portal_types')
 
-    #plone4
-    try :
-        all_types = [tipe.getId() for tipe in archetype_tool.listPortalTypesWithInterfaces([interface])]
-    #plone3
-    except :
-        all_types = archetype_tool.listRegisteredTypes(inProject=True)
-        all_types = [tipe['portal_type'] for tipe in all_types
-                     if interface.isImplementedByInstancesOf(tipe['klass'])]
+    all_types = []
+    if archetype_tool:
+        if iftype == 'image':
+            interface = IImageContent
+        else:
+            interface = IFileContent
+        #plone4
+        try:
+            all_types = [
+                tipe.getId() for tipe in
+                archetype_tool.listPortalTypesWithInterfaces([interface])
+            ]
+        #plone3
+        except:
+            all_types = archetype_tool.listRegisteredTypes(inProject=True)
+            all_types = [
+                tipe['portal_type'] for tipe in all_types
+                if interface.isImplementedByInstancesOf(tipe['klass'])
+            ]
+
+    if HAS_DEXTERITY:
+        if iftype == 'image':
+            interface = INamedImageField
+        else:
+            interface = INamedFileField
+        for fti in types_tool.objectValues():
+            if IDexterityFTI.providedBy(fti):
+                fields = getFieldsInOrder(fti.lookupSchema())
+                for fieldname, field in fields:
+                    if interface.providedBy(field):
+                        all_types.append(fti.getId())
+                        break
 
     # fix for bug in listRegisteredTypes which returns 2 'ATFolder'
     # when asking for IBaseFolder interface
@@ -451,7 +483,7 @@ class QuickUploadInit(BrowserView):
 
         settings['typeupload'] = typeupload
         if typeupload :
-            imageTypes = _listTypesForInterface(context, IImageContent)
+            imageTypes = _listTypesForInterface(context, 'image')
             if typeupload in imageTypes :
                 ul_content_types_infos = self.ul_content_types_infos('image')
             else :
@@ -652,7 +684,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
             oct = mtr.globFilename(file_name)
             if oct is not None :
                 content_type = str(oct)
-        
+
         portal_type = getDataFromAllRequests(request, 'typeupload') or ''
         title =  getDataFromAllRequests(request, 'title') or ''
         description =  getDataFromAllRequests(request, 'description') or ''

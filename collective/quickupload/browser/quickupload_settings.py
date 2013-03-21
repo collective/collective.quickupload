@@ -112,10 +112,7 @@ class QuickUploadControlPanelAdapter(SchemaAdapterBase):
         return self.quProps.getProperty('show_upload_action')
 
     def set_show_upload_action(self, value):
-        id = 'show_upload_action'
-        if not self.quProps.hasProperty(id):
-            self.quProps._setProperty(id, value, 'boolean')
-        self.quProps._updateProperty(id, value)
+        self.quProps._updateProperty('show_upload_action', value)
 
     show_upload_action = property(
         get_show_upload_action, set_show_upload_action)

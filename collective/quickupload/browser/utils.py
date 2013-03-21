@@ -21,6 +21,10 @@ class QuickuploadHelper(BrowserView):
         context_state = getMultiAdapter(
             (aq_inner(self.context), self.request),
             name=u'plone_context_state')
+        if not (
+                context_state.is_default_page() or
+                context_state.is_folderish()):
+            return False
         # If the Quickuploader portlet is shown in the current context, don't
         # show the Upload action, since the portlet takes precedence
         portlet_managers = [
@@ -33,5 +37,4 @@ class QuickuploadHelper(BrowserView):
             for portlet in portlets:
                 if IQuickUploadPortlet.providedBy(portlet["assignment"]):
                     return False
-
-        return context_state.is_default_page() or context_state.is_folderish()
+        return True

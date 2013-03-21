@@ -12,7 +12,7 @@
        <property name="link_target"></property>
        <property name="icon_expr"></property>
        <property
-          name="available_expr">python:plone_context_state.is_folderish() or plone_context_state.is_default_page()</property>
+          name="available_expr">object/@@quickupload_helper/show_quickupload_action</property>
        <property name="permissions">
         <element value="Add portal content"/>
        </property>

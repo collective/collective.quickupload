@@ -90,4 +90,12 @@
     permission="zope2.View"
     />
 
+  <browser:page
+      for="*"
+      name="quickupload_helper"
+      class=".utils.QuickuploadHelper"
+      permission="zope.Public"
+      allowed_attributes="show_quickupload_action"
+      />
+
 </configure>

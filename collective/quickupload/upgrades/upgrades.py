@@ -31,3 +31,5 @@ def v4_v5(context):
     qu_props = ptool.get('quickupload_properties')
     if not qu_props.hasProperty('show_upload_action'):
         qu_props._setProperty('show_upload_action', False, 'boolean')
+    context.runImportStepFromProfile(
+        'profile-collective.quickupload:default', 'actions')

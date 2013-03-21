@@ -7,9 +7,7 @@ from collective.quickupload.browser.quickupload_settings import \
     IQuickUploadControlPanel
 from collective.quickupload.portlet.quickuploadportlet import \
     IQuickUploadPortlet
-from plone.app.portlets.utils import assignment_mapping_from_key
-from plone.portlets.constants import CONTEXT_CATEGORY
-from plone.portlets.interfaces import IPortletManager
+from plone.portlets.interfaces import IPortletManager, IPortletRetriever
 from zope.component import getMultiAdapter, getUtility, getUtilitiesFor
 
 
@@ -25,16 +23,15 @@ class QuickuploadHelper(BrowserView):
             name=u'plone_context_state')
         # If the Quickuploader portlet is shown in the current context, don't
         # show the Upload action, since the portlet takes precedence
-        portlet_manager_names = [
-            x[0] for x in getUtilitiesFor(IPortletManager)
+        portlet_managers = [
+            x[1] for x in getUtilitiesFor(IPortletManager)
             if not x[0].startswith('plone.dashboard')
         ]
-        path = '/'.join(self.context.getPhysicalPath())
-        for name in portlet_manager_names:
-            portlets = assignment_mapping_from_key(
-                self.context, name, CONTEXT_CATEGORY, path).values()
+        for mgr in portlet_managers:
+            retriever = getMultiAdapter((self.context, mgr), IPortletRetriever)
+            portlets = retriever.getPortlets()
             for portlet in portlets:
-                if IQuickUploadPortlet.providedBy(portlet):
+                if IQuickUploadPortlet.providedBy(portlet["assignment"]):
                     return False
 
         return context_state.is_default_page() or context_state.is_folderish()

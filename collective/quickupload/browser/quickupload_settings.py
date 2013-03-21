@@ -45,7 +45,8 @@ class IQuickUploadControlPanel(Interface):
             'will open a panel for uploading below the title of the current '
             'item. This panel is an alternative to the "Upload" portlet and '
             'does not offer any further configuration, such as filtering by '
-            'content type.'
+            'content type. The panel will only be shown where the "Upload" '
+            'portlet is not present.'
         ),
         default=False,
         required=False,

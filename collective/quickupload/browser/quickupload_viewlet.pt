@@ -1,4 +1,4 @@
-<form id="quickuploader-viewlet">
+<form id="quickuploader-viewlet" style="display: none">
     <input type="hidden"
         name="uploadUrl"
         class="uploadUrl"

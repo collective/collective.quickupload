@@ -112,6 +112,7 @@ PloneQuickUpload.showUploaderViewlet = function () {
     // If it gets called again when it's already opened it loads the
     // content of the page into the element
     if ( jQuery(".quick-uploader").length < 1 ) {
+        jQuery("form#quickuploader-viewlet").show();
         jQuery(this).addClass("selected");
         jQuery("form#quickuploader-viewlet").each(function(){
             var uploadUrl =  jQuery('.uploadUrl', this).val();

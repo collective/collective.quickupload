@@ -1,0 +1,6 @@
+<form id="quickuploader-viewlet" style="display: none">
+    <input type="hidden"
+        name="uploadUrl"
+        class="uploadUrl"
+        tal:attributes="value string:${context/@@plone/getCurrentFolderUrl}/@@quick_upload" />
+</form>

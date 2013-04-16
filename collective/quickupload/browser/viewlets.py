@@ -11,7 +11,10 @@ class QuickUploadViewlet(common.ViewletBase):
 
     def render(self):
         portal = getUtility(IPloneSiteRoot)
-        qup_prefs = IQuickUploadControlPanel(portal)
+        try:
+            qup_prefs = IQuickUploadControlPanel(portal)
+        except AttributeError:
+            return ""
         if not qup_prefs.show_upload_action:
             return ""
         return self.index()

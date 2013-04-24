@@ -1,14 +1,23 @@
+# -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
 import os
+
+
+def read(*paths):
+    return open(os.path.join(os.path.dirname(__file__), *paths)).read()
 
 version = '1.5.9.dev0'
 
 setup(name='collective.quickupload',
       version=version,
-      description="Pure javascript files upload tool for Plone, with drag and drop, multi selection, and progress bar.",
-      long_description=open("README.txt").read() + "\n" +
-                       open(os.path.join("docs", "HISTORY.txt")).read(),
-      # Get more strings from http://pypi.python.org/pypi?%3Aaction=list_classifiers
+      description="Pure javascript files upload tool for Plone, with drag " +
+                  "and drop, multi selection, and progress bar.",
+      long_description="\n\n".join([
+          read("README.rst"),
+          read("docs", "HISTORY.rst"),
+      ]),
+      # Get more strings from
+      # http://pypi.python.org/pypi?%3Aaction=list_classifiers
       classifiers=[
           "Topic :: Desktop Environment :: File Managers",
           "Programming Language :: Python",
@@ -27,7 +36,7 @@ setup(name='collective.quickupload',
           "Natural Language :: Chinese (Simplified)",
           "Natural Language :: Chinese (Traditional)",
           "License :: OSI Approved :: GNU Affero General Public License v3"
-          ],
+      ],
       keywords='Plone Multiple Files Upload',
       author='jean-mat Grimaldi',
       author_email='jeanmat.grimaldi@gmail.com',
@@ -38,11 +47,15 @@ setup(name='collective.quickupload',
       include_package_data=True,
       zip_safe=False,
       install_requires=[
-        'setuptools',
-        ],
+          'setuptools',
+      ],
       extras_require={
-        'test': ['plone.app.testing', 'mock', 'plone.app.dexterity'],
-        },
+          'test': [
+              'plone.app.dexterity',
+              'plone.app.testing',
+              'mock',
+          ],
+      },
       entry_points="""
       [z3c.autoinclude.plugin]
       target = plone

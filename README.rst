@@ -138,9 +138,11 @@ quickupload.tests
 Compliance
 ==========
 
-- Plone 4.x
+- Plone 4.3
+- Plone 4.2
+- Plone 4.1
 
-Plone 3.3.x support stopped with 1.0.3.
+Plone 4.0 support stopped with 1.6, Plone 3.3.x support stopped with 1.0.3.
 
 
 About fileuploader.js fork
@@ -209,6 +211,10 @@ TODO
 - add tests for upload viewlet
 
 - pep8/code cleanup
+
+- set default values to show upload button after install
+
+- WTF confusing docs?
 
 
 Support

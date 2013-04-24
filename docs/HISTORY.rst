@@ -4,6 +4,10 @@ Changelog
 1.5.9 (unreleased)
 ------------------
 
+- Move completly to plone.app.testing instead of mixed collective.testcaselayer
+  and PloneTestCase usage.
+  [saily]
+
 - Restructure buildout
   [saily]
 

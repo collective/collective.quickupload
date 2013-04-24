@@ -1,31 +1,47 @@
 Plone Quick Upload View
 =======================
 
+    >>> from plone.testing.z2 import Browser
+    >>> from plone.app.testing import setRoles
+    >>> from plone.app.testing import TEST_USER_ID
+    >>> from plone.app.testing import TEST_USER_NAME
+    >>> from plone.app.testing import TEST_USER_PASSWORD
+    >>> browser = Browser(layer['app'])
+    >>> browser.handleErrors = False
+    >>> portal = layer['portal']
+    >>> portal_url = portal.absolute_url()
+
 Test permission
 ---------------
+
+    >>> folder = portal['test-folder']
+    >>> folder_url = folder.absolute_url()
 
 Try to get the view on portal as anonymous user
 Must redirect to authentication page :
 
-    >>> self.browser.open('http://nohost/plone/@@quick_upload')
-    >>> self.browser.url
-    'http://nohost/plone/acl_users/credentials_cookie_auth/require_login?came_from=http%3A//nohost/plone/%40%40quick_upload'
+    >>> browser.open(folder_url + '/@@quick_upload')
+    Traceback (most recent call last):
+    ...
+    Unauthorized: You are not authorized to access this resource.
 
-Login as Contributor :
+Try to get the view as contributor:
 
-    >>> self.loginAsContibutor()
-
-Try to get the view as contributor :
-
-    >>> self.browser.open('http://nohost/plone/@@quick_upload')
-    >>> self.browser.url
-    'http://nohost/plone/@@quick_upload'
+    >>> browser.open(portal.absolute_url() + '/login_form')
+    >>> browser.getControl(name='__ac_name').value = TEST_USER_NAME
+    >>> browser.getControl(name='__ac_password').value = TEST_USER_PASSWORD
+    >>> browser.getControl(name='submit').click()
+    >>> 'You are now logged in' in browser.contents
+    True
+    >>> browser.open(folder_url + '/@@quick_upload')
+    >>> browser.url
+    'http://nohost/plone/test-folder/@@quick_upload'
 
 Test template depending on configuration
 ----------------------------------------
 
     >>> from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
-    >>> qup_prefs = IQuickUploadControlPanel(self.portal)
+    >>> qup_prefs = IQuickUploadControlPanel(portal)
 
 Change the property use_flash_upload
 
@@ -33,28 +49,28 @@ Change the property use_flash_upload
 
 Try to see if the view is impacted (use flash)
 
-    >>> self.browser.open('http://nohost/plone/@@quick_upload')  
-    >>> "http://nohost/plone/@@flash_upload_file" in self.browser.contents
+    >>> browser.open(folder_url + '/@@quick_upload')
+    >>> folder_url + "/@@flash_upload_file" in browser.contents
     True
 
 Change the property auto_upload
 
     >>> qup_prefs.auto_upload = True
-    >>> self.browser.open('http://nohost/plone/@@quick_upload')  
-    >>> "var autoUpload = true" in self.browser.contents
+    >>> browser.open(folder_url + '/@@quick_upload')
+    >>> "var autoUpload = true" in browser.contents
     True
 
 Change the property size_limit
 
     >>> qup_prefs.size_limit = 200
-    >>> self.browser.open('http://nohost/plone/@@quick_upload')  
-    >>> "'sizeLimit'     : '204800'" in self.browser.contents
+    >>> browser.open(folder_url + '/@@quick_upload')
+    >>> "'sizeLimit'     : '204800'" in browser.contents
     True
 
 Test template depending on request
 ----------------------------------
 
-if mediaupload is set in request the upload javascript 
+if mediaupload is set in request the upload javascript
 configuration and the label could change
 
 First disable flashupload
@@ -63,22 +79,22 @@ First disable flashupload
 Get the view with mediaupload = audio,
 The allowed extensions must be restricted to audio mime types
 
-    >>> self.browser.open('http://nohost/plone/@@quick_upload?mediaupload=audio') 
-    >>> "allowedExtensions: ['mp3', 'wav', 'ogg', 'mp4', 'wma', 'aif']" in self.browser.contents
+    >>> browser.open(folder_url + '/@@quick_upload?mediaupload=audio')
+    >>> "allowedExtensions: ['mp3', 'wav', 'ogg', 'mp4', 'wma', 'aif']" in browser.contents
     True
 
 Get the view with mediaupload = image,
 The allowed extensions must be restricted to image mime types
 
-    >>> self.browser.open('http://nohost/plone/@@quick_upload?mediaupload=image') 
-    >>> "allowedExtensions: ['jpg', 'jpeg', 'gif', 'png']" in self.browser.contents
-    True      
+    >>> browser.open(folder_url + '/@@quick_upload?mediaupload=image')
+    >>> "allowedExtensions: ['jpg', 'jpeg', 'gif', 'png']" in browser.contents
+    True
 
 If typeupload is set to 'Image' portal_type
 The allowed extensions must also be restricted to image mime types
 even when mediaupload is not set
 
-    >>> self.browser.open('http://nohost/plone/@@quick_upload?typeupload=Image') 
-    >>> "allowedExtensions: ['jpg', 'jpeg', 'gif', 'png']" in self.browser.contents
-    True  
+    >>> browser.open(folder_url + '/@@quick_upload?typeupload=Image')
+    >>> "allowedExtensions: ['jpg', 'jpeg', 'gif', 'png']" in browser.contents
+    True
 

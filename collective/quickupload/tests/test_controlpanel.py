@@ -8,12 +8,12 @@ from plone.app.testing import TEST_USER_ID
 from plone.app.testing import logout
 from plone.app.testing import setRoles
 
-from collective.quickupload.testing import INTEGRATION_TESTING
+from collective.quickupload.testing import QUICKUPLOAD_INTEGRATION_TESTING
 
 
 class ControlPanelTest(unittest.TestCase):
 
-    layer = INTEGRATION_TESTING
+    layer = QUICKUPLOAD_INTEGRATION_TESTING
 
     def setUp(self):
         self.portal = self.layer['portal']

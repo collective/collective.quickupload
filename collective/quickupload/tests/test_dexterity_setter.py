@@ -14,7 +14,7 @@ try:
 except:
     HAVE_BLOBS = False
 
-from collective.quickupload.testing import INTEGRATION_TESTING
+from collective.quickupload.testing import QUICKUPLOAD_INTEGRATION_TESTING
 from collective.quickupload.interfaces import IQuickUploadFileSetter
 from collective.quickupload.dexterity import DexterityFileSetter
 
@@ -42,7 +42,7 @@ if HAVE_BLOBS:
 
 class TestCase(unittest.TestCase):
 
-    layer = INTEGRATION_TESTING
+    layer = QUICKUPLOAD_INTEGRATION_TESTING
 
     @property
     def portal(self):

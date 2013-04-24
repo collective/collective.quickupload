@@ -142,7 +142,7 @@ Compliance
 - Plone 4.2
 - Plone 4.1
 
-Plone 4.0 support stopped with 1.6, Plone 3.3.x support stopped with 1.0.3.
+Plone 4.0 support stopped with 1.6.0, Plone 3.3.x support stopped with 1.0.3.
 
 
 About fileuploader.js fork
@@ -169,7 +169,7 @@ These ameliorations have been done:
 How To
 ======
 
-- How to add the quickupload view in my own template or viewlet ?
+- How to add the quickupload view in my own template or viewlet?
 
   Just look the quickupload portlet code, it's really easy.
 

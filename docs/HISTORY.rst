@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.5.9 (unreleased)
+1.6.0 (unreleased)
 ------------------
 
 - Move completly to plone.app.testing instead of mixed collective.testcaselayer

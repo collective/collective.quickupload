@@ -75,7 +75,7 @@ collective.quickupload.browser
   - the quickupload view log and returns errors to the form (unauthorized, id
     always exist, type not allowed, etc ... )
 
-  - the view can use some attributes set in session or request::
+  - the view can use some attributes set in session or request:
 
     - force mediatype (could be None, image, video, audio, or something like
       this '*.pdf;*.doc;')
@@ -95,7 +95,7 @@ collective.quickupload.browser
         find the good portal_type, otherwise the "File" portal_type will be
         used.
 
-  - a basic Plone Control panel with some options::
+  - a basic Plone Control panel with some options:
 
     - use flashupload (yes/no), default = no
 
@@ -218,11 +218,11 @@ Please file all tickets to issue page on github
 https://github.com/collective/collective.quickupload/issues.
 
 
-
 Repository
 ==========
 
 https://github.com/collective/collective.quickupload/
+
 
 More Information
 ================
@@ -239,3 +239,4 @@ Thanks to :
 - Maik Roeder, for functional tests
 - Thomas Desvenain, current maintainer
 - Daniel Widerin
+- Wolfgang Thomas

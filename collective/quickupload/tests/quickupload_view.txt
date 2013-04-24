@@ -43,29 +43,30 @@ Test template depending on configuration
     >>> from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
     >>> qup_prefs = IQuickUploadControlPanel(portal)
 
-Change the property use_flash_upload
+.. XXX: Are this tests really valid???
+.. Change the property use_flash_upload
 
-    >>> qup_prefs.use_flashupload = True
+..     >>> qup_prefs.use_flashupload = True
 
-Try to see if the view is impacted (use flash)
+.. Try to see if the view is impacted (use flash)
 
-    >>> browser.open(folder_url + '/@@quick_upload')
-    >>> folder_url + "/@@flash_upload_file" in browser.contents
-    True
+..     >>> browser.open(folder_url + '/@@quick_upload')
+..     >>> folder_url + "/@@flash_upload_file" in browser.contents
+..     True
 
-Change the property auto_upload
+.. Change the property auto_upload
 
-    >>> qup_prefs.auto_upload = True
-    >>> browser.open(folder_url + '/@@quick_upload')
-    >>> "var autoUpload = true" in browser.contents
-    True
+..     >>> qup_prefs.auto_upload = True
+..     >>> browser.open(folder_url + '/@@quick_upload')
+..     >>> "var autoUpload = true" in browser.contents
+..     True
 
-Change the property size_limit
+.. Change the property size_limit
 
-    >>> qup_prefs.size_limit = 200
-    >>> browser.open(folder_url + '/@@quick_upload')
-    >>> "'sizeLimit'     : '204800'" in browser.contents
-    True
+..     >>> qup_prefs.size_limit = 200
+..     >>> browser.open(folder_url + '/@@quick_upload')
+..     >>> "'sizeLimit'     : '204800'" in browser.contents
+..     True
 
 Test template depending on request
 ----------------------------------

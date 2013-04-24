@@ -27,4 +27,12 @@
       handler=".upgrades.v3_v4"
       profile="collective.quickupload:default" />
 
+  <genericsetup:upgradeStep
+      title="Add show_upload_action property"
+      description=""
+      source="4"
+      destination="5"
+      handler=".upgrades.v4_v5"
+      profile="collective.quickupload:default" />
+
 </configure>

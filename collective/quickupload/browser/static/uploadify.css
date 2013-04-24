@@ -111,4 +111,10 @@ THE SOFTWARE.
   display: none;
 }
 
+form#quickuploader-viewlet div.quick-uploader {
+  border: 1px dotted grey;
+  margin: 0.5em 0;
+  padding: 1em;
+}
+
 /* vim: set ft=css ts=4 sw=4 expandtab : */

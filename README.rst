@@ -1,5 +1,5 @@
-.. image:: https://travis-ci.com/collective/collective.quickupload.png?branch=master
-   :target: https://travis-ci.com/collective/collective.quickupload
+.. image:: https://travis-ci.org/collective/collective.quickupload.png?branch=master
+   :target: https://travis-ci.org/collective/collective.quickupload
 
 ==================
 Plone Quick Upload

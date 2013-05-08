@@ -28,7 +28,6 @@ from zope.event import notify
 from zope.app.container.interfaces import INameChooser
 from zope.lifecycleevent import ObjectModifiedEvent
 
-from plone.i18n.normalizer.interfaces import IIDNormalizer
 from Products.statusmessages.interfaces import IStatusMessage
 from Products.Archetypes.event import ObjectInitializedEvent
 
@@ -41,13 +40,8 @@ from collective.quickupload import siteMessageFactory as _
 upload_lock = allocate_lock()
 
 def get_id_from_filename(filename, context):
-    charset = context.getCharset()
-    id = filename.decode(charset).rsplit('.', 1)
-    normalizer = component.getUtility(IIDNormalizer)
     chooser = INameChooser(context)
-    newid = '.'.join((normalizer.normalize(id[0]), id[1]))
-    newid = newid.replace('_','-').replace(' ','-').lower()
-    return chooser.chooseName(newid, context)
+    return chooser.chooseName(filename, context)
 
 
 class QuickUploadCapableFileFactory(object):

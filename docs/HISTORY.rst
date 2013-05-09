@@ -24,6 +24,9 @@ Changelog
 - Added viewlet as alternative to portlet for uploading
   [pysailor]
 
+- Czech translation
+  [naro]
+
 1.5.8 (2013-01-25)
 ------------------
 

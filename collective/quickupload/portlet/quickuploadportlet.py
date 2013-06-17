@@ -120,11 +120,11 @@ class Assignment(base.Assignment):
 
         media = self.upload_media_type
         if not media or '*.' in media:
-            return _('Files Quick Upload')
+            return _(u'Files Quick Upload')
         elif media == 'image' :
-            return _('Images Quick Upload')
+            return _(u'Images Quick Upload')
         else:
-            return _('label_media_quickupload',
+            return _(u'label_media_quickupload',
                      default='${medialabel} Quick Upload',
                      mapping={'medialabel': media.capitalize()})
 

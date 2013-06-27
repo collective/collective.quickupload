@@ -131,7 +131,7 @@ msgstr "Seulement autorisé :"
 
 #: ../profiles/default/controlpanel.xml:5
 msgid "Quick Upload"
-msgstr ""
+msgstr "Quick Upload"
 
 #. Default: "Quick Upload settings"
 #: ../browser/quickupload_settings.py:155
@@ -168,7 +168,7 @@ msgstr "Ce type d'élément n'est pas autorisé dans ce dossier."
 
 #: ../profiles/default/actions.xml
 msgid "Upload"
-msgstr ""
+msgstr "Upload"
 
 #: ../portlet/quickuploadportlet.py:97
 msgid "Video files"
@@ -196,7 +196,7 @@ msgstr "Si sélectionné, vous pouvez saisir les titres de fichiers avant leur e
 #. Default: "Check if you want to have an \"Upload\" link in your edit bar. Clicking it will open a panel for uploading below the title of the current item. This panel is an alternative to the \"Upload\" portlet and does not offer any further configuration, such as filtering by content type. The panel will only be shown where the \"Upload\" portlet is not present."
 #: ../browser/quickupload_settings.py:42
 msgid "description_show_upload_action"
-msgstr ""
+msgstr "Cochez cette case si vous souhaitez avoir un lien \"Téléverser\" dans votre barre d'édition. Un clic ouvrira un panneau de téléversement sous le titre. Ce panneau est une alternative à la portlet et ne sera proposé que si la portlet n'est pas présente."
 
 #. Default: "Number of simultaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"
 #: ../browser/quickupload_settings.py:72
@@ -211,7 +211,7 @@ msgstr "Taille limite de chaque fichier en KB, 0 = pas de limite"
 #. Default: "Check if you want to use flash upload as fallback for IE"
 #: ../browser/quickupload_settings.py:28
 msgid "description_use_flash_fallback"
-msgstr ""
+msgstr "Cochez cette case si vous souhaitez utiliser flash upload pour IE"
 
 #. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8),  but has many problems : don't work in https, don't work behind HTTP Authentication ..."
 #: ../browser/quickupload_settings.py:17
@@ -284,7 +284,7 @@ msgstr "Saisir les titres avant l'envoi"
 #. Default: "Show \"Upload\" action"
 #: ../browser/quickupload_settings.py:41
 msgid "title_show_upload_action"
-msgstr ""
+msgstr "Afficher l'action \"Téléverser\""
 
 #. Default: "Simultaneous uploads limit"
 #: ../browser/quickupload_settings.py:71
@@ -299,7 +299,7 @@ msgstr "Taille limite"
 #. Default: "Use flash as fallback for IE"
 #: ../browser/quickupload_settings.py:25
 msgid "title_use_flash_fallback"
-msgstr ""
+msgstr "Utiliser flash comme fallback pour IE"
 
 #. Default: "Use Flash Upload"
 #: ../browser/quickupload_settings.py:16

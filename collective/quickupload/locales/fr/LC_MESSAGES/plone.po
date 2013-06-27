@@ -18,12 +18,12 @@ msgstr ""
 #. Default: "A quick upload form for Plone"
 #: Default Profile description in minimal.zcml
 msgid "A quick upload form for Plone"
-msgstr ""
+msgstr "Un formulaire de téléversement rapide pour Plone"
 
 #. Default: "Plone Quick Upload"
 #: Default Profile title in minimal.zcml
 msgid "Plone Quick Upload"
-msgstr ""
+msgstr "Plone Quick Upload"
 
 #: ../profiles/default/portlets.xml
 msgid "Portlet displaying a quick and multiple upload form"
@@ -36,10 +36,10 @@ msgstr "Portlet de Téléversement Rapide"
 #. Default: "Remove Plone Quick Upload"
 #: Uninstall Profile title in minimal.zcml
 msgid "Remove Plone Quick Upload"
-msgstr ""
+msgstr "Retirer Plone Quick Upload"
 
 #. Default: "Removes quick upload form from Plone"
 #: Uninstall Profile description in minimal.zcml
 msgid "Removes quick upload form from Plone"
-msgstr ""
+msgstr "Supprime l'installation du téléversement rapide pour Plone"
 

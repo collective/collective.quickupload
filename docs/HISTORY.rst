@@ -4,6 +4,18 @@ Changelog
 1.6.0 (unreleased)
 ------------------
 
+- Added plone domain and translations
+  [macagua]
+
+- Updated catalog gettext and translations
+  [macagua]
+
+- Added more improvements about i18n
+  [macagua]
+
+- Added more i18ndude options into bash scrit
+  [macagua]
+
 - Move completly to plone.app.testing instead of mixed collective.testcaselayer
   and PloneTestCase usage.
   [saily]

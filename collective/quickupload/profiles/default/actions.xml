@@ -3,7 +3,7 @@
    xmlns:i18n="http://xml.zope.org/namespaces/i18n">
   <object name="object" meta_type="CMF Action Category" purge="false">
     <object name="upload" meta_type="CMF Action"
-         i18n:domain="collective.uploadify">
+         i18n:domain="collective.quickupload">
        <property name="title" i18n:translate="">Upload</property>
        <property name="description" i18n:translate="">Batch upload files.
         </property>

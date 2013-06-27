@@ -1,5 +1,7 @@
 <?xml version="1.0"?>
-<object name="portal_controlpanel">
+<object name="portal_controlpanel"
+    xmlns:i18n="http://namespaces.zope.org/i18n"
+    i18n:domain="collective.quickupload">
  <configlet title="Quick Upload" 
             action_id="QuickUpload" 
             appId="collective.quickupload"
@@ -7,7 +9,8 @@
             condition_expr=""
             url_expr="string:${portal_url}/@@quickupload-controlpanel"
             icon_expr="string:${portal_url}/++resource++quickupload_static/upload.png"
-            visible="True" >
+            visible="True"
+            i18n:attributes="title">
   <permission>Manage portal</permission>
  </configlet>
 </object>

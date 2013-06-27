@@ -1,0 +1,45 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: collective.quickupload\n"
+"POT-Creation-Date: 2013-06-17 06:38+0000\n"
+"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
+"Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
+"Language-Team: LANGUAGE <LL@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0;\n"
+"Language-Code: no\n"
+"Language-Name: Norsk\n"
+"Preferred-Encodings: utf-8\n"
+"Domain: plone\n"
+"X-Is-Fallback-For: nb nb-no no-bok\n"
+
+#. Default: "A quick upload form for Plone"
+#: Default Profile description in minimal.zcml
+msgid "A quick upload form for Plone"
+msgstr ""
+
+#. Default: "Plone Quick Upload"
+#: Default Profile title in minimal.zcml
+msgid "Plone Quick Upload"
+msgstr ""
+
+#: ../profiles/default/portlets.xml
+msgid "Portlet displaying a quick and multiple upload form"
+msgstr "Infoboks som viser multiple filopplastingsverktøy"
+
+#: ../profiles/default/portlets.xml
+msgid "Quick Upload Portlet"
+msgstr ""
+
+#. Default: "Remove Plone Quick Upload"
+#: Uninstall Profile title in minimal.zcml
+msgid "Remove Plone Quick Upload"
+msgstr ""
+
+#. Default: "Removes quick upload form from Plone"
+#: Uninstall Profile description in minimal.zcml
+msgid "Removes quick upload form from Plone"
+msgstr ""
+

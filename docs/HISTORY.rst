@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.6.0 (unreleased)
+1.6.0 (2013-07-18)
 ------------------
 
 - Added plone domain and translations

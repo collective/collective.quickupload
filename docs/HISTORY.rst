@@ -4,8 +4,8 @@ Changelog
 1.6.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Add dutch translations
+  [maartenkling]
 
 1.6.0 (2013-07-18)
 ------------------

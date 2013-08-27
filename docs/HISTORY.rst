@@ -4,6 +4,9 @@ Changelog
 1.6.1 (unreleased)
 ------------------
 
+- Enable DnD upload for IE > 9.
+  [mathias.leimgruber]
+
 - Add dutch translations
   [maartenkling]
 

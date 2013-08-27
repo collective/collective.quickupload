@@ -48,6 +48,7 @@ setup(name='collective.quickupload',
       zip_safe=False,
       install_requires=[
           'setuptools',
+          'ua_parser',
       ],
       extras_require={
           'test': [

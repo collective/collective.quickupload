@@ -2,9 +2,11 @@ domain='collective.quickupload'
 
 # Synchronise the templates and scripts with the .pot file for collective.quickupload domain.
 i18ndude rebuild-pot --pot $domain.pot --merge ./$domain-manual.pot --create $domain ../
+i18ndude rebuild-pot --pot plone.pot --merge ./plone-manual.pot 
 
 # Synchronise the collective.quickupload's pot file (Used for the workflows)
-i18ndude sync --pot $domain.pot */LC_MESSAGES/$domain.po
+i18ndude sync --pot $domain.pot */LC_MESSAGES/$domain.po 
+i18ndude sync --pot plone.pot */LC_MESSAGES/plone.po
 
 WARNINGS=`find . -name "*pt" | xargs i18ndude find-untranslated | grep -e '^-WARN' | wc -l`
 ERRORS=`find . -name "*pt" | xargs i18ndude find-untranslated | grep -e '^-ERROR' | wc -l`

@@ -1,0 +1,45 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: plone\n"
+"POT-Creation-Date: 2013-06-17 06:38+0000\n"
+"PO-Revision-Date: 2013-08-28 09:17+0100\n"
+"Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
+"Language-Team: eu <eu@li.org>\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=utf-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=1; plural=0\n"
+"Language-Code: en\n"
+"Language-Name: English\n"
+"Preferred-Encodings: utf-8 latin1\n"
+"Domain: DOMAIN\n"
+"X-Poedit-Language: Basque\n"
+
+#. Default: "A quick upload form for Plone"
+#: Default Profile description in minimal.zcml
+msgid "A quick upload form for Plone"
+msgstr "Fitxategien-karga azkarrerako formularioa"
+
+#. Default: "Plone Quick Upload"
+#: Default Profile title in minimal.zcml
+msgid "Plone Quick Upload"
+msgstr "Plone Fitxategien Karga Azkarra"
+
+#: ../profiles/default/portlets.xml
+msgid "Portlet displaying a quick and multiple upload form"
+msgstr "Fitxategien aldi bereko karga azkarra egiteko portleta"
+
+#: ../profiles/default/portlets.xml
+msgid "Quick Upload Portlet"
+msgstr "Karga Azkarrerako Portleta"
+
+#. Default: "Remove Plone Quick Upload"
+#: Uninstall Profile title in minimal.zcml
+msgid "Remove Plone Quick Upload"
+msgstr "Ezabatu Ploneren Karga Azkarra"
+
+#. Default: "Removes quick upload form from Plone"
+#: Uninstall Profile description in minimal.zcml
+msgid "Removes quick upload form from Plone"
+msgstr "Karga Azkarrerako produktua kentzen du"
+

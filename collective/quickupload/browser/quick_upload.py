@@ -671,13 +671,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
         else:
             overwritten_file = None
 
-        content_type = mimetypes.guess_type(file_name)[0]
-        # sometimes plone mimetypes registry could be more powerful
-        if not content_type :
-            mtr = getToolByName(context, 'mimetypes_registry')
-            oct = mtr.globFilename(file_name)
-            if oct is not None :
-                content_type = str(oct)
+        content_type = get_content_type(context, file_data, file_name)
 
         portal_type = getDataFromAllRequests(request, 'typeupload') or ''
         title =  getDataFromAllRequests(request, 'title') or ''
@@ -743,6 +737,15 @@ class QuickUploadFile(QuickUploadAuthenticate):
             return 1
         return 0
 
+def get_content_type(context, file_data, filename):
+    content_type = mimetypes.guess_type(filename)[0]
+    # sometimes plone mimetypes registry could be more powerful
+    if not content_type :
+        mtr = getToolByName(context, 'mimetypes_registry')
+        oct = mtr.classify(file_data, filename=filename)
+        if oct is not None :
+            return str(oct)
+        
 
 class QuickUploadCheckFile(BrowserView):
     """

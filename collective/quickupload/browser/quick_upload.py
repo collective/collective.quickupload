@@ -40,6 +40,7 @@ from collective.quickupload import logger
 from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
 from collective.quickupload.interfaces import (
     IQuickUploadNotCapable, IQuickUploadFileFactory, IQuickUploadFileUpdater)
+from collective.quickupload.browser.utils import can_dnd
 
 from collective.quickupload.browser.uploadcapable import get_id_from_filename,\
     MissingExtension
@@ -212,13 +213,8 @@ class QuickUploadView(BrowserView):
         return context.restrictedTraverse('@@quick_upload_init')(for_id = self.uploader_id)
 
     def can_drag_and_drop(self):
-
        user_agent = self.request.get_header('User-Agent')
-       if user_agent and (("msie" in user_agent.lower())
-           or ("microsoft internet explorer" in user_agent.lower())):
-           return False
-       else:
-           return True
+       return can_dnd(user_agent)
 
 
 XHR_UPLOAD_JS = """
@@ -499,13 +495,11 @@ class QuickUploadInit(BrowserView):
 
     def use_flash_as_fallback(self):
         # Use flash as fallback if xhr multiupload is not available
-        # Currently this affects only IE
+        # Currently this affects only IE < 10
         user_agent = self.request.get_header('User-Agent')
-        is_ie = user_agent and (("msie" in user_agent.lower())
-            or ("microsoft internet explorer" in user_agent.lower()))
-        force_flash = self.qup_prefs.use_flash_as_fallback
+        fallback = self.qup_prefs.use_flash_as_fallback
 
-        return is_ie and force_flash
+        return not can_dnd(user_agent) and fallback
 
     def __call__(self, for_id="uploader"):
         self.uploader_id = for_id

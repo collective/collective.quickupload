@@ -8,6 +8,7 @@ from collective.quickupload.browser.quickupload_settings import \
 from collective.quickupload.portlet.quickuploadportlet import \
     IQuickUploadPortlet
 from plone.portlets.interfaces import IPortletManager, IPortletRetriever
+from ua_parser import user_agent_parser
 from zope.component import getMultiAdapter, getUtility, getUtilitiesFor
 
 
@@ -38,3 +39,11 @@ class QuickuploadHelper(BrowserView):
                 if IQuickUploadPortlet.providedBy(portlet["assignment"]):
                     return False
         return True
+
+
+def can_dnd(user_agent):
+    """All modern browsers are able to upload files"""
+    result = user_agent_parser.Parse(user_agent)
+    if result['user_agent']['family'] == u'IE':
+        return int(result['user_agent']['major']) > 9
+    return True

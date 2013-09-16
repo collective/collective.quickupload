@@ -208,10 +208,21 @@ qq.FileUploader.prototype = {
             var dt = e.dataTransfer,
                 // do not check dt.types.contains in webkit, because it crashes safari 4
                 isWebkit = navigator.userAgent.indexOf("AppleWebKit") > -1;
+                isIE = navigator.userAgent.indexOf("MSIE") > -1;
 
             // dt.effectAllowed is none in Safari 5
             // dt.types.contains check is for firefox
-            return dt && dt.effectAllowed != 'none' &&
+
+            // dt.effectAllowed throws "Unexpected call to method or property access." in IE 10
+            // [maethu] I don't know what I'm doing here
+            var effect;
+            if (isIE) {
+                effect = 'move';
+            } else {
+                effect = dt.effectAllowed;
+            }
+
+            return dt && effect != 'none' &&
                 (dt.files || (!isWebkit && dt.types.contains && dt.types.contains('Files')));
         }
 
@@ -233,7 +244,17 @@ qq.FileUploader.prototype = {
                 }
 
                 if (dropArea == e.target || qq.contains(dropArea,e.target)){
-                    var effect = e.dataTransfer.effectAllowed;
+
+                    // [maethu] I don't know what I'm doing here neither
+                    var isIE = navigator.userAgent.indexOf("MSIE") > -1;
+                    var effect;
+
+                    if (isIE){
+                        effect = 'move';
+                    } else {
+                        effect = e.dataTransfer.effectAllowed;
+                    }
+
                     if (effect == 'move' || effect == 'linkMove'){
                         e.dataTransfer.dropEffect = 'move'; // for FF (only move allowed)
                     } else {

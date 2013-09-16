@@ -745,7 +745,7 @@ def get_content_type(context, file_data, filename):
         oct = mtr.classify(file_data, filename=filename)
         if oct is not None :
             return str(oct)
-        
+    return content_type
 
 class QuickUploadCheckFile(BrowserView):
     """

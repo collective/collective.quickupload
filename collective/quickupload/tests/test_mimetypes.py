@@ -24,3 +24,7 @@ class TestMimetypes(unittest.TestCase):
         content_type = get_content_type(self.portal, self.file_data, 'dummy.onlyext')
         self.assertEqual('application/x-only-ext', content_type)
     
+    def test_recognized_by_python(self):
+        content_type = get_content_type(self.portal, self.file_data, 'dummy.txt')
+        self.assertEqual('text/plain', content_type)
+        

@@ -1,6 +1,4 @@
 from zope.interface import Interface
-from zope.filerepresentation.interfaces import IFileFactory
-
 
 class IQuickUploadFileSetter(Interface):
     """Adapter to set file data on a content
@@ -19,11 +17,25 @@ class IQuickUploadNotCapable(Interface):
     """Any container/object which NEVER supports quick uploading
     """
 
-class IQuickUploadFileFactory(IFileFactory):
+# Copy of zope.filepresentation.interfaces.IFileFactory.
+# We can't inherit from this because otherwise this adapter will be registered for IFileFactory too, and will be used for PUT requests (FTP/WebDAV)
+class IDefaultFileFactory(Interface):
+
+    def __call__(name, content_type, data):
+        """Create a file
+
+        where a file is an object with adapters to `IReadFile`
+        and `IWriteFile`.
+
+        The file `name`, content `type`, and `data` are provided to help
+        create the object.
+        """
+
+class IQuickUploadFileFactory(IDefaultFileFactory):
     """used for QuickUploadFileFactory
     """
 
 
-class IQuickUploadFileUpdater(IFileFactory):
+class IQuickUploadFileUpdater(IDefaultFileFactory):
     """used for QuickUploadFileFactory
     """

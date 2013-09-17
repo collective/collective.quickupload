@@ -4,6 +4,9 @@ Changelog
 1.6.1 (unreleased)
 ------------------
 
+- Use the classify function of the MimetypeRegistry because it is more robust.
+  [tschanzt]
+
 - Enable DnD upload for IE > 9.
   Include fixing fileupload.js for IE 10
   [mathias.leimgruber]

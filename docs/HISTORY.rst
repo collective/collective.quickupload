@@ -4,6 +4,10 @@ Changelog
 1.6.1 (unreleased)
 ------------------
 
+- Enable DnD upload for IE > 9.
+  Include fixing fileupload.js for IE 10
+  [mathias.leimgruber]
+
 - Add dutch translations
   [maartenkling]
 

@@ -73,6 +73,13 @@ class IQuickUploadControlPanel(Interface):
                             default=2,
                             required=True)
 
+    object_override = Bool(title=_(u"title_object_override", default=u"Override by upload file"),
+                                 description=_(u"description_object_override",
+                                               default=u"If the folder already has same file name, "
+                                                "Checked: Override, Non-Checked: raise upload error."),
+                                 default=True,
+                                 required=False)
+
 class QuickUploadControlPanelAdapter(SchemaAdapterBase):
 
     adapts(IPloneSiteRoot)
@@ -149,6 +156,13 @@ class QuickUploadControlPanelAdapter(SchemaAdapterBase):
 
     sim_upload_limit = property(get_sim_upload_limit, set_sim_upload_limit)
 
+    def get_object_override(self):
+        return self.quProps.getProperty('object_override')
+
+    def set_object_override(self, value):
+        self.quProps._updateProperty('object_override', value)
+
+    object_override = property(get_object_override, set_object_override)
 
 class QuickUploadControlPanel(ControlPanelForm):
 

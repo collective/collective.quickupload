@@ -14,6 +14,11 @@ Changelog
 - Add dutch translations
   [maartenkling]
 
+- Add setting property, it's 'Override by upload file'
+  If the folder already has same file name,
+  Checked: Override, Non-Checked: raise upload error.
+  [terapyon]
+
 1.6.0 (2013-07-18)
 ------------------
 

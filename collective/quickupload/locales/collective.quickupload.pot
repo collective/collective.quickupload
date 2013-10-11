@@ -303,3 +303,14 @@ msgstr ""
 msgid "title_use_flashupload"
 msgstr ""
 
+#. Default: "Override by upload file"
+#: ../browser/quickupload_settings.py:76
+msgid "title_object_override"
+msgstr ""
+
+#. Default: "If the folder already has same file name, "
+#.          "Checked: Override, Non-Checked: raise upload error."
+#: ../browser/quickupload_settings.py:76
+msgid "description_object_override"
+msgstr ""
+

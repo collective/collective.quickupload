@@ -456,6 +456,7 @@ class QuickUploadInit(BrowserView):
             ul_size_limit          = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '',
             ul_xhr_size_limit      = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '0',
             ul_sim_upload_limit    = str(self.qup_prefs.sim_upload_limit),
+            ul_object_override     = self.qup_prefs.object_override and 'true' or 'false',
             ul_button_text         = self._translate(_(u'Browse')),
             ul_draganddrop_text    = self._translate(_(u'Drag and drop files to upload')),
             ul_msg_all_sucess      = self._translate(_(u'All files uploaded with success.')),
@@ -658,7 +659,8 @@ class QuickUploadFile(QuickUploadAuthenticate):
         if newid in context or file_name in context:
             updated_object = context.get(newid, False) or context[file_name]
             mtool = getToolByName(context, 'portal_membership')
-            if mtool.checkPermission(ModifyPortalContent, updated_object):
+            override_setting = self.qup_prefs.object_override
+            if override_setting and mtool.checkPermission(ModifyPortalContent, updated_object):
                 can_overwrite = True
             else:
                 can_overwrite = False

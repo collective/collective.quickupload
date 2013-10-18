@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.6.1 (unreleased)
+1.6.1 (2013-10-18)
 ------------------
 
 - Use the classify function of the MimetypeRegistry because it is more robust.

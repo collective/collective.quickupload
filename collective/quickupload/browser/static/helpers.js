@@ -147,4 +147,4 @@ jQuery(document).ready( function () {
         .removeAttr("href");
 
     jQuery("#contentview-upload").click(PloneQuickUpload.showUploaderViewlet);
-})
+});

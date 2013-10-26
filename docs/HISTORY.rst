@@ -4,7 +4,8 @@ Changelog
 1.6.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add missing semicolon at the end of helpers.js.
+  [vincentfretin]
 
 
 1.6.1 (2013-10-18)

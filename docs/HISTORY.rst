@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.6.2 (unreleased)
+1.6.2 (2013-12-02)
 ------------------
 
 - Add missing semicolon at the end of helpers.js.

@@ -6,7 +6,7 @@ import os
 def read(*paths):
     return open(os.path.join(os.path.dirname(__file__), *paths)).read()
 
-version = '1.6.2.dev0'
+version = '1.6.2'
 
 setup(name='collective.quickupload',
       version=version,

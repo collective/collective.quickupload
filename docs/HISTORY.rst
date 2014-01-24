@@ -4,7 +4,9 @@ Changelog
 1.6.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add an upgrade step to add property 'Override by upload file'.
+  This fixes configuration panel after 1.6.1.
+  [thomasdesvenain]
 
 
 1.6.2 (2013-12-02)

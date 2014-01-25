@@ -4,6 +4,9 @@ Changelog
 1.6.3 (unreleased)
 ------------------
 
+- i18n fixes.
+  [thomasdesvenain]
+
 - Add an upgrade step to add property 'Override by upload file'.
   This fixes configuration panel after 1.6.1.
   [thomasdesvenain]

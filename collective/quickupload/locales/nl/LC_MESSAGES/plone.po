@@ -14,14 +14,22 @@ msgstr ""
 "Preferred-Encodings: utf-8\n"
 "Domain: plone\n"
 
+#. Default: "A quick upload form for Plone"
+#: Default Profile description in minimal.zcml
+msgid "A quick upload form for Plone"
+msgstr ""
+
 #. Default: "Plone Quick Upload"
 #: Default Profile title in minimal.zcml
 msgid "Plone Quick Upload"
 msgstr ""
 
-#. Default: "A quick upload form for Plone"
-#: Default Profile description in minimal.zcml
-msgid "A quick upload form for Plone"
+#: ../profiles/default/portlets.xml
+msgid "Portlet displaying a quick and multiple upload form"
+msgstr ""
+
+#: ../profiles/default/portlets.xml
+msgid "Quick Upload Portlet"
 msgstr ""
 
 #. Default: "Remove Plone Quick Upload"
@@ -33,3 +41,4 @@ msgstr ""
 #: Uninstall Profile description in minimal.zcml
 msgid "Removes quick upload form from Plone"
 msgstr ""
+

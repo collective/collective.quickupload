@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2013-06-17 06:38+0000\n"
+"POT-Creation-Date: 2014-01-25 21:26+0000\n"
 "PO-Revision-Date: 2013-05-10 08:09+0100\n"
 "Last-Translator: Radim Novotny <novotny.radim@gmail.com>\n"
 "Language-Team: AOW <aow@aow.cz>\n"
@@ -17,15 +17,15 @@ msgstr ""
 "Preferred-Encodings: utf-8 latin1\n"
 "Domain: collective.quickupload\n"
 
-#: ../browser/quick_upload.py:466
+#: ../browser/quick_upload.py:464
 msgid " files uploaded with success, "
 msgstr "soubory/souborů bylo úspěšně nahráno."
 
-#: ../browser/quick_upload.py:467
+#: ../browser/quick_upload.py:465
 msgid " uploads return an error."
 msgstr "soubory/souborů skončilo s chybou"
 
-#: ../browser/quick_upload.py:480
+#: ../browser/quick_upload.py:478
 msgid "A data base conflict error happened when uploading this file:"
 msgstr "Byl detekován konfilkt databáze při nahrávání souboru: "
 
@@ -33,7 +33,7 @@ msgstr "Byl detekován konfilkt databáze při nahrávání souboru: "
 msgid "All"
 msgstr "Vše"
 
-#: ../browser/quick_upload.py:465
+#: ../browser/quick_upload.py:463
 msgid "All files uploaded with success."
 msgstr "Všechny soubory byly úspěšně nahrány."
 
@@ -49,23 +49,23 @@ msgstr ""
 msgid "Box title"
 msgstr "Název"
 
-#: ../browser/quick_upload.py:463
+#: ../browser/quick_upload.py:461
 msgid "Browse"
 msgstr "Procházet"
 
-#: ../browser/quick_upload.py:410
+#: ../browser/quick_upload.py:407
 msgid "Choose audio files to upload"
 msgstr "Vyberte audio soubory, které chcete nahrát"
 
-#: ../browser/quick_upload.py:418
+#: ../browser/quick_upload.py:415
 msgid "Choose file for upload: ${ext}"
 msgstr "Vyberte soubor k nahrání ${ext}"
 
-#: ../browser/quick_upload.py:413
+#: ../browser/quick_upload.py:410
 msgid "Choose flash files to upload"
 msgstr "Vyberte flash soubory, které chcete nahrát"
 
-#: ../browser/quick_upload.py:404
+#: ../browser/quick_upload.py:401
 msgid "Choose images to upload"
 msgstr "Vyberte obrázky, které chcete nahrát"
 
@@ -77,7 +77,7 @@ msgstr "Vyberte typ souboru, který se bude nahrávat. Obrázky, audio souboru, 
 msgid "Choose the portal type used for file upload. Let the default configuration for an automatic portal type, depending on settings defined in content_type_registry."
 msgstr "Vyberte typ položky v portálu, která bude vytvořena při nahrání souboru. Výchozí nastavení použije nastavení portálu, které rozhoduje na základě typu nahrávaného souboru."
 
-#: ../browser/quick_upload.py:407
+#: ../browser/quick_upload.py:404
 msgid "Choose video files to upload"
 msgstr "Vyberte video soubory, které chcete nahrát"
 
@@ -85,19 +85,22 @@ msgstr "Vyberte video soubory, které chcete nahrát"
 msgid "Content type"
 msgstr "Typ souboru"
 
-#: ../browser/quickupload_settings.py:156
+#: ../browser/quickupload_settings.py:170
 msgid "Control how the quick upload tool is used."
 msgstr "Nastavení použití quick upload nástroje."
 
-#: ../browser/quick_upload.py:464
+#: ../browser/quick_upload.py:462
 msgid "Drag and drop files to upload"
 msgstr "Přetáhněte sem soubory, které chcete nahrát"
 
-#: ../browser/quick_upload.py:468
+#: ../browser/quick_upload.py:466
 msgid "Failed"
 msgstr "Chyba"
 
-#: ../browser/quick_upload.py:199
+msgid "Files"
+msgstr ""
+
+#: ../browser/quick_upload.py:200
 #: ../portlet/quickuploadportlet.py:123
 msgid "Files Quick Upload"
 msgstr "Rychlé nahrání souborů"
@@ -110,11 +113,14 @@ msgstr "Flash soubory"
 msgid "If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."
 msgstr "Pokud není vyplněno, název portletu bude <název typu> + \"Quick Upload\"."
 
+msgid "Image"
+msgstr ""
+
 #: ../portlet/quickuploadportlet.py:96
 msgid "Images"
 msgstr "Obrázky"
 
-#: ../browser/quick_upload.py:201
+#: ../browser/quick_upload.py:202
 #: ../portlet/quickuploadportlet.py:125
 msgid "Images Quick Upload"
 msgstr "Rychlé nahrání obrázků"
@@ -123,7 +129,7 @@ msgstr "Rychlé nahrání obrázků"
 msgid "Media type"
 msgstr "Typ souborů"
 
-#: ../browser/quick_upload.py:476
+#: ../browser/quick_upload.py:474
 msgid "Only allowed:"
 msgstr "Povoleno pouze:"
 
@@ -131,35 +137,35 @@ msgstr "Povoleno pouze:"
 msgid "Quick Upload"
 msgstr ""
 
-#: ../browser/quickupload_settings.py:155
+#: ../browser/quickupload_settings.py:169
 msgid "Quick Upload settings"
 msgstr "Nastavení Quick Upload"
 
-#: ../browser/quick_upload.py:471
+#: ../browser/quick_upload.py:469
 msgid "Selected elements contain an empty file or a folder:"
 msgstr "Vybrané položky obsahují prázdný soubor nebo složku:"
 
-#: ../browser/quick_upload.py:481
+#: ../browser/quick_upload.py:479
 msgid "Server error, please contact support and/or try again."
 msgstr "Chyba na serveru. Kontaktujte prosím technickou podporu nebo to zkuste znovu."
 
-#: ../browser/quick_upload.py:479
+#: ../browser/quick_upload.py:477
 msgid "This file already exists with the same name on server:"
 msgstr "Soubor se stejným názvem již na serveru existuje:"
 
-#: ../browser/quick_upload.py:475
+#: ../browser/quick_upload.py:473
 msgid "This file has invalid extension:"
 msgstr "Soubor na neplatnou příponu:"
 
-#: ../browser/quick_upload.py:472
+#: ../browser/quick_upload.py:470
 msgid "This file has no extension:"
 msgstr "Soubor nemá žádnou příponu:"
 
-#: ../browser/quick_upload.py:473
+#: ../browser/quick_upload.py:471
 msgid "This file is too large:"
 msgstr "Soubor je příliš velký:"
 
-#: ../browser/quick_upload.py:478
+#: ../browser/quick_upload.py:476
 msgid "This type of element is not allowed in this folder."
 msgstr "Tento typ souboru není v této složce povolen:"
 
@@ -171,7 +177,7 @@ msgstr ""
 msgid "Video files"
 msgstr "Video soubory"
 
-#: ../browser/quick_upload.py:477
+#: ../browser/quick_upload.py:475
 msgid "You don't have permission to add this content in this place."
 msgstr "Nemáte oprtávnění přidávat tento typ položek do tohoto umístění."
 
@@ -189,6 +195,11 @@ msgstr "Pokud je zaškrtnuto, pak bude možné ke každému souboru vložit popi
 #: ../browser/quickupload_settings.py:55
 msgid "description_fill_titles"
 msgstr "Pokud je zaškrtnuto, pak bude možné ke každému souboru vložit nadpis."
+
+#. Default: "If the folder already has same file name, Checked: Override, Non-Checked: raise upload error."
+#: ../browser/quickupload_settings.py:77
+msgid "description_object_override"
+msgstr ""
 
 #. Default: "Check if you want to have an \"Upload\" link in your edit bar. Clicking it will open a panel for uploading below the title of the current item. This panel is an alternative to the \"Upload\" portlet and does not offer any further configuration, such as filtering by content type. The panel will only be shown where the \"Upload\" portlet is not present."
 #: ../browser/quickupload_settings.py:42
@@ -236,7 +247,7 @@ msgid "label_default_portaltype_configuration"
 msgstr "Výchozí nastavení (content type registry)"
 
 #. Default: "${medialabel} Quick Upload"
-#: ../browser/quick_upload.py:203
+#: ../browser/quick_upload.py:204
 #: ../portlet/quickuploadportlet.py:127
 msgid "label_media_quickupload"
 msgstr "${medialabel} - rychlé nahrání"
@@ -246,7 +257,7 @@ msgstr "${medialabel} - rychlé nahrání"
 msgid "label_upload_files"
 msgstr "Nahrát soubory"
 
-#: ../browser/quick_upload.py:474
+#: ../browser/quick_upload.py:472
 msgid "maximum file size is:"
 msgstr "maximální velikost souboru je:"
 
@@ -255,11 +266,11 @@ msgstr "maximální velikost souboru je:"
 msgid "msg_file_replaced"
 msgstr "Soubor ${filename} byl nahrazen.\""
 
-#: ../browser/quick_upload.py:469
+#: ../browser/quick_upload.py:467
 msgid "please select files again without it."
 msgstr "vyberte prosím soubory znovu"
 
-#: ../browser/quick_upload.py:470
+#: ../browser/quick_upload.py:468
 msgid "please try again."
 msgstr "zkuste to prosím znovu."
 
@@ -277,6 +288,11 @@ msgstr "Vyplnit popis před nahráním souborů"
 #: ../browser/quickupload_settings.py:54
 msgid "title_fill_titles"
 msgstr "Vyplnit název před nahráním souborů"
+
+#. Default: "Override by upload file"
+#: ../browser/quickupload_settings.py:76
+msgid "title_object_override"
+msgstr ""
 
 #. Default: "Show \"Upload\" action"
 #: ../browser/quickupload_settings.py:41

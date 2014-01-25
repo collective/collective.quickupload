@@ -20,3 +20,9 @@ msgstr ""
 #: ../profiles/default/controlpanel.xml:5
 msgid "Quick Upload"
 msgstr ""
+
+msgid "Files"
+msgstr ""
+
+msgid "Image"
+msgstr ""

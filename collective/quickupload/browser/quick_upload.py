@@ -61,15 +61,15 @@ def decodeQueryString(QueryString):
     """decode *QueryString* into a dictionary, as ZPublisher would do"""
     r = HTTPRequest(
         None,
-        {'QUERY_STRING' : QueryString,
-         'SERVER_URL' : '',
+        {'QUERY_STRING': QueryString,
+         'SERVER_URL': '',
          },
         None,1)
     r.processInputs()
     return r.form
 
 
-def getDataFromAllRequests(request, dataitem) :
+def getDataFromAllRequests(request, dataitem):
     """
     Sometimes data is send using POST METHOD and QUERYSTRING
     """
@@ -182,7 +182,7 @@ class QuickUploadView(BrowserView):
 
         return self.template()
 
-    def header_upload(self) :
+    def header_upload(self):
         request = self.request
         try:
             session = request.get('SESSION', {})
@@ -194,27 +194,29 @@ class QuickUploadView(BrowserView):
             medialabel = request.get('mediaupload', 'files')
 
         # to improve
-        if '*.' in medialabel :
+        if '*.' in medialabel:
             medialabel = ''
-        if not medialabel :
+        if not medialabel:
             return _('Files Quick Upload')
-        elif medialabel == 'image' :
+        elif medialabel == 'image':
             return _('Images Quick Upload')
         else:
             return _('label_media_quickupload',
                      default='${medialabel} Quick Upload',
-                     mapping={'medialabel': medialabel.capitalize()})
+                     mapping={'medialabel': translate(medialabel.capitalize(),
+                                                      domain='collective.quickupload',
+                                                      context=self.request)})
 
-    def _uploader_id(self) :
+    def _uploader_id(self):
         return 'uploader%s' %str(random.random()).replace('.','')
 
-    def script_content(self) :
+    def script_content(self):
         context = aq_inner(self.context)
         return context.restrictedTraverse('@@quick_upload_init')(for_id = self.uploader_id)
 
     def can_drag_and_drop(self):
-       user_agent = self.request.get_header('User-Agent')
-       return can_dnd(user_agent)
+        user_agent = self.request.get_header('User-Agent')
+        return can_dnd(user_agent)
 
 
 XHR_UPLOAD_JS = """
@@ -395,29 +397,29 @@ class QuickUploadInit(BrowserView):
         ext = '*.*;'
         extlist = []
         msg = u'Choose files to upload'
-        if mediaupload == 'image' :
+        if mediaupload == 'image':
             ext = '*.jpg;*.jpeg;*.gif;*.png;'
             msg = _(u'Choose images to upload')
-        elif mediaupload == 'video' :
+        elif mediaupload == 'video':
             ext = '*.flv;*.avi;*.wmv;*.mpg;'
             msg = _(u'Choose video files to upload')
-        elif mediaupload == 'audio' :
+        elif mediaupload == 'audio':
             ext = '*.mp3;*.wav;*.ogg;*.mp4;*.wma;*.aif;'
             msg = _(u'Choose audio files to upload')
-        elif mediaupload == 'flash' :
+        elif mediaupload == 'flash':
             ext = '*.swf;'
             msg = _(u'Choose flash files to upload')
-        elif mediaupload :
+        elif mediaupload:
             # you can also pass a list of extensions in mediaupload request var
             # with this syntax '*.aaa;*.bbb;'
             ext = mediaupload
             msg = _(u'Choose file for upload: ${ext}', mapping={'ext': ext})
 
-        try :
+        try:
             extlist = [f.split('.')[1].strip() for f in ext.split(';') if f.strip()]
-        except :
+        except:
             extlist = []
-        if extlist==['*'] :
+        if extlist==['*']:
             extlist = []
 
         return ( ext, extlist, self._translate(msg))
@@ -479,13 +481,13 @@ class QuickUploadInit(BrowserView):
         )
 
         settings['typeupload'] = typeupload
-        if typeupload :
+        if typeupload:
             imageTypes = _listTypesForInterface(context, 'image')
-            if typeupload in imageTypes :
+            if typeupload in imageTypes:
                 ul_content_types_infos = self.ul_content_types_infos('image')
-            else :
+            else:
                 ul_content_types_infos = self.ul_content_types_infos(mediaupload)
-        else :
+        else:
             ul_content_types_infos = self.ul_content_types_infos(mediaupload)
 
         settings['ul_file_extensions'] = ul_content_types_infos[0]
@@ -516,7 +518,7 @@ class QuickUploadAuthenticate(BrowserView):
     base view for quick upload authentication
     ticket is used only with flash upload
     nothing is done with xhr upload.
-    Note : we don't use the collective.uploadify method
+    Note: we don't use the collective.uploadify method
     for authentication because sending cookie in all requests
     is not secure.
     """
@@ -560,11 +562,11 @@ class QuickUploadFile(QuickUploadAuthenticate):
     def __call__(self):
         """
         """
-        if self.use_flashupload :
+        if self.use_flashupload:
             return self.flash_upload_file()
         return self.quick_upload_file()
 
-    def flash_upload_file(self) :
+    def flash_upload_file(self):
 
         context = aq_inner(self.context)
         request = self.request
@@ -577,7 +579,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
         title =  request.form.get("title", None)
         description =  request.form.get("description", None)
 
-        if not portal_type :
+        if not portal_type:
             ctr = getToolByName(context, 'content_type_registry')
             portal_type = ctr.findTypeName(file_name.lower(), content_type, '') or 'File'
 
@@ -588,18 +590,17 @@ class QuickUploadFile(QuickUploadAuthenticate):
                        file_name, title, description, content_type, portal_type)
                          )
 
-            try :
+            try:
                 f = factory(file_name, title, description, content_type, file_data, portal_type)
-            except :
-                # XXX todo : improve errors handlers for flashupload
+            except:
                 raise
-            if f['success'] is not None :
+            if f['success'] is not None:
                 o = f['success']
                 logger.info("file url: %s" % o.absolute_url())
                 SecurityManagement.setSecurityManager(self.old_sm)
                 return o.absolute_url()
 
-    def quick_upload_file(self) :
+    def quick_upload_file(self):
         context = aq_inner(self.context)
         request = self.request
         response = request.RESPONSE
@@ -612,25 +613,25 @@ class QuickUploadFile(QuickUploadAuthenticate):
         # disable diazo themes
         request.response.setHeader('X-Theme-Disabled', 'True')
 
-        if request.HTTP_X_REQUESTED_WITH :
+        if request.HTTP_X_REQUESTED_WITH:
             # using ajax upload
             file_name = urllib.unquote(request.HTTP_X_FILE_NAME)
             upload_with = "XHR"
-            try :
+            try:
                 file = request.BODYFILE
                 file_data = file.read()
                 file.seek(0)
-            except AttributeError :
+            except AttributeError:
                 # in case of cancel during xhr upload
                 logger.error("Upload of %s has been aborted", file_name)
                 # not really useful here since the upload block
                 # is removed by "cancel" action, but
                 # could be useful if someone change the js behavior
                 return  json.dumps({u'error': u'emptyError'})
-            except :
+            except:
                 logger.error("Error when trying to read the file %s in request", file_name)
                 return json.dumps({u'error': u'serverError'})
-        else :
+        else:
             # using classic form post method (MSIE<=8)
             file = request.get("qqfile", None)
             file_data = file.read()
@@ -646,8 +647,8 @@ class QuickUploadFile(QuickUploadAuthenticate):
                             ).normalize(file_name)
             upload_with = "CLASSIC FORM POST"
             # we must test the file size in this case (no client test)
-            if not self._check_file_size(file_data) :
-                logger.info("Test file size : the file %s is too big, upload rejected" % filename)
+            if not self._check_file_size(file_data):
+                logger.info("Test file size: the file %s is too big, upload rejected" % filename)
                 return json.dumps({u'error': u'sizeError'})
 
         # overwrite file
@@ -679,33 +680,33 @@ class QuickUploadFile(QuickUploadAuthenticate):
         title =  getDataFromAllRequests(request, 'title') or ''
         description =  getDataFromAllRequests(request, 'description') or ''
 
-        if not portal_type :
+        if not portal_type:
             ctr = getToolByName(context, 'content_type_registry')
             portal_type = ctr.findTypeName(file_name.lower(), content_type, '') or 'File'
 
         if file_data:
             if overwritten_file is not None:
                 updater = IQuickUploadFileUpdater(context)
-                logger.info("reuploading %s file with %s : title=%s, description=%s, content_type=%s" % \
+                logger.info("reuploading %s file with %s: title=%s, description=%s, content_type=%s" % \
                         (overwritten_file.absolute_url(), upload_with, title, description, content_type))
-                try :
+                try:
                     f = updater(overwritten_file, file_name, title,
                                 description, content_type, file_data)
                 except Exception, e:
-                    logger.error("Error updating %s file : %s", file_name, str(e))
+                    logger.error("Error updating %s file: %s", file_name, str(e))
                     return json.dumps({u'error': u'serverError'})
 
             else:
                 factory = IQuickUploadFileFactory(context)
-                logger.info("uploading file with %s : filename=%s, title=%s, description=%s, content_type=%s, portal_type=%s" % \
+                logger.info("uploading file with %s: filename=%s, title=%s, description=%s, content_type=%s, portal_type=%s" % \
                         (upload_with, file_name, title, description, content_type, portal_type))
-                try :
+                try:
                     f = factory(file_name, title, description, content_type, file_data, portal_type)
                 except Exception, e:
-                    logger.error("Error creating %s file : %s", file_name, str(e))
+                    logger.error("Error creating %s file: %s", file_name, str(e))
                     return json.dumps({u'error': u'serverError'})
 
-            if f['success'] is not None :
+            if f['success'] is not None:
                 o = f['success']
                 logger.info("file url: %s" % o.absolute_url())
                 if HAS_UUID:
@@ -719,17 +720,18 @@ class QuickUploadFile(QuickUploadAuthenticate):
                     u'name': o.getId(),
                     u'title': o.pretty_title_or_id()
                 }
-            else :
+            else:
                 msg = {u'error': f['error']}
-        else :
+        else:
             msg = {u'error': u'emptyError'}
 
         return json.dumps(msg)
 
     def _check_file_size(self, data):
         max_size = int(self.qup_prefs.size_limit)
-        if not max_size :
+        if not max_size:
             return 1
+
         #file_size = len(data.read()) / 1024
         data.seek(0, os.SEEK_END)
         file_size = data.tell() / 1024
@@ -737,25 +739,28 @@ class QuickUploadFile(QuickUploadAuthenticate):
         max_size = int(self.qup_prefs.size_limit)
         if file_size<=max_size:
             return 1
+
         return 0
+
 
 def get_content_type(context, file_data, filename):
     content_type = mimetypes.guess_type(filename)[0]
     # sometimes plone mimetypes registry could be more powerful
-    if not content_type :
+    if not content_type:
         mtr = getToolByName(context, 'mimetypes_registry')
-        oct = mtr.classify(file_data, filename=filename)
-        if oct is not None :
-            return str(oct)
+        mimetype = mtr.classify(file_data, filename=filename)
+        if mimetype is not None:
+            return str(mimetype)
+
     return content_type
+
 
 class QuickUploadCheckFile(BrowserView):
     """
     check if file exists
     """
 
-
-    def quick_upload_check_file(self) :
+    def quick_upload_check_file(self):
 
         context = aq_inner(self.context)
         request = self.request
@@ -765,8 +770,8 @@ class QuickUploadCheckFile(BrowserView):
         ids = context.objectIds()
 
         for k,v in formdict.items():
-            if k!='folder' :
-                if v in ids :
+            if k!='folder':
+                if v in ids:
                     already_exists[k] = v
 
         return str(already_exists)

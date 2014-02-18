@@ -18,7 +18,7 @@
   <!-- Quick Upload View -->
 
   <browser:page
-      for=".interfaces.IQuickUploadCapable"
+      for="..interfaces.IQuickUploadCapable"
       name="quick_upload"
       class=".quick_upload.QuickUploadView"
       permission="cmf.AddPortalContent"/>
@@ -63,7 +63,7 @@
        used only when no user cookie is available (not standard authentification) -->
 
   <browser:page
-      for=".interfaces.IQuickUploadCapable"
+      for="..interfaces.IQuickUploadCapable"
       name="quickupload_ticket"
       class=".ticket.TicketView"
       permission="cmf.AddPortalContent"

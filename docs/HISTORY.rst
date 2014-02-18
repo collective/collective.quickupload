@@ -4,6 +4,9 @@ Changelog
 1.6.3 (unreleased)
 ------------------
 
+- Fix IQuickUploadCapable uses in browser/configure.zcml to avoid to raise warning.
+  [cedricmessiant]
+
 - i18n fixes.
   [thomasdesvenain]
 

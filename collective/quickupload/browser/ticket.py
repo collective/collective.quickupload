@@ -5,7 +5,10 @@
 
 import random
 from Acquisition import aq_inner
-from zope.app.cache.ram import RAMCache
+try:
+    from zope.app.cache.ram import RAMCache
+except ImportError:
+    from zope.ramcache.ram import RAMCache
 from zope.security.interfaces import Unauthorized
 import AccessControl
 

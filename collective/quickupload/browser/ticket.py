@@ -2,19 +2,19 @@
 # Unfortunately we needed more information, like the username that the ticket
 # belongs to so that content can be created with the correct ownership.  And
 # the username retrieval is quite Zope2-specific.
-
-import random
 from Acquisition import aq_inner
+from collective.quickupload import logger
+from zope.security.interfaces import Unauthorized
+
+import AccessControl
+import random
+
 try:
     from zope.app.cache.ram import RAMCache
 except ImportError:
     from zope.ramcache.ram import RAMCache
-from zope.security.interfaces import Unauthorized
-import AccessControl
 
 ticketCache = RAMCache()
-
-from collective.quickupload import logger
 
 
 def issueTicket(ident):
@@ -31,7 +31,7 @@ def issueTicket(ident):
     return ticket
 
 
-def validateTicket(ident,ticket):
+def validateTicket(ident, ticket):
     """validates a ticket
 
     >>> validateTicket(object(),'abc')
@@ -45,7 +45,7 @@ def validateTicket(ident,ticket):
     >>> validateTicket(obj,'another')
     False
     """
-    ticket =  ticketCache.query(ident,dict(ticket=ticket))
+    ticket = ticketCache.query(ident, dict(ticket=ticket))
     return ticket is not None
 
 
@@ -63,8 +63,7 @@ def ticketOwner(ident, ticket):
     return ticketCache.query(ident, dict(ticket=ticket))
 
 
-def invalidateTicket(ident,ticket):
-
+def invalidateTicket(ident, ticket):
     """invalidates a ticket
     >>> ticket = issueTicket(1)
     >>> validateTicket(1,ticket)
@@ -73,12 +72,12 @@ def invalidateTicket(ident,ticket):
     >>> validateTicket(1,ticket)
     False
     """
-    ticketCache.invalidate(ident,dict(ticket=ticket))
+    ticketCache.invalidate(ident, dict(ticket=ticket))
 
 
 class TicketView(object):
-
     """A view which returns a ticket for its context"""
+    
     def __call__(self):
         # IE likes to cache this request, don't let it
         response = self.request.response

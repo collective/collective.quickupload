@@ -1,18 +1,14 @@
 # -*- coding: utf-8 -*-
-
 """ Vocabularies used by control panel or widget
 """
-
-from zope.interface import implements
-from zope.schema.interfaces import IVocabularyFactory
-from zope.schema.vocabulary import SimpleVocabulary
-from zope.schema.vocabulary import SimpleTerm
-
 from Products.CMFCore.utils import getToolByName
-
-from collective.quickupload.browser.quick_upload import _listTypesForInterface
 from collective.quickupload import HAS_DEXTERITY
 from collective.quickupload import siteMessageFactory as _
+from collective.quickupload.browser.quick_upload import _listTypesForInterface
+from zope.interface import implements
+from zope.schema.interfaces import IVocabularyFactory
+from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
 
 if HAS_DEXTERITY:
     from plone.dexterity.interfaces import IDexterityFTI
@@ -51,8 +47,8 @@ class UploadFileTypeVocabulary(object):
         items = [
             SimpleTerm(
                 'auto', 'auto', context.translate(_(
-                'label_default_portaltype_configuration',
-                default=u'Default configuration (Content Type Registry).'))
+                    'label_default_portaltype_configuration',
+                    default=u'Default configuration (Content Type Registry).'))
             )
         ]
 

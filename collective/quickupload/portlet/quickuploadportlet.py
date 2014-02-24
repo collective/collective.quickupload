@@ -26,6 +26,7 @@ from plone.app.content.browser.interfaces import IFolderContentsView
 
 PMF = MessageFactory('plone')
 
+
 def isTemporary(obj):
     """Check to see if an object is temporary"""
     if not shasattr(obj, 'isTemporary'):
@@ -36,6 +37,7 @@ def isTemporary(obj):
     parent = aq_base(aq_parent(aq_inner(obj)))
     return hasattr(parent, 'meta_type') \
         and parent.meta_type == TempFolder.meta_type
+
 
 JAVASCRIPT = """
   // workaround this MSIE bug :
@@ -73,31 +75,37 @@ class IQuickUploadPortlet(IPortletDataProvider):
     """
 
     header = schema.TextLine(
-        title= _(u"Box title"),
-        default= u"",
-        description= _(u"If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."),
+        title=_(u"Box title"),
+        default=u"",
+        description=_(u"If title is empty, the portlet title will be the "
+                      u"Media Choice + ' Quick Upload'."),
         required=False)
 
+    upload_portal_type = schema.Choice(
+        title=_(u"Content type"),
+        description=_(u"Choose the portal type used for file upload. "
+                      u"Let the default configuration for an automatic portal "
+                      u"type, depending on settings defined in "
+                      u"content_type_registry."),
+        required=True,
+        default='auto',
+        vocabulary="collective.quickupload.fileTypeVocabulary")
 
-    upload_portal_type = schema.Choice ( title= _(u"Content type"),
-                                         description= _(u"Choose the portal type used for file upload. "
-                                                         "Let the default configuration for an automatic portal type, "
-                                                         "depending on settings defined in content_type_registry."),
-                                         required=True,
-                                         default='auto',
-                                         vocabulary="collective.quickupload.fileTypeVocabulary")
+    upload_media_type = schema.Choice(
+        title=_(u"Media type"),
+        description=_(u"Choose the media type used for file upload. "
+                      u"image, audio, video ..."),
+        required=False,
+        default='',
+        vocabulary=SimpleVocabulary(
+            [SimpleTerm('', '', _(u"All")),
+             SimpleTerm('image', 'image', _(u"Images")),
+             SimpleTerm('video', 'video', _(u"Video files")),
+             SimpleTerm('audio', 'audio', _(u"Audio files")),
+             SimpleTerm('flash', 'flash', _(u"Flash files"))]
+        ),
+    )
 
-    upload_media_type = schema.Choice ( title= _(u"Media type"),
-                                        description = _(u"Choose the media type used for file upload. "
-                                                         "image, audio, video ..."),
-                                        required=False,
-                                        default='',
-                                        vocabulary = SimpleVocabulary([SimpleTerm('', '', _(u"All")),
-                                                                       SimpleTerm('image', 'image', _(u"Images")),
-                                                                       SimpleTerm('video', 'video', _(u"Video files")),
-                                                                       SimpleTerm('audio', 'audio', _(u"Audio files")),
-                                                                       SimpleTerm('flash', 'flash', _(u"Flash files")),
-                                                                       ]), )
 
 class Assignment(base.Assignment):
     """Portlet assignment.
@@ -105,7 +113,7 @@ class Assignment(base.Assignment):
 
     implements(IQuickUploadPortlet)
 
-    def __init__(self, header= "", upload_portal_type = 'auto',
+    def __init__(self, header='', upload_portal_type='auto',
                  upload_media_type=''):
         self.header = header
         self.upload_portal_type = upload_portal_type
@@ -115,13 +123,13 @@ class Assignment(base.Assignment):
     def title(self):
         """portlet title
         """
-        if self.header :
+        if self.header:
             return PMF(self.header)
 
         media = self.upload_media_type
         if not media or '*.' in media:
             return _(u'Files Quick Upload')
-        elif media == 'image' :
+        elif media == 'image':
             return _(u'Images Quick Upload')
         else:
             return _(u'label_media_quickupload',
@@ -146,15 +154,16 @@ class Renderer(base.Renderer):
         try:
             session = request.get('SESSION', None)
         except SessionDataManagerErr:
-            logger.debug('Error occurred getting session data. Falling back to '
-                    'request.')
+            logger.debug(
+                'Error occurred getting session data. Falling back to request.'
+            )
             session = None
         # empty typeupload and mediaupload session
         # since the portlet don't use it, but another app could
-        if session :
-            if session.has_key('typeupload') :
+        if session:
+            if 'typeupload' in session:
                 session.delete('typeupload')
-            if session.has_key('mediaupload') :
+            if 'mediaupload' in session:
                 session.delete('mediaupload')
 
     def render(self):
@@ -163,8 +172,8 @@ class Renderer(base.Renderer):
 
     @property
     def available(self):
-        if not (IViewView.providedBy(self.view) \
-             or IFolderContentsView.providedBy(self.view)):
+        if not (IViewView.providedBy(self.view)
+                or IFolderContentsView.providedBy(self.view)):
             return False
 
         context = aq_inner(self.context)
@@ -180,8 +189,9 @@ class Renderer(base.Renderer):
 
         upload_portal_type = self.data.upload_portal_type
         if (upload_portal_type and upload_portal_type != 'auto'
-                and upload_portal_type not in [t.id for t
-                        in self.context.getAllowedTypes()]):
+                and upload_portal_type not in [
+                    t.id for t in self.context.getAllowedTypes()
+                ]):
             return False
         else:
             return True
@@ -191,16 +201,15 @@ class Renderer(base.Renderer):
         return upload url
         in current folder
         """
-        context = aq_inner(self.context)
         folder_url = self.ploneview.getCurrentFolderUrl()
-        return '%s/@@quick_upload' %folder_url
+        return '%s/@@quick_upload' % folder_url
 
     def getDataForUploadUrl(self):
         data_url = ''
-        if self.data.upload_portal_type != 'auto' :
-            data_url+= 'typeupload=%s&' % self.data.upload_portal_type
-        if self.data.upload_media_type :
-            data_url+= 'mediaupload=%s' % self.data.upload_media_type
+        if self.data.upload_portal_type != 'auto':
+            data_url += 'typeupload=%s&' % self.data.upload_portal_type
+        if self.data.upload_media_type:
+            data_url += 'mediaupload=%s' % self.data.upload_media_type
         return data_url
 
     def javascript(self):

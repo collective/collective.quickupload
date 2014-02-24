@@ -1,25 +1,24 @@
+from Products.CMFCore.utils import getToolByName
+from collective.quickupload import logger
+from collective.quickupload.interfaces import IQuickUploadFileSetter
+from plone.dexterity.interfaces import IDexterityContent
+from plone.namedfile.file import NamedFile
+from plone.namedfile.file import NamedImage
+from plone.namedfile.interfaces import INamedFileField
+from plone.namedfile.interfaces import INamedImageField
+from plone.rfc822.interfaces import IPrimaryField
 from zope.component import adapts
 from zope.interface import implements
 from zope.schema import getFieldsInOrder
 
-from plone.dexterity.interfaces import IDexterityContent
-from plone.rfc822.interfaces import IPrimaryField
-from plone.namedfile.interfaces import (
-   INamedFileField, INamedImageField)
-from plone.namedfile.file import (
-   NamedFile, NamedImage)
-
 try:
-    from plone.namedfile.interfaces import INamedBlobFileField, INamedBlobImageField
-    from plone.namedfile.file import NamedBlobFile, NamedBlobImage
+    from plone.namedfile.file import NamedBlobFile
+    from plone.namedfile.file import NamedBlobImage
+    from plone.namedfile.interfaces import INamedBlobFileField
+    from plone.namedfile.interfaces import INamedBlobImageField
     HAVE_BLOBS = True
 except:
     HAVE_BLOBS = False
-
-from Products.CMFCore.utils import getToolByName
-
-from collective.quickupload.interfaces import IQuickUploadFileSetter
-from collective.quickupload import logger
 
 
 class DexterityFileSetter(object):
@@ -54,17 +53,25 @@ class DexterityFileSetter(object):
 
         # TODO: use adapters
         if HAVE_BLOBS and INamedBlobImageField.providedBy(file_field):
-            value = NamedBlobImage(data=data,  contentType=content_type,
-                              filename=unicode(filename, 'utf-8'))
+            value = NamedBlobImage(
+                data=data, contentType=content_type,
+                filename=unicode(filename, 'utf-8')
+            )
         elif HAVE_BLOBS and INamedBlobFileField.providedBy(file_field):
-            value = NamedBlobFile(data=data,  contentType=content_type,
-                              filename=unicode(filename, 'utf-8'))
+            value = NamedBlobFile(
+                data=data, contentType=content_type,
+                filename=unicode(filename, 'utf-8')
+            )
         elif INamedImageField.providedBy(file_field):
-            value = NamedImage(data=data,  contentType=content_type,
-                              filename=unicode(filename, 'utf-8'))
+            value = NamedImage(
+                data=data, contentType=content_type,
+                filename=unicode(filename, 'utf-8')
+            )
         elif INamedFileField.providedBy(file_field):
-            value = NamedFile(data=data,  contentType=content_type,
-                              filename=unicode(filename, 'utf-8'))
+            value = NamedFile(
+                data=data, contentType=content_type,
+                filename=unicode(filename, 'utf-8')
+            )
 
         file_field.set(obj, value)
         return error

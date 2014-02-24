@@ -1,28 +1,38 @@
 # code taken from collective.uploadify
 # for the flashupload
 # with many ameliorations
-
-import os
-import mimetypes
-import random
-import urllib
-
-from Acquisition import aq_inner, aq_parent
 from AccessControl import SecurityManagement
+from Acquisition import aq_inner, aq_parent
+from Products.ATContentTypes.interfaces import IFileContent
+from Products.ATContentTypes.interfaces import IImageContent
+from Products.CMFCore.permissions import ModifyPortalContent
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.interfaces import IPloneSiteRoot
+from Products.Five.browser import BrowserView
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.Sessions.SessionDataManager import SessionDataManagerErr
 from ZPublisher.HTTPRequest import HTTPRequest
-from zope.security.interfaces import Unauthorized
+from collective.quickupload import HAS_DEXTERITY
+from collective.quickupload import logger
+from collective.quickupload import siteMessageFactory as _
+from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
+from collective.quickupload.browser.uploadcapable import MissingExtension
+from collective.quickupload.browser.uploadcapable import get_id_from_filename
+from collective.quickupload.browser.utils import can_dnd
+from collective.quickupload.interfaces import IQuickUploadFileFactory
+from collective.quickupload.interfaces import IQuickUploadFileUpdater
+from collective.quickupload.interfaces import IQuickUploadNotCapable
+from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
 from zope.component import getUtility
 from zope.i18n import translate
 from zope.schema import getFieldsInOrder
+from zope.security.interfaces import Unauthorized
 
-from Products.CMFCore.utils import getToolByName
-from Products.Five.browser import BrowserView
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.ATContentTypes.interfaces import IFileContent, IImageContent
-from Products.CMFPlone.interfaces import IPloneSiteRoot
-from Products.CMFCore.permissions import ModifyPortalContent
-from Products.Sessions.SessionDataManager import SessionDataManagerErr
-from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
+import mimetypes
+import os
+import random
+import ticket as ticketmod
+import urllib
 
 
 import pkg_resources
@@ -33,27 +43,16 @@ try:
 except pkg_resources.DistributionNotFound:
     HAS_UUID = False
 
-import ticket as ticketmod
-from collective.quickupload import HAS_DEXTERITY
-from collective.quickupload import siteMessageFactory as _
-from collective.quickupload import logger
-from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
-from collective.quickupload.interfaces import (
-    IQuickUploadNotCapable, IQuickUploadFileFactory, IQuickUploadFileUpdater)
-from collective.quickupload.browser.utils import can_dnd
-
-from collective.quickupload.browser.uploadcapable import get_id_from_filename,\
-    MissingExtension
-
 if HAS_DEXTERITY:
     from plone.dexterity.interfaces import IDexterityFTI
-    from plone.namedfile.interfaces import INamedFileField, INamedImageField
+    from plone.namedfile.interfaces import INamedFileField
+    from plone.namedfile.interfaces import INamedImageField
 
 try:
-    # python 2.6
+    # Python 2.6+
     import json
 except ImportError:
-    # plone 3.3
+    # Python 2.4 (Plone 3.3)
     import simplejson as json
 
 
@@ -61,22 +60,21 @@ def decodeQueryString(QueryString):
     """decode *QueryString* into a dictionary, as ZPublisher would do"""
     r = HTTPRequest(
         None,
-        {'QUERY_STRING': QueryString,
-         'SERVER_URL': '',
-         },
-        None,1)
+        {'QUERY_STRING': QueryString, 'SERVER_URL': '', },
+        None,
+        1
+    )
     r.processInputs()
     return r.form
 
 
 def getDataFromAllRequests(request, dataitem):
-    """
-    Sometimes data is send using POST METHOD and QUERYSTRING
+    """Sometimes data is send using POST METHOD and QUERYSTRING
     """
     data = request.form.get(dataitem, None)
     if data is None:
         # try to get data from QueryString
-        data = decodeQueryString(request.get('QUERY_STRING','')).get(dataitem)
+        data = decodeQueryString(request.get('QUERY_STRING', '')).get(dataitem)
     return data
 
 
@@ -186,8 +184,10 @@ class QuickUploadView(BrowserView):
         request = self.request
         try:
             session = request.get('SESSION', {})
-            medialabel = session.get('mediaupload',
-                    request.get('mediaupload', 'files'))
+            medialabel = session.get(
+                'mediaupload',
+                request.get('mediaupload', 'files')
+            )
         except SessionDataManagerErr:
             logger.debug('Error occurred getting session data. '
                          'Falling back to request.')
@@ -203,16 +203,20 @@ class QuickUploadView(BrowserView):
         else:
             return _('label_media_quickupload',
                      default='${medialabel} Quick Upload',
-                     mapping={'medialabel': translate(medialabel.capitalize(),
-                                                      domain='collective.quickupload',
-                                                      context=self.request)})
+                     mapping={'medialabel': translate(
+                         medialabel.capitalize(),
+                         domain='collective.quickupload',
+                         context=self.request)
+                     })
 
     def _uploader_id(self):
-        return 'uploader%s' %str(random.random()).replace('.','')
+        return 'uploader%s' % str(random.random()).replace('.', '')
 
     def script_content(self):
         context = aq_inner(self.context)
-        return context.restrictedTraverse('@@quick_upload_init')(for_id = self.uploader_id)
+        return context.restrictedTraverse('@@quick_upload_init')(
+            for_id=self.uploader_id
+        )
 
     def can_drag_and_drop(self):
         user_agent = self.request.get_header('User-Agent')
@@ -388,7 +392,7 @@ class QuickUploadInit(BrowserView):
         portal = getUtility(IPloneSiteRoot)
         self.qup_prefs = IQuickUploadControlPanel(portal)
 
-    def ul_content_types_infos (self, mediaupload):
+    def ul_content_types_infos(self, mediaupload):
         """
         return some content types infos depending on mediaupload type
         mediaupload could be 'image', 'video', 'audio' or any
@@ -416,13 +420,15 @@ class QuickUploadInit(BrowserView):
             msg = _(u'Choose file for upload: ${ext}', mapping={'ext': ext})
 
         try:
-            extlist = [f.split('.')[1].strip() for f in ext.split(';') if f.strip()]
+            extlist = [
+                f.split('.')[1].strip() for f in ext.split(';') if f.strip()
+            ]
         except:
             extlist = []
-        if extlist==['*']:
+        if extlist == ['*']:
             extlist = []
 
-        return ( ext, extlist, self._translate(msg))
+        return (ext, extlist, self._translate(msg))
 
     def _translate(self, msg):
         return translate(msg, context=self.request)
@@ -432,13 +438,14 @@ class QuickUploadInit(BrowserView):
         request = self.request
         try:
             session = request.get('SESSION', {})
-            mediaupload = session.get('mediaupload',
-                    request.get('mediaupload', ''))
-            typeupload = session.get('typeupload',
-                    request.get('typeupload', ''))
+            mediaupload = session.get(
+                'mediaupload', request.get('mediaupload', ''))
+            typeupload = session.get(
+                'typeupload', request.get('typeupload', ''))
         except SessionDataManagerErr:
-            logger.debug('Error occurred getting session data. Falling back to '
-                    'request.')
+            logger.debug(
+                'Error occurred getting session data. Falling back to request.'
+            )
             mediaupload = request.get('mediaupload', '')
             typeupload = request.get('typeupload', '')
         portal_url = getToolByName(context, 'portal_url')()
@@ -486,7 +493,9 @@ class QuickUploadInit(BrowserView):
             if typeupload in imageTypes:
                 ul_content_types_infos = self.ul_content_types_infos('image')
             else:
-                ul_content_types_infos = self.ul_content_types_infos(mediaupload)
+                ul_content_types_infos = self.ul_content_types_infos(
+                    mediaupload
+                )
         else:
             ul_content_types_infos = self.ul_content_types_infos(mediaupload)
 
@@ -529,7 +538,7 @@ class QuickUploadAuthenticate(BrowserView):
         self.qup_prefs = IQuickUploadControlPanel(portal)
         self.use_flashupload = self.qup_prefs.use_flashupload
 
-    def _auth_with_ticket (self):
+    def _auth_with_ticket(self):
         """
         with flashupload authentication is done using a ticket
         """
@@ -542,7 +551,7 @@ class QuickUploadAuthenticate(BrowserView):
         if ticket is None:
             raise Unauthorized('No ticket specified')
 
-        logger.info('Authenticate using ticket, the ticket is "%s"' % str(ticket))
+        logger.info('Authenticate using ticket, the ticket is "%s"' % ticket)
         username = ticketmod.ticketOwner(url, ticket)
         if username is None:
             logger.info('Ticket "%s" was invalidated, cannot be used '
@@ -576,22 +585,30 @@ class QuickUploadFile(QuickUploadAuthenticate):
         file_data = request.form.get("Filedata", None)
         content_type = mimetypes.guess_type(file_name)[0]
         portal_type = request.form.get('typeupload', '')
-        title =  request.form.get("title", None)
-        description =  request.form.get("description", None)
+        title = request.form.get("title", None)
+        description = request.form.get("description", None)
 
         if not portal_type:
             ctr = getToolByName(context, 'content_type_registry')
-            portal_type = ctr.findTypeName(file_name.lower(), content_type, '') or 'File'
+            portal_type = ctr.findTypeName(
+                file_name.lower(), content_type, '') or 'File'
 
         if file_data:
             factory = IQuickUploadFileFactory(context)
-            logger.debug("Uploading file with flash: filename=%s, title=%s, "
-                         "description=%s, content_type=%s, portal_type=%s" % (
-                       file_name, title, description, content_type, portal_type)
-                         )
+            logger.debug(
+                "Uploading file with flash: filename=%s, title=%s, "
+                "description=%s, content_type=%s, portal_type=%s" % (
+                    file_name, title, description, content_type, portal_type))
 
             try:
-                f = factory(file_name, title, description, content_type, file_data, portal_type)
+                f = factory(
+                    file_name,
+                    title,
+                    description,
+                    content_type,
+                    file_data,
+                    portal_type
+                )
             except:
                 raise
             if f['success'] is not None:
@@ -627,28 +644,33 @@ class QuickUploadFile(QuickUploadAuthenticate):
                 # not really useful here since the upload block
                 # is removed by "cancel" action, but
                 # could be useful if someone change the js behavior
-                return  json.dumps({u'error': u'emptyError'})
+                return json.dumps({u'error': u'emptyError'})
             except:
-                logger.error("Error when trying to read the file %s in request", file_name)
+                logger.error(
+                    "Error when trying to read the file %s in request",
+                    file_name
+                )
                 return json.dumps({u'error': u'serverError'})
         else:
             # using classic form post method (MSIE<=8)
             file = request.get("qqfile", None)
             file_data = file.read()
             file.seek(0)
-            filename = getattr(file,'filename', '')
+            filename = getattr(file, 'filename', '')
             file_name = filename.split("\\")[-1]
             try:
                 file_name = file_name.decode('utf-8')
             except UnicodeDecodeError:
                 pass
 
-            file_name = IUserPreferredFileNameNormalizer(self.request
-                            ).normalize(file_name)
+            file_name = IUserPreferredFileNameNormalizer(
+                self.request
+            ).normalize(file_name)
             upload_with = "CLASSIC FORM POST"
             # we must test the file size in this case (no client test)
             if not self._check_file_size(file_data):
-                logger.info("Test file size: the file %s is too big, upload rejected" % filename)
+                logger.info("Test file size: the file %s is too big, upload "
+                            "rejected" % filename)
                 return json.dumps({u'error': u'sizeError'})
 
         # overwrite file
@@ -661,13 +683,17 @@ class QuickUploadFile(QuickUploadAuthenticate):
             updated_object = context.get(newid, False) or context[file_name]
             mtool = getToolByName(context, 'portal_membership')
             override_setting = self.qup_prefs.object_override
-            if override_setting and mtool.checkPermission(ModifyPortalContent, updated_object):
+            if override_setting and\
+                    mtool.checkPermission(ModifyPortalContent, updated_object):
                 can_overwrite = True
             else:
                 can_overwrite = False
 
             if not can_overwrite:
-                logger.debug("The file id for %s already exists, upload rejected" % file_name)
+                logger.debug(
+                    "The file id for %s already exists, upload rejected"
+                    % file_name
+                )
                 return json.dumps({u'error': u'serverErrorAlreadyExists'})
 
             overwritten_file = updated_object
@@ -677,33 +703,46 @@ class QuickUploadFile(QuickUploadAuthenticate):
         content_type = get_content_type(context, file_data, file_name)
 
         portal_type = getDataFromAllRequests(request, 'typeupload') or ''
-        title =  getDataFromAllRequests(request, 'title') or ''
-        description =  getDataFromAllRequests(request, 'description') or ''
+        title = getDataFromAllRequests(request, 'title') or ''
+        description = getDataFromAllRequests(request, 'description') or ''
 
         if not portal_type:
             ctr = getToolByName(context, 'content_type_registry')
-            portal_type = ctr.findTypeName(file_name.lower(), content_type, '') or 'File'
+            portal_type = ctr.findTypeName(
+                file_name.lower(), content_type, ''
+            ) or 'File'
 
         if file_data:
             if overwritten_file is not None:
                 updater = IQuickUploadFileUpdater(context)
-                logger.info("reuploading %s file with %s: title=%s, description=%s, content_type=%s" % \
-                        (overwritten_file.absolute_url(), upload_with, title, description, content_type))
+                logger.info(
+                    "reuploading %s file with %s: title=%s, description=%s, "
+                    "content_type=%s"
+                    % (overwritten_file.absolute_url(), upload_with, title,
+                       description, content_type))
                 try:
                     f = updater(overwritten_file, file_name, title,
                                 description, content_type, file_data)
                 except Exception, e:
-                    logger.error("Error updating %s file: %s", file_name, str(e))
+                    logger.error(
+                        "Error updating %s file: %s", file_name, str(e)
+                    )
                     return json.dumps({u'error': u'serverError'})
 
             else:
                 factory = IQuickUploadFileFactory(context)
-                logger.info("uploading file with %s: filename=%s, title=%s, description=%s, content_type=%s, portal_type=%s" % \
-                        (upload_with, file_name, title, description, content_type, portal_type))
+                logger.info(
+                    "uploading file with %s: filename=%s, title=%s, "
+                    "description=%s, content_type=%s, portal_type=%s"
+                    % (upload_with, file_name, title,
+                       description, content_type, portal_type))
                 try:
-                    f = factory(file_name, title, description, content_type, file_data, portal_type)
+                    f = factory(file_name, title, description, content_type,
+                                file_data, portal_type)
                 except Exception, e:
-                    logger.error("Error creating %s file: %s", file_name, str(e))
+                    logger.error(
+                        "Error creating %s file: %s", file_name, str(e)
+                    )
                     return json.dumps({u'error': u'serverError'})
 
             if f['success'] is not None:
@@ -735,9 +774,9 @@ class QuickUploadFile(QuickUploadAuthenticate):
         #file_size = len(data.read()) / 1024
         data.seek(0, os.SEEK_END)
         file_size = data.tell() / 1024
-        data.seek(0, os.SEEK_SET )
+        data.seek(0, os.SEEK_SET)
         max_size = int(self.qup_prefs.size_limit)
-        if file_size<=max_size:
+        if file_size <= max_size:
             return 1
 
         return 0
@@ -769,17 +808,14 @@ class QuickUploadCheckFile(BrowserView):
         formdict = request.form
         ids = context.objectIds()
 
-        for k,v in formdict.items():
-            if k!='folder':
+        for k, v in formdict.items():
+            if k != 'folder':
                 if v in ids:
                     already_exists[k] = v
 
         return str(already_exists)
 
-
     def __call__(self):
         """
         """
         return self.quick_upload_check_file()
-
-

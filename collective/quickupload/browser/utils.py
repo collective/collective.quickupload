@@ -1,15 +1,15 @@
 # -*- coding: utf-8 -*-
-
 from Acquisition import aq_inner
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser import BrowserView
-from collective.quickupload.browser.quickupload_settings import \
-    IQuickUploadControlPanel
-from collective.quickupload.portlet.quickuploadportlet import \
-    IQuickUploadPortlet
-from plone.portlets.interfaces import IPortletManager, IPortletRetriever
+from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
+from collective.quickupload.portlet.quickuploadportlet import IQuickUploadPortlet
+from plone.portlets.interfaces import IPortletManager
+from plone.portlets.interfaces import IPortletRetriever
 from ua_parser import user_agent_parser
-from zope.component import getMultiAdapter, getUtility, getUtilitiesFor
+from zope.component import getMultiAdapter
+from zope.component import getUtilitiesFor
+from zope.component import getUtility
 
 
 class QuickuploadHelper(BrowserView):

@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.6.3 (unreleased)
+1.6.3 (2014-02-26)
 ------------------
 
 - Render CSS resources as links instead of imports for better performance.

@@ -3,11 +3,11 @@
  <stylesheet title="" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="++resource++quickupload_static/uploadify.css" media=""
-    rel="stylesheet" rendering="import"
+    rel="stylesheet" rendering="link"
     authenticated="True" applyPrefix="True" />
  <stylesheet title="" cacheable="True" compression="safe"
     conditionalcomment="" cookable="True" enabled="True" expression=""
     id="++resource++quickupload_static/fileuploader.css" media=""
-    rel="stylesheet" rendering="import"
+    rel="stylesheet" rendering="link"
     authenticated="True" applyPrefix="True" />
 </object>

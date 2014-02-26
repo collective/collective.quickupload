@@ -1,7 +1,4 @@
 <?xml version="1.0"?>
-<object name="portal_controlpanel" meta_type="Plone Control Panel Tool">
-    <configlet title="Quick Upload"
-        action_id="QuickUpload" appId="collective.quickupload"
-        remove="True" />
-		<permission>Manage portal</permission>
+<object name="portal_controlpanel" xmlns:i18n="http://namespaces.zope.org/i18n" i18n:domain="collective.quickupload">
+ <configlet remove="True" title="Quick Upload" action_id="QuickUpload" appId="collective.quickupload"/>
 </object>

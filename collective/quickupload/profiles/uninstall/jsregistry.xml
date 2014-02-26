@@ -1,0 +1,7 @@
+<?xml version="1.0"?>
+<object name="portal_javascripts" meta_type="JavaScripts Registry">
+ <javascript remove="True" id="++resource++quickupload_static/swfobject.js"/>
+ <javascript remove="True" id="++resource++quickupload_static/jquery.uploadify.js"/>
+ <javascript remove="True" id="++resource++quickupload_static/fileuploader.js"/>
+ <javascript remove="True" id="++resource++quickupload_static/helpers.js"/>
+</object>

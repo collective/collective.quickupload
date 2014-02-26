@@ -4,6 +4,12 @@ Changelog
 1.6.3 (unreleased)
 ------------------
 
+- Render CSS resources as links instead of imports for better performance.
+  [thet]
+
+- More complete uninstall profile.
+  [thet]
+
 - Fix deprecated zope.app.cache import.
   [esteele]
 

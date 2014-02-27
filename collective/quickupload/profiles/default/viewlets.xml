@@ -1,6 +1,6 @@
 <?xml version="1.0"?>
 <object>
- <order manager="plone.belowcontenttitle" skinname="Plone Default" purge="false">
+ <order manager="plone.belowcontenttitle" skinname="*" purge="false">
   <viewlet name="collective.quickupload.QuickUploadViewlet" />
  </order>
 </object>

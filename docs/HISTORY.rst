@@ -4,8 +4,8 @@ Changelog
 1.6.4 (unreleased)
 ------------------
 
-- Nothing changed yet.
-
+- Register QuickUploadViewlet for all skins.
+  [thet]
 
 1.6.3 (2014-02-26)
 ------------------

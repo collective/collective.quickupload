@@ -1,29 +1,28 @@
 # -*- coding: utf-8 -*-
 ## Copyright (C)2010 Alter Way Solutions
-from Products.Sessions.SessionDataManager import SessionDataManagerErr
+from Acquisition import aq_base
+from Acquisition import aq_inner
+from Acquisition import aq_parent
 from Products.Archetypes.utils import shasattr
-from Acquisition import aq_inner, aq_base, aq_parent
-from zope.interface import implements
-from zope import schema
-from zope.schema.vocabulary import SimpleVocabulary
-from zope.schema.vocabulary import SimpleTerm
-from zope.formlib import form
-from zope.i18nmessageid import MessageFactory
-
+from Products.CMFCore.utils import getToolByName
+from Products.CMFPlone.FactoryTool import TempFolder
+from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
+from Products.Sessions.SessionDataManager import SessionDataManagerErr
+from collective.quickupload import logger
+from collective.quickupload import siteMessageFactory as _
+from collective.quickupload.interfaces import IQuickUploadCapable
+from collective.quickupload.interfaces import IQuickUploadNotCapable
+from plone.app.content.browser.interfaces import IFolderContentsView
+from plone.app.layout.globals.interfaces import IViewView
+from plone.app.portlets.portlets import base
 from plone.memoize.compress import xhtml_compress
 from plone.portlets.interfaces import IPortletDataProvider
-from plone.app.portlets.portlets import base
-from Products.CMFCore.utils import getToolByName
-from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
-from Products.CMFPlone.FactoryTool import TempFolder
-
-from collective.quickupload import siteMessageFactory as _
-from collective.quickupload import logger
-from collective.quickupload.interfaces import (
-    IQuickUploadCapable, IQuickUploadNotCapable)
-from plone.app.layout.globals.interfaces import IViewView
-from plone.app.content.browser.interfaces import IFolderContentsView
-
+from zope import schema
+from zope.formlib import form
+from zope.i18nmessageid import MessageFactory
+from zope.interface import implements
+from zope.schema.vocabulary import SimpleTerm
+from zope.schema.vocabulary import SimpleVocabulary
 PMF = MessageFactory('plone')
 
 

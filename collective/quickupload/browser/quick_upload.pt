@@ -57,5 +57,3 @@
             tal:content="structure view/script_content">
     </script>
 </div>
-
-

@@ -2,4 +2,3 @@
 <portlets>
   <portlet remove="True" addview="collective.quickupload.QuickUploadPortlet"/>
 </portlets>
-

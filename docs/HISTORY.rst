@@ -6,6 +6,9 @@ Changelog
 
 - Register QuickUploadViewlet for all skins.
   [thet]
+- Make sure IObjectModifiedEvent is notified for uploaded Dexterity objects, as
+  happens already with Archetypes.
+  [jcbrand]
 
 1.6.3 (2014-02-26)
 ------------------

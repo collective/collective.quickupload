@@ -31,6 +31,7 @@ from plone.i18n.normalizer.interfaces import IIDNormalizer
 from thread import allocate_lock
 from zope import component
 from zope import interface
+from zope.lifecycleevent import ObjectModifiedEvent
 from zope.event import notify
 
 import transaction
@@ -120,10 +121,13 @@ class QuickUploadCapableFileFactory(object):
                         )
                         obj._at_rename_after_creation = False
                         try:
+                            # Archetypes
                             obj.processForm()
                         except AttributeError:
-                            pass
-                        del obj._at_rename_after_creation
+                            # Dexterity
+                            notify(ObjectModifiedEvent(obj))
+                        else:
+                            del obj._at_rename_after_creation
 
                 #@TODO : rollback if there has been an error
                 transaction.commit()

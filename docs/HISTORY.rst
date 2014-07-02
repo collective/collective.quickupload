@@ -4,7 +4,8 @@ Changelog
 1.6.5 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Use same function to detect mimetypes in flash & quick upload.
+  [tschanzt]
 
 
 1.6.4 (2014-06-03)

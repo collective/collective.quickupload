@@ -12,6 +12,7 @@ from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.Sessions.SessionDataManager import SessionDataManagerErr
 from ZPublisher.HTTPRequest import HTTPRequest
+from ZPublisher.HTTPRequest import FileUpload
 from collective.quickupload import HAS_DEXTERITY
 from collective.quickupload import logger
 from collective.quickupload import siteMessageFactory as _
@@ -583,7 +584,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
 
         file_name = request.form.get("Filename", "")
         file_data = request.form.get("Filedata", None)
-        content_type = mimetypes.guess_type(file_name)[0]
+        content_type = get_content_type(context, file_data, file_name)
         portal_type = request.form.get('typeupload', '')
         title = request.form.get("title", None)
         description = request.form.get("description", None)
@@ -783,6 +784,8 @@ class QuickUploadFile(QuickUploadAuthenticate):
 
 
 def get_content_type(context, file_data, filename):
+    if isinstance(file_data, FileUpload):
+        file_data = file_data.read()
     content_type = mimetypes.guess_type(filename)[0]
     # sometimes plone mimetypes registry could be more powerful
     if not content_type:

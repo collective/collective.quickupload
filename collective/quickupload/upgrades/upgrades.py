@@ -22,7 +22,8 @@ def v3_v4(context):
     #Add property to quickupload property sheet
     ptool = getToolByName(context, 'portal_properties')
     qu_props = ptool.get('quickupload_properties')
-    qu_props._setProperty('use_flash_as_fallback', False, 'boolean')
+    if not qu_props.hasProperty('use_flash_as_fallback'):
+        qu_props._setProperty('use_flash_as_fallback', False, 'boolean')
 
 
 def v4_v5(context):

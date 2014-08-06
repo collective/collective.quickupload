@@ -669,7 +669,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
             ).normalize(file_name)
             upload_with = "CLASSIC FORM POST"
             # we must test the file size in this case (no client test)
-            if not self._check_file_size(file_data):
+            if not self._check_file_size(file):
                 logger.info("Test file size: the file %s is too big, upload "
                             "rejected" % filename)
                 return json.dumps({u'error': u'sizeError'})

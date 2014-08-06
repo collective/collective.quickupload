@@ -4,7 +4,9 @@ Changelog
 1.6.6 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix file size check that occurs for uploads without the HTTP_X_REQUESTED_WITH
+  request header set.
+  [damilgra]
 
 
 1.6.5 (2014-07-04)

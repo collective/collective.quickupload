@@ -133,8 +133,9 @@ PloneQuickUpload.showUploaderViewlet = function () {
 
 // workaround this MSIE bug :
 // https://dev.plone.org/plone/ticket/10894
-if (jQuery.browser.msie)
+if (/msie/.test(navigator.userAgent.toLowerCase())) {
     jQuery("#settings").remove();
+}
 var Browser = {};
 Browser.onUploadComplete = function() {
     window.location.reload();

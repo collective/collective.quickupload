@@ -4,6 +4,9 @@ Changelog
 1.6.6 (unreleased)
 ------------------
 
+- jQuery 1.9 compatible
+  [vincentfretin]
+
 - Fix file size check that occurs for uploads without the HTTP_X_REQUESTED_WITH
   request header set.
   [damilgra]

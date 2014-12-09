@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.6.6 (unreleased)
+1.6.6 (2014-12-09)
 ------------------
 
 - jQuery 1.9 compatible

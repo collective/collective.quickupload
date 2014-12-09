@@ -7,6 +7,12 @@ Changelog
 - jQuery 1.9 compatible
   [vincentfretin]
 
+- Reimplement 'copy' dopEffect for Chrome, Safari and Firefox. IE always shows
+  a 'move' dropEffect.
+  Check issue (https://github.com/collective/collective.quickupload/pull/47)
+  for more details.
+  [mathias.leimgruber]
+
 - Fix file size check that occurs for uploads without the HTTP_X_REQUESTED_WITH
   request header set.
   [damilgra]

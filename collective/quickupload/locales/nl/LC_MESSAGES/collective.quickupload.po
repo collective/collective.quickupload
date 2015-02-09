@@ -261,7 +261,7 @@ msgstr "maximale formaat is:"
 #. Default: "${filename} file has been replaced"
 #: ../browser/uploadcapable.py:160
 msgid "msg_file_replaced"
-msgstr "${filename} bestand is hernoemt"
+msgstr "${filename} bestand is hernoemd"
 
 #: ../browser/quick_upload.py:467
 msgid "please select files again without it."

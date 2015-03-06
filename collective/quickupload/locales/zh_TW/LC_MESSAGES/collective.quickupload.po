@@ -3,7 +3,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
 "POT-Creation-Date: 2014-01-25 21:26+0000\n"
-"PO-Revision-Date: 2012-08-14 00:10+0800\n"
+"PO-Revision-Date: 2015-03-06 11:10+0800\n"
 "Last-Translator: TsungWei Hu <marr.tw@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
 "MIME-Version: 1.0\n"
@@ -161,7 +161,7 @@ msgstr "這個檔案存在錯誤的延伸檔名："
 
 #: ../browser/quick_upload.py:470
 msgid "This file has no extension:"
-msgstr ""
+msgstr "這個檔案沒有延伸檔名："
 
 #: ../browser/quick_upload.py:471
 msgid "This file is too large:"
@@ -169,11 +169,11 @@ msgstr "這個檔案大小超過限制："
 
 #: ../browser/quick_upload.py:476
 msgid "This type of element is not allowed in this folder."
-msgstr ""
+msgstr "這個目錄不允許這類檔案。"
 
 #: ../profiles/default/actions.xml
 msgid "Upload"
-msgstr ""
+msgstr "上傳"
 
 #: ../portlet/quickuploadportlet.py:97
 msgid "Video files"
@@ -201,12 +201,12 @@ msgstr "勾選的話，上傳之前可以事先填寫標題。"
 #. Default: "If the folder already has same file name, Checked: Override, Non-Checked: raise upload error."
 #: ../browser/quickupload_settings.py:77
 msgid "description_object_override"
-msgstr ""
+msgstr "勾選的話，相同檔名的檔案，會被上傳的檔案所覆蓋；不勾選的話，則會產生上傳錯誤。"
 
 #. Default: "Check if you want to have an \"Upload\" link in your edit bar. Clicking it will open a panel for uploading below the title of the current item. This panel is an alternative to the \"Upload\" portlet and does not offer any further configuration, such as filtering by content type. The panel will only be shown where the \"Upload\" portlet is not present."
 #: ../browser/quickupload_settings.py:42
 msgid "description_show_upload_action"
-msgstr ""
+msgstr "勾選的話，在編輯列會顯示「上傳」頁籤，點選後會顯示上傳的功能頁面。"
 
 #. Default: "Number of simultaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"
 #: ../browser/quickupload_settings.py:72
@@ -221,7 +221,7 @@ msgstr "以 KB 設定檔案大小的上限，0 代表沒有限制。"
 #. Default: "Check if you want to use flash upload as fallback for IE"
 #: ../browser/quickupload_settings.py:28
 msgid "description_use_flash_fallback"
-msgstr ""
+msgstr "勾選的話，對舊版 IE 瀏覽器會改用 Flash 來支援上傳功能。"
 
 #. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8),  but has many problems : don't work in https, don't work behind HTTP Authentication ..."
 #: ../browser/quickupload_settings.py:17
@@ -246,7 +246,7 @@ msgstr "全部取消"
 #. Default: "Default configuration (Content Type Registry)."
 #: ../portlet/vocabularies.py:53
 msgid "label_default_portaltype_configuration"
-msgstr ""
+msgstr "預設功能"
 
 #. Default: "${medialabel} Quick Upload"
 #: ../browser/quick_upload.py:204
@@ -294,12 +294,12 @@ msgstr "上傳之前填寫標題"
 #. Default: "Override by upload file"
 #: ../browser/quickupload_settings.py:76
 msgid "title_object_override"
-msgstr ""
+msgstr "上傳檔案會覆蓋舊檔案"
 
 #. Default: "Show \"Upload\" action"
 #: ../browser/quickupload_settings.py:41
 msgid "title_show_upload_action"
-msgstr ""
+msgstr "顯示「上傳」頁籤"
 
 #. Default: "Simultaneous uploads limit"
 #: ../browser/quickupload_settings.py:71
@@ -314,7 +314,7 @@ msgstr "檔案大小的上限"
 #. Default: "Use flash as fallback for IE"
 #: ../browser/quickupload_settings.py:25
 msgid "title_use_flash_fallback"
-msgstr ""
+msgstr "改用 Flash 上傳"
 
 #. Default: "Use Flash Upload"
 #: ../browser/quickupload_settings.py:16

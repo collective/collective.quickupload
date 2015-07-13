@@ -20,7 +20,6 @@ from AccessControl import Unauthorized
 from Acquisition import aq_inner
 from Products.Archetypes.event import ObjectEditedEvent
 from Products.statusmessages.interfaces import IStatusMessage
-from ZODB.POSException import ConflictError
 from collective.quickupload import logger
 from collective.quickupload import siteMessageFactory as _
 from collective.quickupload.interfaces import IQuickUploadCapable
@@ -98,9 +97,6 @@ class QuickUploadCapableFileFactory(object):
                                           title=title, description=description)
                 except Unauthorized:
                     error = u'serverErrorNoPermission'
-                except ConflictError:
-                    # rare with xhr upload / happens sometimes with flashupload
-                    error = u'serverErrorZODBConflict'
                 except ValueError:
                     error = u'serverErrorDisallowedType'
                 except Exception, e:

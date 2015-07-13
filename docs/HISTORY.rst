@@ -4,7 +4,10 @@ Changelog
 1.6.7 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Move handling of ConflictErrors to client side.
+  This allows Zope to resolve most write conflicts by reytring the transaction.
+  (see https://github.com/collective/collective.quickupload/pull/49).
+  [lgraf]
 
 
 1.6.6 (2014-12-09)

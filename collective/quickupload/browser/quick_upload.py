@@ -24,6 +24,7 @@ from collective.quickupload.interfaces import IQuickUploadFileFactory
 from collective.quickupload.interfaces import IQuickUploadFileUpdater
 from collective.quickupload.interfaces import IQuickUploadNotCapable
 from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
+from ZODB.POSException import ConflictError
 from zope.component import getUtility
 from zope.i18n import translate
 from zope.schema import getFieldsInOrder
@@ -724,6 +725,10 @@ class QuickUploadFile(QuickUploadAuthenticate):
                 try:
                     f = updater(overwritten_file, file_name, title,
                                 description, content_type, file_data)
+                except ConflictError:
+                    # Allow Zope to retry up to three times, and if that still
+                    # fails, handle ConflictErrors on client side if necessary
+                    raise
                 except Exception, e:
                     logger.error(
                         "Error updating %s file: %s", file_name, str(e)
@@ -740,6 +745,10 @@ class QuickUploadFile(QuickUploadAuthenticate):
                 try:
                     f = factory(file_name, title, description, content_type,
                                 file_data, portal_type)
+                except ConflictError:
+                    # Allow Zope to retry up to three times, and if that still
+                    # fails, handle ConflictErrors on client side if necessary
+                    raise
                 except Exception, e:
                     logger.error(
                         "Error creating %s file: %s", file_name, str(e)

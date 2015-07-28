@@ -845,7 +845,11 @@ qq.UploadHandlerXhr.prototype = {
                     self._options.onComplete(id, name, response);
 
                 } else if (xhr.status == 500){
-                    self._options.onComplete(id, name, {"error": "serverError"});
+                    if (xhr.responseText.indexOf("ZODB.POSException.ConflictError") > -1) {
+                        self._options.onComplete(id, name, {"error": "serverErrorZODBConflict"});
+                    } else {
+                        self._options.onComplete(id, name, {"error": "serverError"});
+                    }
                 } else {
                     self._options.onComplete(id, name, {});
                 }

@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.6.7 (unreleased)
+1.7.0 (2015-07-28)
 ------------------
 
 - Move handling of ConflictErrors to client side.

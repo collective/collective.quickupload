@@ -48,7 +48,7 @@ class MissingExtension(Exception):
     """Exception when the filename has no extension."""
 
 
-def get_id_from_filename(filename, context):
+def get_id_from_filename(filename, context, unique=False):
     charset = getattr(context, 'getCharset', None) and context.getCharset()\
         or 'utf-8'
     name = filename.decode(charset).rsplit('.', 1)
@@ -57,6 +57,8 @@ def get_id_from_filename(filename, context):
     normalizer = component.getUtility(IIDNormalizer)
     newid = '.'.join((normalizer.normalize(name[0]), name[1]))
     newid = newid.replace('_', '-').replace(' ', '-').lower()
+    if unique:
+        newid = INameChooser(context).chooseName(newid, context)
     return newid
 
 

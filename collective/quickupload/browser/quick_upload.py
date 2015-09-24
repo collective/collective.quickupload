@@ -677,11 +677,12 @@ class QuickUploadFile(QuickUploadAuthenticate):
 
         # overwrite file
         try:
-            newid = get_id_from_filename(file_name, context)
+            newid = get_id_from_filename(
+                file_name, context, unique=self.qup_prefs.object_unique_id)
         except MissingExtension:
             return json.dumps({u'error': u'missingExtension'})
 
-        if newid in context or file_name in context:
+        if (newid in context or file_name in context) and not self.qup_prefs.object_unique_id:
             updated_object = context.get(newid, False) or context[file_name]
             mtool = getToolByName(context, 'portal_membership')
             override_setting = self.qup_prefs.object_override

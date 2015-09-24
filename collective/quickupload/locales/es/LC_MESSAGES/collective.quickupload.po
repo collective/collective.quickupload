@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2014-01-25 21:26+0000\n"
+"POT-Creation-Date: 2015-09-24 11:05+0000\n"
 "PO-Revision-Date: 2013-06-17 02:12-0430\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -21,27 +21,27 @@ msgstr ""
 "X-Generator: Virtaal 0.7.1\n"
 "X-Is-Fallback-For: es-ar es-bo es-cl es-co es-cr es-do es-ec es-es es-sv es-gt es-hn es-mx es-ni es-pa es-py es-pe es-pr es-us es-uy es-ve\n"
 
-#: ../browser/quick_upload.py:464
+#: ../browser/quick_upload.py:474
 msgid " files uploaded with success, "
 msgstr " archivos cargados exitosamente, "
 
-#: ../browser/quick_upload.py:465
+#: ../browser/quick_upload.py:475
 msgid " uploads return an error."
 msgstr " cargas retornaron un error."
 
-#: ../browser/quick_upload.py:478
+#: ../browser/quick_upload.py:488
 msgid "A data base conflict error happened when uploading this file:"
 msgstr "Ocurrió un conflicto en la base de datos durante la carga de este archivo:"
 
-#: ../portlet/quickuploadportlet.py:95
+#: ../portlet/quickuploadportlet.py:100
 msgid "All"
 msgstr "Todos"
 
-#: ../browser/quick_upload.py:463
+#: ../browser/quick_upload.py:473
 msgid "All files uploaded with success."
 msgstr "Todos los archivos fueron cargados con éxito."
 
-#: ../portlet/quickuploadportlet.py:98
+#: ../portlet/quickuploadportlet.py:103
 msgid "Audio files"
 msgstr "Archivos de audio"
 
@@ -49,91 +49,91 @@ msgstr "Archivos de audio"
 msgid "Batch upload files."
 msgstr "Archivos cargados por lotes."
 
-#: ../portlet/quickuploadportlet.py:76
+#: ../portlet/quickuploadportlet.py:77
 msgid "Box title"
 msgstr "Título de la caja"
 
-#: ../browser/quick_upload.py:461
+#: ../browser/quick_upload.py:471
 msgid "Browse"
 msgstr "Mostrar"
 
-#: ../browser/quick_upload.py:407
+#: ../browser/quick_upload.py:414
 msgid "Choose audio files to upload"
 msgstr "Elija los archivos de audio que va a cargar"
 
-#: ../browser/quick_upload.py:415
+#: ../browser/quick_upload.py:422
 msgid "Choose file for upload: ${ext}"
 msgstr "Elija el archivo para la carga: ${ext}"
 
-#: ../browser/quick_upload.py:410
+#: ../browser/quick_upload.py:417
 msgid "Choose flash files to upload"
 msgstr "Elija los archivos flash que va a cargar"
 
-#: ../browser/quick_upload.py:401
+#: ../browser/quick_upload.py:408
 msgid "Choose images to upload"
 msgstr "Elija las imágenes que va a cargar"
 
-#: ../portlet/quickuploadportlet.py:91
+#: ../portlet/quickuploadportlet.py:95
 msgid "Choose the media type used for file upload. image, audio, video ..."
 msgstr "Elija el tipo de medio usado para la carga de archivos: imagenes, audio, video..."
 
-#: ../portlet/quickuploadportlet.py:83
+#: ../portlet/quickuploadportlet.py:85
 msgid "Choose the portal type used for file upload. Let the default configuration for an automatic portal type, depending on settings defined in content_type_registry."
 msgstr "Elija el tipo de contenido usado para la carga de archivos. Utilice la configuración por defecto para seleccionar automáticamente el tipo de contenido en dependencia de la configuración de content_type_registry."
 
-#: ../browser/quick_upload.py:404
+#: ../browser/quick_upload.py:411
 msgid "Choose video files to upload"
 msgstr "Elija los videos que va a cargar"
 
-#: ../portlet/quickuploadportlet.py:82
+#: ../portlet/quickuploadportlet.py:84
 msgid "Content type"
 msgstr "Tipo de contenido"
 
-#: ../browser/quickupload_settings.py:170
+#: ../browser/quickupload_settings.py:227
 msgid "Control how the quick upload tool is used."
 msgstr "Controla como se usa la herramienta de carga rápida."
 
-#: ../browser/quick_upload.py:462
+#: ../browser/quick_upload.py:472
 msgid "Drag and drop files to upload"
 msgstr "Arrastre y suelte los archivos que va a cargar"
 
-#: ../browser/quick_upload.py:466
+#: ../browser/quick_upload.py:476
 msgid "Failed"
 msgstr "Fallo"
 
 msgid "Files"
 msgstr ""
 
-#: ../browser/quick_upload.py:200
-#: ../portlet/quickuploadportlet.py:123
+#: ../browser/quick_upload.py:202
+#: ../portlet/quickuploadportlet.py:130
 msgid "Files Quick Upload"
 msgstr "Carga rápida de archivos"
 
-#: ../portlet/quickuploadportlet.py:99
+#: ../portlet/quickuploadportlet.py:104
 msgid "Flash files"
 msgstr "Archivos Flash"
 
-#: ../portlet/quickuploadportlet.py:78
+#: ../portlet/quickuploadportlet.py:79
 msgid "If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."
 msgstr "Si el título está vacío, el título del portlet será 'Carga rápida' + del medio elegido."
 
 msgid "Image"
 msgstr ""
 
-#: ../portlet/quickuploadportlet.py:96
+#: ../portlet/quickuploadportlet.py:101
 msgid "Images"
 msgstr "Imágenes"
 
-#: ../browser/quick_upload.py:202
-#: ../portlet/quickuploadportlet.py:125
+#: ../browser/quick_upload.py:204
+#: ../portlet/quickuploadportlet.py:132
 msgid "Images Quick Upload"
 msgstr "Carga rápida de imágenes"
 
-#: ../portlet/quickuploadportlet.py:90
+#: ../portlet/quickuploadportlet.py:94
 msgid "Media type"
 msgstr "Tipo de medio"
 
-#: ../browser/quick_upload.py:474
+#: ../browser/quick_upload.py:484
 msgid "Only allowed:"
 msgstr "Sólo se permite:"
 
@@ -141,35 +141,35 @@ msgstr "Sólo se permite:"
 msgid "Quick Upload"
 msgstr "Carga rápida"
 
-#: ../browser/quickupload_settings.py:169
+#: ../browser/quickupload_settings.py:226
 msgid "Quick Upload settings"
 msgstr "Configuración de Carga rápida"
 
-#: ../browser/quick_upload.py:469
+#: ../browser/quick_upload.py:479
 msgid "Selected elements contain an empty file or a folder:"
 msgstr "Los elementos seleccionados contienen un archvio vacío o una carpeta:"
 
-#: ../browser/quick_upload.py:479
+#: ../browser/quick_upload.py:489
 msgid "Server error, please contact support and/or try again."
 msgstr "Error del servidor, por favor contacte a soporte y/o intente de nuevo."
 
-#: ../browser/quick_upload.py:477
+#: ../browser/quick_upload.py:487
 msgid "This file already exists with the same name on server:"
 msgstr "Un archivo con este mismo nombre ya existe en el servidor:"
 
-#: ../browser/quick_upload.py:473
+#: ../browser/quick_upload.py:483
 msgid "This file has invalid extension:"
 msgstr "Este archivo tiene una extensión no válida:"
 
-#: ../browser/quick_upload.py:470
+#: ../browser/quick_upload.py:480
 msgid "This file has no extension:"
 msgstr "Este archivo no tiene una extensión:"
 
-#: ../browser/quick_upload.py:471
+#: ../browser/quick_upload.py:481
 msgid "This file is too large:"
 msgstr "Este archivo es demasiado grande:"
 
-#: ../browser/quick_upload.py:476
+#: ../browser/quick_upload.py:486
 msgid "This type of element is not allowed in this folder."
 msgstr "Este tipo de elemento no es permitido en esta carpeta."
 
@@ -177,56 +177,63 @@ msgstr "Este tipo de elemento no es permitido en esta carpeta."
 msgid "Upload"
 msgstr "Cargar"
 
-#: ../portlet/quickuploadportlet.py:97
+#: ../portlet/quickuploadportlet.py:102
 msgid "Video files"
 msgstr "Archivos de video"
 
-#: ../browser/quick_upload.py:475
+#: ../browser/quick_upload.py:485
 msgid "You don't have permission to add this content in this place."
 msgstr "Usted no tiene permiso para agregar este contenido en este lugar."
 
 #. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
-#: ../browser/quickupload_settings.py:35
+#: ../browser/quickupload_settings.py:42
 msgid "description_auto_upload"
 msgstr "Si está seleccionado, la carga comenzará de forma automática después de elegir los archivos. Note que no puede elegir el título y la descripción de los archivos si utiliza está opción."
 
 #. Default: "If checked, you can fill the files descriptions before upload. Uncheck if you don't need descriptions."
-#: ../browser/quickupload_settings.py:61
+#: ../browser/quickupload_settings.py:79
 msgid "description_fill_descriptions"
 msgstr "Si está seleccionado, puede elegir la descripción de los archivos antes de cargarlos. No lo seleccione si no requiere descripciones."
 
 #. Default: "If checked, you can fill the files titles before upload. Uncheck if you don't need titles."
-#: ../browser/quickupload_settings.py:55
+#: ../browser/quickupload_settings.py:68
 msgid "description_fill_titles"
 msgstr "Si está seleccionado, puede elegir el título de los archivos antes de cargarlos. No lo seleccione si no requiere títulos."
 
 #. Default: "If the folder already has same file name, Checked: Override, Non-Checked: raise upload error."
-#: ../browser/quickupload_settings.py:77
+#: ../browser/quickupload_settings.py:123
 msgid "description_object_override"
 msgstr ""
 
+#. Default: "Choose a unique id for each uploaded file.Checked: Your files will never be overridden and you'll never get a 'file already exists' error message because each file has its unique id.Non-Checked: The id will not be unique."
+#: ../browser/quickupload_settings.py:111
+msgid "description_object_unique_id"
+msgstr ""
+
 #. Default: "Check if you want to have an \"Upload\" link in your edit bar. Clicking it will open a panel for uploading below the title of the current item. This panel is an alternative to the \"Upload\" portlet and does not offer any further configuration, such as filtering by content type. The panel will only be shown where the \"Upload\" portlet is not present."
-#: ../browser/quickupload_settings.py:42
+#: ../browser/quickupload_settings.py:53
 msgid "description_show_upload_action"
 msgstr "Compruebe si usted quiere tener un enlace \\\"Cargar\\\" en la barra de edición. Al hacer clic se abrirá un panel para cargar a continuación el título del elemento en cuestión. Este panel es una alternativa a al portlet de \\\"Cargar\\\" y no ofrece ninguna otra configuración, como el filtrado por tipo de contenido. El panel sólo se muestra cuando el portlet \\\"Cargar\\\" no está presente."
 
 #. Default: "Number of simultaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"
-#: ../browser/quickupload_settings.py:72
+#: ../browser/quickupload_settings.py:101
 msgid "description_sim_upload_limit"
 msgstr "Número de archivos cargados simultáneamente, por encima de este número las cargas se pondrán en una cola. Utilice 0 si no desea especificar un límite."
 
 #. Default: "Size limit for each file in KB, 0 = no limit"
-#: ../browser/quickupload_settings.py:67
+#: ../browser/quickupload_settings.py:88
 msgid "description_size_limit"
 msgstr "Tamaño límite de cada archivo en KB. Utilice 0 si no desea especificar un límite."
 
-#. Default: "Check if you want to use flash upload as fallback for IE"
-#: ../browser/quickupload_settings.py:28
+#. Default: "Check if you want to use flash uload as fallback for IE"
+#: ../browser/quickupload_settings.py:33
+#, fuzzy
 msgid "description_use_flash_fallback"
 msgstr "Marque esta casilla si quiere utilizar el cargador basado en Flash como reserva para el navegador IE."
 
-#. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8),  but has many problems : don't work in https, don't work behind HTTP Authentication ..."
-#: ../browser/quickupload_settings.py:17
+#. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8), but has many problems : don't work in https, don't work behind HTTP Authentication ..."
+#: ../browser/quickupload_settings.py:18
+#, fuzzy
 msgid "description_use_flashupload"
 msgstr "Por defecto, Quik Upload sólo utiliza la herramienta de carga escrita en JavaScript. Seleccione esta opción para reemplazarla con una herramienta de carga basada en Flash. En los navegadores modernos la herramienta JavaScript es más poderosa. La herramienta Flash tiene una interfaz más amigable en navegadores antiguos (MSIE 7, MSIE 8), pero también presenta algunos problemas: no funciona sobre canales seguros HTTPS, no funciona con autenticación HTTP..."
 
@@ -246,13 +253,13 @@ msgid "label_clear_queue"
 msgstr "Borrar la cola"
 
 #. Default: "Default configuration (Content Type Registry)."
-#: ../portlet/vocabularies.py:53
+#: ../portlet/vocabularies.py:49
 msgid "label_default_portaltype_configuration"
 msgstr "Configuración por defecto (Registro de tipo contenido)."
 
 #. Default: "${medialabel} Quick Upload"
-#: ../browser/quick_upload.py:204
-#: ../portlet/quickuploadportlet.py:127
+#: ../browser/quick_upload.py:206
+#: ../portlet/quickuploadportlet.py:134
 msgid "label_media_quickupload"
 msgstr "Carga rápida de ${medialabel}"
 
@@ -261,65 +268,70 @@ msgstr "Carga rápida de ${medialabel}"
 msgid "label_upload_files"
 msgstr "Carga de archivos"
 
-#: ../browser/quick_upload.py:472
+#: ../browser/quick_upload.py:482
 msgid "maximum file size is:"
 msgstr "el tamaño máximo de los archivos es:"
 
 #. Default: "${filename} file has been replaced"
-#: ../browser/uploadcapable.py:160
+#: ../browser/uploadcapable.py:170
 msgid "msg_file_replaced"
 msgstr "El archivo ${filename} ha sido remplazado"
 
-#: ../browser/quick_upload.py:467
+#: ../browser/quick_upload.py:477
 msgid "please select files again without it."
 msgstr "por favor selecciones archivos de nuevo sin éste."
 
-#: ../browser/quick_upload.py:468
+#: ../browser/quick_upload.py:478
 msgid "please try again."
 msgstr "por favor intente de nuevo."
 
 #. Default: "Automatic upload on select"
-#: ../browser/quickupload_settings.py:34
+#: ../browser/quickupload_settings.py:41
 msgid "title_auto_upload"
 msgstr "Carga automática al seleccionar"
 
 #. Default: "Fill description before upload"
-#: ../browser/quickupload_settings.py:60
+#: ../browser/quickupload_settings.py:76
 msgid "title_fill_descriptions"
 msgstr "Modificar la descripción antes de la carga"
 
 #. Default: "Fill title before upload"
-#: ../browser/quickupload_settings.py:54
+#: ../browser/quickupload_settings.py:67
 msgid "title_fill_titles"
 msgstr "Modificar el título antes de la carga"
 
 #. Default: "Override by upload file"
-#: ../browser/quickupload_settings.py:76
+#: ../browser/quickupload_settings.py:122
 msgid "title_object_override"
 msgstr ""
 
+#. Default: "Choose unique id"
+#: ../browser/quickupload_settings.py:110
+msgid "title_object_unique_id"
+msgstr ""
+
 #. Default: "Show \"Upload\" action"
-#: ../browser/quickupload_settings.py:41
+#: ../browser/quickupload_settings.py:52
 msgid "title_show_upload_action"
 msgstr "Mostrar acción \\\"Cargar\\\""
 
 #. Default: "Simultaneous uploads limit"
-#: ../browser/quickupload_settings.py:71
+#: ../browser/quickupload_settings.py:97
 msgid "title_sim_upload_limit"
 msgstr "Límite de cargas simultáneas"
 
 #. Default: "Size limit"
-#: ../browser/quickupload_settings.py:66
+#: ../browser/quickupload_settings.py:87
 msgid "title_size_limit"
 msgstr "Tamaño límite"
 
 #. Default: "Use flash as fallback for IE"
-#: ../browser/quickupload_settings.py:25
+#: ../browser/quickupload_settings.py:31
 msgid "title_use_flash_fallback"
 msgstr "Use el cargador basado en Flash como reserva para el navegador IE."
 
 #. Default: "Use Flash Upload"
-#: ../browser/quickupload_settings.py:16
+#: ../browser/quickupload_settings.py:17
 msgid "title_use_flashupload"
 msgstr "Usar carga Flash"
 

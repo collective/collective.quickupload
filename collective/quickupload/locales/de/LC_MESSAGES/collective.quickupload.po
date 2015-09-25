@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2015-09-24 11:05+0000\n"
+"POT-Creation-Date: 2015-09-25 09:49+0000\n"
 "PO-Revision-Date: 2012-10-30 14:23+0100\n"
 "Last-Translator: Pavel Bogdanovic <pb@prontonet.eu>\n"
 "Language-Team: \n"
@@ -85,7 +85,7 @@ msgid "Content type"
 msgstr "Inhaltstyp"
 
 #. Default: "Control how the quick upload tool is used."
-#: ../browser/quickupload_settings.py:227
+#: ../browser/quickupload_settings.py:229
 msgid "Control how the quick upload tool is used."
 msgstr "Konfigurieren Sie, wie der Quick Upload benutzt werden kann."
 
@@ -140,7 +140,7 @@ msgid "Quick Upload"
 msgstr ""
 
 #. Default: "Quick Upload settings"
-#: ../browser/quickupload_settings.py:226
+#: ../browser/quickupload_settings.py:228
 msgid "Quick Upload settings"
 msgstr "Einstellungen für den Quick Upload"
 
@@ -200,14 +200,14 @@ msgid "description_fill_titles"
 msgstr "Wenn diese Option aktiviert ist, können Sie Titel vor dem Hochladen vergeben. Deaktivieren Sie diese Option, wenn Sie keine Titel brauchen."
 
 #. Default: "If the folder already has same file name, Checked: Override, Non-Checked: raise upload error."
-#: ../browser/quickupload_settings.py:123
+#: ../browser/quickupload_settings.py:125
 msgid "description_object_override"
 msgstr ""
 
-#. Default: "Choose a unique id for each uploaded file.Checked: Your files will never be overridden and you'll never get a 'file already exists' error message because each file has its unique id.Non-Checked: The id will not be unique."
+#. Default: "Choose a unique id for each uploaded file.Checked: Your files will never be overridden and you'll never get a 'file already exists' error message because each file has its unique id.Non-Checked: The id will not be unique. The 'Override by upload file' option is considered when a conflict happens."
 #: ../browser/quickupload_settings.py:111
 msgid "description_object_unique_id"
-msgstr "Wählt eine einmalige ID für jedes hochgeladene File. Ausgewählt: Es werden keine Files überschrieben. Wenn ein gleiches Dokument bereits existiert, wird das neue Dokument unter einem neuen Namen hochgeladen. Nicht ausgewählt: Die ID kann doppelt sein. In diesem Fall wird das File entweder überschrieben oder es gibt eine Fehlermeldung."
+msgstr "Wählt eine einmalige ID für jedes hochgeladene File. Ausgewählt: Es werden keine Files überschrieben. Wenn ein gleiches Dokument bereits existiert, wird das neue Dokument unter einem neuen Namen hochgeladen. Nicht ausgewählt: Die ID kann doppelt sein. In diesem Fall entscheidet die 'Override by upload file'-Checkbox über das weitere Verhalten."
 
 #. Default: "Check if you want to have an \"Upload\" link in your edit bar. Clicking it will open a panel for uploading below the title of the current item. This panel is an alternative to the \"Upload\" portlet and does not offer any further configuration, such as filtering by content type. The panel will only be shown where the \"Upload\" portlet is not present."
 #: ../browser/quickupload_settings.py:53
@@ -300,12 +300,13 @@ msgid "title_fill_titles"
 msgstr "Geben Sie einen Titel vor dem Hochladen ein"
 
 #. Default: "Override by upload file"
-#: ../browser/quickupload_settings.py:122
+#: ../browser/quickupload_settings.py:124
 msgid "title_object_override"
 msgstr ""
 
-#. Default: "Choose unique id"
+#. Default: "Choose unique file id"
 #: ../browser/quickupload_settings.py:110
+#, fuzzy
 msgid "title_object_unique_id"
 msgstr "Wähle für jedes File eine eindeutige ID"
 

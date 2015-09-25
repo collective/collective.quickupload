@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2015-09-24 11:05+0000\n"
+"POT-Creation-Date: 2015-09-25 09:49+0000\n"
 "PO-Revision-Date: 2015-03-06 11:10+0800\n"
 "Last-Translator: TsungWei Hu <marr.tw@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
@@ -84,7 +84,7 @@ msgid "Content type"
 msgstr "內容型別"
 
 #. Default: "Control how the quick upload tool is used."
-#: ../browser/quickupload_settings.py:227
+#: ../browser/quickupload_settings.py:229
 msgid "Control how the quick upload tool is used."
 msgstr "設定批次上傳工具的操作方式。"
 
@@ -139,7 +139,7 @@ msgid "Quick Upload"
 msgstr ""
 
 #. Default: "Quick Upload settings"
-#: ../browser/quickupload_settings.py:226
+#: ../browser/quickupload_settings.py:228
 msgid "Quick Upload settings"
 msgstr "批次上傳設定"
 
@@ -199,11 +199,11 @@ msgid "description_fill_titles"
 msgstr "勾選的話，上傳之前可以事先填寫標題。"
 
 #. Default: "If the folder already has same file name, Checked: Override, Non-Checked: raise upload error."
-#: ../browser/quickupload_settings.py:123
+#: ../browser/quickupload_settings.py:125
 msgid "description_object_override"
 msgstr "勾選的話，相同檔名的檔案，會被上傳的檔案所覆蓋；不勾選的話，則會產生上傳錯誤。"
 
-#. Default: "Choose a unique id for each uploaded file.Checked: Your files will never be overridden and you'll never get a 'file already exists' error message because each file has its unique id.Non-Checked: The id will not be unique."
+#. Default: "Choose a unique id for each uploaded file.Checked: Your files will never be overridden and you'll never get a 'file already exists' error message because each file has its unique id.Non-Checked: The id will not be unique. The 'Override by upload file' option is considered when a conflict happens."
 #: ../browser/quickupload_settings.py:111
 msgid "description_object_unique_id"
 msgstr ""
@@ -299,11 +299,11 @@ msgid "title_fill_titles"
 msgstr "上傳之前填寫標題"
 
 #. Default: "Override by upload file"
-#: ../browser/quickupload_settings.py:122
+#: ../browser/quickupload_settings.py:124
 msgid "title_object_override"
 msgstr "上傳檔案會覆蓋舊檔案"
 
-#. Default: "Choose unique id"
+#. Default: "Choose unique file id"
 #: ../browser/quickupload_settings.py:110
 msgid "title_object_unique_id"
 msgstr ""

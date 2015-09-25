@@ -5,7 +5,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2015-09-24 11:05+0000\n"
+"POT-Creation-Date: 2015-09-25 09:49+0000\n"
 "PO-Revision-Date: 2013-06-17 02:12-0430\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
 "Language-Team: ES <LL@li.org>\n"
@@ -89,7 +89,7 @@ msgstr "Elija los videos que va a cargar"
 msgid "Content type"
 msgstr "Tipo de contenido"
 
-#: ../browser/quickupload_settings.py:227
+#: ../browser/quickupload_settings.py:229
 msgid "Control how the quick upload tool is used."
 msgstr "Controla como se usa la herramienta de carga rápida."
 
@@ -141,7 +141,7 @@ msgstr "Sólo se permite:"
 msgid "Quick Upload"
 msgstr "Carga rápida"
 
-#: ../browser/quickupload_settings.py:226
+#: ../browser/quickupload_settings.py:228
 msgid "Quick Upload settings"
 msgstr "Configuración de Carga rápida"
 
@@ -201,11 +201,11 @@ msgid "description_fill_titles"
 msgstr "Si está seleccionado, puede elegir el título de los archivos antes de cargarlos. No lo seleccione si no requiere títulos."
 
 #. Default: "If the folder already has same file name, Checked: Override, Non-Checked: raise upload error."
-#: ../browser/quickupload_settings.py:123
+#: ../browser/quickupload_settings.py:125
 msgid "description_object_override"
 msgstr ""
 
-#. Default: "Choose a unique id for each uploaded file.Checked: Your files will never be overridden and you'll never get a 'file already exists' error message because each file has its unique id.Non-Checked: The id will not be unique."
+#. Default: "Choose a unique id for each uploaded file.Checked: Your files will never be overridden and you'll never get a 'file already exists' error message because each file has its unique id.Non-Checked: The id will not be unique. The 'Override by upload file' option is considered when a conflict happens."
 #: ../browser/quickupload_settings.py:111
 msgid "description_object_unique_id"
 msgstr ""
@@ -301,11 +301,11 @@ msgid "title_fill_titles"
 msgstr "Modificar el título antes de la carga"
 
 #. Default: "Override by upload file"
-#: ../browser/quickupload_settings.py:122
+#: ../browser/quickupload_settings.py:124
 msgid "title_object_override"
 msgstr ""
 
-#. Default: "Choose unique id"
+#. Default: "Choose unique file id"
 #: ../browser/quickupload_settings.py:110
 msgid "title_object_unique_id"
 msgstr ""

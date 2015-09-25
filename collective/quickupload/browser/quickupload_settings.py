@@ -114,7 +114,9 @@ class IQuickUploadControlPanel(Interface):
                     u"Checked: Your files will never be overridden and you'll "
                     u"never get a 'file already exists' error message because "
                     u"each file has its unique id."
-                    u"Non-Checked: The id will not be unique."),
+                    u"Non-Checked: The id will not be unique. "
+                    u"The 'Override by upload file' option is considered "
+                    u"when a conflict happens."),
         default=False,
         required=False)
 

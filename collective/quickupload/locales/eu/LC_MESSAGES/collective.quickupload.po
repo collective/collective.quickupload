@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2015-09-24 11:05+0000\n"
+"POT-Creation-Date: 2015-09-25 09:49+0000\n"
 "PO-Revision-Date: 2013-08-28 09:08+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: eu <eu@li.org>\n"
@@ -83,7 +83,7 @@ msgstr "Aukeratu kargatzeko bideo-fitxategiak"
 msgid "Content type"
 msgstr "Elementu-mota"
 
-#: ../browser/quickupload_settings.py:227
+#: ../browser/quickupload_settings.py:229
 msgid "Control how the quick upload tool is used."
 msgstr "Kontrolatu nola erabiltzen den 'quick upload' tresna"
 
@@ -135,7 +135,7 @@ msgstr "Hauek bakarrik onartzen dira:"
 msgid "Quick Upload"
 msgstr "Karga azkarra"
 
-#: ../browser/quickupload_settings.py:226
+#: ../browser/quickupload_settings.py:228
 msgid "Quick Upload settings"
 msgstr "Karga azkarraren ezarpenak"
 
@@ -195,11 +195,11 @@ msgid "description_fill_titles"
 msgstr "Aukeratuta badago fitxategien izenburuak kargatu aurretik bete ditzakezu. Ez aukeratu izenburuak behar ez badituzu."
 
 #. Default: "If the folder already has same file name, Checked: Override, Non-Checked: raise upload error."
-#: ../browser/quickupload_settings.py:123
+#: ../browser/quickupload_settings.py:125
 msgid "description_object_override"
 msgstr ""
 
-#. Default: "Choose a unique id for each uploaded file.Checked: Your files will never be overridden and you'll never get a 'file already exists' error message because each file has its unique id.Non-Checked: The id will not be unique."
+#. Default: "Choose a unique id for each uploaded file.Checked: Your files will never be overridden and you'll never get a 'file already exists' error message because each file has its unique id.Non-Checked: The id will not be unique. The 'Override by upload file' option is considered when a conflict happens."
 #: ../browser/quickupload_settings.py:111
 msgid "description_object_unique_id"
 msgstr ""
@@ -295,11 +295,11 @@ msgid "title_fill_titles"
 msgstr "Kargatu aurretik izenburuak bete"
 
 #. Default: "Override by upload file"
-#: ../browser/quickupload_settings.py:122
+#: ../browser/quickupload_settings.py:124
 msgid "title_object_override"
 msgstr ""
 
-#. Default: "Choose unique id"
+#. Default: "Choose unique file id"
 #: ../browser/quickupload_settings.py:110
 msgid "title_object_unique_id"
 msgstr ""

@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2015-09-25 09:49+0000\n"
+"POT-Creation-Date: 2015-09-28 06:47+0000\n"
 "PO-Revision-Date: 2014-01-25 22:15+0100\n"
 "Last-Translator: Thomas Desvenain <thomasdesvenain@ecreall.com>\n"
 "Language-Team: \n"
@@ -227,13 +227,11 @@ msgstr "Taille limite de chaque fichier en KB, 0 = pas de limite"
 
 #. Default: "Check if you want to use flash uload as fallback for IE"
 #: ../browser/quickupload_settings.py:33
-#, fuzzy
 msgid "description_use_flash_fallback"
 msgstr "Cochez cette case si vous souhaitez utiliser flash upload pour IE"
 
 #. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8), but has many problems : don't work in https, don't work behind HTTP Authentication ..."
 #: ../browser/quickupload_settings.py:18
-#, fuzzy
 msgid "description_use_flashupload"
 msgstr "Par défaut, le script d'envoi de fichiers est en pur javascript. Sélectionner cette option pour le remplacer par un script basé sur Flash Upload. Pour les navigateurs modernes l'outil en javascript est plus puissant. Flash Upload est seulement plus facile d'emploi sur les autres navigateurs (MSIE 7, MSIE 8), mais présente de nombreux inconvénients : ne marche pas en https, ne marche pas derrière une authentification HTTP ..."
 

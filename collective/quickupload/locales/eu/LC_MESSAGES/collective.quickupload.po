@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2015-09-25 09:49+0000\n"
+"POT-Creation-Date: 2015-09-28 06:47+0000\n"
 "PO-Revision-Date: 2013-08-28 09:08+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: eu <eu@li.org>\n"
@@ -221,13 +221,11 @@ msgstr "Fitxategien tamaina maximoa KBtan, 0 = mugarik ez"
 
 #. Default: "Check if you want to use flash uload as fallback for IE"
 #: ../browser/quickupload_settings.py:33
-#, fuzzy
 msgid "description_use_flash_fallback"
 msgstr "Aukeratu Internet Explorer nabigatzailean flash formatuko kargatzailea erabili nahi baduzu"
 
 #. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8), but has many problems : don't work in https, don't work behind HTTP Authentication ..."
 #: ../browser/quickupload_settings.py:18
-#, fuzzy
 msgid "description_use_flashupload"
 msgstr "Defektuz kargatzeko lana javascript tresna batek egiten du. Aukeratu kutxa hau Flash formatuko kargatzaile bat erabiltzeko. Nabigatzaile berrietan javascript tresna hobea da. Flash formatukoa nabigatzaile zaharretan egokiagoa da (hala nola IE7 edo IE8), baina hainbat arazo ditu: ez dabil https-rekin, ez dabil HTTP autentikazioarekin, ..."
 

@@ -2,7 +2,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2015-09-25 09:49+0000\n"
+"POT-Creation-Date: 2015-09-28 06:47+0000\n"
 "PO-Revision-Date: 2015-03-06 11:10+0800\n"
 "Last-Translator: TsungWei Hu <marr.tw@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sourceforge.net>\n"
@@ -225,13 +225,11 @@ msgstr "以 KB 設定檔案大小的上限，0 代表沒有限制。"
 
 #. Default: "Check if you want to use flash uload as fallback for IE"
 #: ../browser/quickupload_settings.py:33
-#, fuzzy
 msgid "description_use_flash_fallback"
 msgstr "勾選的話，對舊版 IE 瀏覽器會改用 Flash 來支援上傳功能。"
 
 #. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8), but has many problems : don't work in https, don't work behind HTTP Authentication ..."
 #: ../browser/quickupload_settings.py:18
-#, fuzzy
 msgid "description_use_flashupload"
 msgstr "系統預設使用 JavaScript 處理上傳，勾選的話，會改用 Flash 來上傳。多數的瀏覽器都支援 JavaScript，但 Flash 上傳方式並非支援所有瀏覽器，例如不支援 HTTPS 或 HTTP 認證等。"
 

@@ -3,7 +3,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2015-09-25 09:49+0000\n"
+"POT-Creation-Date: 2015-09-28 06:47+0000\n"
 "PO-Revision-Date: 2012-05-16 07:19+0800\n"
 "Last-Translator: Jian Aijun <jianaijun@gmail.com>\n"
 "Language-Team: Plone i18n <plone-i18n@lists.sf.net>\n"
@@ -231,7 +231,6 @@ msgstr ""
 
 #. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8), but has many problems : don't work in https, don't work behind HTTP Authentication ..."
 #: ../browser/quickupload_settings.py:18
-#, fuzzy
 msgid "description_use_flashupload"
 msgstr "默认情况下，系统使用 JavaScript 处理上传。如果选中，会改用 FLASH 来上传。现代的浏览器都提供功能强大的 JavaScript。 而 Flash 上传方式，并非所有浏览器都支持，并且还有很多问题，例如：不支持 HTTPS，不支持 HTTPS 认证方式 ..."
 

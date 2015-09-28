@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2015-09-25 09:49+0000\n"
+"POT-Creation-Date: 2015-09-28 06:47+0000\n"
 "PO-Revision-Date: 2013-05-10 08:09+0100\n"
 "Last-Translator: Radim Novotny <novotny.radim@gmail.com>\n"
 "Language-Team: AOW <aow@aow.cz>\n"
@@ -223,13 +223,11 @@ msgstr "Limit velikosti každého souboru v kB. 0 = bez omezení."
 
 #. Default: "Check if you want to use flash uload as fallback for IE"
 #: ../browser/quickupload_settings.py:33
-#, fuzzy
 msgid "description_use_flash_fallback"
 msgstr "Zaškrtněte, pokud chcete v IE použít Flash upload komponentu pokud není možné použít javascript komponentu."
 
 #. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8), but has many problems : don't work in https, don't work behind HTTP Authentication ..."
 #: ../browser/quickupload_settings.py:18
-#, fuzzy
 msgid "description_use_flashupload"
 msgstr "Standardně je upload komponenta čistě javascriptové řešení. Zaškrtněte toto políčko, pokud ji chcete nahradit za Flash komponentu. Flash komponenta bude fungovat ve starých prohlížečích (IE 7, 8) ale má mnoho problémů souvisejících s HTTPS nebo autentizací."
 

@@ -43,4 +43,12 @@
       handler=".upgrades.v5_v6"
       profile="collective.quickupload:default" />
 
+  <genericsetup:upgradeStep
+      title="Add object_unique_id property"
+      description=""
+      source="6"
+      destination="7"
+      handler=".upgrades.v6_v7"
+      profile="collective.quickupload:default" />
+
 </configure>

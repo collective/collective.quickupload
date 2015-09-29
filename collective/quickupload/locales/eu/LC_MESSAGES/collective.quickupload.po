@@ -1,7 +1,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2014-01-25 21:26+0000\n"
+"POT-Creation-Date: 2015-09-28 06:47+0000\n"
 "PO-Revision-Date: 2013-08-28 09:08+0100\n"
 "Last-Translator: Mikel Larreategi <mlarreategi@codesyntax.com>\n"
 "Language-Team: eu <eu@li.org>\n"
@@ -15,27 +15,27 @@ msgstr ""
 "Domain: DOMAIN\n"
 "X-Poedit-Language: Basque\n"
 
-#: ../browser/quick_upload.py:464
+#: ../browser/quick_upload.py:474
 msgid " files uploaded with success, "
 msgstr " fitxategi ondo kargatu dira,"
 
-#: ../browser/quick_upload.py:465
+#: ../browser/quick_upload.py:475
 msgid " uploads return an error."
 msgstr " fitxategik errorea eman dute."
 
-#: ../browser/quick_upload.py:478
+#: ../browser/quick_upload.py:488
 msgid "A data base conflict error happened when uploading this file:"
 msgstr "Datu basearen errorea gertatu da fitxategi hau kargatzean:"
 
-#: ../portlet/quickuploadportlet.py:95
+#: ../portlet/quickuploadportlet.py:100
 msgid "All"
 msgstr "Guztiak"
 
-#: ../browser/quick_upload.py:463
+#: ../browser/quick_upload.py:473
 msgid "All files uploaded with success."
 msgstr "Fitxategi guztiak ondo kargatu dira."
 
-#: ../portlet/quickuploadportlet.py:98
+#: ../portlet/quickuploadportlet.py:103
 msgid "Audio files"
 msgstr "Audio fitxategiak"
 
@@ -43,91 +43,91 @@ msgstr "Audio fitxategiak"
 msgid "Batch upload files."
 msgstr "Fitxategiak batera kargatu"
 
-#: ../portlet/quickuploadportlet.py:76
+#: ../portlet/quickuploadportlet.py:77
 msgid "Box title"
 msgstr "Kutxaren izenburua"
 
-#: ../browser/quick_upload.py:461
+#: ../browser/quick_upload.py:471
 msgid "Browse"
 msgstr "Arakatu"
 
-#: ../browser/quick_upload.py:407
+#: ../browser/quick_upload.py:414
 msgid "Choose audio files to upload"
 msgstr "Aukeratu kargatzeko audio-fitxategiak"
 
-#: ../browser/quick_upload.py:415
+#: ../browser/quick_upload.py:422
 msgid "Choose file for upload: ${ext}"
 msgstr "Aukeratu kargatzeko fitxategiak: ${ext}"
 
-#: ../browser/quick_upload.py:410
+#: ../browser/quick_upload.py:417
 msgid "Choose flash files to upload"
 msgstr "Aukeratu kargatzeko flash-fitxategiak"
 
-#: ../browser/quick_upload.py:401
+#: ../browser/quick_upload.py:408
 msgid "Choose images to upload"
 msgstr "Aukeratu kargatzeko irudi-fitxategiak"
 
-#: ../portlet/quickuploadportlet.py:91
+#: ../portlet/quickuploadportlet.py:95
 msgid "Choose the media type used for file upload. image, audio, video ..."
 msgstr "Fitxategi-kargarako erabiliko den formatua aukeratu: irudia, audioa, bideoa, ..."
 
-#: ../portlet/quickuploadportlet.py:83
+#: ../portlet/quickuploadportlet.py:85
 msgid "Choose the portal type used for file upload. Let the default configuration for an automatic portal type, depending on settings defined in content_type_registry."
 msgstr "Aukeratu fitxategiak kargatzean sortuko den elementu mota. Defektuzko konfigurazioa uzten baduzu content_type_registry-ko konfigurazioa hartuko da kontuan."
 
-#: ../browser/quick_upload.py:404
+#: ../browser/quick_upload.py:411
 msgid "Choose video files to upload"
 msgstr "Aukeratu kargatzeko bideo-fitxategiak"
 
-#: ../portlet/quickuploadportlet.py:82
+#: ../portlet/quickuploadportlet.py:84
 msgid "Content type"
 msgstr "Elementu-mota"
 
-#: ../browser/quickupload_settings.py:170
+#: ../browser/quickupload_settings.py:229
 msgid "Control how the quick upload tool is used."
 msgstr "Kontrolatu nola erabiltzen den 'quick upload' tresna"
 
-#: ../browser/quick_upload.py:462
+#: ../browser/quick_upload.py:472
 msgid "Drag and drop files to upload"
 msgstr "Kargatzeko fitxategiak arrastratu eta jaregin"
 
-#: ../browser/quick_upload.py:466
+#: ../browser/quick_upload.py:476
 msgid "Failed"
 msgstr "Huts egin du"
 
 msgid "Files"
 msgstr ""
 
-#: ../browser/quick_upload.py:200
-#: ../portlet/quickuploadportlet.py:123
+#: ../browser/quick_upload.py:202
+#: ../portlet/quickuploadportlet.py:130
 msgid "Files Quick Upload"
 msgstr "Fitxategien karga azkarra"
 
-#: ../portlet/quickuploadportlet.py:99
+#: ../portlet/quickuploadportlet.py:104
 msgid "Flash files"
 msgstr "Flash fitxategiak"
 
-#: ../portlet/quickuploadportlet.py:78
+#: ../portlet/quickuploadportlet.py:79
 msgid "If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."
 msgstr "Izenburua hutsik badago, portletaren izenburua Irudia/Fitxategia/Bideoa + ' Azkar Kargatzea' izango da"
 
 msgid "Image"
 msgstr ""
 
-#: ../portlet/quickuploadportlet.py:96
+#: ../portlet/quickuploadportlet.py:101
 msgid "Images"
 msgstr "Irudiak"
 
-#: ../browser/quick_upload.py:202
-#: ../portlet/quickuploadportlet.py:125
+#: ../browser/quick_upload.py:204
+#: ../portlet/quickuploadportlet.py:132
 msgid "Images Quick Upload"
 msgstr "Irudiak Azkar Kargatzea"
 
-#: ../portlet/quickuploadportlet.py:90
+#: ../portlet/quickuploadportlet.py:94
 msgid "Media type"
 msgstr "Media mota"
 
-#: ../browser/quick_upload.py:474
+#: ../browser/quick_upload.py:484
 msgid "Only allowed:"
 msgstr "Hauek bakarrik onartzen dira:"
 
@@ -135,35 +135,35 @@ msgstr "Hauek bakarrik onartzen dira:"
 msgid "Quick Upload"
 msgstr "Karga azkarra"
 
-#: ../browser/quickupload_settings.py:169
+#: ../browser/quickupload_settings.py:228
 msgid "Quick Upload settings"
 msgstr "Karga azkarraren ezarpenak"
 
-#: ../browser/quick_upload.py:469
+#: ../browser/quick_upload.py:479
 msgid "Selected elements contain an empty file or a folder:"
 msgstr "Aukeratutako elementuen artean fitxategi edo karpeta huts bat dago:"
 
-#: ../browser/quick_upload.py:479
+#: ../browser/quick_upload.py:489
 msgid "Server error, please contact support and/or try again."
 msgstr "Zerbitzariko errorea, jar zaitez atariaren arduradunarekin kontaktuan edo saiatu berriz."
 
-#: ../browser/quick_upload.py:477
+#: ../browser/quick_upload.py:487
 msgid "This file already exists with the same name on server:"
 msgstr "Zerbitzarian badago izen hori duen fitxategi bat:"
 
-#: ../browser/quick_upload.py:473
+#: ../browser/quick_upload.py:483
 msgid "This file has invalid extension:"
 msgstr "Fitxategi honen luzapena ez da zuzena:"
 
-#: ../browser/quick_upload.py:470
+#: ../browser/quick_upload.py:480
 msgid "This file has no extension:"
 msgstr "Fitxategi honek ez du luzapenik:"
 
-#: ../browser/quick_upload.py:471
+#: ../browser/quick_upload.py:481
 msgid "This file is too large:"
 msgstr "Fitxategi hau handiegia da:"
 
-#: ../browser/quick_upload.py:476
+#: ../browser/quick_upload.py:486
 msgid "This type of element is not allowed in this folder."
 msgstr "Karpeta honetan ezin da mota honetako elementurik kargatu."
 
@@ -171,56 +171,61 @@ msgstr "Karpeta honetan ezin da mota honetako elementurik kargatu."
 msgid "Upload"
 msgstr "Kargatu"
 
-#: ../portlet/quickuploadportlet.py:97
+#: ../portlet/quickuploadportlet.py:102
 msgid "Video files"
 msgstr "Bideo fitxategiak"
 
-#: ../browser/quick_upload.py:475
+#: ../browser/quick_upload.py:485
 msgid "You don't have permission to add this content in this place."
 msgstr "Ez duzu elementu-mota hau sortzeko baimenik"
 
 #. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
-#: ../browser/quickupload_settings.py:35
+#: ../browser/quickupload_settings.py:42
 msgid "description_auto_upload"
 msgstr "Aukeratu fitxategiak aukeratzeaz bat kargatzen hasi nahi baduzu formularioa bidali gabe. Aukeratuta badago ezin dituzu fitxategiak izenburu eta deskribapenak bete."
 
 #. Default: "If checked, you can fill the files descriptions before upload. Uncheck if you don't need descriptions."
-#: ../browser/quickupload_settings.py:61
+#: ../browser/quickupload_settings.py:79
 msgid "description_fill_descriptions"
 msgstr "Aukeratuta badago fitxategien deskribapenak kargatu aurretik bete ditzakezu. Ez aukeratu deskribapenak behar ez badituzu."
 
 #. Default: "If checked, you can fill the files titles before upload. Uncheck if you don't need titles."
-#: ../browser/quickupload_settings.py:55
+#: ../browser/quickupload_settings.py:68
 msgid "description_fill_titles"
 msgstr "Aukeratuta badago fitxategien izenburuak kargatu aurretik bete ditzakezu. Ez aukeratu izenburuak behar ez badituzu."
 
 #. Default: "If the folder already has same file name, Checked: Override, Non-Checked: raise upload error."
-#: ../browser/quickupload_settings.py:77
+#: ../browser/quickupload_settings.py:125
 msgid "description_object_override"
 msgstr ""
 
+#. Default: "Choose a unique id for each uploaded file.Checked: Your files will never be overridden and you'll never get a 'file already exists' error message because each file has its unique id.Non-Checked: The id will not be unique. The 'Override by upload file' option is considered when a conflict happens."
+#: ../browser/quickupload_settings.py:111
+msgid "description_object_unique_id"
+msgstr ""
+
 #. Default: "Check if you want to have an \"Upload\" link in your edit bar. Clicking it will open a panel for uploading below the title of the current item. This panel is an alternative to the \"Upload\" portlet and does not offer any further configuration, such as filtering by content type. The panel will only be shown where the \"Upload\" portlet is not present."
-#: ../browser/quickupload_settings.py:42
+#: ../browser/quickupload_settings.py:53
 msgid "description_show_upload_action"
 msgstr "Aukeratu \"Fitxategiak kargatu\" akzio bat edizio-barran edukitzeko. Klik egindakoan fitxategiak kargatzeko leiho bat agertuko da. Aukera hau portleta erabiltzearen ordezko formula da eta ez du beste konfiguraziorik. "
 
 #. Default: "Number of simultaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"
-#: ../browser/quickupload_settings.py:72
+#: ../browser/quickupload_settings.py:101
 msgid "description_sim_upload_limit"
 msgstr "Aldi berean kargatu ahal den fitxategi kopurua, zenbaki horretatik gora fitxategiak kolan geratuko dira, 0 jarriz gero ez dago mugarik."
 
 #. Default: "Size limit for each file in KB, 0 = no limit"
-#: ../browser/quickupload_settings.py:67
+#: ../browser/quickupload_settings.py:88
 msgid "description_size_limit"
 msgstr "Fitxategien tamaina maximoa KBtan, 0 = mugarik ez"
 
-#. Default: "Check if you want to use flash upload as fallback for IE"
-#: ../browser/quickupload_settings.py:28
+#. Default: "Check if you want to use flash uload as fallback for IE"
+#: ../browser/quickupload_settings.py:33
 msgid "description_use_flash_fallback"
 msgstr "Aukeratu Internet Explorer nabigatzailean flash formatuko kargatzailea erabili nahi baduzu"
 
-#. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8),  but has many problems : don't work in https, don't work behind HTTP Authentication ..."
-#: ../browser/quickupload_settings.py:17
+#. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8), but has many problems : don't work in https, don't work behind HTTP Authentication ..."
+#: ../browser/quickupload_settings.py:18
 msgid "description_use_flashupload"
 msgstr "Defektuz kargatzeko lana javascript tresna batek egiten du. Aukeratu kutxa hau Flash formatuko kargatzaile bat erabiltzeko. Nabigatzaile berrietan javascript tresna hobea da. Flash formatukoa nabigatzaile zaharretan egokiagoa da (hala nola IE7 edo IE8), baina hainbat arazo ditu: ez dabil https-rekin, ez dabil HTTP autentikazioarekin, ..."
 
@@ -240,13 +245,13 @@ msgid "label_clear_queue"
 msgstr "Kola hustu"
 
 #. Default: "Default configuration (Content Type Registry)."
-#: ../portlet/vocabularies.py:53
+#: ../portlet/vocabularies.py:49
 msgid "label_default_portaltype_configuration"
 msgstr "Defektuzko konfigurazioa (Content Type Registry)"
 
 #. Default: "${medialabel} Quick Upload"
-#: ../browser/quick_upload.py:204
-#: ../portlet/quickuploadportlet.py:127
+#: ../browser/quick_upload.py:206
+#: ../portlet/quickuploadportlet.py:134
 msgid "label_media_quickupload"
 msgstr "${medialabel} Karga Azkarra"
 
@@ -255,65 +260,70 @@ msgstr "${medialabel} Karga Azkarra"
 msgid "label_upload_files"
 msgstr "Fitxategiak kargatu"
 
-#: ../browser/quick_upload.py:472
+#: ../browser/quick_upload.py:482
 msgid "maximum file size is:"
 msgstr "fitxategiaren gehienezko tamaina:"
 
 #. Default: "${filename} file has been replaced"
-#: ../browser/uploadcapable.py:160
+#: ../browser/uploadcapable.py:170
 msgid "msg_file_replaced"
 msgstr "${filename} fitxategia ordezkatu egin da"
 
-#: ../browser/quick_upload.py:467
+#: ../browser/quick_upload.py:477
 msgid "please select files again without it."
 msgstr "aukeratu berriz fitxategiak hori gabe."
 
-#: ../browser/quick_upload.py:468
+#: ../browser/quick_upload.py:478
 msgid "please try again."
 msgstr "saiatu berriz mesedez."
 
 #. Default: "Automatic upload on select"
-#: ../browser/quickupload_settings.py:34
+#: ../browser/quickupload_settings.py:41
 msgid "title_auto_upload"
 msgstr "Aukeratzerakoan automatikoki kargatu"
 
 #. Default: "Fill description before upload"
-#: ../browser/quickupload_settings.py:60
+#: ../browser/quickupload_settings.py:76
 msgid "title_fill_descriptions"
 msgstr "Kargatu aurretik deskribapena bete"
 
 #. Default: "Fill title before upload"
-#: ../browser/quickupload_settings.py:54
+#: ../browser/quickupload_settings.py:67
 msgid "title_fill_titles"
 msgstr "Kargatu aurretik izenburuak bete"
 
 #. Default: "Override by upload file"
-#: ../browser/quickupload_settings.py:76
+#: ../browser/quickupload_settings.py:124
 msgid "title_object_override"
 msgstr ""
 
+#. Default: "Choose unique file id"
+#: ../browser/quickupload_settings.py:110
+msgid "title_object_unique_id"
+msgstr ""
+
 #. Default: "Show \"Upload\" action"
-#: ../browser/quickupload_settings.py:41
+#: ../browser/quickupload_settings.py:52
 msgid "title_show_upload_action"
 msgstr "Erakutsi \"Kargatu\" akzioa"
 
 #. Default: "Simultaneous uploads limit"
-#: ../browser/quickupload_settings.py:71
+#: ../browser/quickupload_settings.py:97
 msgid "title_sim_upload_limit"
 msgstr "Batera kargatuko diren fitxategi-kopurua"
 
 #. Default: "Size limit"
-#: ../browser/quickupload_settings.py:66
+#: ../browser/quickupload_settings.py:87
 msgid "title_size_limit"
 msgstr "Tamaina-muga"
 
 #. Default: "Use flash as fallback for IE"
-#: ../browser/quickupload_settings.py:25
+#: ../browser/quickupload_settings.py:31
 msgid "title_use_flash_fallback"
 msgstr "Erabili flash Internet Explorer-en"
 
 #. Default: "Use Flash Upload"
-#: ../browser/quickupload_settings.py:16
+#: ../browser/quickupload_settings.py:17
 msgid "title_use_flashupload"
 msgstr "Flash kargatzailea erabili"
 

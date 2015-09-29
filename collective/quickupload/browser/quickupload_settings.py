@@ -106,6 +106,20 @@ class IQuickUploadControlPanel(Interface):
         default=2,
         required=True)
 
+    object_unique_id = Bool(
+        title=_(u"title_object_unique_id", default=u"Choose unique file id"),
+        description=_(
+            u"description_object_unique_id",
+            default=u"Choose a unique id for each uploaded file."
+                    u"Checked: Your files will never be overridden and you'll "
+                    u"never get a 'file already exists' error message because "
+                    u"each file has its unique id."
+                    u"Non-Checked: The id will not be unique. "
+                    u"The 'Override by upload file' option is considered "
+                    u"when a conflict happens."),
+        default=False,
+        required=False)
+
     object_override = Bool(
         title=_(u"title_object_override", default=u"Override by upload file"),
         description=_(
@@ -191,6 +205,14 @@ class QuickUploadControlPanelAdapter(SchemaAdapterBase):
         self.quProps._updateProperty('sim_upload_limit', value)
 
     sim_upload_limit = property(get_sim_upload_limit, set_sim_upload_limit)
+
+    def get_object_unique_id(self):
+        return self.quProps.getProperty('object_unique_id')
+
+    def set_object_unique_id(self, value):
+        self.quProps._updateProperty('object_unique_id', value)
+
+    object_unique_id = property(get_object_unique_id, set_object_unique_id)
 
     def get_object_override(self):
         return self.quProps.getProperty('object_override')

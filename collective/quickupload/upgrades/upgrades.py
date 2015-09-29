@@ -42,3 +42,10 @@ def v5_v6(context):
     if not qu_props.hasProperty('object_override'):
         qu_props._setProperty('object_override', False, 'boolean')
 
+def v6_v7(context):
+    #Add property to quickupload property sheet
+    ptool = getToolByName(context, 'portal_properties')
+    qu_props = ptool.get('quickupload_properties')
+    if not qu_props.hasProperty('object_unique_id'):
+        qu_props._setProperty('object_unique_id', False, 'boolean')
+

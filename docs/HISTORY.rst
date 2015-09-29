@@ -4,7 +4,12 @@ Changelog
 1.7.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add property 'Choose unique file id'.
+  In addition to the 'Override by upload file' it is possible
+  to use unique file ids. The advantage of this is, that you
+  can upload files without overriding them and without an
+  error if the file already exists
+  [elioschmutz]
 
 
 1.7.0 (2015-07-28)

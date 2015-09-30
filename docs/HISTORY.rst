@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.7.1 (unreleased)
+1.8.0 (2015-09-30)
 ------------------
 
 - Add property 'Choose unique file id'.

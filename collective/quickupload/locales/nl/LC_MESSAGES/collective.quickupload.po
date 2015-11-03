@@ -71,7 +71,7 @@ msgid "Choose the media type used for file upload. image, audio, video ..."
 msgstr "Kies een media type om te uploaden. afbeelding, audio, video ..."
 
 #: ../portlet/quickuploadportlet.py:85
-msgid "Choose the portal type used for file upload. Let the default configuration for an automatic portal type, depending on settings defined in content_type_registry."
+msgid "Choose the portal type used for file upload. Keep the default configuration to automatically choose a portal type depending on settings defined in the content_type_registry."
 msgstr ""
 
 #: ../browser/quick_upload.py:411
@@ -325,4 +325,3 @@ msgstr "Gebruik Flash upload voor IE"
 #: ../browser/quickupload_settings.py:17
 msgid "title_use_flashupload"
 msgstr "Gebruik Flash Upload"
-

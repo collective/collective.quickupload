@@ -72,7 +72,7 @@ msgid "Choose the media type used for file upload. image, audio, video ..."
 msgstr "Fitxategi-kargarako erabiliko den formatua aukeratu: irudia, audioa, bideoa, ..."
 
 #: ../portlet/quickuploadportlet.py:85
-msgid "Choose the portal type used for file upload. Let the default configuration for an automatic portal type, depending on settings defined in content_type_registry."
+msgid "Choose the portal type used for file upload. Keep the default configuration to automatically choose a portal type depending on settings defined in the content_type_registry."
 msgstr "Aukeratu fitxategiak kargatzean sortuko den elementu mota. Defektuzko konfigurazioa uzten baduzu content_type_registry-ko konfigurazioa hartuko da kontuan."
 
 #: ../browser/quick_upload.py:411

@@ -83,9 +83,9 @@ class IQuickUploadPortlet(IPortletDataProvider):
     upload_portal_type = schema.Choice(
         title=_(u"Content type"),
         description=_(u"Choose the portal type used for file upload. "
-                      u"Let the default configuration for an automatic portal "
-                      u"type, depending on settings defined in "
-                      u"content_type_registry."),
+                      u"Keep the default configuration to automatically "
+                      u"choose a portal type depending on settings defined "
+                      u"in the content_type_registry."),
         required=True,
         default='auto',
         vocabulary="collective.quickupload.fileTypeVocabulary")

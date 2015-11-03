@@ -73,7 +73,7 @@ msgid "Choose the media type used for file upload. image, audio, video ..."
 msgstr "选择想要上传的媒体类型。图片，音频，视频 ..."
 
 #: ../portlet/quickuploadportlet.py:85
-msgid "Choose the portal type used for file upload. Let the default configuration for an automatic portal type, depending on settings defined in content_type_registry."
+msgid "Choose the portal type used for file upload. Keep the default configuration to automatically choose a portal type depending on settings defined in the content_type_registry."
 msgstr "选择上传文件使用的网站内容类型，使用默认配置，系统会根据内容类型注册表的设置自动处理。"
 
 #: ../browser/quick_upload.py:411

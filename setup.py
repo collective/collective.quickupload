@@ -1,12 +1,21 @@
 # -*- coding: utf-8 -*-
 from setuptools import setup, find_packages
 import os
+import sys
 
 
 def read(*paths):
     return open(os.path.join(os.path.dirname(__file__), *paths)).read()
 
 version = '1.8.1.dev0'
+
+tests_require = [
+    'plone.app.dexterity',
+    'plone.app.testing',
+    'mock',
+    ]
+if sys.version_info < (2, 7):
+    tests_require.append('unittest2')
 
 setup(name='collective.quickupload',
       version=version,
@@ -51,11 +60,7 @@ setup(name='collective.quickupload',
           'ua_parser',
       ],
       extras_require={
-          'test': [
-              'plone.app.dexterity',
-              'plone.app.testing',
-              'mock',
-          ],
+          'test': tests_require,
       },
       entry_points="""
       [z3c.autoinclude.plugin]

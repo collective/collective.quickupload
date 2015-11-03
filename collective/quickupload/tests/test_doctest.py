@@ -1,9 +1,14 @@
 # -*- coding: utf-8 -*-
+try:
+    # Python 2.6
+    import unittest2 as unittest
+except ImportError:
+    # Python 2.7 has unittest2 integrated in unittest
+    import unittest
 from plone.testing import layered
 from collective.quickupload import testing
 
 import doctest
-import unittest2 as unittest
 
 functional = [
     'installation.txt',

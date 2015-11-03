@@ -1,8 +1,13 @@
+try:
+    # Python 2.6
+    import unittest2 as unittest
+except ImportError:
+    # Python 2.7 has unittest2 integrated in unittest
+    import unittest
 from collective.quickupload.testing import QUICKUPLOAD_FUNCTIONAL_TESTING
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 import mock
-import unittest2 as unittest
 
 
 class TestCase(unittest.TestCase):

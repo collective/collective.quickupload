@@ -16,6 +16,7 @@ Plone Quick Upload Portlet
     >>> from collective.quickupload.portlet import quickuploadportlet
     >>> portal = layer['portal']
     >>> folder = portal['test-folder']
+    >>> doc = folder['test-doc']
     >>> setRoles(portal, TEST_USER_ID, ['Manager'])
     >>> login(portal, TEST_USER_NAME)
 
@@ -55,7 +56,7 @@ Test portlet Edit View
 ----------------------
 
     >>> mapping = PortletAssignmentMapping()
-    >>> request = folder.REQUEST
+    >>> request = doc.REQUEST
     >>> mapping['foo'] = quickuploadportlet.Assignment(header=u"", upload_portal_type=u"Image", upload_media_type=u"image")
     >>> editview = getMultiAdapter((mapping['foo'], request), name='edit')
     >>> isinstance(editview, quickuploadportlet.EditForm)
@@ -64,11 +65,11 @@ Test portlet Edit View
 Test portlet Rendering
 ----------------------
 
-    >>> request = folder.REQUEST
-    >>> view = folder.restrictedTraverse('@@folder_contents')
+    >>> request = doc.REQUEST
+    >>> view = doc.restrictedTraverse('@@folder_contents')
     >>> manager = getUtility(IPortletManager, name='plone.rightcolumn', context=portal)
     >>> assignment = quickuploadportlet.Assignment(header=u"", upload_portal_type=u"Image", upload_media_type=u"image")
-    >>> renderer = getMultiAdapter((folder, request, view, manager, assignment), IPortletRenderer)
+    >>> renderer = getMultiAdapter((doc, request, view, manager, assignment), IPortletRenderer)
     >>> isinstance(renderer, quickuploadportlet.Renderer)
     True
     >>> renderer.available

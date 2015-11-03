@@ -32,6 +32,9 @@ class QuickUploadLayer(PloneSandboxLayer):
         setRoles(portal, TEST_USER_ID, ['Manager'])
         login(portal, TEST_USER_NAME)
         portal.invokeFactory('Folder', 'test-folder', title=u"Test Folder")
+        folder = portal['test-folder']
+        folder.invokeFactory('Document', 'test-doc', title=u"Test Document")
+        folder.setDefaultPage('test-doc')
         setRoles(portal, TEST_USER_ID, ['Member'])
 
 

@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-## Copyright (C)2010 Alter Way Solutions
+# Copyright (C)2010 Alter Way Solutions
 from Acquisition import aq_base
 from Acquisition import aq_inner
 from Acquisition import aq_parent
@@ -161,9 +161,9 @@ class Renderer(base.Renderer):
         # since the portlet don't use it, but another app could
         if session:
             # session does not implement dict API. it's a TransientObject
-            if session.has_key('typeupload'):
+            if session.has_key('typeupload'):  # noqa
                 session.delete('typeupload')
-            if session.has_key('mediaupload'):
+            if session.has_key('mediaupload'):  # noqa
                 session.delete('mediaupload')
 
     def render(self):

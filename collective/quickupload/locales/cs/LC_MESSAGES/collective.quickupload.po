@@ -221,7 +221,7 @@ msgstr "Počet souborů, které bude možné nahrávat současně. Soubory nad t
 msgid "description_size_limit"
 msgstr "Limit velikosti každého souboru v kB. 0 = bez omezení."
 
-#. Default: "Check if you want to use flash uload as fallback for IE"
+#. Default: "Check if you want to use flash upload as fallback for IE"
 #: ../browser/quickupload_settings.py:33
 msgid "description_use_flash_fallback"
 msgstr "Zaškrtněte, pokud chcete v IE použít Flash upload komponentu pokud není možné použít javascript komponentu."

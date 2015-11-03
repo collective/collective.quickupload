@@ -218,7 +218,7 @@ msgstr ""
 msgid "description_size_limit"
 msgstr ""
 
-#. Default: "Check if you want to use flash uload as fallback for IE"
+#. Default: "Check if you want to use flash upload as fallback for IE"
 #: ../browser/quickupload_settings.py:33
 msgid "description_use_flash_fallback"
 msgstr ""

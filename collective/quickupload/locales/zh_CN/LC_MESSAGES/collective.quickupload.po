@@ -224,7 +224,7 @@ msgstr "同时上传的文件数量，超过这个数量将放置在队列中，
 msgid "description_size_limit"
 msgstr "每个文件的大小限制，单位：KB，0 代表沒有限制。"
 
-#. Default: "Check if you want to use flash uload as fallback for IE"
+#. Default: "Check if you want to use flash upload as fallback for IE"
 #: ../browser/quickupload_settings.py:33
 msgid "description_use_flash_fallback"
 msgstr ""

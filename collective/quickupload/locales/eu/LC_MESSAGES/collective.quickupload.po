@@ -219,7 +219,7 @@ msgstr "Aldi berean kargatu ahal den fitxategi kopurua, zenbaki horretatik gora 
 msgid "description_size_limit"
 msgstr "Fitxategien tamaina maximoa KBtan, 0 = mugarik ez"
 
-#. Default: "Check if you want to use flash uload as fallback for IE"
+#. Default: "Check if you want to use flash upload as fallback for IE"
 #: ../browser/quickupload_settings.py:33
 msgid "description_use_flash_fallback"
 msgstr "Aukeratu Internet Explorer nabigatzailean flash formatuko kargatzailea erabili nahi baduzu"

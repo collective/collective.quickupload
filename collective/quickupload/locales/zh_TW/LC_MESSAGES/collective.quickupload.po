@@ -223,7 +223,7 @@ msgstr "指定同時上傳的檔案數目，超過數目的檔案會排隊再上
 msgid "description_size_limit"
 msgstr "以 KB 設定檔案大小的上限，0 代表沒有限制。"
 
-#. Default: "Check if you want to use flash uload as fallback for IE"
+#. Default: "Check if you want to use flash upload as fallback for IE"
 #: ../browser/quickupload_settings.py:33
 msgid "description_use_flash_fallback"
 msgstr "勾選的話，對舊版 IE 瀏覽器會改用 Flash 來支援上傳功能。"

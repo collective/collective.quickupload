@@ -225,7 +225,7 @@ msgstr "Nombre d'envois de fichiers envoyés simultanément, au delà de ce nomb
 msgid "description_size_limit"
 msgstr "Taille limite de chaque fichier en KB, 0 = pas de limite"
 
-#. Default: "Check if you want to use flash uload as fallback for IE"
+#. Default: "Check if you want to use flash upload as fallback for IE"
 #: ../browser/quickupload_settings.py:33
 msgid "description_use_flash_fallback"
 msgstr "Cochez cette case si vous souhaitez utiliser flash upload pour IE"

@@ -223,7 +223,7 @@ msgstr "Počet súčasne prevzatých súborov, súbory nad tento počet sú umie
 msgid "description_size_limit"
 msgstr "Limit veľkosti pre každý súbor v KB, 0 = žiadny limit"
 
-#. Default: "Check if you want to use flash uload as fallback for IE"
+#. Default: "Check if you want to use flash upload as fallback for IE"
 #: ../browser/quickupload_settings.py:33
 msgid "description_use_flash_fallback"
 msgstr ""

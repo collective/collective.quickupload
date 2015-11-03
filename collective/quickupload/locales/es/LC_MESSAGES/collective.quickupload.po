@@ -225,7 +225,7 @@ msgstr "Número de archivos cargados simultáneamente, por encima de este númer
 msgid "description_size_limit"
 msgstr "Tamaño límite de cada archivo en KB. Utilice 0 si no desea especificar un límite."
 
-#. Default: "Check if you want to use flash uload as fallback for IE"
+#. Default: "Check if you want to use flash upload as fallback for IE"
 #: ../browser/quickupload_settings.py:33
 msgid "description_use_flash_fallback"
 msgstr "Marque esta casilla si quiere utilizar el cargador basado en Flash como reserva para el navegador IE."

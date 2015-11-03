@@ -32,7 +32,7 @@ class IQuickUploadControlPanel(Interface):
                 default=u"Use flash as fallback for IE"),
         description=_(
             u"description_use_flash_fallback",
-            default=u"Check if you want to use flash uload as fallback for IE"
+            default=u"Check if you want to use flash upload as fallback for IE"
         ),
         default=False,
         required=False)

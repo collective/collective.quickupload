@@ -1,14 +1,18 @@
+# Translators:
+# Maarten Kling <maarten@fourdigits.nl>
+# Maurits van Rees <m.van.rees@zestsoftware.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
 "POT-Creation-Date: 2013-06-17 06:38+0000\n"
-"PO-Revision-Date: YEAR-MO-DA HO:MI +ZONE\n"
-"Last-Translator: Maarten Kling <maarten@fourdigits.nl>\n"
+"PO-Revision-Date: 2015-11-03 18:30+0100’\n"
+"Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Dutch <support@fourdigits.nl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"Language: nl\n"
 "Language-Code: nl\n"
 "Language-Name: Dutch\n"
 "Preferred-Encodings: utf-8\n"
@@ -17,28 +21,27 @@ msgstr ""
 #. Default: "A quick upload form for Plone"
 #: Default Profile description in minimal.zcml
 msgid "A quick upload form for Plone"
-msgstr ""
+msgstr "Een quick upload formulier voor Plone"
 
 #. Default: "Plone Quick Upload"
 #: Default Profile title in minimal.zcml
 msgid "Plone Quick Upload"
-msgstr ""
+msgstr "Plone Quick Upload"
 
 #: ../profiles/default/portlets.xml
 msgid "Portlet displaying a quick and multiple upload form"
-msgstr ""
+msgstr "Portlet met een formulier voor snelle en meervoudige upload"
 
 #: ../profiles/default/portlets.xml
 msgid "Quick Upload Portlet"
-msgstr ""
+msgstr "Quick Upload Portlet"
 
 #. Default: "Remove Plone Quick Upload"
 #: Uninstall Profile title in minimal.zcml
 msgid "Remove Plone Quick Upload"
-msgstr ""
+msgstr "Verwijder Plone Quick Upload"
 
 #. Default: "Removes quick upload form from Plone"
 #: Uninstall Profile description in minimal.zcml
 msgid "Removes quick upload form from Plone"
-msgstr ""
-
+msgstr "Verwijdert Plone Quick Upload""

@@ -4,6 +4,9 @@ Changelog
 1.8.1 (unreleased)
 ------------------
 
+- Updated Dutch translations.
+  [maurits]
+
 - Added unittest2 to test requirements on Python 2.6.
   [maurits]
 

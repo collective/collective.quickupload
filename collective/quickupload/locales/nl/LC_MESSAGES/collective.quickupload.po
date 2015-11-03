@@ -1,14 +1,18 @@
+# Translators:
+# Maarten Kling <maarten@fourdigits.nl>
+# Maurits van Rees <m.van.rees@zestsoftware.nl>
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
 "POT-Creation-Date: 2015-09-28 06:47+0000\n"
-"PO-Revision-Date: 2011-08-31 12:10+0000’\n"
-"Last-Translator: Maarten Kling <maarten@fourdigits.nl>\n"
+"PO-Revision-Date: 2015-11-03 18:30+0100’\n"
+"Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Dutch <support@fourdigits.nl>\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
+"Language: nl\n"
 "Language-Code: nl\n"
 "Language-Name: Dutch\n"
 "Preferred-Encodings: utf-8\n"
@@ -72,7 +76,7 @@ msgstr "Kies een media type om te uploaden. afbeelding, audio, video ..."
 
 #: ../portlet/quickuploadportlet.py:85
 msgid "Choose the portal type used for file upload. Keep the default configuration to automatically choose a portal type depending on settings defined in the content_type_registry."
-msgstr ""
+msgstr "Kies het contenttype om te gebruiken voor de bestandsupload. Behoud de standaardinstelling om automatisch een contenttype te selecteren gebaseerd op instellingen in het contenttype register."
 
 #: ../browser/quick_upload.py:411
 msgid "Choose video files to upload"
@@ -80,7 +84,7 @@ msgstr "Kies video bestanden om te uploaden"
 
 #: ../portlet/quickuploadportlet.py:84
 msgid "Content type"
-msgstr ""
+msgstr "Contenttype"
 
 #: ../browser/quickupload_settings.py:229
 msgid "Control how the quick upload tool is used."
@@ -95,23 +99,23 @@ msgid "Failed"
 msgstr "Gefaald"
 
 msgid "Files"
-msgstr ""
+msgstr "Bestanden"
 
 #: ../browser/quick_upload.py:202
 #: ../portlet/quickuploadportlet.py:130
 msgid "Files Quick Upload"
-msgstr ""
+msgstr "Bestanden Quick upload"
 
 #: ../portlet/quickuploadportlet.py:104
 msgid "Flash files"
-msgstr ""
+msgstr "Flashbestanden"
 
 #: ../portlet/quickuploadportlet.py:79
 msgid "If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."
 msgstr "Als de titel leeg is, zal de portlet ' Quick Upload' heten."
 
 msgid "Image"
-msgstr ""
+msgstr "Afbeelding"
 
 #: ../portlet/quickuploadportlet.py:101
 msgid "Images"
@@ -124,7 +128,7 @@ msgstr "Afbeeldingen Quick Upload"
 
 #: ../portlet/quickuploadportlet.py:94
 msgid "Media type"
-msgstr ""
+msgstr "Media type"
 
 #: ../browser/quick_upload.py:484
 msgid "Only allowed:"
@@ -132,11 +136,11 @@ msgstr "Alleen toegestaan:"
 
 #: ../profiles/default/controlpanel.xml:5
 msgid "Quick Upload"
-msgstr ""
+msgstr "Quick upload"
 
 #: ../browser/quickupload_settings.py:228
 msgid "Quick Upload settings"
-msgstr ""
+msgstr "Quick upload instellingen"
 
 #: ../browser/quick_upload.py:479
 msgid "Selected elements contain an empty file or a folder:"
@@ -168,7 +172,7 @@ msgstr "Dit type is niet toegestaan in deze map."
 
 #: ../profiles/default/actions.xml
 msgid "Upload"
-msgstr ""
+msgstr "Uploaden"
 
 #: ../portlet/quickuploadportlet.py:102
 msgid "Video files"
@@ -176,57 +180,57 @@ msgstr "Video bestanden"
 
 #: ../browser/quick_upload.py:485
 msgid "You don't have permission to add this content in this place."
-msgstr ""
+msgstr "Je hebt geen toestemming om deze inhoud hier toe te voegen."
 
 #. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
 #: ../browser/quickupload_settings.py:42
 msgid "description_auto_upload"
-msgstr ""
+msgstr "Selecteer om meteen te beginnen met het upload van geselecteerde bestanden, zonder het formulier te versturen. Let op: dan kan je geen titels of beschrijving opgeven."
 
 #. Default: "If checked, you can fill the files descriptions before upload. Uncheck if you don't need descriptions."
 #: ../browser/quickupload_settings.py:79
 msgid "description_fill_descriptions"
-msgstr ""
+msgstr "Selecteer om beschrijvingen van de bestanden op te kunnen geven voorafgaand aan de upload."
 
 #. Default: "If checked, you can fill the files titles before upload. Uncheck if you don't need titles."
 #: ../browser/quickupload_settings.py:68
 msgid "description_fill_titles"
-msgstr ""
+msgstr "Selecteer om titels van de bestanden op te kunnen geven voorafgaand aan de upload."
 
 #. Default: "If the folder already has same file name, Checked: Override, Non-Checked: raise upload error."
 #: ../browser/quickupload_settings.py:125
 msgid "description_object_override"
-msgstr ""
+msgstr "Wat te doen als de folder al een bestand heeft met dezelfde naam? Geselecteerd: overschrijf. Niet geselecteerd: geef een uploadfout."
 
 #. Default: "Choose a unique id for each uploaded file.Checked: Your files will never be overridden and you'll never get a 'file already exists' error message because each file has its unique id.Non-Checked: The id will not be unique. The 'Override by upload file' option is considered when a conflict happens."
 #: ../browser/quickupload_settings.py:111
 msgid "description_object_unique_id"
-msgstr ""
+msgstr "Kies een uniek id voor elk geupload bestand. Geselecteerd: je bestanden worden nooit overschreven en je krijgt nooit een foutmelding 'dit bestand bestaat al', omdat elk bestand een uniek id krijgt. Niet geselecteerd: het id zal niet uniek zijn. De optie 'Overschrijf bij uploaden bestand' wordt gebruikt in geval van een conflict."
 
 #. Default: "Check if you want to have an \"Upload\" link in your edit bar. Clicking it will open a panel for uploading below the title of the current item. This panel is an alternative to the \"Upload\" portlet and does not offer any further configuration, such as filtering by content type. The panel will only be shown where the \"Upload\" portlet is not present."
 #: ../browser/quickupload_settings.py:53
 msgid "description_show_upload_action"
-msgstr ""
+msgstr "Selecteer als je een 'Upload' tab in de 'Bewerken' balk wilt. Daar wordt dan een formulier getoond voor het uploaden. Dit formulier is een alternatief voor de Upload portlet, maar zonder verdere opties zoals filteren per contenttype. De tab wordt alleen getoond als je Upload portlet niet beschikbaar is."
 
 #. Default: "Number of simultaneous files uploaded, over this number uploads are placed in a queue, 0 = no limit"
 #: ../browser/quickupload_settings.py:101
 msgid "description_sim_upload_limit"
-msgstr ""
+msgstr "Aantal bestanden dat gelijktijdig geupload mag worden. Als meer bestanden geselecteerd zijn, worden ze in een rij geplaatst. 0 = geen limiet."
 
 #. Default: "Size limit for each file in KB, 0 = no limit"
 #: ../browser/quickupload_settings.py:88
 msgid "description_size_limit"
-msgstr ""
+msgstr "Maximale grootte per bestand in KB. 0 = geen limiet."
 
 #. Default: "Check if you want to use flash upload as fallback for IE"
 #: ../browser/quickupload_settings.py:33
 msgid "description_use_flash_fallback"
-msgstr ""
+msgstr "Selecteer als je Flash upload wil gebruiken als terugvaloptie voor IE."
 
 #. Default: "By default, the upload script is a javascript only tool. Check this option to replace it with a Flash Upload based script. For modern browsers the javascript tool is more powerful. Flash Upload is just more user friendly under other browsers (MSIE 7, MSIE 8), but has many problems : don't work in https, don't work behind HTTP Authentication ..."
 #: ../browser/quickupload_settings.py:18
 msgid "description_use_flashupload"
-msgstr ""
+msgstr "Standaard is het upload script een tool met alleen javascript. Selecteer deze optie om het te vervangen door een script gebaseerd op Flash. In moderne browsers is de javascript tool krachtiger. Flash upload is gebruiksvriendelijker in andere browsers (IE 7, IE 8), maar heeft veel problemen: het werkt niet in https en niet achter HTTP Authenticatie..."
 
 #. Default: "Drag and drop or choose your files:"
 #: ../browser/quick_upload.pt:19
@@ -246,13 +250,13 @@ msgstr "Leeg Queue"
 #. Default: "Default configuration (Content Type Registry)."
 #: ../portlet/vocabularies.py:49
 msgid "label_default_portaltype_configuration"
-msgstr ""
+msgstr "Standaardinstelling (contenttype register)"
 
 #. Default: "${medialabel} Quick Upload"
 #: ../browser/quick_upload.py:206
 #: ../portlet/quickuploadportlet.py:134
 msgid "label_media_quickupload"
-msgstr ""
+msgstr "${medialabel} Quick Upload"
 
 #. Default: "Upload Files"
 #: ../browser/quick_upload.pt:41
@@ -294,12 +298,12 @@ msgstr "Plaats titels voor uploaden"
 #. Default: "Override by upload file"
 #: ../browser/quickupload_settings.py:124
 msgid "title_object_override"
-msgstr ""
+msgstr "Overschrijf bij uploaden bestand"
 
 #. Default: "Choose unique file id"
 #: ../browser/quickupload_settings.py:110
 msgid "title_object_unique_id"
-msgstr ""
+msgstr "Kies uniek id van bestand"
 
 #. Default: "Show \"Upload\" action"
 #: ../browser/quickupload_settings.py:52
@@ -309,12 +313,12 @@ msgstr "Toon \"Upload\" actie"
 #. Default: "Simultaneous uploads limit"
 #: ../browser/quickupload_settings.py:97
 msgid "title_sim_upload_limit"
-msgstr "Gelijktijdig upload limiet"
+msgstr "Gelijktijdige upload limiet"
 
 #. Default: "Size limit"
 #: ../browser/quickupload_settings.py:87
 msgid "title_size_limit"
-msgstr "Size limiet"
+msgstr "Maximale grootte"
 
 #. Default: "Use flash as fallback for IE"
 #: ../browser/quickupload_settings.py:31

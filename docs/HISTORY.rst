@@ -4,7 +4,8 @@ Changelog
 1.8.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Added unittest2 to test requirements on Python 2.6.
+  [maurits]
 
 
 1.8.0 (2015-09-30)

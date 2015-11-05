@@ -10,6 +10,10 @@ Changelog
 - Added unittest2 to test requirements on Python 2.6.
   [maurits]
 
+- Set content type to application/json. text/html fails with plone.protect
+  3.0.11 (and is wrong anyway).
+  [reinhardt]
+
 
 1.8.0 (2015-09-30)
 ------------------

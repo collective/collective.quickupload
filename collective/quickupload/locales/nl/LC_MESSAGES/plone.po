@@ -44,4 +44,4 @@ msgstr "Verwijder Plone Quick Upload"
 #. Default: "Removes quick upload form from Plone"
 #: Uninstall Profile description in minimal.zcml
 msgid "Removes quick upload form from Plone"
-msgstr "Verwijdert Plone Quick Upload""
+msgstr "Verwijdert Plone Quick Upload"

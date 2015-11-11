@@ -1,5 +1,5 @@
 # -*- coding: utf-8 -*-
-## Copyright (C)2010 Alter Way Solutions
+# Copyright (C)2010 Alter Way Solutions
 from Acquisition import aq_base
 from Acquisition import aq_inner
 from Acquisition import aq_parent
@@ -18,6 +18,7 @@ from plone.app.portlets.portlets import base
 from plone.memoize.compress import xhtml_compress
 from plone.portlets.interfaces import IPortletDataProvider
 from zope import schema
+from zope.component import getMultiAdapter
 from zope.formlib import form
 from zope.i18nmessageid import MessageFactory
 from zope.interface import implements
@@ -161,9 +162,9 @@ class Renderer(base.Renderer):
         # since the portlet don't use it, but another app could
         if session:
             # session does not implement dict API. it's a TransientObject
-            if session.has_key('typeupload'):
+            if session.has_key('typeupload'):  # noqa
                 session.delete('typeupload')
-            if session.has_key('mediaupload'):
+            if session.has_key('mediaupload'):  # noqa
                 session.delete('mediaupload')
 
     def render(self):
@@ -176,21 +177,25 @@ class Renderer(base.Renderer):
                 or IFolderContentsView.providedBy(self.view)):
             return False
 
+        # Context could be a default page.  We want the canonical object
+        # instead.
         context = aq_inner(self.context)
-
-        if not IQuickUploadCapable.providedBy(context):
+        pcs = getMultiAdapter(
+            (context, self.request), name='plone_context_state')
+        canonical = pcs.canonical_object()
+        if not IQuickUploadCapable.providedBy(canonical):
             return False
-        elif IQuickUploadNotCapable.providedBy(context):
+        elif IQuickUploadNotCapable.providedBy(canonical):
             return False
-        elif not self.pm.checkPermission('Add portal content', context):
+        elif not self.pm.checkPermission('Add portal content', canonical):
             return False
-        elif isTemporary(context):
+        elif isTemporary(canonical):
             return False
 
         upload_portal_type = self.data.upload_portal_type
         if (upload_portal_type and upload_portal_type != 'auto'
                 and upload_portal_type not in [
-                    t.id for t in self.context.getAllowedTypes()
+                    t.id for t in canonical.getAllowedTypes()
                 ]):
             return False
         else:

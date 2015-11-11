@@ -4,6 +4,10 @@ Changelog
 1.8.1 (unreleased)
 ------------------
 
+- Also render the portlet when viewing a default page.
+  Fixes #34.
+  [maurits]
+
 - Updated Dutch translations.
   [maurits]
 

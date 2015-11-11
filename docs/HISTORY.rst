@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.8.1 (unreleased)
+1.8.1 (2015-11-11)
 ------------------
 
 - Also render the portlet when viewing a default page.

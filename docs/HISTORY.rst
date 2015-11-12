@@ -4,7 +4,9 @@ Changelog
 1.8.2 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Add controlpanel option "Use id as title" to not prettify
+  the title but use the id ('my-file.jpg' instead of 'my file')
+  [maurits]
 
 
 1.8.1 (2015-11-11)

@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.8.2 (unreleased)
+1.8.2 (2015-11-13)
 ------------------
 
 - Add controlpanel option "Use id as title" to not prettify

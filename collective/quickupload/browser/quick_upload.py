@@ -16,7 +16,8 @@ from ZPublisher.HTTPRequest import FileUpload
 from collective.quickupload import HAS_DEXTERITY
 from collective.quickupload import logger
 from collective.quickupload import siteMessageFactory as _
-from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
+from collective.quickupload.browser.quickupload_settings import \
+    IQuickUploadControlPanel
 from collective.quickupload.browser.uploadcapable import MissingExtension
 from collective.quickupload.browser.uploadcapable import get_id_from_filename
 from collective.quickupload.browser.utils import can_dnd
@@ -275,7 +276,7 @@ XHR_UPLOAD_JS = """
         });
     }
     jQuery(document).ready(createUploader_%(ul_id)s);
-"""
+"""  # noqa
 
 FLASH_UPLOAD_JS = """
     var fillTitles = %(ul_fill_titles)s;
@@ -375,7 +376,7 @@ FLASH_UPLOAD_JS = """
             'scriptData'    : {'ticket' : '%(ticket)s', 'typeupload' : '%(typeupload)s'}
         });
     });
-"""
+"""  # noqa
 
 
 class QuickUploadInit(BrowserView):
@@ -456,14 +457,16 @@ class QuickUploadInit(BrowserView):
             physical_path="/".join(context.getPhysicalPath()),
             ul_id=self.uploader_id,
             ul_fill_titles=self.qup_prefs.fill_titles and 'true' or 'false',
-            ul_fill_descriptions=self.qup_prefs.fill_descriptions and 'true' or 'false',
+            ul_fill_descriptions=(self.qup_prefs.fill_descriptions and
+                                  'true' or 'false'),
             ul_auto_upload=self.qup_prefs.auto_upload and 'true' or 'false',
             ul_size_limit=self.qup_prefs.size_limit and str(
                 self.qup_prefs.size_limit * 1024) or '',
             ul_xhr_size_limit=self.qup_prefs.size_limit and str(
                 self.qup_prefs.size_limit * 1024) or '0',
             ul_sim_upload_limit=str(self.qup_prefs.sim_upload_limit),
-            ul_object_override=self.qup_prefs.object_override and 'true' or 'false',
+            ul_object_override=(self.qup_prefs.object_override and
+                                'true' or 'false'),
             ul_button_text=self._translate(_(u'Browse')),
             ul_draganddrop_text=self._translate(
                 _(u'Drag and drop files to upload')),
@@ -487,13 +490,15 @@ class QuickUploadInit(BrowserView):
                 _(u"This file has invalid extension:")),
             ul_error_onlyallowed=self._translate(_(u"Only allowed:")),
             ul_error_no_permission=self._translate(
-                _(u"You don't have permission to add this content in this place.")),
+                _(u"You don't have permission to add "
+                  u"this content in this place.")),
             ul_error_disallowed_type=self._translate(
                 _(u"This type of element is not allowed in this folder.",)),
             ul_error_already_exists=self._translate(
                 _(u"This file already exists with the same name on server:")),
             ul_error_zodb_conflict=self._translate(
-                _(u"A data base conflict error happened when uploading this file:")),
+                _(u"A data base conflict error happened "
+                  u"when uploading this file:")),
             ul_error_server=self._translate(
                 _(u"Server error, please contact support and/or try again.")),
         )
@@ -636,10 +641,10 @@ class QuickUploadFile(QuickUploadAuthenticate):
 
         response.setHeader('Expires', 'Sat, 1 Jan 2000 00:00:00 GMT')
         response.setHeader('Cache-control', 'no-cache')
-        # application/json is not supported by old IEs but text/html fails in every
-        # browser with plone.protect 3.0.11
+        # application/json is not supported by old IEs but text/html fails in
+        # every browser with plone.protect 3.0.11
         response.setHeader('Content-Type', 'application/json; charset=utf-8')
-        # disable diazo themes
+        # disable diazo themes and csrf protection
         request.response.setHeader('X-Theme-Disabled', 'True')
 
         if request.HTTP_X_REQUESTED_WITH:
@@ -692,7 +697,8 @@ class QuickUploadFile(QuickUploadAuthenticate):
         except MissingExtension:
             return json.dumps({u'error': u'missingExtension'})
 
-        if (newid in context or file_name in context) and not self.qup_prefs.object_unique_id:
+        if (newid in context or file_name in context) and \
+                not self.qup_prefs.object_unique_id:
             updated_object = context.get(newid, False) or context[file_name]
             mtool = getToolByName(context, 'portal_membership')
             override_setting = self.qup_prefs.object_override
@@ -794,7 +800,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
         if not max_size:
             return 1
 
-        #file_size = len(data.read()) / 1024
+        # file_size = len(data.read()) / 1024
         data.seek(0, os.SEEK_END)
         file_size = data.tell() / 1024
         data.seek(0, os.SEEK_SET)

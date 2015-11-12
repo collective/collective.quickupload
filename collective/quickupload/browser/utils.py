@@ -2,8 +2,10 @@
 from Acquisition import aq_inner
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser import BrowserView
-from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
-from collective.quickupload.portlet.quickuploadportlet import IQuickUploadPortlet
+from collective.quickupload.browser.quickupload_settings import \
+    IQuickUploadControlPanel
+from collective.quickupload.portlet.quickuploadportlet import \
+    IQuickUploadPortlet
 from plone.portlets.interfaces import IPortletManager
 from plone.portlets.interfaces import IPortletRetriever
 from ua_parser import user_agent_parser

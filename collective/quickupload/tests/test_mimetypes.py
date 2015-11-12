@@ -26,10 +26,12 @@ class TestMimetypes(unittest.TestCase):
         fieldstorage.filename = 'testfile_mimetypes.txt'
         self.fileupload = FileUpload(fieldstorage)
         mtr = getToolByName(self.portal, 'mimetypes_registry')
-        mtr.manage_addMimeType('Only globs mimetype', [
-                               'application/x-only-glob'], [], 'application.png', globs=['*.onlyglob'])
-        mtr.manage_addMimeType('Only extension mimetype', [
-                               'application/x-only-ext'], ['onlyext'], 'application.png')
+        mtr.manage_addMimeType(
+            'Only globs mimetype', ['application/x-only-glob'], [],
+            'application.png', globs=['*.onlyglob'])
+        mtr.manage_addMimeType(
+            'Only extension mimetype', ['application/x-only-ext'],
+            ['onlyext'], 'application.png')
 
     def test_only_globs(self):
         content_type = get_content_type(

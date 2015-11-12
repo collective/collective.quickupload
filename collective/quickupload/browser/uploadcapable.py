@@ -127,7 +127,7 @@ class QuickUploadCapableFileFactory(object):
                         else:
                             del obj._at_rename_after_creation
 
-                #@TODO : rollback if there has been an error
+                # TODO : rollback if there has been an error
                 transaction.commit()
             finally:
                 upload_lock.release()

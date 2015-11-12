@@ -288,12 +288,12 @@ msgstr "Automatisch uploaden bij selectie"
 #. Default: "Fill description before upload"
 #: ../browser/quickupload_settings.py:76
 msgid "title_fill_descriptions"
-msgstr "Vul beschrijving voor uploaden"
+msgstr "Voer omschrijving in voorafgaand aan uploaden"
 
 #. Default: "Fill title before upload"
 #: ../browser/quickupload_settings.py:67
 msgid "title_fill_titles"
-msgstr "Plaats titels voor uploaden"
+msgstr "Voer titel in voorafgaand aan uploaden"
 
 #. Default: "Override by upload file"
 #: ../browser/quickupload_settings.py:124

@@ -51,4 +51,12 @@
       handler=".upgrades.v6_v7"
       profile="collective.quickupload:default" />
 
+  <genericsetup:upgradeStep
+      title="Add id_as_title property"
+      description=""
+      source="7"
+      destination="8"
+      handler=".upgrades.v7_v8"
+      profile="collective.quickupload:default" />
+
 </configure>

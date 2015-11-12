@@ -129,6 +129,18 @@ class IQuickUploadControlPanel(Interface):
         default=True,
         required=False)
 
+    id_as_title = Bool(
+        title=_(u"title_id_as_title", default=u"Use id as title"),
+        description=_(
+            u"description_id_as_title",
+            default=u"Reuse the file name for the title "
+                    u"when no explicit title is given. "
+                    u"Checked: use exact id including file extension, "
+                    u"Non-Checked: use cleaned id, without extension "
+                    u"and with spaces instead of dashes or underscores."),
+        default=False,
+        required=False)
+
 
 class QuickUploadControlPanelAdapter(SchemaAdapterBase):
 
@@ -221,6 +233,14 @@ class QuickUploadControlPanelAdapter(SchemaAdapterBase):
         self.quProps._updateProperty('object_override', value)
 
     object_override = property(get_object_override, set_object_override)
+
+    def get_id_as_title(self):
+        return self.quProps.getProperty('id_as_title')
+
+    def set_id_as_title(self, value):
+        self.quProps._updateProperty('id_as_title', value)
+
+    id_as_title = property(get_id_as_title, set_id_as_title)
 
 
 class QuickUploadControlPanel(ControlPanelForm):

@@ -702,6 +702,8 @@ class QuickUploadFile(QuickUploadAuthenticate):
         portal_type = getDataFromAllRequests(request, 'typeupload') or ''
         title = getDataFromAllRequests(request, 'title') or ''
         description = getDataFromAllRequests(request, 'description') or ''
+        if not title.strip() and self.qup_prefs.id_as_title:
+            title = newid
 
         if not portal_type:
             ctr = getToolByName(context, 'content_type_registry')

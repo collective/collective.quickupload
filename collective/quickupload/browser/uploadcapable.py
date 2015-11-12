@@ -62,7 +62,7 @@ def get_id_from_filename(filename, context, unique=False):
     return newid
 
 
-class QuickUploadCapableFileFactory(object):
+class (object):
     interface.implements(IQuickUploadFileFactory)
     component.adapts(IQuickUploadCapable)
 

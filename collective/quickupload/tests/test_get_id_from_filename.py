@@ -5,8 +5,6 @@ except ImportError:
     # Python 2.7 has unittest2 integrated in unittest
     import unittest
 from collective.quickupload.testing import QUICKUPLOAD_FUNCTIONAL_TESTING
-from plone.app.testing import setRoles
-from plone.app.testing import TEST_USER_ID
 import mock
 
 
@@ -15,14 +13,17 @@ class TestCase(unittest.TestCase):
     layer = QUICKUPLOAD_FUNCTIONAL_TESTING
 
     def test_MissingExtension(self):
-        from collective.quickupload.browser.uploadcapable import MissingExtension
+        from collective.quickupload.browser.uploadcapable import \
+            MissingExtension
         self.assertTrue(issubclass(MissingExtension, Exception))
 
     def test_get_id_from_filename__without_extension(self):
         context = mock.Mock()
         context.getCharset.return_value = 'utf-8'
-        from collective.quickupload.browser.uploadcapable import MissingExtension
-        from collective.quickupload.browser.uploadcapable import get_id_from_filename
+        from collective.quickupload.browser.uploadcapable import \
+            MissingExtension
+        from collective.quickupload.browser.uploadcapable import \
+            get_id_from_filename
         filename = 'FILENAME'
         self.assertRaises(
             MissingExtension,
@@ -36,7 +37,8 @@ class TestCase(unittest.TestCase):
         # Set already existing file
         setattr(portal, filename, object())
 
-        from collective.quickupload.browser.uploadcapable import get_id_from_filename
+        from collective.quickupload.browser.uploadcapable import \
+            get_id_from_filename
 
         # Per default it does not return a unique value
         self.assertEqual(

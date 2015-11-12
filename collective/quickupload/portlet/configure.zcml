@@ -3,13 +3,13 @@
     xmlns:plone="http://namespaces.plone.org/plone"
     i18n_domain="collective.quickupload">
 
-  <!-- the quickupload portlet is an example on 
+  <!-- the quickupload portlet is an example on
        how to use the quickupload view -->
 
   <utility
     component=".vocabularies.UploadFileTypeVocabularyFactory"
     name="collective.quickupload.fileTypeVocabulary"
-    /> 
+    />
 
   <include package="plone.app.portlets" file="permissions.zcml" />
 
@@ -22,6 +22,6 @@
      renderer=".quickuploadportlet.Renderer"
      addview=".quickuploadportlet.AddForm"
      editview=".quickuploadportlet.EditForm"
-     />     
+     />
 
 </configure>

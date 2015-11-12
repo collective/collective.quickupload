@@ -77,7 +77,7 @@ def invalidateTicket(ident, ticket):
 
 class TicketView(object):
     """A view which returns a ticket for its context"""
-    
+
     def __call__(self):
         # IE likes to cache this request, don't let it
         response = self.request.response

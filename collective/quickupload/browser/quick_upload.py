@@ -742,7 +742,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
                     # Allow Zope to retry up to three times, and if that still
                     # fails, handle ConflictErrors on client side if necessary
                     raise
-                except Exception, e:
+                except Exception as e:
                     logger.error(
                         "Error updating %s file: %s", file_name, str(e)
                     )
@@ -762,7 +762,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
                     # Allow Zope to retry up to three times, and if that still
                     # fails, handle ConflictErrors on client side if necessary
                     raise
-                except Exception, e:
+                except Exception as e:
                     logger.error(
                         "Error creating %s file: %s", file_name, str(e)
                     )

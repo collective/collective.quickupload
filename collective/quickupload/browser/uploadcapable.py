@@ -89,7 +89,7 @@ class QuickUploadCapableFileFactory(object):
         if newid in context:
             # only here for flashupload method since a check_id is done
             # in standard uploader - see also XXX in quick_upload.py
-            raise NameError, 'Object id %s already exists' % newid
+            raise NameError('Object id %s already exists' % newid)
         else:
             upload_lock.acquire()
             try:
@@ -101,7 +101,7 @@ class QuickUploadCapableFileFactory(object):
                     error = u'serverErrorNoPermission'
                 except ValueError:
                     error = u'serverErrorDisallowedType'
-                except Exception, e:
+                except Exception as e:
                     error = u'serverError'
                     logger.exception(e)
 

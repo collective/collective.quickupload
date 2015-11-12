@@ -31,7 +31,8 @@ class ControlPanelTest(unittest.TestCase):
 
     def test_uninstalled(self):
         setup_tool = getattr(self.portal, 'portal_setup')
-        setup_tool.runAllImportStepsFromProfile('profile-collective.quickupload:uninstall')
+        setup_tool.runAllImportStepsFromProfile(
+            'profile-collective.quickupload:uninstall')
 
         # entry is removed from the control panel
         installed = [a.getAction(self)['id'] for a in self.cp.listActions()]

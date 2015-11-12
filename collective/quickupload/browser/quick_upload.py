@@ -124,13 +124,13 @@ def _listTypesForInterface(context, iftype='file'):
             interface = IImageContent
         else:
             interface = IFileContent
-        #plone4
+        # plone4
         try:
             all_types = [
                 tipe.getId() for tipe in
                 archetype_tool.listPortalTypesWithInterfaces([interface])
             ]
-        #plone3
+        # plone3
         except:
             all_types = archetype_tool.listRegisteredTypes(inProject=True)
             all_types = [
@@ -449,38 +449,53 @@ class QuickUploadInit(BrowserView):
         ticket = context.restrictedTraverse('@@quickupload_ticket')()
 
         settings = dict(
-            ticket                 = ticket,
-            portal_url             = portal_url,
-            typeupload             = '',
-            context_url            = context.absolute_url(),
-            physical_path          = "/".join(context.getPhysicalPath()),
-            ul_id                  = self.uploader_id,
-            ul_fill_titles         = self.qup_prefs.fill_titles and 'true' or 'false',
-            ul_fill_descriptions   = self.qup_prefs.fill_descriptions and 'true' or 'false',
-            ul_auto_upload         = self.qup_prefs.auto_upload and 'true' or 'false',
-            ul_size_limit          = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '',
-            ul_xhr_size_limit      = self.qup_prefs.size_limit and str(self.qup_prefs.size_limit*1024) or '0',
-            ul_sim_upload_limit    = str(self.qup_prefs.sim_upload_limit),
-            ul_object_override     = self.qup_prefs.object_override and 'true' or 'false',
-            ul_button_text         = self._translate(_(u'Browse')),
-            ul_draganddrop_text    = self._translate(_(u'Drag and drop files to upload')),
-            ul_msg_all_sucess      = self._translate(_(u'All files uploaded with success.')),
-            ul_msg_some_sucess     = self._translate(_(u' files uploaded with success, ')),
-            ul_msg_some_errors     = self._translate(_(u" uploads return an error.")),
-            ul_msg_failed          = self._translate(_(u"Failed")),
-            ul_error_try_again_wo  = self._translate(_(u"please select files again without it.")),
-            ul_error_try_again     = self._translate(_(u"please try again.")),
-            ul_error_empty_file    = self._translate(_(u"Selected elements contain an empty file or a folder:")),
-            ul_error_empty_extension = self._translate(_(u"This file has no extension:")),
-            ul_error_file_large    = self._translate(_(u"This file is too large:")),
-            ul_error_maxsize_is    = self._translate(_(u"maximum file size is:")),
-            ul_error_bad_ext       = self._translate(_(u"This file has invalid extension:")),
-            ul_error_onlyallowed   = self._translate(_(u"Only allowed:")),
-            ul_error_no_permission = self._translate(_(u"You don't have permission to add this content in this place.")),
-            ul_error_disallowed_type = self._translate(_(u"This type of element is not allowed in this folder.",)),
-            ul_error_already_exists = self._translate(_(u"This file already exists with the same name on server:")),
-            ul_error_zodb_conflict = self._translate(_(u"A data base conflict error happened when uploading this file:")),
-            ul_error_server        = self._translate(_(u"Server error, please contact support and/or try again.")),
+            ticket=ticket,
+            portal_url=portal_url,
+            typeupload='',
+            context_url=context.absolute_url(),
+            physical_path="/".join(context.getPhysicalPath()),
+            ul_id=self.uploader_id,
+            ul_fill_titles=self.qup_prefs.fill_titles and 'true' or 'false',
+            ul_fill_descriptions=self.qup_prefs.fill_descriptions and 'true' or 'false',
+            ul_auto_upload=self.qup_prefs.auto_upload and 'true' or 'false',
+            ul_size_limit=self.qup_prefs.size_limit and str(
+                self.qup_prefs.size_limit * 1024) or '',
+            ul_xhr_size_limit=self.qup_prefs.size_limit and str(
+                self.qup_prefs.size_limit * 1024) or '0',
+            ul_sim_upload_limit=str(self.qup_prefs.sim_upload_limit),
+            ul_object_override=self.qup_prefs.object_override and 'true' or 'false',
+            ul_button_text=self._translate(_(u'Browse')),
+            ul_draganddrop_text=self._translate(
+                _(u'Drag and drop files to upload')),
+            ul_msg_all_sucess=self._translate(
+                _(u'All files uploaded with success.')),
+            ul_msg_some_sucess=self._translate(
+                _(u' files uploaded with success, ')),
+            ul_msg_some_errors=self._translate(
+                _(u" uploads return an error.")),
+            ul_msg_failed=self._translate(_(u"Failed")),
+            ul_error_try_again_wo=self._translate(
+                _(u"please select files again without it.")),
+            ul_error_try_again=self._translate(_(u"please try again.")),
+            ul_error_empty_file=self._translate(
+                _(u"Selected elements contain an empty file or a folder:")),
+            ul_error_empty_extension=self._translate(
+                _(u"This file has no extension:")),
+            ul_error_file_large=self._translate(_(u"This file is too large:")),
+            ul_error_maxsize_is=self._translate(_(u"maximum file size is:")),
+            ul_error_bad_ext=self._translate(
+                _(u"This file has invalid extension:")),
+            ul_error_onlyallowed=self._translate(_(u"Only allowed:")),
+            ul_error_no_permission=self._translate(
+                _(u"You don't have permission to add this content in this place.")),
+            ul_error_disallowed_type=self._translate(
+                _(u"This type of element is not allowed in this folder.",)),
+            ul_error_already_exists=self._translate(
+                _(u"This file already exists with the same name on server:")),
+            ul_error_zodb_conflict=self._translate(
+                _(u"A data base conflict error happened when uploading this file:")),
+            ul_error_server=self._translate(
+                _(u"Server error, please contact support and/or try again.")),
         )
 
         settings['typeupload'] = typeupload
@@ -527,6 +542,7 @@ class QuickUploadAuthenticate(BrowserView):
     for authentication because sending cookie in all requests
     is not secure.
     """
+
     def __init__(self, context, request):
         self.context = context
         self.request = request

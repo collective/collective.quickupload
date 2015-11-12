@@ -12,5 +12,6 @@
   <property name="sim_upload_limit" type="int">2</property>
   <property name="object_unique_id" type="boolean">True</property>
   <property name="object_override" type="boolean">True</property>
+  <property name="id_as_title" type="boolean">False</property>
  </object>
 </object>

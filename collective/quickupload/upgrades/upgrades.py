@@ -19,7 +19,7 @@ def upgrade_resources(context):
 
 
 def v3_v4(context):
-    #Add property to quickupload property sheet
+    # Add property to quickupload property sheet
     ptool = getToolByName(context, 'portal_properties')
     qu_props = ptool.get('quickupload_properties')
     if not qu_props.hasProperty('use_flash_as_fallback'):
@@ -27,7 +27,7 @@ def v3_v4(context):
 
 
 def v4_v5(context):
-    #Add property to quickupload property sheet
+    # Add property to quickupload property sheet
     ptool = getToolByName(context, 'portal_properties')
     qu_props = ptool.get('quickupload_properties')
     if not qu_props.hasProperty('show_upload_action'):
@@ -35,17 +35,26 @@ def v4_v5(context):
     context.runImportStepFromProfile(
         'profile-collective.quickupload:default', 'actions')
 
+
 def v5_v6(context):
-    #Add property to quickupload property sheet
+    # Add property to quickupload property sheet
     ptool = getToolByName(context, 'portal_properties')
     qu_props = ptool.get('quickupload_properties')
     if not qu_props.hasProperty('object_override'):
         qu_props._setProperty('object_override', False, 'boolean')
 
+
 def v6_v7(context):
-    #Add property to quickupload property sheet
+    # Add property to quickupload property sheet
     ptool = getToolByName(context, 'portal_properties')
     qu_props = ptool.get('quickupload_properties')
     if not qu_props.hasProperty('object_unique_id'):
         qu_props._setProperty('object_unique_id', False, 'boolean')
 
+
+def v7_v8(context):
+    # Add property to quickupload property sheet
+    ptool = getToolByName(context, 'portal_properties')
+    qu_props = ptool.get('quickupload_properties')
+    if not qu_props.hasProperty('id_as_title'):
+        qu_props._setProperty('id_as_title', False, 'boolean')

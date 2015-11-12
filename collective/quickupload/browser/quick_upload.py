@@ -30,6 +30,7 @@ from zope.i18n import translate
 from zope.schema import getFieldsInOrder
 from zope.security.interfaces import Unauthorized
 
+import json
 import mimetypes
 import os
 import random
@@ -49,13 +50,6 @@ if HAS_DEXTERITY:
     from plone.dexterity.interfaces import IDexterityFTI
     from plone.namedfile.interfaces import INamedFileField
     from plone.namedfile.interfaces import INamedImageField
-
-try:
-    # Python 2.6+
-    import json
-except ImportError:
-    # Python 2.4 (Plone 3.3)
-    import simplejson as json
 
 
 def decodeQueryString(QueryString):

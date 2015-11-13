@@ -4,7 +4,8 @@ Changelog
 1.8.3 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Updated Dutch translations.
+  [maurits]
 
 
 1.8.2 (2015-11-13)

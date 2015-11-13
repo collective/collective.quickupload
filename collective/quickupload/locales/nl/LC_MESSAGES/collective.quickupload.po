@@ -52,7 +52,7 @@ msgstr "Box titel"
 
 #: ../browser/quick_upload.py:470
 msgid "Browse"
-msgstr "Browse"
+msgstr "Bladeren"
 
 #: ../browser/quick_upload.py:409
 msgid "Choose audio files to upload"
@@ -200,7 +200,7 @@ msgstr "Selecteer om titels van de bestanden op te kunnen geven voorafgaand aan 
 #. Default: "Reuse the file name for the title when no explicit title is given. Checked: use exact id including file extension, Non-Checked: use cleaned id, without extension and with spaces instead of dashes or underscores."
 #: ../browser/quickupload_settings.py:134
 msgid "description_id_as_title"
-msgstr ""
+msgstr "Hergebruik de bestandsnaam als titel wanneer er geen expliciete titel is opgegeven. Geselecteerd: gebruik de exacte bestandsnaam, inclusief extensie. Niet geselecteerd: gebruik de opgeschoonde bestandsnaam, zonder extensie en met spaties in plaats van streepjes."
 
 #. Default: "If the folder already has same file name, Checked: Override, Non-Checked: raise upload error."
 #: ../browser/quickupload_settings.py:125
@@ -303,7 +303,7 @@ msgstr "Voer titel in voorafgaand aan uploaden"
 #. Default: "Use id as title"
 #: ../browser/quickupload_settings.py:133
 msgid "title_id_as_title"
-msgstr ""
+msgstr "Gebruik de bestandsnaam als titel"
 
 #. Default: "Override by upload file"
 #: ../browser/quickupload_settings.py:124
@@ -339,4 +339,3 @@ msgstr "Gebruik Flash upload voor IE"
 #: ../browser/quickupload_settings.py:17
 msgid "title_use_flashupload"
 msgstr "Gebruik Flash Upload"
-

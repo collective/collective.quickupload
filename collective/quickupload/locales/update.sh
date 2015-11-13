@@ -8,9 +8,9 @@ i18ndude rebuild-pot --pot plone.pot --merge ./plone-manual.pot
 i18ndude sync --pot $domain.pot */LC_MESSAGES/$domain.po
 i18ndude sync --pot plone.pot */LC_MESSAGES/plone.po
 
-WARNINGS=`find . -name "*pt" | xargs i18ndude find-untranslated | grep -e '^-WARN' | wc -l`
-ERRORS=`find . -name "*pt" | xargs i18ndude find-untranslated | grep -e '^-ERROR' | wc -l`
-FATAL=`find . -name "*pt"  | xargs i18ndude find-untranslated | grep -e '^-FATAL' | wc -l`
+WARNINGS=`find .. -name "*pt" | xargs i18ndude find-untranslated | grep -e '^-WARN' | wc -l`
+ERRORS=`find .. -name "*pt" | xargs i18ndude find-untranslated | grep -e '^-ERROR' | wc -l`
+FATAL=`find .. -name "*pt"  | xargs i18ndude find-untranslated | grep -e '^-FATAL' | wc -l`
 
 echo
 echo "There are $WARNINGS warnings (possibly missing i18n markup)"
@@ -23,4 +23,4 @@ rm -f ./rebuild_i18n.log
 
 touch ./rebuild_i18n.log
 
-find ../ -name "*pt" | xargs i18ndude find-untranslated > ./rebuild_i18n.log
+find .. -name "*pt" | xargs i18ndude find-untranslated > ./rebuild_i18n.log

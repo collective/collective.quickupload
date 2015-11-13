@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2015-09-28 06:47+0000\n"
+"POT-Creation-Date: 2015-11-13 13:07+0000\n"
 "PO-Revision-Date: 2015-11-03 18:30+0100’\n"
 "Last-Translator: Maurits van Rees <m.van.rees@zestsoftware.nl>\n"
 "Language-Team: Dutch <support@fourdigits.nl>\n"
@@ -12,33 +12,33 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Language: nl\n"
 "Language-Code: nl\n"
 "Language-Name: Dutch\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: collective.quickupload\n"
+"Language: nl\n"
 
-#: ../browser/quick_upload.py:474
+#: ../browser/quick_upload.py:476
 msgid " files uploaded with success, "
 msgstr " bestanden met succes geupload, "
 
-#: ../browser/quick_upload.py:475
+#: ../browser/quick_upload.py:478
 msgid " uploads return an error."
 msgstr " upload gaf een foutmelding."
 
-#: ../browser/quick_upload.py:488
+#: ../browser/quick_upload.py:500
 msgid "A data base conflict error happened when uploading this file:"
 msgstr "Een data base conflict foutmelding tijdens uploaden van het bestand:"
 
-#: ../portlet/quickuploadportlet.py:100
+#: ../portlet/quickuploadportlet.py:101
 msgid "All"
 msgstr "Alle"
 
-#: ../browser/quick_upload.py:473
+#: ../browser/quick_upload.py:474
 msgid "All files uploaded with success."
 msgstr "Alle bestanden met succes geupload"
 
-#: ../portlet/quickuploadportlet.py:103
+#: ../portlet/quickuploadportlet.py:104
 msgid "Audio files"
 msgstr "Audio bestanden"
 
@@ -46,47 +46,47 @@ msgstr "Audio bestanden"
 msgid "Batch upload files."
 msgstr "Batch upload bestanden"
 
-#: ../portlet/quickuploadportlet.py:77
+#: ../portlet/quickuploadportlet.py:78
 msgid "Box title"
 msgstr "Box titel"
 
-#: ../browser/quick_upload.py:471
+#: ../browser/quick_upload.py:470
 msgid "Browse"
 msgstr "Browse"
 
-#: ../browser/quick_upload.py:414
+#: ../browser/quick_upload.py:409
 msgid "Choose audio files to upload"
 msgstr "Kies audio bestanden om te uploaden"
 
-#: ../browser/quick_upload.py:422
+#: ../browser/quick_upload.py:417
 msgid "Choose file for upload: ${ext}"
 msgstr "Kies een bestand te uploaden: ${ext}"
 
-#: ../browser/quick_upload.py:417
+#: ../browser/quick_upload.py:412
 msgid "Choose flash files to upload"
 msgstr "Kies flash bestanden om te uploaden"
 
-#: ../browser/quick_upload.py:408
+#: ../browser/quick_upload.py:403
 msgid "Choose images to upload"
 msgstr "Kies afbeeldingen om te uploaden"
 
-#: ../portlet/quickuploadportlet.py:95
+#: ../portlet/quickuploadportlet.py:96
 msgid "Choose the media type used for file upload. image, audio, video ..."
 msgstr "Kies een media type om te uploaden. afbeelding, audio, video ..."
 
-#: ../portlet/quickuploadportlet.py:85
+#: ../portlet/quickuploadportlet.py:86
 msgid "Choose the portal type used for file upload. Keep the default configuration to automatically choose a portal type depending on settings defined in the content_type_registry."
 msgstr "Kies het contenttype om te gebruiken voor de bestandsupload. Behoud de standaardinstelling om automatisch een contenttype te selecteren gebaseerd op instellingen in het contenttype register."
 
-#: ../browser/quick_upload.py:411
+#: ../browser/quick_upload.py:406
 msgid "Choose video files to upload"
 msgstr "Kies video bestanden om te uploaden"
 
-#: ../portlet/quickuploadportlet.py:84
+#: ../portlet/quickuploadportlet.py:85
 msgid "Content type"
 msgstr "Contenttype"
 
-#: ../browser/quickupload_settings.py:229
+#: ../browser/quickupload_settings.py:249
 msgid "Control how the quick upload tool is used."
 msgstr "Hoe de quick upload tool wordt gebruikt."
 
@@ -94,43 +94,43 @@ msgstr "Hoe de quick upload tool wordt gebruikt."
 msgid "Drag and drop files to upload"
 msgstr "Sleep bestanden hier om te uploaden"
 
-#: ../browser/quick_upload.py:476
+#: ../browser/quick_upload.py:479
 msgid "Failed"
 msgstr "Gefaald"
 
 msgid "Files"
 msgstr "Bestanden"
 
-#: ../browser/quick_upload.py:202
-#: ../portlet/quickuploadportlet.py:130
+#: ../browser/quick_upload.py:197
+#: ../portlet/quickuploadportlet.py:131
 msgid "Files Quick Upload"
 msgstr "Bestanden Quick upload"
 
-#: ../portlet/quickuploadportlet.py:104
+#: ../portlet/quickuploadportlet.py:105
 msgid "Flash files"
 msgstr "Flashbestanden"
 
-#: ../portlet/quickuploadportlet.py:79
+#: ../portlet/quickuploadportlet.py:80
 msgid "If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."
 msgstr "Als de titel leeg is, zal de portlet ' Quick Upload' heten."
 
 msgid "Image"
 msgstr "Afbeelding"
 
-#: ../portlet/quickuploadportlet.py:101
+#: ../portlet/quickuploadportlet.py:102
 msgid "Images"
 msgstr "Afbeeldingen"
 
-#: ../browser/quick_upload.py:204
-#: ../portlet/quickuploadportlet.py:132
+#: ../browser/quick_upload.py:199
+#: ../portlet/quickuploadportlet.py:133
 msgid "Images Quick Upload"
 msgstr "Afbeeldingen Quick Upload"
 
-#: ../portlet/quickuploadportlet.py:94
+#: ../portlet/quickuploadportlet.py:95
 msgid "Media type"
 msgstr "Media type"
 
-#: ../browser/quick_upload.py:484
+#: ../browser/quick_upload.py:491
 msgid "Only allowed:"
 msgstr "Alleen toegestaan:"
 
@@ -138,35 +138,35 @@ msgstr "Alleen toegestaan:"
 msgid "Quick Upload"
 msgstr "Quick upload"
 
-#: ../browser/quickupload_settings.py:228
+#: ../browser/quickupload_settings.py:248
 msgid "Quick Upload settings"
 msgstr "Quick upload instellingen"
 
-#: ../browser/quick_upload.py:479
+#: ../browser/quick_upload.py:484
 msgid "Selected elements contain an empty file or a folder:"
 msgstr "Geselecteerde elementen zijn leeg of een map:"
 
-#: ../browser/quick_upload.py:489
+#: ../browser/quick_upload.py:503
 msgid "Server error, please contact support and/or try again."
 msgstr "Server error, probeer het nog eens."
 
-#: ../browser/quick_upload.py:487
+#: ../browser/quick_upload.py:498
 msgid "This file already exists with the same name on server:"
 msgstr "Dit bestand bestaad reeds op de server met dezefde naam:"
 
-#: ../browser/quick_upload.py:483
+#: ../browser/quick_upload.py:490
 msgid "This file has invalid extension:"
 msgstr "Dit bestand heeft een foute extensie:"
 
-#: ../browser/quick_upload.py:480
+#: ../browser/quick_upload.py:486
 msgid "This file has no extension:"
 msgstr "Dit bestand heeft geen extensie:"
 
-#: ../browser/quick_upload.py:481
+#: ../browser/quick_upload.py:487
 msgid "This file is too large:"
 msgstr "Dit bestand is te groot:"
 
-#: ../browser/quick_upload.py:486
+#: ../browser/quick_upload.py:496
 msgid "This type of element is not allowed in this folder."
 msgstr "Dit type is niet toegestaan in deze map."
 
@@ -174,11 +174,11 @@ msgstr "Dit type is niet toegestaan in deze map."
 msgid "Upload"
 msgstr "Uploaden"
 
-#: ../portlet/quickuploadportlet.py:102
+#: ../portlet/quickuploadportlet.py:103
 msgid "Video files"
 msgstr "Video bestanden"
 
-#: ../browser/quick_upload.py:485
+#: ../browser/quick_upload.py:493
 msgid "You don't have permission to add this content in this place."
 msgstr "Je hebt geen toestemming om deze inhoud hier toe te voegen."
 
@@ -196,6 +196,11 @@ msgstr "Selecteer om beschrijvingen van de bestanden op te kunnen geven voorafga
 #: ../browser/quickupload_settings.py:68
 msgid "description_fill_titles"
 msgstr "Selecteer om titels van de bestanden op te kunnen geven voorafgaand aan de upload."
+
+#. Default: "Reuse the file name for the title when no explicit title is given. Checked: use exact id including file extension, Non-Checked: use cleaned id, without extension and with spaces instead of dashes or underscores."
+#: ../browser/quickupload_settings.py:134
+msgid "description_id_as_title"
+msgstr ""
 
 #. Default: "If the folder already has same file name, Checked: Override, Non-Checked: raise upload error."
 #: ../browser/quickupload_settings.py:125
@@ -253,8 +258,8 @@ msgid "label_default_portaltype_configuration"
 msgstr "Standaardinstelling (contenttype register)"
 
 #. Default: "${medialabel} Quick Upload"
-#: ../browser/quick_upload.py:206
-#: ../portlet/quickuploadportlet.py:134
+#: ../browser/quick_upload.py:201
+#: ../portlet/quickuploadportlet.py:135
 msgid "label_media_quickupload"
 msgstr "${medialabel} Quick Upload"
 
@@ -263,7 +268,7 @@ msgstr "${medialabel} Quick Upload"
 msgid "label_upload_files"
 msgstr "Upload bestanden"
 
-#: ../browser/quick_upload.py:482
+#: ../browser/quick_upload.py:488
 msgid "maximum file size is:"
 msgstr "maximale formaat is:"
 
@@ -272,11 +277,11 @@ msgstr "maximale formaat is:"
 msgid "msg_file_replaced"
 msgstr "${filename} bestand is vervangen"
 
-#: ../browser/quick_upload.py:477
+#: ../browser/quick_upload.py:481
 msgid "please select files again without it."
 msgstr "selecteer bestanden nogmaals, zonder het."
 
-#: ../browser/quick_upload.py:478
+#: ../browser/quick_upload.py:482
 msgid "please try again."
 msgstr "probeer het nog eens."
 
@@ -294,6 +299,11 @@ msgstr "Voer omschrijving in voorafgaand aan uploaden"
 #: ../browser/quickupload_settings.py:67
 msgid "title_fill_titles"
 msgstr "Voer titel in voorafgaand aan uploaden"
+
+#. Default: "Use id as title"
+#: ../browser/quickupload_settings.py:133
+msgid "title_id_as_title"
+msgstr ""
 
 #. Default: "Override by upload file"
 #: ../browser/quickupload_settings.py:124
@@ -329,3 +339,4 @@ msgstr "Gebruik Flash upload voor IE"
 #: ../browser/quickupload_settings.py:17
 msgid "title_use_flashupload"
 msgstr "Gebruik Flash Upload"
+

@@ -12,11 +12,11 @@ msgstr ""
 "Content-Type: text/plain; charset=utf-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
-"Language: nl\n"
 "Language-Code: nl\n"
 "Language-Name: Dutch\n"
 "Preferred-Encodings: utf-8\n"
 "Domain: plone\n"
+"Language: nl\n"
 
 #. Default: "A quick upload form for Plone"
 #: Default Profile description in minimal.zcml
@@ -45,3 +45,4 @@ msgstr "Verwijder Plone Quick Upload"
 #: Uninstall Profile description in minimal.zcml
 msgid "Removes quick upload form from Plone"
 msgstr "Verwijdert Plone Quick Upload"
+

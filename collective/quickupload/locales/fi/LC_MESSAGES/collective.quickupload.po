@@ -4,7 +4,7 @@
 msgid ""
 msgstr ""
 "Project-Id-Version: collective.quickupload\n"
-"POT-Creation-Date: 2015-09-28 06:47+0000\n"
+"POT-Creation-Date: 2015-11-13 13:07+0000\n"
 "PO-Revision-Date: 2012-10-31 20:47+0200\n"
 "Last-Translator: Petri Savolainen <petri.savolainen@koodaamo.fi>\n"
 "Language-Team: SUOMEKSI <LL@li.org>\n"
@@ -19,27 +19,27 @@ msgstr ""
 "X-Poedit-Language: Finnish\n"
 "X-Poedit-Country: FINLAND\n"
 
-#: ../browser/quick_upload.py:474
+#: ../browser/quick_upload.py:476
 msgid " files uploaded with success, "
 msgstr "tiedostot onnistuneesti tuotu,"
 
-#: ../browser/quick_upload.py:475
+#: ../browser/quick_upload.py:478
 msgid " uploads return an error."
 msgstr "siirtotoiminto tuotti virheen."
 
-#: ../browser/quick_upload.py:488
+#: ../browser/quick_upload.py:500
 msgid "A data base conflict error happened when uploading this file:"
 msgstr "Tietokannassa tapahtui yhteiskäyttövirhe tuotaessa tiedostoa:"
 
-#: ../portlet/quickuploadportlet.py:100
+#: ../portlet/quickuploadportlet.py:101
 msgid "All"
 msgstr "Kaikki"
 
-#: ../browser/quick_upload.py:473
+#: ../browser/quick_upload.py:474
 msgid "All files uploaded with success."
 msgstr "Kaikki tiedostot tuotu."
 
-#: ../portlet/quickuploadportlet.py:103
+#: ../portlet/quickuploadportlet.py:104
 msgid "Audio files"
 msgstr "Äänitiedostot"
 
@@ -47,47 +47,47 @@ msgstr "Äänitiedostot"
 msgid "Batch upload files."
 msgstr ""
 
-#: ../portlet/quickuploadportlet.py:77
+#: ../portlet/quickuploadportlet.py:78
 msgid "Box title"
 msgstr "Otsikko"
 
-#: ../browser/quick_upload.py:471
+#: ../browser/quick_upload.py:470
 msgid "Browse"
 msgstr "Selaa"
 
-#: ../browser/quick_upload.py:414
+#: ../browser/quick_upload.py:409
 msgid "Choose audio files to upload"
 msgstr "Valitse tuotavat äänitiedostot"
 
-#: ../browser/quick_upload.py:422
+#: ../browser/quick_upload.py:417
 msgid "Choose file for upload: ${ext}"
 msgstr "Valitse tuotava tiedosto: ${ext}"
 
-#: ../browser/quick_upload.py:417
+#: ../browser/quick_upload.py:412
 msgid "Choose flash files to upload"
 msgstr "Valitse tuotavat Flash-tiedostot"
 
-#: ../browser/quick_upload.py:408
+#: ../browser/quick_upload.py:403
 msgid "Choose images to upload"
 msgstr "Valitse tuotavat kuvatiedostot"
 
-#: ../portlet/quickuploadportlet.py:95
+#: ../portlet/quickuploadportlet.py:96
 msgid "Choose the media type used for file upload. image, audio, video ..."
 msgstr "Valitse tuotava mediatyyppi: kuvat, ääni- tai videotiedostot, jne."
 
-#: ../portlet/quickuploadportlet.py:85
+#: ../portlet/quickuploadportlet.py:86
 msgid "Choose the portal type used for file upload. Keep the default configuration to automatically choose a portal type depending on settings defined in the content_type_registry."
 msgstr "Aseta tarvittaessa tuotavien tiedostojen sisältötyyppi. Muussa tapauksessa käytetyt sisältötyypit valitaan järjestelmän sisältötyyppirekisterin määritysten mukaisesti."
 
-#: ../browser/quick_upload.py:411
+#: ../browser/quick_upload.py:406
 msgid "Choose video files to upload"
 msgstr "Valitse tuotavat videotiedostot"
 
-#: ../portlet/quickuploadportlet.py:84
+#: ../portlet/quickuploadportlet.py:85
 msgid "Content type"
 msgstr "Tiedostotyyppi"
 
-#: ../browser/quickupload_settings.py:229
+#: ../browser/quickupload_settings.py:249
 msgid "Control how the quick upload tool is used."
 msgstr "Määritä tiedostojen tuontityökalun käyttöasetukset."
 
@@ -95,43 +95,43 @@ msgstr "Määritä tiedostojen tuontityökalun käyttöasetukset."
 msgid "Drag and drop files to upload"
 msgstr "Vedä ja pudota tähän"
 
-#: ../browser/quick_upload.py:476
+#: ../browser/quick_upload.py:479
 msgid "Failed"
 msgstr "Epäonnistui"
 
 msgid "Files"
 msgstr ""
 
-#: ../browser/quick_upload.py:202
-#: ../portlet/quickuploadportlet.py:130
+#: ../browser/quick_upload.py:197
+#: ../portlet/quickuploadportlet.py:131
 msgid "Files Quick Upload"
 msgstr "Tiedostojen tuonti"
 
-#: ../portlet/quickuploadportlet.py:104
+#: ../portlet/quickuploadportlet.py:105
 msgid "Flash files"
 msgstr "Flash-tiedostot"
 
-#: ../portlet/quickuploadportlet.py:79
+#: ../portlet/quickuploadportlet.py:80
 msgid "If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."
 msgstr "Jos otsikko jätetään tyhjäksi, otsikoksi asetetaan oletusotsikko."
 
 msgid "Image"
 msgstr ""
 
-#: ../portlet/quickuploadportlet.py:101
+#: ../portlet/quickuploadportlet.py:102
 msgid "Images"
 msgstr "Kuvat"
 
-#: ../browser/quick_upload.py:204
-#: ../portlet/quickuploadportlet.py:132
+#: ../browser/quick_upload.py:199
+#: ../portlet/quickuploadportlet.py:133
 msgid "Images Quick Upload"
 msgstr "Kuvien tuonti"
 
-#: ../portlet/quickuploadportlet.py:94
+#: ../portlet/quickuploadportlet.py:95
 msgid "Media type"
 msgstr "Tiedostojen tyyppi"
 
-#: ../browser/quick_upload.py:484
+#: ../browser/quick_upload.py:491
 msgid "Only allowed:"
 msgstr "Sallitut:"
 
@@ -139,35 +139,35 @@ msgstr "Sallitut:"
 msgid "Quick Upload"
 msgstr ""
 
-#: ../browser/quickupload_settings.py:228
+#: ../browser/quickupload_settings.py:248
 msgid "Quick Upload settings"
 msgstr "Tuontityökalun asetukset"
 
-#: ../browser/quick_upload.py:479
+#: ../browser/quick_upload.py:484
 msgid "Selected elements contain an empty file or a folder:"
 msgstr "Valinta sisältää kansioita tai tyhjiä tiedostoja:"
 
-#: ../browser/quick_upload.py:489
+#: ../browser/quick_upload.py:503
 msgid "Server error, please contact support and/or try again."
 msgstr "Palvelinvirhe, ole hyvä ja ota yhteyttä tukipalveluun tai yritä uudelleen."
 
-#: ../browser/quick_upload.py:487
+#: ../browser/quick_upload.py:498
 msgid "This file already exists with the same name on server:"
 msgstr "Samanniminen tiedosto on jo tuotu."
 
-#: ../browser/quick_upload.py:483
+#: ../browser/quick_upload.py:490
 msgid "This file has invalid extension:"
 msgstr "Tiedoston pääte ei ole sallittu:"
 
-#: ../browser/quick_upload.py:480
+#: ../browser/quick_upload.py:486
 msgid "This file has no extension:"
 msgstr "Tiedostolla ei ole päätettä:"
 
-#: ../browser/quick_upload.py:481
+#: ../browser/quick_upload.py:487
 msgid "This file is too large:"
 msgstr "Tiedosto on liian iso:"
 
-#: ../browser/quick_upload.py:486
+#: ../browser/quick_upload.py:496
 msgid "This type of element is not allowed in this folder."
 msgstr "Tämän tyyppinen tiedosto ei ole sallittu tässä kohteessa."
 
@@ -175,11 +175,11 @@ msgstr "Tämän tyyppinen tiedosto ei ole sallittu tässä kohteessa."
 msgid "Upload"
 msgstr ""
 
-#: ../portlet/quickuploadportlet.py:102
+#: ../portlet/quickuploadportlet.py:103
 msgid "Video files"
 msgstr "Videotiedostot"
 
-#: ../browser/quick_upload.py:485
+#: ../browser/quick_upload.py:493
 msgid "You don't have permission to add this content in this place."
 msgstr "Oikeutesi eivät riitä sisällön lisäämiseen."
 
@@ -197,6 +197,11 @@ msgstr "Ruksaa jos haluat antaa tuotaville tiedostoille kuvaukset. Jätä tyhjä
 #: ../browser/quickupload_settings.py:68
 msgid "description_fill_titles"
 msgstr "Ruksaa, jos haluat antaa tiedostoille otsikot. Jätä ruksaamatta jos et tarvitse otsikoita kuville."
+
+#. Default: "Reuse the file name for the title when no explicit title is given. Checked: use exact id including file extension, Non-Checked: use cleaned id, without extension and with spaces instead of dashes or underscores."
+#: ../browser/quickupload_settings.py:134
+msgid "description_id_as_title"
+msgstr ""
 
 #. Default: "If the folder already has same file name, Checked: Override, Non-Checked: raise upload error."
 #: ../browser/quickupload_settings.py:125
@@ -254,8 +259,8 @@ msgid "label_default_portaltype_configuration"
 msgstr "Oletuskonfiguraatio (Content Type Registry)"
 
 #. Default: "${medialabel} Quick Upload"
-#: ../browser/quick_upload.py:206
-#: ../portlet/quickuploadportlet.py:134
+#: ../browser/quick_upload.py:201
+#: ../portlet/quickuploadportlet.py:135
 msgid "label_media_quickupload"
 msgstr "${medialabel} pikalataus"
 
@@ -264,7 +269,7 @@ msgstr "${medialabel} pikalataus"
 msgid "label_upload_files"
 msgstr "Lataa tiedostot"
 
-#: ../browser/quick_upload.py:482
+#: ../browser/quick_upload.py:488
 msgid "maximum file size is:"
 msgstr "enimmäiskoko on:"
 
@@ -273,11 +278,11 @@ msgstr "enimmäiskoko on:"
 msgid "msg_file_replaced"
 msgstr "Tiedosto ${filename} on korvattu"
 
-#: ../browser/quick_upload.py:477
+#: ../browser/quick_upload.py:481
 msgid "please select files again without it."
 msgstr "ole hyvä ja valitse tiedostot uudelleen ilman sitä."
 
-#: ../browser/quick_upload.py:478
+#: ../browser/quick_upload.py:482
 msgid "please try again."
 msgstr "ole hyvä, yritä uudestaan."
 
@@ -295,6 +300,11 @@ msgstr "Täytä kuvaus ennen tuontia"
 #: ../browser/quickupload_settings.py:67
 msgid "title_fill_titles"
 msgstr "Täytä otsikko ennen tuontia"
+
+#. Default: "Use id as title"
+#: ../browser/quickupload_settings.py:133
+msgid "title_id_as_title"
+msgstr ""
 
 #. Default: "Override by upload file"
 #: ../browser/quickupload_settings.py:124

@@ -3,6 +3,7 @@
 *.egg
 *.egg-info
 *.mo
+collective/quickupload/locales/rebuild_i18n.log
 
 # Directories
 eggs/*

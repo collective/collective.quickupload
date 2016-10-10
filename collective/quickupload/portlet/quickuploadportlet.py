@@ -42,7 +42,12 @@ def isTemporary(obj):
 JAVASCRIPT = """
   // workaround this MSIE bug :
   // https://dev.plone.org/plone/ticket/10894
-  if (jQuery.browser.msie) jQuery("#settings").remove();
+  try {
+      /* browser modules has been removed in jQuery 1.9 */
+      if (jQuery.browser.msie) jQuery("#settings").remove();
+  } catch(err) {
+      console.log('jQuery.browser Modules has been deprecated and removed in jQuery 1.9');
+  }
   var Browser = {};
   Browser.onUploadComplete = function() {
       window.location.reload();

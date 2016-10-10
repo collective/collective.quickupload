@@ -6,7 +6,8 @@ Changelog
 
 - Updated Dutch translations.
   [maurits]
-
+- Fixed a Bug with jQuery 1.9+ in quickuploadportlet.py which prevents portlet
+  to be renderd. Added a tyr catch clause. [loechel]
 
 1.8.2 (2015-11-13)
 ------------------

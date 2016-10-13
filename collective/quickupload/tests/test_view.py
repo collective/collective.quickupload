@@ -4,20 +4,51 @@ try:
 except ImportError:
     # Python 2.7 has unittest2 integrated in unittest
     import unittest
+from collective.quickupload.browser.uploadcapable import QuickUploadCapableFileFactory
+from collective.quickupload.browser.uploadcapable import QuickUploadCapableFileUpdater
+from collective.quickupload.interfaces import IQuickUploadFileFactory
+from collective.quickupload.interfaces import IQuickUploadFileUpdater
 from collective.quickupload.testing import QUICKUPLOAD_FUNCTIONAL_TESTING
-from zope.publisher.browser import TestRequest
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
+from Products.CMFPlone.interfaces import IPloneSiteRoot
 from StringIO import StringIO
+from zope.component import getGlobalSiteManager
+from zope.publisher.browser import TestRequest
 import json
 import transaction
+
+
+class TemporaryAdapterRegistration(object):
+    """Context manager to temporarily register an adapter."""
+
+    def __init__(self, factory, required=None, provided=None, name=u''):
+        self.gsm = getGlobalSiteManager()
+        self.factory = factory
+        self.required = required
+        self.provided = provided
+        self.name = name
+
+    def __enter__(self):
+        self.gsm.registerAdapter(
+            self.factory, required=self.required, provided=self.provided,
+            name=self.name)
+
+    def __exit__(self, exc_type, exc_val, exc_tb):
+        is_unregistered = self.gsm.unregisterAdapter(
+            self.factory, required=self.required, provided=self.provided,
+            name=self.name)
+        if not is_unregistered:
+            raise RuntimeError("Could not unregister adapter.")
+        return False
 
 
 class TestCase(unittest.TestCase):
 
     layer = QUICKUPLOAD_FUNCTIONAL_TESTING
 
-    def _upload_file(self, filename, title=None, description=None):
+    def _upload_file(self, filename, title=None, description=None,
+                     bodyfile=None):
         from collective.quickupload.browser.quick_upload import QuickUploadFile
         portal = self.layer['portal']
         request = TestRequest()
@@ -27,7 +58,7 @@ class TestCase(unittest.TestCase):
         request.HTTP_X_REQUESTED_WITH = 'XHR'
         # Set file name:
         request.HTTP_X_FILE_NAME = filename
-        request.BODYFILE = StringIO('dummy file content')
+        request.BODYFILE = bodyfile or StringIO('dummy file content')
         if title is not None:
             request.form['title'] = title
         if description is not None:
@@ -56,6 +87,96 @@ class TestCase(unittest.TestCase):
         self.assertEqual(result.get('error'), 'serverErrorNoPermission')
         self.assertFalse(result.get('success'))
         self.assertFalse(filename in portal)
+
+    def test_upload_file_abort_returns_empty_error(self):
+        filename = 'cheese.txt'
+        result = self._upload_file(filename, bodyfile=object())
+        self.assertEqual({u'error': u'emptyError'}, result)
+
+    def test_upload_empty_file_returns_empty_error(self):
+        filename = 'cheese.txt'
+        result = self._upload_file(filename, bodyfile=StringIO(''))
+        self.assertEqual({u'error': u'emptyError'}, result)
+
+    def test_upload_file_read_error_returns_server_error(self):
+        class FailingFile(object):
+            def read():
+                raise Exception("oops")
+
+        filename = 'parrot.txt'
+        result = self._upload_file(filename, bodyfile=FailingFile())
+        self.assertEqual({u'error': u'serverError'}, result)
+
+    def test_upload_file_raises_missing_extension_for_invalid_filenames(self):
+        filename = 'ni'
+        result = self._upload_file(filename)
+        self.assertEqual({u'error': u'missingExtension'}, result)
+
+    def test_file_updater_exception_returns_server_error(self):
+        class FailingFileUpdater(QuickUploadCapableFileUpdater):
+            def __call__(self, *args, **kwargs):
+                raise Exception("duh!")
+
+        portal = self.layer['portal']
+        setRoles(portal, TEST_USER_ID, ('Manager',))
+        props = portal.portal_properties.quickupload_properties
+        props._updateProperty('object_unique_id', False)
+        props._updateProperty('object_override', True)
+        transaction.commit()
+
+        with TemporaryAdapterRegistration(FailingFileUpdater,
+                                          required=(IPloneSiteRoot,),
+                                          provided=IQuickUploadFileUpdater):
+            filename = 'qux.txt'
+            result = self._upload_file(filename)
+            # upload again, force update
+            result = self._upload_file(filename)
+            self.assertEqual({u'error': u'serverError'}, result)
+
+    def test_file_updater_error_returns_custom_error(self):
+        class ErrorFileUpdater(QuickUploadCapableFileUpdater):
+            def __call__(self, *args, **kwargs):
+                return {"error": "It's stone dead", "success": None}
+
+        portal = self.layer["portal"]
+        setRoles(portal, TEST_USER_ID, ("Manager",))
+        props = portal.portal_properties.quickupload_properties
+        props._updateProperty("object_unique_id", False)
+        props._updateProperty("object_override", True)
+        transaction.commit()
+
+        with TemporaryAdapterRegistration(ErrorFileUpdater,
+                                          required=(IPloneSiteRoot,),
+                                          provided=IQuickUploadFileUpdater):
+            filename = "qux.txt"
+            result = self._upload_file(filename)
+            # upload again, force update
+            result = self._upload_file(filename)
+            self.assertEqual({u"error": u"It's stone dead"}, result)
+
+    def test_file_factory_exception_returns_server_error(self):
+        class FailingFileFactory(QuickUploadCapableFileFactory):
+            def __call__(self, *args, **kwargs):
+                raise Exception("nah-ah")
+
+        with TemporaryAdapterRegistration(FailingFileFactory,
+                                          required=(IPloneSiteRoot,),
+                                          provided=IQuickUploadFileFactory):
+            filename = 'qux.txt'
+            result = self._upload_file(filename)
+            self.assertEqual({u'error': u'serverError'}, result)
+
+    def test_file_factory_error_returns_custom_error(self):
+        class ErrorFileFactory(QuickUploadCapableFileFactory):
+            def __call__(self, *args, **kwargs):
+                return {"error": "It's stone dead", "success": None}
+
+        with TemporaryAdapterRegistration(ErrorFileFactory,
+                                          required=(IPloneSiteRoot,),
+                                          provided=IQuickUploadFileFactory):
+            filename = "qux.txt"
+            result = self._upload_file(filename)
+            self.assertEqual({u"error": u"It's stone dead"}, result)
 
     def test_upload_file_twice_default(self):
         filename = 'my-file.jpg'

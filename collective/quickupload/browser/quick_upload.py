@@ -667,7 +667,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
                     "Error when trying to read the file %s in request",
                     file_name
                 )
-                return json.dumps({u'error': u'serverError'})
+                return self._error_response(u'serverError')
         else:
             # using classic form post method (MSIE<=8)
             file = request.get("qqfile", None)
@@ -688,14 +688,14 @@ class QuickUploadFile(QuickUploadAuthenticate):
             if not self._check_file_size(file):
                 logger.info("Test file size: the file %s is too big, upload "
                             "rejected" % filename)
-                return json.dumps({u'error': u'sizeError'})
+                return self._error_response(u'sizeError')
 
         # overwrite file
         try:
             newid = get_id_from_filename(
                 file_name, context, unique=self.qup_prefs.object_unique_id)
         except MissingExtension:
-            return json.dumps({u'error': u'missingExtension'})
+            return self._error_response(u'missingExtension')
 
         if (newid in context or file_name in context) and \
                 not self.qup_prefs.object_unique_id:
@@ -713,7 +713,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
                     "The file id for %s already exists, upload rejected"
                     % file_name
                 )
-                return json.dumps({u'error': u'serverErrorAlreadyExists'})
+                return self._error_response(u'serverErrorAlreadyExists')
 
             overwritten_file = updated_object
         else:
@@ -752,7 +752,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
                     logger.error(
                         "Error updating %s file: %s", file_name, str(e)
                     )
-                    return json.dumps({u'error': u'serverError'})
+                    return self._error_response(u'serverError')
 
             else:
                 factory = IQuickUploadFileFactory(context)
@@ -772,28 +772,28 @@ class QuickUploadFile(QuickUploadAuthenticate):
                     logger.error(
                         "Error creating %s file: %s", file_name, str(e)
                     )
-                    return json.dumps({u'error': u'serverError'})
+                    return self._error_response(u'serverError')
 
             if f['success'] is not None:
-                o = f['success']
-                logger.info("file url: %s" % o.absolute_url())
-                if HAS_UUID:
-                    uid = IUUID(o)
-                else:
-                    uid = o.UID()
-
-                msg = {
-                    u'success': True,
-                    u'uid': uid,
-                    u'name': o.getId(),
-                    u'title': o.pretty_title_or_id()
-                }
+                obj = f['success']
+                logger.info("file url: %s" % obj.absolute_url())
             else:
-                msg = {u'error': f['error']}
+                return self._error_response(f['error'])
         else:
-            msg = {u'error': u'emptyError'}
+            return self._error_response(u'emptyError')
 
-        return json.dumps(msg)
+        return self._success_response(obj)
+
+    def _error_response(self, msg):
+        return json.dumps({u'error': msg})
+
+    def _success_response(self, obj):
+        return json.dumps({
+            u'success': True,
+            u'uid': IUUID(obj) if HAS_UUID else obj.UDI(),
+            u'name': obj.getId(),
+            u'title': obj.pretty_title_or_id()
+        })
 
     def _check_file_size(self, data):
         max_size = int(self.qup_prefs.size_limit)

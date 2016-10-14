@@ -733,55 +733,54 @@ class QuickUploadFile(QuickUploadAuthenticate):
                 file_name.lower(), content_type, ''
             ) or 'File'
 
-        if file_data:
-            if overwritten_file is not None:
-                updater = IQuickUploadFileUpdater(context)
-                logger.info(
-                    "reuploading %s file with %s: title=%s, description=%s, "
-                    "content_type=%s"
-                    % (overwritten_file.absolute_url(), upload_with, title,
-                       description, content_type))
-                try:
-                    f = updater(overwritten_file, file_name, title,
-                                description, content_type, file_data)
-                except ConflictError:
-                    # Allow Zope to retry up to three times, and if that still
-                    # fails, handle ConflictErrors on client side if necessary
-                    raise
-                except Exception as e:
-                    logger.error(
-                        "Error updating %s file: %s", file_name, str(e)
-                    )
-                    return self._error_response(u'serverError')
-
-            else:
-                factory = IQuickUploadFileFactory(context)
-                logger.info(
-                    "uploading file with %s: filename=%s, title=%s, "
-                    "description=%s, content_type=%s, portal_type=%s"
-                    % (upload_with, file_name, title,
-                       description, content_type, portal_type))
-                try:
-                    f = factory(file_name, title, description, content_type,
-                                file_data, portal_type)
-                except ConflictError:
-                    # Allow Zope to retry up to three times, and if that still
-                    # fails, handle ConflictErrors on client side if necessary
-                    raise
-                except Exception as e:
-                    logger.error(
-                        "Error creating %s file: %s", file_name, str(e)
-                    )
-                    return self._error_response(u'serverError')
-
-            if f['success'] is not None:
-                obj = f['success']
-                logger.info("file url: %s" % obj.absolute_url())
-            else:
-                return self._error_response(f['error'])
-        else:
+        if not file_data:
             return self._error_response(u'emptyError')
 
+        if overwritten_file is not None:
+            updater = IQuickUploadFileUpdater(context)
+            logger.info(
+                "reuploading %s file with %s: title=%s, description=%s, "
+                "content_type=%s"
+                % (overwritten_file.absolute_url(), upload_with, title,
+                   description, content_type))
+            try:
+                f = updater(overwritten_file, file_name, title,
+                            description, content_type, file_data)
+            except ConflictError:
+                # Allow Zope to retry up to three times, and if that still
+                # fails, handle ConflictErrors on client side if necessary
+                raise
+            except Exception as e:
+                logger.error(
+                    "Error updating %s file: %s", file_name, str(e)
+                )
+                return self._error_response(u'serverError')
+
+        else:
+            factory = IQuickUploadFileFactory(context)
+            logger.info(
+                "uploading file with %s: filename=%s, title=%s, "
+                "description=%s, content_type=%s, portal_type=%s"
+                % (upload_with, file_name, title,
+                   description, content_type, portal_type))
+            try:
+                f = factory(file_name, title, description, content_type,
+                            file_data, portal_type)
+            except ConflictError:
+                # Allow Zope to retry up to three times, and if that still
+                # fails, handle ConflictErrors on client side if necessary
+                raise
+            except Exception as e:
+                logger.error(
+                    "Error creating %s file: %s", file_name, str(e)
+                )
+                return self._error_response(u'serverError')
+
+        if f['success'] is None:
+            return self._error_response(f['error'])
+
+        obj = f['success']
+        logger.info("file url: %s" % obj.absolute_url())
         return self._success_response(obj)
 
     def _error_response(self, msg):

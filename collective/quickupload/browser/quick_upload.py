@@ -25,6 +25,7 @@ from collective.quickupload.interfaces import IQuickUploadFileFactory
 from collective.quickupload.interfaces import IQuickUploadFileUpdater
 from collective.quickupload.interfaces import IQuickUploadNotCapable
 from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
+import transaction
 from ZODB.POSException import ConflictError
 from zope.component import getUtility
 from zope.i18n import translate
@@ -784,6 +785,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
         return self._success_response(obj)
 
     def _error_response(self, msg):
+        transaction.abort()
         return json.dumps({u'error': msg})
 
     def _success_response(self, obj):

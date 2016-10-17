@@ -4,10 +4,16 @@ Changelog
 1.8.3 (unreleased)
 ------------------
 
+- Always abort the transaction when the file-upload fails with an error.
+  This prevents constructing partial files when a file-factory or
+  a file-updater fails after creating the content object.
+  [deiferni]
+
 - Updated Dutch translations.
   [maurits]
+
 - Fixed a Bug with jQuery 1.9+ in quickuploadportlet.py which prevents portlet
-  to be renderd. Added a tyr catch clause. [loechel]
+  to be rendered. Added a try catch clause. [loechel]
 
 1.8.2 (2015-11-13)
 ------------------

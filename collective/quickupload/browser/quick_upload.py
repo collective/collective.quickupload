@@ -791,7 +791,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
     def _success_response(self, obj):
         return json.dumps({
             u'success': True,
-            u'uid': IUUID(obj) if HAS_UUID else obj.UDI(),
+            u'uid': IUUID(obj) if HAS_UUID else obj.UID(),
             u'name': obj.getId(),
             u'title': obj.pretty_title_or_id()
         })

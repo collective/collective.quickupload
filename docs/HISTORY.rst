@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.8.3 (unreleased)
+1.9.0 (2016-11-10)
 ------------------
 
 - Always abort the transaction when the file-upload fails with an error.

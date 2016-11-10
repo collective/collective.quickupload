@@ -25,6 +25,7 @@ from collective.quickupload.interfaces import IQuickUploadFileFactory
 from collective.quickupload.interfaces import IQuickUploadFileUpdater
 from collective.quickupload.interfaces import IQuickUploadNotCapable
 from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
+import transaction
 from ZODB.POSException import ConflictError
 from zope.component import getUtility
 from zope.i18n import translate
@@ -667,7 +668,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
                     "Error when trying to read the file %s in request",
                     file_name
                 )
-                return json.dumps({u'error': u'serverError'})
+                return self._error_response(u'serverError')
         else:
             # using classic form post method (MSIE<=8)
             file = request.get("qqfile", None)
@@ -688,14 +689,14 @@ class QuickUploadFile(QuickUploadAuthenticate):
             if not self._check_file_size(file):
                 logger.info("Test file size: the file %s is too big, upload "
                             "rejected" % filename)
-                return json.dumps({u'error': u'sizeError'})
+                return self._error_response(u'sizeError')
 
         # overwrite file
         try:
             newid = get_id_from_filename(
                 file_name, context, unique=self.qup_prefs.object_unique_id)
         except MissingExtension:
-            return json.dumps({u'error': u'missingExtension'})
+            return self._error_response(u'missingExtension')
 
         if (newid in context or file_name in context) and \
                 not self.qup_prefs.object_unique_id:
@@ -713,7 +714,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
                     "The file id for %s already exists, upload rejected"
                     % file_name
                 )
-                return json.dumps({u'error': u'serverErrorAlreadyExists'})
+                return self._error_response(u'serverErrorAlreadyExists')
 
             overwritten_file = updated_object
         else:
@@ -733,67 +734,67 @@ class QuickUploadFile(QuickUploadAuthenticate):
                 file_name.lower(), content_type, ''
             ) or 'File'
 
-        if file_data:
-            if overwritten_file is not None:
-                updater = IQuickUploadFileUpdater(context)
-                logger.info(
-                    "reuploading %s file with %s: title=%s, description=%s, "
-                    "content_type=%s"
-                    % (overwritten_file.absolute_url(), upload_with, title,
-                       description, content_type))
-                try:
-                    f = updater(overwritten_file, file_name, title,
-                                description, content_type, file_data)
-                except ConflictError:
-                    # Allow Zope to retry up to three times, and if that still
-                    # fails, handle ConflictErrors on client side if necessary
-                    raise
-                except Exception as e:
-                    logger.error(
-                        "Error updating %s file: %s", file_name, str(e)
-                    )
-                    return json.dumps({u'error': u'serverError'})
+        if not file_data:
+            return self._error_response(u'emptyError')
 
-            else:
-                factory = IQuickUploadFileFactory(context)
-                logger.info(
-                    "uploading file with %s: filename=%s, title=%s, "
-                    "description=%s, content_type=%s, portal_type=%s"
-                    % (upload_with, file_name, title,
-                       description, content_type, portal_type))
-                try:
-                    f = factory(file_name, title, description, content_type,
-                                file_data, portal_type)
-                except ConflictError:
-                    # Allow Zope to retry up to three times, and if that still
-                    # fails, handle ConflictErrors on client side if necessary
-                    raise
-                except Exception as e:
-                    logger.error(
-                        "Error creating %s file: %s", file_name, str(e)
-                    )
-                    return json.dumps({u'error': u'serverError'})
+        if overwritten_file is not None:
+            updater = IQuickUploadFileUpdater(context)
+            logger.info(
+                "reuploading %s file with %s: title=%s, description=%s, "
+                "content_type=%s"
+                % (overwritten_file.absolute_url(), upload_with, title,
+                   description, content_type))
+            try:
+                f = updater(overwritten_file, file_name, title,
+                            description, content_type, file_data)
+            except ConflictError:
+                # Allow Zope to retry up to three times, and if that still
+                # fails, handle ConflictErrors on client side if necessary
+                raise
+            except Exception as e:
+                logger.error(
+                    "Error updating %s file: %s", file_name, str(e)
+                )
+                return self._error_response(u'serverError')
 
-            if f['success'] is not None:
-                o = f['success']
-                logger.info("file url: %s" % o.absolute_url())
-                if HAS_UUID:
-                    uid = IUUID(o)
-                else:
-                    uid = o.UID()
-
-                msg = {
-                    u'success': True,
-                    u'uid': uid,
-                    u'name': o.getId(),
-                    u'title': o.pretty_title_or_id()
-                }
-            else:
-                msg = {u'error': f['error']}
         else:
-            msg = {u'error': u'emptyError'}
+            factory = IQuickUploadFileFactory(context)
+            logger.info(
+                "uploading file with %s: filename=%s, title=%s, "
+                "description=%s, content_type=%s, portal_type=%s"
+                % (upload_with, file_name, title,
+                   description, content_type, portal_type))
+            try:
+                f = factory(file_name, title, description, content_type,
+                            file_data, portal_type)
+            except ConflictError:
+                # Allow Zope to retry up to three times, and if that still
+                # fails, handle ConflictErrors on client side if necessary
+                raise
+            except Exception as e:
+                logger.error(
+                    "Error creating %s file: %s", file_name, str(e)
+                )
+                return self._error_response(u'serverError')
 
-        return json.dumps(msg)
+        if f['success'] is None:
+            return self._error_response(f['error'])
+
+        obj = f['success']
+        logger.info("file url: %s" % obj.absolute_url())
+        return self._success_response(obj)
+
+    def _error_response(self, msg):
+        transaction.abort()
+        return json.dumps({u'error': msg})
+
+    def _success_response(self, obj):
+        return json.dumps({
+            u'success': True,
+            u'uid': IUUID(obj) if HAS_UUID else obj.UID(),
+            u'name': obj.getId(),
+            u'title': obj.pretty_title_or_id()
+        })
 
     def _check_file_size(self, data):
         max_size = int(self.qup_prefs.size_limit)

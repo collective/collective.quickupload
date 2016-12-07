@@ -178,10 +178,14 @@ class TestCase(unittest.TestCase):
             result = self._upload_file(filename)
             self.assertEqual({u"error": u"It's stone dead"}, result)
 
-    def test_upload_file_twice_default(self):
+    def test_upload_file_twice_unique_id(self):
         filename = 'my-file.jpg'
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ('Manager',))
+        props = portal.portal_properties.quickupload_properties
+        props._updateProperty('object_unique_id', True)
+        # We must explicitly commit.
+        transaction.commit()
         # Upload twice.
         result = self._upload_file(filename)
         result = self._upload_file(filename, 'title two')
@@ -199,7 +203,6 @@ class TestCase(unittest.TestCase):
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ('Manager',))
         props = portal.portal_properties.quickupload_properties
-        props._updateProperty('object_unique_id', False)
         props._updateProperty('object_override', True)
         # We must explicitly commit, otherwise the change somehow gets lost
         # between the two uploads, presumably due to the explicit commit in
@@ -217,15 +220,10 @@ class TestCase(unittest.TestCase):
         self.assertEqual(image2.Title(), 'title two')
         self.assertEqual(result.get('uid'), image2.UID())
 
-    def test_upload_file_twice_no_override(self):
+    def test_upload_file_twice_default(self):
         filename = 'my-file.jpg'
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ('Manager',))
-        props = portal.portal_properties.quickupload_properties
-        props._updateProperty('object_unique_id', False)
-        props._updateProperty('object_override', False)
-        # We must explicitly commit.
-        transaction.commit()
         # Upload twice.
         result = self._upload_file(filename)
         result = self._upload_file(filename, 'title two')

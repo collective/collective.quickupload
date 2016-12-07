@@ -4,7 +4,10 @@ Changelog
 1.9.1 (unreleased)
 ------------------
 
-- Nothing changed yet.
+- Fix inconsistent 'object_unique_id' default configuration value.
+  Also use 'False' as default value for a fresh installation to be consistent with
+  the upgrade step and the form default value.
+  [deiferni]
 
 
 1.9.0 (2016-11-10)

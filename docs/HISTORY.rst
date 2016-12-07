@@ -1,8 +1,8 @@
 Changelog
 =========
 
-1.9.1 (unreleased)
-------------------
+1.10.0 (2016-12-07)
+-------------------
 
 - Fix inconsistent 'object_unique_id' default configuration value.
   Also use 'False' as default value for a fresh installation to be consistent with

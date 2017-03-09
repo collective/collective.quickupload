@@ -4,7 +4,7 @@ Changelog
 1.10.1 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Drop support for Plone 4.1, because buildout does no longer support Python 2.6. [jone]
 
 
 1.10.0 (2016-12-07)

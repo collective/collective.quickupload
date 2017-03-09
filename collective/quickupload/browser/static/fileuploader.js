@@ -179,8 +179,8 @@ qq.FileUploader.prototype = {
             eclass = document.createAttribute("class");
             eclass.nodeValue = "server-error";
             diverror.setAttributeNode(eclass);
-            diverror.innerText = message;
-            diverror.textContent = message;
+            // Since "message" contains entities, so it should be treated as HTML.
+            diverror.innerHTML = message;
         }
     },
     _formatFileName: function(name){

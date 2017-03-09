@@ -166,7 +166,7 @@ qq.FileUploader.prototype = {
         return element;
     },
     _error: function(code, fileName, id){
-        var message = this._options.messages[code];
+        var message = this._options.messages[code] || code;
         message = message.replace('{file}', this._formatFileName(fileName));
         message = message.replace('{extensions}', this._options.allowedExtensions.join(', '));
         message = message.replace('{sizeLimit}', this._formatSize(this._options.sizeLimit));

@@ -7,7 +7,7 @@ import sys
 def read(*paths):
     return open(os.path.join(os.path.dirname(__file__), *paths)).read()
 
-version = '1.11.0'
+version = '1.11.1.dev0'
 
 tests_require = [
     'plone.app.dexterity',

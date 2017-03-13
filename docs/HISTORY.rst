@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.10.1 (unreleased)
+1.11.0 (2017-03-13)
 -------------------
 
 - Allow custom error messages. [jone]

@@ -4,7 +4,8 @@ Changelog
 1.11.1 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Extend the uninstall profile.
+  [thet]
 
 
 1.11.0 (2017-03-13)

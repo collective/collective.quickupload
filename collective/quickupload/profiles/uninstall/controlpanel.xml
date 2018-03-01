@@ -1,9 +1,10 @@
 <?xml version="1.0"?>
-<object name="portal_controlpanel"
-    xmlns:i18n="http://namespaces.zope.org/i18n"
-    i18n:domain="collective.quickupload">
- <configlet title="Quick Upload"
-            action_id="QuickUpload"
-            appId="collective.quickupload"
-            category="Products"/>
+<object name="portal_controlpanel">
+  <configlet
+      remove="True"
+      action_id="QuickUpload"
+      appId="collective.quickupload"
+      category="Products"
+      title="Quick Upload"
+      />
 </object>

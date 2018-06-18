@@ -7,6 +7,8 @@ Changelog
 - Extend the uninstall profile.
   [thet]
 
+- Fix UnicodeDecodeError when updating a existing file with special characters in the filename
+  [pbauer]
 
 1.11.0 (2017-03-13)
 -------------------

@@ -19,6 +19,7 @@
 from AccessControl import Unauthorized
 from Acquisition import aq_inner
 from Products.Archetypes.event import ObjectEditedEvent
+from Products.CMFPlone.utils import safe_unicode
 from Products.statusmessages.interfaces import IStatusMessage
 from collective.quickupload import logger
 from collective.quickupload import siteMessageFactory as _
@@ -169,7 +170,7 @@ class QuickUploadCapableFileUpdater(object):
             IStatusMessage(obj.REQUEST).addStatusMessage(
                 _('msg_file_replaced',
                   default=u"${filename} file has been replaced",
-                  mapping={'filename': filename}),
+                  mapping={'filename': safe_unicode(filename)}),
                 type)
 
         return result

@@ -4,6 +4,8 @@ Changelog
 1.11.1 (unreleased)
 -------------------
 
+- Decode htmlentities in error messages used in alert(). [deiferni]
+
 - Extend the uninstall profile.
   [thet]
 

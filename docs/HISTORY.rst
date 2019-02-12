@@ -1,7 +1,7 @@
 Changelog
 =========
 
-1.11.1 (unreleased)
+1.11.1 (2019-02-12)
 -------------------
 
 - Decode htmlentities in error messages used in alert(). [deiferni]

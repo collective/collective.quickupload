@@ -7,6 +7,7 @@ except ImportError:
     import unittest
 
 from zope.component import getMultiAdapter
+from Products.CMFPlone.utils import getFSVersionTuple
 
 from plone.app.testing import TEST_USER_ID
 from plone.app.testing import logout
@@ -27,8 +28,10 @@ class ControlPanelTest(unittest.TestCase):
     def test_installed(self):
         # entry is in the control panel
         installed = [a.getAction(self)['id'] for a in self.cp.listActions()]
-        self.failUnless('QuickUpload' in installed)
+        self.assertIn('QuickUpload', installed)
 
+    @unittest.skipIf(getFSVersionTuple() < (4, 3,),
+                     'uninstallation does not seem to work in plone 4.2.')
     def test_uninstalled(self):
         setup_tool = getattr(self.portal, 'portal_setup')
         setup_tool.runAllImportStepsFromProfile(
@@ -36,7 +39,7 @@ class ControlPanelTest(unittest.TestCase):
 
         # entry is removed from the control panel
         installed = [a.getAction(self)['id'] for a in self.cp.listActions()]
-        self.failUnless('QuickUpload' in installed)
+        self.assertNotIn('QuickUpload', installed)
 
     def test_view(self):
         view = getMultiAdapter((self.portal, self.portal.REQUEST),

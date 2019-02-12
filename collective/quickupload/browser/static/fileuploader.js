@@ -78,7 +78,11 @@ qq.FileUploader = function(o){
             emptyError: "{file} is empty, please select files again without it."
         },
         showMessage: function(message){
-            alert(message);
+            // "message" contains entities so we use a temporary div to decode the
+            // htmlentities.
+            var decoder = document.createElement('div');
+            decoder.innerHTML = message;
+            alert(decoder.childNodes[0].nodeValue);
         },
         debugMode: false
     };

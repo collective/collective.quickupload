@@ -112,7 +112,7 @@ msgstr "Flashbestanden"
 
 #: ../portlet/quickuploadportlet.py:80
 msgid "If title is empty, the portlet title will be the Media Choice + ' Quick Upload'."
-msgstr "Als de titel leeg is, zal de portlet ' Quick Upload' heten."
+msgstr "Als de titel leeg is, zal de portlet 'Quick Upload' heten."
 
 msgid "Image"
 msgstr "Afbeelding"
@@ -144,7 +144,7 @@ msgstr "Quick upload instellingen"
 
 #: ../browser/quick_upload.py:484
 msgid "Selected elements contain an empty file or a folder:"
-msgstr "Geselecteerde elementen zijn leeg of een map:"
+msgstr "Geselecteerde elementen bevatten een leeg bestand of een map:"
 
 #: ../browser/quick_upload.py:503
 msgid "Server error, please contact support and/or try again."
@@ -152,11 +152,11 @@ msgstr "Server error, probeer het nog eens."
 
 #: ../browser/quick_upload.py:498
 msgid "This file already exists with the same name on server:"
-msgstr "Dit bestand bestaad reeds op de server met dezefde naam:"
+msgstr "Dit bestand bestaat reeds op de server met dezefde naam:"
 
 #: ../browser/quick_upload.py:490
 msgid "This file has invalid extension:"
-msgstr "Dit bestand heeft een foute extensie:"
+msgstr "Dit bestand heeft een ongeldige extensie:"
 
 #: ../browser/quick_upload.py:486
 msgid "This file has no extension:"
@@ -185,7 +185,7 @@ msgstr "Je hebt geen toestemming om deze inhoud hier toe te voegen."
 #. Default: "Check if you want to start the files upload on select, without submit the form. Note that you cannot choose file titles or descriptions with this option set to True."
 #: ../browser/quickupload_settings.py:42
 msgid "description_auto_upload"
-msgstr "Selecteer om meteen te beginnen met het upload van geselecteerde bestanden, zonder het formulier te versturen. Let op: dan kan je geen titels of beschrijving opgeven."
+msgstr "Selecteer om geselecteerde bestanden meteen te uploaden, zonder het formulier te versturen. Let op: je kan dan geen titels of beschrijvingen opgeven."
 
 #. Default: "If checked, you can fill the files descriptions before upload. Uncheck if you don't need descriptions."
 #: ../browser/quickupload_settings.py:79
@@ -270,7 +270,7 @@ msgstr "Upload bestanden"
 
 #: ../browser/quick_upload.py:488
 msgid "maximum file size is:"
-msgstr "maximale formaat is:"
+msgstr "maximale bestandsgrootte is:"
 
 #. Default: "${filename} file has been replaced"
 #: ../browser/uploadcapable.py:170
@@ -279,7 +279,7 @@ msgstr "${filename} bestand is vervangen"
 
 #: ../browser/quick_upload.py:481
 msgid "please select files again without it."
-msgstr "selecteer bestanden nogmaals, zonder het."
+msgstr "selecteer bestanden nogmaals, zonder dit."
 
 #: ../browser/quick_upload.py:482
 msgid "please try again."
@@ -293,12 +293,12 @@ msgstr "Automatisch uploaden bij selectie"
 #. Default: "Fill description before upload"
 #: ../browser/quickupload_settings.py:76
 msgid "title_fill_descriptions"
-msgstr "Voer omschrijving in voorafgaand aan uploaden"
+msgstr "Vul beschrijving in voorafgaand aan uploaden"
 
 #. Default: "Fill title before upload"
 #: ../browser/quickupload_settings.py:67
 msgid "title_fill_titles"
-msgstr "Voer titel in voorafgaand aan uploaden"
+msgstr "Vul titel in voorafgaand aan uploaden"
 
 #. Default: "Use id as title"
 #: ../browser/quickupload_settings.py:133

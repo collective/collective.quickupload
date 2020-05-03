@@ -1,0 +1,16 @@
+[main]
+host = https://www.transifex.com
+
+[plone-collective.collective-quickupload-pot]
+file_filter = collective/quickupload/locales/<lang>/LC_MESSAGES/collective.quickupload.po
+minimum_perc = 0
+source_file = collective/quickupload/locales/collective.quickupload.pot
+source_lang = en
+type = PO
+
+[plone-collective.collective-quickupload-plone-pot]
+file_filter = collective/quickupload/locales/<lang>/LC_MESSAGES/plone.po
+minimum_perc = 0
+source_file = collective/quickupload/locales/plone.pot
+source_lang = en
+type = PO

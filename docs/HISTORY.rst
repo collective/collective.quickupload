@@ -4,7 +4,8 @@ Changelog
 1.11.2 (unreleased)
 -------------------
 
-- Nothing changed yet.
+- Updated Spanish translation
+  [macagua]
 
 
 1.11.1 (2019-02-12)

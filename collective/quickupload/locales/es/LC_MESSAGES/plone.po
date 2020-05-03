@@ -1,9 +1,9 @@
 # translation of collective.quickupload.po to Spanish
-# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2013.
+# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2013 - 2020.
 # Gettext Message File for collective.quickupload
 msgid ""
 msgstr ""
-"Project-Id-Version: collective.quickupload\n"
+"Project-Id-Version: collective.quickupload 1.0\n"
 "POT-Creation-Date: 2013-06-17 06:38+0000\n"
 "PO-Revision-Date: 2013-06-17 02:09-0430\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"

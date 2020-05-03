@@ -1,10 +1,10 @@
 # translation of collective.quickupload.po to Spanish
 # Héctor Velarde <hector.velarde@gmail.com>, 2011.
-# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2013.
+# Leonardo J. Caballero G. <leonardocaballero@gmail.com>, 2013 - 2020.
 # Gettext Message File for collective.quickupload
 msgid ""
 msgstr ""
-"Project-Id-Version: collective.quickupload\n"
+"Project-Id-Version: collective.quickupload 1.0\n"
 "POT-Creation-Date: 2015-11-13 13:07+0000\n"
 "PO-Revision-Date: 2013-06-17 02:12-0430\n"
 "Last-Translator: Leonardo J. Caballero G. <leonardocaballero@gmail.com>\n"
@@ -75,7 +75,7 @@ msgstr "Elija las imágenes que va a cargar"
 
 #: ../portlet/quickuploadportlet.py:96
 msgid "Choose the media type used for file upload. image, audio, video ..."
-msgstr "Elija el tipo de medio usado para la carga de archivos: imagenes, audio, video..."
+msgstr "Elija el tipo de medio usado para la carga de archivos: imágenes, audio, video..."
 
 #: ../portlet/quickuploadportlet.py:86
 msgid "Choose the portal type used for file upload. Keep the default configuration to automatically choose a portal type depending on settings defined in the content_type_registry."
@@ -102,7 +102,7 @@ msgid "Failed"
 msgstr "Fallo"
 
 msgid "Files"
-msgstr ""
+msgstr "Archivos"
 
 #: ../browser/quick_upload.py:197
 #: ../portlet/quickuploadportlet.py:131
@@ -118,7 +118,7 @@ msgid "If title is empty, the portlet title will be the Media Choice + ' Quick U
 msgstr "Si el título está vacío, el título del portlet será 'Carga rápida' + del medio elegido."
 
 msgid "Image"
-msgstr ""
+msgstr "Imagen"
 
 #: ../portlet/quickuploadportlet.py:102
 msgid "Images"
@@ -147,7 +147,7 @@ msgstr "Configuración de Carga rápida"
 
 #: ../browser/quick_upload.py:484
 msgid "Selected elements contain an empty file or a folder:"
-msgstr "Los elementos seleccionados contienen un archvio vacío o una carpeta:"
+msgstr "Los elementos seleccionados contienen un archivo vacío o una carpeta:"
 
 #: ../browser/quick_upload.py:503
 msgid "Server error, please contact support and/or try again."
@@ -203,17 +203,17 @@ msgstr "Si está seleccionado, puede elegir el título de los archivos antes de 
 #. Default: "Reuse the file name for the title when no explicit title is given. Checked: use exact id including file extension, Non-Checked: use cleaned id, without extension and with spaces instead of dashes or underscores."
 #: ../browser/quickupload_settings.py:134
 msgid "description_id_as_title"
-msgstr ""
+msgstr "Reutilice el nombre del archivo para el título cuando no se proporciona un título explícito. Marcado: use el ID exacto, incluida la extensión del archivo, No marcado: use la ID limpia, sin extensión y con espacios en lugar de guiones o guiones bajos."
 
 #. Default: "If the folder already has same file name, Checked: Override, Non-Checked: raise upload error."
 #: ../browser/quickupload_settings.py:125
 msgid "description_object_override"
-msgstr ""
+msgstr "Si la carpeta ya tiene el mismo nombre de archivo, Marcado: Anular, Sin marcar: error de subida de carga."
 
 #. Default: "Choose a unique id for each uploaded file.Checked: Your files will never be overridden and you'll never get a 'file already exists' error message because each file has its unique id.Non-Checked: The id will not be unique. The 'Override by upload file' option is considered when a conflict happens."
 #: ../browser/quickupload_settings.py:111
 msgid "description_object_unique_id"
-msgstr ""
+msgstr "Elija un ID único para cada archivo cargado. Comprobado: sus archivos nunca se anularán y nunca recibirá un mensaje de error 'ya existe el archivo' porque cada archivo tiene su ID única. No verificado: el ID no será único. La opción 'Anular por cargar archivo' se considera cuando ocurre un conflicto."
 
 #. Default: "Check if you want to have an \"Upload\" link in your edit bar. Clicking it will open a panel for uploading below the title of the current item. This panel is an alternative to the \"Upload\" portlet and does not offer any further configuration, such as filtering by content type. The panel will only be shown where the \"Upload\" portlet is not present."
 #: ../browser/quickupload_settings.py:53
@@ -306,17 +306,17 @@ msgstr "Modificar el título antes de la carga"
 #. Default: "Use id as title"
 #: ../browser/quickupload_settings.py:133
 msgid "title_id_as_title"
-msgstr ""
+msgstr "Usar ID como título"
 
 #. Default: "Override by upload file"
 #: ../browser/quickupload_settings.py:124
 msgid "title_object_override"
-msgstr ""
+msgstr "Anular por subir archivo"
 
 #. Default: "Choose unique file id"
 #: ../browser/quickupload_settings.py:110
 msgid "title_object_unique_id"
-msgstr ""
+msgstr "Elija un ID de archivo único"
 
 #. Default: "Show \"Upload\" action"
 #: ../browser/quickupload_settings.py:52

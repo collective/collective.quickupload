@@ -1,29 +1,39 @@
-.. image:: https://travis-ci.org/collective/collective.quickupload.png?branch=master
-   :target: https://travis-ci.org/collective/collective.quickupload
-
 ==================
 Plone Quick Upload
 ==================
 
 Description
 ===========
-This product offers a multiple files upload tool for Plone, with multi
-selection, drag and drop, and progress bar. A pure javacript tool is used on
-client side, with html5 file fields and ajax upload for modern browsers, and a
+This product offers a multiple files upload tool for `Plone`_, with multi
+selection, drag and drop, and progress bar. A pure Javascript tool is used on
+client side, with HTML5 file fields and Ajax upload for modern browsers, and a
 graceful fallback for other browsers. You can also choose to replace the
-javascript with jquery.uploadify, a flashupload based script which could be
+Javascript with jquery.uploadify, a flashupload based script which could be
 interesting in rare situations (Plone site for MSIE client's browsers only,
-without http authentication in front, and no https).
+without HTTP authentication in front, and no HTTPS).
 
-To install it in your buildout, just add 'collective.quickupload' to your egg
-list, then::
 
-    $ bin/buildout
+Installation
+============
+
+To install it in your buildout, just add ``collective.quickupload`` to your egg
+list, like this: ::
+
+    [buildout]
+
+    ...
+
+    eggs =
+        collective.quickupload
+
+
+and then running ``bin/buildout``
+
 
 To install it in Plone, use the Addons control panel, select
 "Plone Quick Upload" Product and install it.
 
-To see it in action, just assign the Quick Upload portlet somewhere in your
+To see it in action, just assign the ``Quick Upload portlet`` somewhere in your
 site and test it.
 
 Details
@@ -34,17 +44,17 @@ This package contains:
 collective.quickupload.browser
 ------------------------------
 
-- A simple ajax view that can be called by any plone template.
+- A simple Ajax view that can be called by any Plone template.
 
-- This view is using a javascript multiple upload tool based on fileuploader.js
+- This view is using a Javascript multiple upload tool based on ``fileuploader.js``
   (a fork with many ameliorations of
   http://valums.com/ajax-upload/) OR jquery.uploadify.js (based on flashupload,
-  see also collective.uploadify plone product from which some parts of code
+  see also `collective.uploadify`_ Plone product from which some parts of code
   have been taken)
 
-- By default the javascript only method is used : the fileuploader.js is a pure
-  ajax file uploader which uses html5 multiple file fields and ajax upload post
-  method. It's not a jquery plugin. For modern browsers like FireFox 3.6+,
+- By default the Javascript only method is used : the fileuploader.js is a pure
+  Ajax file uploader which uses HTML5 multiple file fields and Ajax upload post
+  method. It's not a jQuery plugin. For modern browsers like FireFox 3.6+,
   Chrome, or Safari 4+, it offers drag and drop, multi-selection, and progress
   bar during upload. For other browsers (IE7, IE8, ...),  the script offers a
   graceful hidden iframe upload fall back.
@@ -52,10 +62,10 @@ collective.quickupload.browser
   - Flashupload (jquery.uploadify) is more user friendly under MSIE, but has
     some "big" problems:
 
-    - cannot be used behind any kind of http authentication
+    - cannot be used behind any kind of HTTP authentication
       (basic authentication, windowsNT authentication, ...)
 
-    - cannot be used through https
+    - cannot be used through HTTPS
 
     - not open source
 
@@ -113,7 +123,7 @@ collective.quickupload.browser
 collective.quickupload.portlet
 ------------------------------
 
-- a portlet calling the quickupload ajax view (it's also an example on how to
+- a portlet calling the quickupload Ajax view (it's also an example on how to
   use the quick_upload view)
 
 - the portlet is not assigned (can be done TTW or in another package)
@@ -124,7 +134,7 @@ collective.quickupload.profiles
 
 - control panel GS profile
 
-- the javascript and css registry GS profile
+- the Javascript and CSS registry GS profile
 
 - portlet GS profile
 
@@ -163,7 +173,7 @@ These ameliorations have been done:
 
 - debugMode and debugConsole
 
-- css improvements
+- CSS improvements
 
 
 How To
@@ -173,18 +183,17 @@ How To
 
   Just look the quickupload portlet code, it's really easy.
 
-  You can also take a look at collective.plonefinder product
-  http://plone.org/products/collective.plonefinder
-  which requires collective.quickupload.
+  You can also take a look at `collective.plonefinder`_ product
+  which requires ``collective.quickupload``.
 
 - How to set by code types where upload is allowed ?
 
-  You include minimal.zcml only, adding to your product configure.zcml::
+  You include ``minimal.zcml`` only, adding to your product ``configure.zcml``: ::
 
       <exclude package="collective.quickupload" file="configure.zcml" />
       <include package="collective.quickupload" file="minimal.zcml" />
 
-  And you implement IUploadCapable on types you want::
+  And you implement IUploadCapable on types you want: ::
 
       <class class=".content.EPRIVR_Documents.EPRIVR_Domain">
         <implements interface="collective.quickupload.browser.interfaces.IQuickUploadCapable" />
@@ -193,20 +202,21 @@ How To
 - How to exclude upload on some types ?
 
   If a type implements IQuickUploadNotCapable, portlet will never be shown on it.
-  Add to your zcml::
+  Add to your zcml: ::
 
       <class class=".content.MyContent">
         <implements interface="collective.quickupload.browser.interfaces.IQuickUploadNotCapable" />
       </class>
 
+
 TODO
 ====
 
-- javascript client tests
+- Javascript client tests
 
 - unit tests for upload methods
 
-- fileuploader.js refactorisation using jquery
+- fileuploader.js refactorisation using jQuery
 
 - add tests for upload viewlet
 
@@ -217,17 +227,25 @@ TODO
 - WTF confusing docs?
 
 
-Support
-=======
+Tests status
+============
 
-Please file all tickets to issue page on github
-https://github.com/collective/collective.quickupload/issues.
+This add-on is tested using Travis CI. The current status of the add-on is:
+
+.. image:: https://img.shields.io/travis/collective/collective.quickupload/master.svg
+    :target: https://travis-ci.org/collective/collective.quickupload
+
+.. image:: http://img.shields.io/pypi/v/collective.quickupload.svg
+   :target: https://pypi.org/project/collective.quickupload
 
 
-Repository
+Contribute
 ==========
 
-https://github.com/collective/collective.quickupload/
+Have an idea? Found a bug? Let us know by `opening a ticket`_.
+
+- Issue Tracker: https://github.com/collective/collective.quickupload/issues
+- Source Code: https://github.com/collective/collective.quickupload
 
 
 More Information
@@ -246,3 +264,15 @@ Thanks to :
 - Thomas Desvenain, current maintainer
 - Daniel Widerin
 - Wolfgang Thomas
+- Leonardo J. Caballero G.
+
+
+License
+=======
+
+The project is licensed under the GPL.
+
+.. _Plone: https://plone.org/
+.. _collective.uploadify: https://pypi.org/project/collective.uploadify/
+.. _collective.plonefinder: https://pypi.org/project/collective.plonefinder/
+.. _`opening a ticket`: https://github.com/collective/collective.quickupload/issues

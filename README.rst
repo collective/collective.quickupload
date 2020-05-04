@@ -13,6 +13,42 @@ interesting in rare situations (Plone site for MSIE client's browsers only,
 without HTTP authentication in front, and no HTTPS).
 
 
+Translations
+============
+
+This product has been translated into
+
+- Czech.
+
+- German.
+
+- Spanish.
+
+- Basque.
+
+- Finnish.
+
+- French.
+
+- Italian.
+
+- Dutch.
+
+- Norwegian.
+
+- Brazilian Portuguese.
+
+- Slovenčina.
+
+- Simplified Chinese.
+
+- Traditional Chinese.
+
+You can contribute for any message missing or other new languages, join us at
+`Plone Collective Team <https://www.transifex.com/plone/plone-collective/>`_
+into *Transifex.net* service with all world Plone translators community.
+
+
 Installation
 ============
 
@@ -35,6 +71,7 @@ To install it in Plone, use the Addons control panel, select
 
 To see it in action, just assign the ``Quick Upload portlet`` somewhere in your
 site and test it.
+
 
 Details
 =======

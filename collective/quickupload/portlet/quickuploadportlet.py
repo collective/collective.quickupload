@@ -5,7 +5,7 @@ from Acquisition import aq_inner
 from Acquisition import aq_parent
 from Products.Archetypes.utils import shasattr
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.FactoryTool import TempFolder
+# from Products.CMFPlone.FactoryTool import TempFolder
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.Sessions.SessionDataManager import SessionDataManagerErr
 from collective.quickupload import logger
@@ -29,10 +29,11 @@ PMF = MessageFactory('plone')
 
 def isTemporary(obj):
     """Check to see if an object is temporary"""
-    if not shasattr(obj, 'isTemporary'):
-        return False
-    if obj.isTemporary():
-        return False
+    return False
+    # if not shasattr(obj, 'isTemporary'):
+    #     return False
+    # if obj.isTemporary():
+    #     return False
 
     parent = aq_base(aq_parent(aq_inner(obj)))
     return hasattr(parent, 'meta_type') \

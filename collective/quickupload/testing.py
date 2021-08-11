@@ -27,8 +27,8 @@ class QuickUploadLayer(PloneSandboxLayer):
 
     def setUpPloneSite(self, portal):
         # Install into Plone site using portal_setup
+        self.applyProfile(portal, 'plone.app.contenttypes:default')
         self.applyProfile(portal, 'collective.quickupload:default')
-
         setRoles(portal, TEST_USER_ID, ['Manager'])
         login(portal, TEST_USER_NAME)
         portal.invokeFactory('Folder', 'test-folder', title=u"Test Folder")

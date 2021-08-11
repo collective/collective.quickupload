@@ -1,11 +1,10 @@
+from plone.app.registry.browser.controlpanel import RegistryEditForm, ControlPanelFormWrapper
 from zope.interface import Interface, implements
 from zope.component import adapts
 from zope.schema import Bool, Int
-from Products.CMFDefault.formlib.schema import SchemaAdapterBase
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.CMFCore.utils import getToolByName
 from zope.formlib.form import FormFields
-from plone.app.controlpanel.form import ControlPanelForm
 from collective.quickupload import siteMessageFactory as _
 
 
@@ -142,13 +141,13 @@ class IQuickUploadControlPanel(Interface):
         required=False)
 
 
-class QuickUploadControlPanelAdapter(SchemaAdapterBase):
+class QuickUploadControlPanelAdapter(object):
 
     adapts(IPloneSiteRoot)
     implements(IQuickUploadControlPanel)
 
     def __init__(self, context):
-        super(QuickUploadControlPanelAdapter, self).__init__(context)
+#        super(QuickUploadControlPanelAdapter, self).__init__(context)
         pprop = getToolByName(context, 'portal_properties')
         self.quProps = pprop.quickupload_properties
 
@@ -243,7 +242,7 @@ class QuickUploadControlPanelAdapter(SchemaAdapterBase):
     id_as_title = property(get_id_as_title, set_id_as_title)
 
 
-class QuickUploadControlPanel(ControlPanelForm):
+class QuickUploadControlPanel(ControlPanelFormWrapper):
 
     label = _("Quick Upload settings")
     description = _("""Control how the quick upload tool is used.""")

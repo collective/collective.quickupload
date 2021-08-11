@@ -47,3 +47,6 @@ include
 # tests
 test_acceptance/*
 robot_*
+
+.idea
+pyvenv.cfg

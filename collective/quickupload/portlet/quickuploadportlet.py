@@ -19,7 +19,6 @@ from plone.memoize.compress import xhtml_compress
 from plone.portlets.interfaces import IPortletDataProvider
 from zope import schema
 from zope.component import getMultiAdapter
-from zope.formlib import form
 from zope.i18nmessageid import MessageFactory
 from zope.interface import implements
 from zope.schema.vocabulary import SimpleTerm

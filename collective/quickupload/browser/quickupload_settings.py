@@ -1,10 +1,6 @@
 from plone.app.registry.browser.controlpanel import RegistryEditForm, ControlPanelFormWrapper
-from zope.interface import Interface, implements
-from zope.component import adapts
+from zope.interface import Interface
 from zope.schema import Bool, Int
-from Products.CMFPlone.interfaces import IPloneSiteRoot
-from Products.CMFCore.utils import getToolByName
-from zope.formlib.form import FormFields
 from collective.quickupload import siteMessageFactory as _
 
 

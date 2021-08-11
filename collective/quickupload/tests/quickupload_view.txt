@@ -40,8 +40,11 @@ Try to get the view as contributor:
 Test template depending on configuration
 ----------------------------------------
 
+    >>> from plone.registry.interfaces import IRegistry
+    >>> from zope.component import getUtility
+    >>> registry = getUtility(IRegistry)
     >>> from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
-    >>> qup_prefs = IQuickUploadControlPanel(portal)
+    >>> qup_prefs = registry.forInterface(IQuickUploadControlPanel)
 
 .. XXX: Are this tests really valid???
 .. Change the property use_flash_upload

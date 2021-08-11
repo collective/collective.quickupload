@@ -18,9 +18,13 @@ First, login:
     >>> 'You are now logged in' in browser.contents
     True
 
-Get the quick upload property sheet which stores configuration data :
+Get the quick upload settings from registry which stores configuration data :
 
-    >>> quickupload_properties = portal.portal_properties.quickupload_properties
+    >>> from plone.registry.interfaces import IRegistry
+    >>> from zope.component import getUtility
+    >>> registry = getUtility(IRegistry)
+    >>> from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
+    >>> qup_prefs = registry.forInterface(IQuickUploadControlPanel)
 
 Viewing the Quick Upload control panel
 --------------------------------------
@@ -31,8 +35,8 @@ Viewing the Quick Upload control panel
 
 Click the cancel button:
 
-    >>> browser.getControl(name="form.actions.cancel").click()
-    >>> browser.url.endswith('plone_control_panel')
+    >>> browser.getControl(name="form.buttons.cancel").click()
+    >>> browser.url.endswith('@@overview-controlpanel')
     True
 
 There should be still no changes:
@@ -46,7 +50,7 @@ Make some changes
     >>> browser.open(portal_url + '/@@quickupload-controlpanel')
 
     >>> browser.getControl('Automatic upload on select').selected = True
-    >>> browser.getControl(name='form.size_limit').value = '200'
+    >>> browser.getControl(name='form.widgets.size_limit').value = '200'
 
 
 Click the save button:
@@ -62,8 +66,8 @@ We should be informed that something has changed:
 
 Make sure the changes have been applied correctly to the quick upload properties sheet:
 
-    >>> quickupload_properties.auto_upload
+    >>> qup_prefs.auto_upload
     True
 
-    >>> quickupload_properties.size_limit
+    >>> qup_prefs.size_limit
     200

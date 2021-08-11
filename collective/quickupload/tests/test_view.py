@@ -1,3 +1,6 @@
+from collective.quickupload.browser.quickupload_settings import IQuickUploadControlPanel
+from plone.registry.interfaces import IRegistry
+
 try:
     # Python 2.6
     import unittest2 as unittest
@@ -13,7 +16,7 @@ from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from Products.CMFPlone.interfaces import IPloneSiteRoot
 from StringIO import StringIO
-from zope.component import getGlobalSiteManager
+from zope.component import getGlobalSiteManager, getUtility
 from zope.publisher.browser import TestRequest
 import json
 import transaction
@@ -119,9 +122,10 @@ class TestCase(unittest.TestCase):
 
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ('Manager',))
-        props = portal.portal_properties.quickupload_properties
-        props._updateProperty('object_unique_id', False)
-        props._updateProperty('object_override', True)
+        registry = getUtility(IRegistry)
+        qup_prefs = registry.forInterface(IQuickUploadControlPanel)
+        qup_prefs.object_unique_id = False
+        qup_prefs.object_override = True
         transaction.commit()
 
         with TemporaryAdapterRegistration(FailingFileUpdater,
@@ -140,9 +144,10 @@ class TestCase(unittest.TestCase):
 
         portal = self.layer["portal"]
         setRoles(portal, TEST_USER_ID, ("Manager",))
-        props = portal.portal_properties.quickupload_properties
-        props._updateProperty("object_unique_id", False)
-        props._updateProperty("object_override", True)
+        registry = getUtility(IRegistry)
+        qup_prefs = registry.forInterface(IQuickUploadControlPanel)
+        qup_prefs.object_unique_id = False
+        qup_prefs.object_override = True
         transaction.commit()
 
         with TemporaryAdapterRegistration(ErrorFileUpdater,
@@ -182,8 +187,9 @@ class TestCase(unittest.TestCase):
         filename = 'my-file.jpg'
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ('Manager',))
-        props = portal.portal_properties.quickupload_properties
-        props._updateProperty('object_unique_id', True)
+        registry = getUtility(IRegistry)
+        qup_prefs = registry.forInterface(IQuickUploadControlPanel)
+        qup_prefs.object_unique_id = True
         # We must explicitly commit.
         transaction.commit()
         # Upload twice.
@@ -202,8 +208,9 @@ class TestCase(unittest.TestCase):
         filename = 'my-file.jpg'
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ('Manager',))
-        props = portal.portal_properties.quickupload_properties
-        props._updateProperty('object_override', True)
+        registry = getUtility(IRegistry)
+        qup_prefs = registry.forInterface(IQuickUploadControlPanel)
+        qup_prefs.object_override = True
         # We must explicitly commit, otherwise the change somehow gets lost
         # between the two uploads, presumably due to the explicit commit in
         # uploadcapable.py.
@@ -239,8 +246,9 @@ class TestCase(unittest.TestCase):
         filename = 'my-file.jpg'
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ('Manager',))
-        props = portal.portal_properties.quickupload_properties
-        props._updateProperty('id_as_title', True)
+        registry = getUtility(IRegistry)
+        qup_prefs = registry.forInterface(IQuickUploadControlPanel)
+        qup_prefs.id_as_title = True
         # We must explicitly commit.
         transaction.commit()
         result = self._upload_file(filename)
@@ -256,8 +264,9 @@ class TestCase(unittest.TestCase):
         portal = self.layer['portal']
         setRoles(portal, TEST_USER_ID, ('Manager',))
         # With id_as_title True, an explicit title still wins.
-        props = portal.portal_properties.quickupload_properties
-        props._updateProperty('id_as_title', True)
+        registry = getUtility(IRegistry)
+        qup_prefs = registry.forInterface(IQuickUploadControlPanel)
+        qup_prefs.id_as_title = True
         # We must explicitly commit.
         transaction.commit()
         title = 'Monty Python'

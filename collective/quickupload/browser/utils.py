@@ -8,6 +8,7 @@ from collective.quickupload.portlet.quickuploadportlet import \
     IQuickUploadPortlet
 from plone.portlets.interfaces import IPortletManager
 from plone.portlets.interfaces import IPortletRetriever
+from plone.registry.interfaces import IRegistry
 from ua_parser import user_agent_parser
 from zope.component import getMultiAdapter
 from zope.component import getUtilitiesFor
@@ -18,7 +19,9 @@ class QuickuploadHelper(BrowserView):
 
     def show_quickupload_action(self):
         portal = getUtility(IPloneSiteRoot)
-        qup_prefs = IQuickUploadControlPanel(portal)
+        registry = getUtility(IRegistry)
+        qup_prefs = registry.forInterface(IQuickUploadControlPanel)
+
         if not qup_prefs.show_upload_action:
             return False
         context_state = getMultiAdapter(

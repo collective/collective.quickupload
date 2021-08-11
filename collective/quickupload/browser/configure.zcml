@@ -68,12 +68,6 @@
       permission="cmf.AddPortalContent"
       />
 
-  <!-- quick upload control panel adapter -->
-  <adapter
-          factory=".quickupload_settings.QuickUploadControlPanelAdapter"
-          provides=".quickupload_settings.IQuickUploadControlPanel"
-  />
-
   <!-- quick upload control panel form view -->
   <browser:page
       name="quickupload-controlpanel"

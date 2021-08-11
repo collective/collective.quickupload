@@ -27,6 +27,7 @@ from collective.quickupload.interfaces import IQuickUploadNotCapable
 from plone.i18n.normalizer.interfaces import IUserPreferredFileNameNormalizer
 import transaction
 from ZODB.POSException import ConflictError
+from plone.registry.interfaces import IRegistry
 from zope.component import getUtility
 from zope.i18n import translate
 from zope.schema import getFieldsInOrder
@@ -387,8 +388,8 @@ class QuickUploadInit(BrowserView):
     def __init__(self, context, request):
         super(QuickUploadInit, self).__init__(context, request)
         self.context = aq_inner(context)
-        portal = getUtility(IPloneSiteRoot)
-        self.qup_prefs = IQuickUploadControlPanel(portal)
+        registry = getUtility(IRegistry)
+        self.qup_prefs = registry.forInterface(IQuickUploadControlPanel)
 
     def ul_content_types_infos(self, mediaupload):
         """
@@ -552,8 +553,8 @@ class QuickUploadAuthenticate(BrowserView):
     def __init__(self, context, request):
         self.context = context
         self.request = request
-        portal = getUtility(IPloneSiteRoot)
-        self.qup_prefs = IQuickUploadControlPanel(portal)
+        registry = getUtility(IRegistry)
+        self.qup_prefs = registry.forInterface(IQuickUploadControlPanel)
         self.use_flashupload = self.qup_prefs.use_flashupload
 
     def _auth_with_ticket(self):

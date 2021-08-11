@@ -46,7 +46,7 @@ Test portlet Add View
     >>> for m in mapping.keys():
     ...     del mapping[m]
     >>> addview = mapping.restrictedTraverse('+/collective.quickupload.QuickUploadPortlet')
-    >>> addview.createAndAdd(data={'header':u'', 'upload_portal_type': u'', 'upload_media_type': u''})
+    >>> dummy = addview.createAndAdd(data={'header':u'', 'upload_portal_type': u'', 'upload_media_type': u''})
     >>> len(mapping)
     1
     >>> isinstance(mapping.values()[0], quickuploadportlet.Assignment)
@@ -66,7 +66,7 @@ Test portlet Rendering
 ----------------------
 
     >>> request = doc.REQUEST
-    >>> view = doc.restrictedTraverse('@@folder_contents')
+    >>> view = doc.aq_parent.restrictedTraverse('@@folder_contents')
     >>> manager = getUtility(IPortletManager, name='plone.rightcolumn', context=portal)
     >>> assignment = quickuploadportlet.Assignment(header=u"", upload_portal_type=u"Image", upload_media_type=u"image")
     >>> renderer = getMultiAdapter((doc, request, view, manager, assignment), IPortletRenderer)

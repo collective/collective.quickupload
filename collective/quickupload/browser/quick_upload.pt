@@ -1,5 +1,5 @@
 
-<metal:block use-macro="context/global_defines/macros/defines" />
+
 <tal:headers define="request context/REQUEST">
   <tal:block define="charset site_properties/default_charset|string:utf-8;
                      dummy python:request.RESPONSE.setHeader('Content-Type', 'text/html;;charset=%s' % charset)" />

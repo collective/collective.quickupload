@@ -230,7 +230,7 @@ class Renderer(base.Renderer):
 class AddForm(base.AddForm):
     """Portlet add form.
     """
-    form_fields = form.Fields(IQuickUploadPortlet)
+    schema = IQuickUploadPortlet
 
     def create(self, data):
         return Assignment(**data)
@@ -239,4 +239,4 @@ class AddForm(base.AddForm):
 class EditForm(base.EditForm):
     """Portlet edit form.
     """
-    form_fields = form.Fields(IQuickUploadPortlet)
+    schema = IQuickUploadPortlet

@@ -1,6 +1,7 @@
 from Products.CMFCore.utils import getToolByName
 from collective.quickupload import logger
 from collective.quickupload.interfaces import IQuickUploadFileSetter
+from plone.app.textfield import RichTextValue
 from plone.dexterity.interfaces import IDexterityContent
 from plone.dexterity.utils import iterSchemataForType
 from plone.namedfile.file import NamedFile
@@ -58,7 +59,7 @@ class DexterityFileSetter(object):
                             obj.absolute_url())
             file_field = file_fields[0]
 
-        # TODO: use adapters
+        # TODO: use adapters including failing when field type is not implemented
         if HAVE_BLOBS and INamedBlobImageField.providedBy(file_field):
             value = NamedBlobImage(
                 data=data, contentType=content_type,
@@ -80,7 +81,9 @@ class DexterityFileSetter(object):
                 filename=unicode(filename, 'utf-8')
             )
         else:
-            value = data  # When used by a text field for Document FTI, for example
+            # When used by a text field for Document FTI, for example
+            value = RichTextValue(data, mimeType=content_type, outputMimeType=content_type, encoding="utf-8")
+
 
         # Should be replaced by the correct setattr (behaviour) as in dexterity.utils.createContent
         file_field.set(obj, value)

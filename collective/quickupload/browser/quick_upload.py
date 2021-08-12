@@ -3,17 +3,15 @@
 # with many ameliorations
 from AccessControl import SecurityManagement
 from Acquisition import aq_inner, aq_parent
-from Products.ATContentTypes.interfaces import IFileContent
-from Products.ATContentTypes.interfaces import IImageContent
 from Products.CMFCore.permissions import ModifyPortalContent
 from Products.CMFCore.utils import getToolByName
-from Products.CMFPlone.interfaces import IPloneSiteRoot
 from Products.Five.browser import BrowserView
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.Sessions.SessionDataManager import SessionDataManagerErr
 from ZPublisher.HTTPRequest import HTTPRequest
 from ZPublisher.HTTPRequest import FileUpload
 from collective.quickupload import HAS_DEXTERITY
+from collective.quickupload import HAS_AT
 from collective.quickupload import logger
 from collective.quickupload import siteMessageFactory as _
 from collective.quickupload.browser.quickupload_settings import \
@@ -53,6 +51,10 @@ if HAS_DEXTERITY:
     from plone.dexterity.interfaces import IDexterityFTI
     from plone.namedfile.interfaces import INamedFileField
     from plone.namedfile.interfaces import INamedImageField
+
+if HAS_AT:
+    from Products.ATContentTypes.interfaces import IFileContent
+    from Products.ATContentTypes.interfaces import IImageContent
 
 
 def decodeQueryString(QueryString):

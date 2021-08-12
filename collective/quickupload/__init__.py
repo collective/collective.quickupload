@@ -11,6 +11,14 @@ except pkg_resources.DistributionNotFound:
 else:
     HAS_DEXTERITY = True
 
+try:
+    pkg_resources.get_distribution("Products.Archetypes")
+except pkg_resources.DistributionNotFound:
+    HAS_AT = False
+else:
+    HAS_AT = True
+
+
 logger = logging.getLogger("collective.quickupload")
 siteMessageFactory = MessageFactory("collective.quickupload")
 

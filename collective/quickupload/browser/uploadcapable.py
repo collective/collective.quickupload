@@ -18,10 +18,11 @@
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 from AccessControl import Unauthorized
 from Acquisition import aq_inner
-from Products.Archetypes.event import ObjectEditedEvent
+
 from Products.CMFPlone.utils import safe_unicode
 from Products.statusmessages.interfaces import IStatusMessage
 from collective.quickupload import logger
+from collective.quickupload import HAS_AT
 from collective.quickupload import siteMessageFactory as _
 from collective.quickupload.interfaces import IQuickUploadCapable
 from collective.quickupload.interfaces import IQuickUploadFileFactory
@@ -161,7 +162,8 @@ class QuickUploadCapableFileUpdater(object):
         error = IQuickUploadFileSetter(obj).set(data, filename, content_type)
         # notify edited instead of modified whereas version history is not
         # saved
-        notify(ObjectEditedEvent(obj))
+
+        notify(ObjectModifiedEvent(obj))
         obj.reindexObject()
 
         result['error'] = error

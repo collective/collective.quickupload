@@ -44,7 +44,7 @@ class ControlPanelTest(unittest.TestCase):
     def test_view(self):
         view = getMultiAdapter((self.portal, self.portal.REQUEST),
                                name='quickupload-controlpanel')
-        view = view.__of__(self.portal)
+        # view = view.__of__(self.portal)
         self.failUnless(view())
 
     def test_view_protected(self):

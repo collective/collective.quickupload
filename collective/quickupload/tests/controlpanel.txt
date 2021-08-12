@@ -14,7 +14,7 @@ First, login:
     >>> browser.open(portal.absolute_url() + '/login_form')
     >>> browser.getControl(name='__ac_name').value = SITE_OWNER_NAME
     >>> browser.getControl(name='__ac_password').value = SITE_OWNER_PASSWORD
-    >>> browser.getControl(name='submit').click()
+    >>> browser.getControl('Log in').click()
     >>> 'You are now logged in' in browser.contents
     True
 

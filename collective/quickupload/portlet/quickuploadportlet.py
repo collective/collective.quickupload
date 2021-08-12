@@ -1,11 +1,7 @@
 # -*- coding: utf-8 -*-
 # Copyright (C)2010 Alter Way Solutions
-from Acquisition import aq_base
 from Acquisition import aq_inner
-from Acquisition import aq_parent
-from Products.Archetypes.utils import shasattr
 from Products.CMFCore.utils import getToolByName
-# from Products.CMFPlone.FactoryTool import TempFolder
 from Products.Five.browser.pagetemplatefile import ViewPageTemplateFile
 from Products.Sessions.SessionDataManager import SessionDataManagerErr
 from collective.quickupload import logger
@@ -23,20 +19,19 @@ from zope.i18nmessageid import MessageFactory
 from zope.interface import implements
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
+
 PMF = MessageFactory('plone')
 
 
 def isTemporary(obj):
     """Check to see if an object is temporary"""
-    return False
-    # if not shasattr(obj, 'isTemporary'):
-    #     return False
-    # if obj.isTemporary():
-    #     return False
 
-    parent = aq_base(aq_parent(aq_inner(obj)))
-    return hasattr(parent, 'meta_type') \
-        and parent.meta_type == TempFolder.meta_type
+    if not hasattr(obj, 'isTemporary'):
+        return False
+    if obj.isTemporary():
+        return False
+
+    return True
 
 
 JAVASCRIPT = """
@@ -200,7 +195,7 @@ class Renderer(base.Renderer):
         upload_portal_type = self.data.upload_portal_type
         if (upload_portal_type and upload_portal_type != 'auto'
                 and upload_portal_type not in [
-                    t.id for t in canonical.getAllowedTypes()
+                    t.id for t in canonical.allowedContentTypes()
                 ]):
             return False
         else:

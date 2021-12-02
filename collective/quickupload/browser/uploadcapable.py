@@ -16,26 +16,24 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+from _thread import allocate_lock
+
+import transaction
 from AccessControl import Unauthorized
 from Acquisition import aq_inner
-
 from Products.CMFPlone.utils import safe_unicode
 from Products.statusmessages.interfaces import IStatusMessage
 from collective.quickupload import logger
-from collective.quickupload import HAS_AT
 from collective.quickupload import siteMessageFactory as _
 from collective.quickupload.interfaces import IQuickUploadCapable
 from collective.quickupload.interfaces import IQuickUploadFileFactory
 from collective.quickupload.interfaces import IQuickUploadFileSetter
 from collective.quickupload.interfaces import IQuickUploadFileUpdater
 from plone.i18n.normalizer.interfaces import IIDNormalizer
-from thread import allocate_lock
 from zope import component
-from zope import interface
-from zope.lifecycleevent import ObjectModifiedEvent
 from zope.event import notify
-
-import transaction
+from zope.interface import implementer
+from zope.lifecycleevent import ObjectModifiedEvent
 
 try:
     from zope.app.container.interfaces import INameChooser
@@ -64,8 +62,8 @@ def get_id_from_filename(filename, context, unique=False):
     return newid
 
 
+@implementer(IQuickUploadFileFactory)
 class QuickUploadCapableFileFactory(object):
-    interface.implements(IQuickUploadFileFactory)
     component.adapts(IQuickUploadCapable)
 
     def __init__(self, context):
@@ -141,8 +139,8 @@ class QuickUploadCapableFileFactory(object):
         return result
 
 
+@implementer(IQuickUploadFileUpdater)
 class QuickUploadCapableFileUpdater(object):
-    interface.implements(IQuickUploadFileUpdater)
     component.adapts(IQuickUploadCapable)
 
     def __init__(self, context):

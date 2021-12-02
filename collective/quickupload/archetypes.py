@@ -1,12 +1,13 @@
 from Products.Archetypes.interfaces import IBaseObject
+
 from collective.quickupload import logger
 from collective.quickupload.interfaces import IQuickUploadFileSetter
 from zope.component import adapts
-from zope.interface import implements
+from zope.interface import implementer
 
 
+@implementer(IQuickUploadFileSetter)
 class ArchetypesFileSetter(object):
-    implements(IQuickUploadFileSetter)
     adapts(IBaseObject)
 
     def __init__(self, context):

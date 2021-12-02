@@ -5,7 +5,7 @@ from Products.CMFCore.utils import getToolByName
 from collective.quickupload import HAS_DEXTERITY
 from collective.quickupload import siteMessageFactory as _
 from collective.quickupload.browser.quick_upload import _listTypesForInterface
-from zope.interface import implements
+from zope.interface import implementer
 from zope.schema.interfaces import IVocabularyFactory
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
@@ -36,10 +36,10 @@ def _infoDictForType(portal, ptype):
     }
 
 
+@implementer(IVocabularyFactory)
 class UploadFileTypeVocabulary(object):
     """Vocabulary factory for file type upload
     """
-    implements(IVocabularyFactory)
 
     def __call__(self, context):
         context = getattr(context, 'context', context)

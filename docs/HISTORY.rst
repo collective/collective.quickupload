@@ -4,6 +4,9 @@ Changelog
 1.11.2 (unreleased)
 -------------------
 
+- Fix Py3 errors
+  [macagua]
+
 - Added Transifex.net service integration to manage the translation process
   [macagua]
 

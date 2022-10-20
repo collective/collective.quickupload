@@ -16,7 +16,7 @@ from plone.portlets.interfaces import IPortletDataProvider
 from zope import schema
 from zope.component import getMultiAdapter
 from zope.i18nmessageid import MessageFactory
-from zope.interface import implements
+from zope.interface import implementer
 from zope.schema.vocabulary import SimpleTerm
 from zope.schema.vocabulary import SimpleVocabulary
 
@@ -107,11 +107,11 @@ class IQuickUploadPortlet(IPortletDataProvider):
     )
 
 
+@implementer(IQuickUploadPortlet)
 class Assignment(base.Assignment):
     """Portlet assignment.
     """
 
-    implements(IQuickUploadPortlet)
 
     def __init__(self, header='', upload_portal_type='auto',
                  upload_media_type=''):

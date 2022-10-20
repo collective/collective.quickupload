@@ -5,8 +5,10 @@
 
     <include package="Products.CMFCore" />
 
-  <adapter factory=".uploadcapable.QuickUploadCapableFileFactory" />
-  <adapter factory=".uploadcapable.QuickUploadCapableFileUpdater" />
+    <adapter factory=".uploadcapable.QuickUploadCapableFileFactory"
+	     for="collective.quickupload.interfaces.IQuickUploadCapable" />
+    <adapter factory=".uploadcapable.QuickUploadCapableFileUpdater"
+	     for="collective.quickupload.interfaces.IQuickUploadCapable" />
 
   <!-- resource directory for widget static files -->
   <browser:resourceDirectory

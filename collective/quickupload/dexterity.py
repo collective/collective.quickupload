@@ -9,8 +9,8 @@ from plone.namedfile.file import NamedImage
 from plone.namedfile.interfaces import INamedFileField
 from plone.namedfile.interfaces import INamedImageField
 from plone.rfc822.interfaces import IPrimaryFieldInfo
-from zope.component import adapts
-from zope.interface import implements
+from zope.component import adapter
+from zope.interface import implementer
 from zope.schema import getFieldsInOrder
 
 try:
@@ -31,9 +31,9 @@ def getAllFields(portal_type):
     return fields
 
 
+@implementer(IQuickUploadFileSetter)
+@adapter(IDexterityContent)
 class DexterityFileSetter(object):
-    implements(IQuickUploadFileSetter)
-    adapts(IDexterityContent)
 
     def __init__(self, context):
         self.context = context

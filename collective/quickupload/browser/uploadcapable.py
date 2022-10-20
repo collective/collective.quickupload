@@ -29,9 +29,10 @@ from collective.quickupload.interfaces import IQuickUploadFileFactory
 from collective.quickupload.interfaces import IQuickUploadFileSetter
 from collective.quickupload.interfaces import IQuickUploadFileUpdater
 from plone.i18n.normalizer.interfaces import IIDNormalizer
-from thread import allocate_lock
-from zope import component
-from zope import interface
+from _thread import allocate_lock
+from zope.component import adapter
+from zope.component import getUtility
+from zope.interface import implementer
 from zope.lifecycleevent import ObjectModifiedEvent
 from zope.event import notify
 
@@ -56,7 +57,7 @@ def get_id_from_filename(filename, context, unique=False):
     name = filename.decode(charset).rsplit('.', 1)
     if len(name) != 2:
         raise MissingExtension('It seems like the file extension is missing.')
-    normalizer = component.getUtility(IIDNormalizer)
+    normalizer = getUtility(IIDNormalizer)
     newid = '.'.join((normalizer.normalize(name[0]), name[1]))
     newid = newid.replace('_', '-').replace(' ', '-').lower()
     if unique:
@@ -64,9 +65,9 @@ def get_id_from_filename(filename, context, unique=False):
     return newid
 
 
+@implementer(IQuickUploadFileFactory)
+@adapter(IQuickUploadCapable)
 class QuickUploadCapableFileFactory(object):
-    interface.implements(IQuickUploadFileFactory)
-    component.adapts(IQuickUploadCapable)
 
     def __init__(self, context):
         self.context = aq_inner(context)
@@ -141,9 +142,9 @@ class QuickUploadCapableFileFactory(object):
         return result
 
 
+@implementer(IQuickUploadFileUpdater)
+@adapter(IQuickUploadCapable)
 class QuickUploadCapableFileUpdater(object):
-    interface.implements(IQuickUploadFileUpdater)
-    component.adapts(IQuickUploadCapable)
 
     def __init__(self, context):
         self.context = aq_inner(context)

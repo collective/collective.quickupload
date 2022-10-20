@@ -35,7 +35,7 @@ import json
 import mimetypes
 import os
 import random
-import ticket as ticketmod
+from collective.quickupload.browser import ticket as ticketmod
 import urllib
 
 

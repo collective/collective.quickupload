@@ -16,6 +16,7 @@
 #  You should have received a copy of the GNU General Public License
 #  along with this program; if not, write to the Free Software
 #  Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
+import six
 from AccessControl import Unauthorized
 from Acquisition import aq_inner
 
@@ -54,7 +55,9 @@ class MissingExtension(Exception):
 def get_id_from_filename(filename, context, unique=False):
     charset = getattr(context, 'getCharset', None) and context.getCharset()\
         or 'utf-8'
-    name = filename.decode(charset).rsplit('.', 1)
+    if isinstance(filename, six.binary_type):
+        filename = filename.decode(charset)
+    name = filename.rsplit('.', 1)
     if len(name) != 2:
         raise MissingExtension('It seems like the file extension is missing.')
     normalizer = getUtility(IIDNormalizer)

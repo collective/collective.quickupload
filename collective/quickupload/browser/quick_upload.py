@@ -36,7 +36,11 @@ import mimetypes
 import os
 import random
 from collective.quickupload.browser import ticket as ticketmod
-import urllib
+try:
+    from urllib.parse import unquote
+except ImportError:
+    from urllib import unquote
+
 
 
 import pkg_resources
@@ -653,7 +657,7 @@ class QuickUploadFile(QuickUploadAuthenticate):
 
         if request.HTTP_X_REQUESTED_WITH:
             # using ajax upload
-            file_name = urllib.unquote(request.HTTP_X_FILE_NAME)
+            file_name = unquote(request.HTTP_X_FILE_NAME)
             upload_with = "XHR"
             try:
                 file = request.BODYFILE

@@ -1,3 +1,4 @@
+import six
 from Products.CMFCore.utils import getToolByName
 from collective.quickupload import logger
 from collective.quickupload.interfaces import IQuickUploadFileSetter
@@ -39,6 +40,8 @@ class DexterityFileSetter(object):
         self.context = context
 
     def set(self, data, filename, content_type):
+        if isinstance(filename, six.binary_type):
+            filename = filename.decode('utf-8')
         error = ''
         obj = self.context
         ttool = getToolByName(obj, 'portal_types')
@@ -63,22 +66,22 @@ class DexterityFileSetter(object):
         if HAVE_BLOBS and INamedBlobImageField.providedBy(file_field):
             value = NamedBlobImage(
                 data=data, contentType=content_type,
-                filename=unicode(filename, 'utf-8')
+                filename=filename
             )
         elif HAVE_BLOBS and INamedBlobFileField.providedBy(file_field):
             value = NamedBlobFile(
                 data=data, contentType=content_type,
-                filename=unicode(filename, 'utf-8')
+                filename=filename
             )
         elif INamedImageField.providedBy(file_field):
             value = NamedImage(
                 data=data, contentType=content_type,
-                filename=unicode(filename, 'utf-8')
+                filename=filename
             )
         elif INamedFileField.providedBy(file_field):
             value = NamedFile(
                 data=data, contentType=content_type,
-                filename=unicode(filename, 'utf-8')
+                filename=filename
             )
         else:
             # When used by a text field for Document FTI, for example

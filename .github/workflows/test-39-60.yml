@@ -1,0 +1,26 @@
+name: 3.9 6.0 Run tests
+on: [push, pull_request]
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3.3.0
+      - name: Set up python
+        uses: actions/setup-python@v4.5.0
+        with:
+          python-version: 3.9
+      - name: Caching
+        uses: actions/cache@v3.2.3
+        with:
+          path: |
+            eggs
+          key: cache-Py3.9-Plone6.0
+      - name: Install venv
+        run: |
+          pip install virtualenv
+          virtualenv -p 3 .
+          bin/pip install -r requirements.txt
+          bin/buildout -c test-6.x.cfg install test
+      - name: Run unit tests
+        run: |
+          bin/test

@@ -1,7 +1,7 @@
 Plone Quick Upload View
 =======================
 
-    >>> from plone.testing.z2 import Browser
+    >>> from plone.testing.zope import Browser
     >>> from plone.app.testing import setRoles
     >>> from plone.app.testing import TEST_USER_ID
     >>> from plone.app.testing import TEST_USER_NAME
@@ -20,6 +20,7 @@ Test permission
 Try to get the view on portal as anonymous user
 Must redirect to authentication page :
 
+    >>> browser.open(portal.absolute_url())
     >>> browser.open(folder_url + '/@@quick_upload')
     Traceback (most recent call last):
        ...

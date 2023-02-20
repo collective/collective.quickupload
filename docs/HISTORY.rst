@@ -1,8 +1,8 @@
 Changelog
 =========
 
-2.0.0 (Unreleased)
-------------------
+2.0.0a1 (2023-02-20)
+--------------------
 
 - Plone 5 and 6 support
   [duchenan, gotcha]

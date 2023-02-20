@@ -78,7 +78,7 @@ class TestCase(unittest.TestCase):
         self.failUnless(fileSetter.__class__ is DexterityFileSetter)
 
     def test_namedfile_setting(self):
-        data = 'datattatatata'
+        data = b'datattatatata'
         filename = FILENAME_TESTSTRING + u".xlsx"
         content_type = 'application/vnd.ms-excel'
 
@@ -92,7 +92,7 @@ class TestCase(unittest.TestCase):
         self.assertEqual(field.data, data)
 
     def test_namedimage_setting(self):
-        data = 'datattatatata'
+        data = b'datattatatata'
         filename = FILENAME_TESTSTRING + u".jpeg"
         content_type = 'image/jpeg'
 
@@ -107,7 +107,7 @@ class TestCase(unittest.TestCase):
 
     if HAVE_BLOBS:
         def test_namedblobfile_setting(self):
-            data = 'datattatatata'
+            data = b'datattatatata'
             filename = FILENAME_TESTSTRING + u".xlsx"
             content_type = 'application/vnd.ms-excel'
 
@@ -121,7 +121,7 @@ class TestCase(unittest.TestCase):
             self.assertEqual(field.data, data)
 
         def test_namedblobimage_setting(self):
-            data = 'datattatatata'
+            data = b'datattatatata'
             filename = FILENAME_TESTSTRING + u".jpeg"
             content_type = 'image/jpeg'
 

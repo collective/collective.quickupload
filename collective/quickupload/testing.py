@@ -50,4 +50,4 @@ QUICKUPLOAD_FUNCTIONAL_TESTING = FunctionalTesting(
     name='collective.quickupload:Functional',
 )
 
-OPTIONFLAGS = (doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE)
+OPTIONFLAGS = (doctest.ELLIPSIS | doctest.NORMALIZE_WHITESPACE | doctest.IGNORE_EXCEPTION_DETAIL)

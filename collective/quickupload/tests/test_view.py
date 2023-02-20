@@ -15,7 +15,11 @@ from collective.quickupload.testing import QUICKUPLOAD_FUNCTIONAL_TESTING
 from plone.app.testing import setRoles
 from plone.app.testing import TEST_USER_ID
 from Products.CMFPlone.interfaces import IPloneSiteRoot
-from StringIO import StringIO
+try:
+    from StringIO import StringIO
+except ImportError:
+    # PY3 support.
+    from io import StringIO
 from zope.component import getGlobalSiteManager, getUtility
 from zope.publisher.browser import TestRequest
 import json

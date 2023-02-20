@@ -21,10 +21,6 @@ class TestMimetypes(unittest.TestCase):
         file_ = open("%s/testfile_mimetypes.txt" %
                      os.path.split(__file__)[0], 'r')
         self.file_data = file_.read()
-        fieldstorage = cgi.FieldStorage()
-        fieldstorage.file = file_
-        fieldstorage.filename = 'testfile_mimetypes.txt'
-        self.fileupload = FileUpload(fieldstorage)
         mtr = getToolByName(self.portal, 'mimetypes_registry')
         mtr.manage_addMimeType(
             'Only globs mimetype', ['application/x-only-glob'], [],
@@ -49,6 +45,12 @@ class TestMimetypes(unittest.TestCase):
         self.assertEqual('text/plain', content_type)
 
     def test_fileupload_instance(self):
+        file_ = open("%s/testfile_mimetypes.txt" %
+                     os.path.split(__file__)[0], 'r')
+        fieldstorage = cgi.FieldStorage()
+        fieldstorage.file = file_
+        fieldstorage.filename = 'testfile_mimetypes.txt'
+        fileupload = FileUpload(fieldstorage)
         content_type = get_content_type(
-            self.portal, self.fileupload, 'dummy.txt')
+            self.portal, fileupload, 'dummy.txt')
         self.assertEqual('text/plain', content_type)

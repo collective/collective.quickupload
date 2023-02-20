@@ -1,2 +1,4 @@
-zc.buildout==3.0.0b2
+zc.buildout==3.0.1
+setuptools==42.0.2
+wheel==0.37.1
 pip<21.0

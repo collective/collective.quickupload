@@ -1,8 +1,11 @@
 Changelog
 =========
 
-1.11.2 (unreleased)
--------------------
+2.0.0 (Unreleased)
+------------------
+
+- Plone 5 and 6 support
+  [duchenan, gotcha]
 
 - Added Transifex.net service integration to manage the translation process
   [macagua]

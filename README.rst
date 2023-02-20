@@ -12,6 +12,10 @@ Javascript with jquery.uploadify, a flashupload based script which could be
 interesting in rare situations (Plone site for MSIE client's browsers only,
 without HTTP authentication in front, and no HTTPS).
 
+2.x supports Plone 5.2 and later
+
+1.x supports Plone 4.0 to 4.3
+
 
 Translations
 ============

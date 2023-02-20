@@ -1,3 +1,7 @@
 recursive-include collective *
 recursive-include docs *
 global-exclude *pyc
+include TODO.rst
+include requirements.txt
+exclude startup.py
+prune .tx

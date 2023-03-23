@@ -1,0 +1,58 @@
+on: [push, pull_request]
+name: Run buildout and check instance
+jobs:
+  instance:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - python-version: "2.7"
+            plone-version: "5.2"
+            os: "ubuntu-20.04"
+          - python-version: "3.8"
+            plone-version: "5.2"
+            os: "ubuntu-latest"
+          - python-version: "3.9"
+            plone-version: "6.0"
+            os: "ubuntu-latest"
+    runs-on: ${{ matrix.os }}
+    name: ${{ matrix.plone-version }}-${{ matrix.python-version }} start instance
+    steps:
+      - uses: actions/checkout@v3.3.0
+      - uses: collective/buildout.plonetest/.github/actions/buildout@gha-buildout-action
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          python-version: ${{ matrix.python-version }}
+          plone-version: ${{ matrix.plone-version }}
+          buildout-parts: "instance"
+      - name: Check that instance starts
+        run: |
+          bin/instance run startup.py
+  all_tests:
+    strategy:
+      fail-fast: false
+      matrix:
+        include:
+          - python-version: "2.7"
+            plone-version: "5.2"
+            os: "ubuntu-20.04"
+          - python-version: "3.8"
+            plone-version: "5.2"
+            os: "ubuntu-latest"
+          - python-version: "3.9"
+            plone-version: "6.0"
+            os: "ubuntu-latest"
+    needs: instance
+    name: ${{ matrix.plone-version }}-${{ matrix.python-version }} run tests
+    runs-on: ${{ matrix.os }}
+    steps:
+      - uses: actions/checkout@v3.3.0
+      - uses: collective/buildout.plonetest/.github/actions/buildout@gha-buildout-action
+        with:
+          github-token: ${{ secrets.github-token }}
+          python-version: ${{ matrix.python-version }}
+          plone-version:  ${{ matrix.plone-version }}
+          buildout-parts: "test"
+      - name: Run unit tests
+        run: |
+          bin/test

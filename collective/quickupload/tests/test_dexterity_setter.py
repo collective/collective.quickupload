@@ -75,7 +75,7 @@ class TestCase(unittest.TestCase):
     def test_adapting(self):
         item = Item()
         fileSetter = IQuickUploadFileSetter(item)
-        self.failUnless(fileSetter.__class__ is DexterityFileSetter)
+        self.assertTrue(fileSetter.__class__ is DexterityFileSetter)
 
     def test_namedfile_setting(self):
         data = b'datattatatata'

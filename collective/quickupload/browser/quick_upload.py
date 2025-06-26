@@ -162,7 +162,7 @@ def _listTypesForInterface(context, iftype='file'):
 
     # fix for bug in listRegisteredTypes which returns 2 'ATFolder'
     # when asking for IBaseFolder interface
-    unik_types = dict.fromkeys(all_types).keys()
+    unik_types = list(dict.fromkeys(all_types).keys())
     return unik_types
 
 
@@ -847,7 +847,7 @@ class QuickUploadCheckFile(BrowserView):
         formdict = request.form
         ids = context.objectIds()
 
-        for k, v in formdict.items():
+        for k, v in list(formdict.items()):
             if k != 'folder':
                 if v in ids:
                     already_exists[k] = v

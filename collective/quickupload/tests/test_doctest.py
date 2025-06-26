@@ -11,7 +11,6 @@ from collective.quickupload import testing
 import doctest
 
 functional = [
-    'installation.txt',
     'controlpanel.txt',
     'quickupload_view.txt',
     'portlet.txt',

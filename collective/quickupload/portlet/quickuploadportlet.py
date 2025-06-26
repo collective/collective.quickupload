@@ -162,9 +162,9 @@ class Renderer(base.Renderer):
         # since the portlet don't use it, but another app could
         if session:
             # session does not implement dict API. it's a TransientObject
-            if session.has_key('typeupload'):  # noqa
+            if 'typeupload' in session:
                 session.delete('typeupload')
-            if session.has_key('mediaupload'):  # noqa
+            if 'mediaupload' in session:
                 session.delete('mediaupload')
 
     def render(self):

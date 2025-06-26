@@ -45,7 +45,7 @@ class ControlPanelTest(unittest.TestCase):
         view = getMultiAdapter((self.portal, self.portal.REQUEST),
                                name='quickupload-controlpanel')
         # view = view.__of__(self.portal)
-        self.failUnless(view())
+        self.assertTrue(view())
 
     def test_view_protected(self):
         # view can not be accessed by anonymous users

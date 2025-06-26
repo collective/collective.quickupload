@@ -50,6 +50,7 @@ class TestMimetypes(unittest.TestCase):
         fieldstorage = cgi.FieldStorage()
         fieldstorage.file = file_
         fieldstorage.filename = 'testfile_mimetypes.txt'
+        fieldstorage.name = 'testfile'
         fileupload = FileUpload(fieldstorage)
         content_type = get_content_type(
             self.portal, fileupload, 'dummy.txt')

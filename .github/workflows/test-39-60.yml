@@ -2,15 +2,15 @@ name: 3.9 6.0 Run tests
 on: [push, pull_request]
 jobs:
   build:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v3.3.0
+      - uses: actions/checkout@v4
       - name: Set up python
-        uses: actions/setup-python@v4.5.0
+        uses: actions/setup-python@v5
         with:
           python-version: 3.9
       - name: Caching
-        uses: actions/cache@v3.2.3
+        uses: actions/cache@v4
         with:
           path: |
             eggs
@@ -20,7 +20,7 @@ jobs:
           pip install virtualenv
           virtualenv -p 3 .
           bin/pip install -r requirements.txt
-          bin/buildout -c test-6.x.cfg install test
+          bin/buildout -c test-6.0.x.cfg install test
       - name: Run unit tests
         run: |
           bin/test

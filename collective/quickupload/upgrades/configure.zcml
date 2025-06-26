@@ -1,62 +1,6 @@
 <configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:genericsetup="http://namespaces.zope.org/genericsetup"
-    i18n_domain="extranetprivr">
-
-  <genericsetup:upgradeStep
-      title="Javascripts and css are loaded for authenticated users only."
-      description=""
-      source="1.0.3"
-      destination="2"
-      handler=".upgrades.v1_v2"
-      profile="collective.quickupload:default" />
-
-  <genericsetup:upgradeStep
-      title="Upgrade css and js."
-      description=""
-      source="2"
-      destination="3"
-      handler=".upgrades.v2_v3"
-      profile="collective.quickupload:default" />
-
-  <genericsetup:upgradeStep
-      title="Add use_flash_as_fallback property"
-      description=""
-      source="3"
-      destination="4"
-      handler=".upgrades.v3_v4"
-      profile="collective.quickupload:default" />
-
-  <genericsetup:upgradeStep
-      title="Add show_upload_action property"
-      description=""
-      source="4"
-      destination="5"
-      handler=".upgrades.v4_v5"
-      profile="collective.quickupload:default" />
-
-  <genericsetup:upgradeStep
-      title="Add show_upload_action property"
-      description=""
-      source="5"
-      destination="6"
-      handler=".upgrades.v5_v6"
-      profile="collective.quickupload:default" />
-
-  <genericsetup:upgradeStep
-      title="Add object_unique_id property"
-      description=""
-      source="6"
-      destination="7"
-      handler=".upgrades.v6_v7"
-      profile="collective.quickupload:default" />
-
-  <genericsetup:upgradeStep
-      title="Add id_as_title property"
-      description=""
-      source="7"
-      destination="8"
-      handler=".upgrades.v7_v8"
-      profile="collective.quickupload:default" />
+    i18n_domain="collective.quickupload">
 
 </configure>

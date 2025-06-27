@@ -4,8 +4,8 @@ Changelog
 2.0.0a2 (unreleased)
 --------------------
 
-- Nothing changed yet.
-
+- Fixed reversed upload order.
+  [gbastien]
 
 2.0.0a1 (2023-02-20)
 --------------------

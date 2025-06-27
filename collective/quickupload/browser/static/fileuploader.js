@@ -337,16 +337,14 @@ qq.FileUploader.prototype = {
     },
     _addSelection: function(files) {
         var valid = true;
-        var i = files.length;
-        while (i--){
+        for (var i = 0; i < files.length; i++){
             if (!this._validateFile(files[i])){
                 valid = false;
                 break;
             }
         }
         if (valid){
-            var i = files.length;
-            while (i--){
+            for (var i = 0; i < files.length; i++){
                 this._addFile(files[i]);
             }
         }
